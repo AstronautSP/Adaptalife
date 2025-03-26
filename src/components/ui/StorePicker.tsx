@@ -19,13 +19,23 @@ interface Store {
   distance?: number;
 }
 
-// Sample data
+// Expanded list of stores
 const STORES: Store[] = [
   { id: '1', name: 'Leclerc', brand: 'Leclerc', address: '123 rue de Paris, Paris', distance: 0.8 },
   { id: '2', name: 'Carrefour City', brand: 'Carrefour', address: '45 avenue des Champs, Paris', distance: 1.2 },
   { id: '3', name: 'Super U', brand: 'Super U', address: '78 boulevard Haussmann, Paris', distance: 2.4 },
   { id: '4', name: 'Aldi', brand: 'Aldi', address: '15 rue de Rivoli, Paris', distance: 3.1 },
   { id: '5', name: 'Lidl', brand: 'Lidl', address: '99 rue Saint-Antoine, Paris', distance: 3.5 },
+  { id: '6', name: 'Intermarché', brand: 'Intermarché', address: '27 rue du Faubourg Saint-Martin, Paris', distance: 1.7 },
+  { id: '7', name: 'Monoprix', brand: 'Monoprix', address: '158 avenue des Ternes, Paris', distance: 2.2 },
+  { id: '8', name: 'Casino', brand: 'Casino', address: '35 boulevard de Clichy, Paris', distance: 2.8 },
+  { id: '9', name: 'Franprix', brand: 'Franprix', address: '42 rue de la Roquette, Paris', distance: 1.5 },
+  { id: '10', name: 'Auchan', brand: 'Auchan', address: '240 avenue Daumesnil, Paris', distance: 3.9 },
+  { id: '11', name: 'Carrefour Market', brand: 'Carrefour', address: '18 rue de Passy, Paris', distance: 2.6 },
+  { id: '12', name: 'Biocoop', brand: 'Biocoop', address: '52 rue de Paradis, Paris', distance: 1.9 },
+  { id: '13', name: 'Naturalia', brand: 'Naturalia', address: '89 rue Montorgueil, Paris', distance: 1.3 },
+  { id: '14', name: 'Picard', brand: 'Picard', address: '64 rue du Bac, Paris', distance: 2.1 },
+  { id: '15', name: 'G20', brand: 'G20', address: '113 rue Oberkampf, Paris', distance: 2.9 },
 ];
 
 interface StorePickerProps {
