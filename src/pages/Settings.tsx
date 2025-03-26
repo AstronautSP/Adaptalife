@@ -240,6 +240,8 @@ const Settings = () => {
                     { id: 'hypertension', label: 'Hypertension' },
                     { id: 'cholesterol', label: 'Cholestérol élevé' },
                     { id: 'stroke', label: 'AVC (passé)' },
+                    { id: 'visually-impaired', label: 'Malvoyance' },
+                    { id: 'autism', label: 'Trouble du spectre autistique' },
                   ].map(condition => (
                     <div 
                       key={condition.id} 
@@ -445,6 +447,19 @@ const Settings = () => {
                   <Switch 
                     checked={formValues.preferences.autoReadLabels}
                     onCheckedChange={checked => handleInputChange('preferences', 'autoReadLabels', checked)}
+                  />
+                </div>
+                
+                <div className="flex items-center justify-between">
+                  <div className="space-y-0.5">
+                    <Label>Mode simplifié pour TSA</Label>
+                    <p className="text-sm text-muted-foreground">
+                      Interface simplifiée pour personnes avec trouble du spectre autistique
+                    </p>
+                  </div>
+                  <Switch 
+                    checked={formValues.preferences.simplifiedUI}
+                    onCheckedChange={checked => handleInputChange('preferences', 'simplifiedUI', checked)}
                   />
                 </div>
               </div>
