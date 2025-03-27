@@ -25,12 +25,36 @@ interface Store {
 
 // Liste mondiale de supermarchés
 const STORES: Store[] = [
-  // France
+  // France - Paris
   { id: '1', name: 'Leclerc', brand: 'Leclerc', address: '123 rue de Paris, Paris', country: 'France', distance: 0.8 },
   { id: '2', name: 'Carrefour City', brand: 'Carrefour', address: '45 avenue des Champs, Paris', country: 'France', distance: 1.2 },
   { id: '3', name: 'Super U', brand: 'Super U', address: '78 boulevard Haussmann, Paris', country: 'France', distance: 2.4 },
   { id: '4', name: 'Aldi', brand: 'Aldi', address: '15 rue de Rivoli, Paris', country: 'France', distance: 3.1 },
   { id: '5', name: 'Lidl', brand: 'Lidl', address: '99 rue Saint-Antoine, Paris', country: 'France', distance: 3.5 },
+  
+  // France - Autres régions
+  { id: '101', name: 'Carrefour Hypermarché', brand: 'Carrefour', address: '10 avenue du Commerce, Lyon', country: 'France', distance: 1.3 },
+  { id: '102', name: 'E.Leclerc Hypermarché', brand: 'Leclerc', address: '25 rue des Grands Magasins, Marseille', country: 'France', distance: 2.1 },
+  { id: '103', name: 'Auchan', brand: 'Auchan', address: '5 boulevard de l\'Europe, Lille', country: 'France', distance: 0.9 },
+  { id: '104', name: 'Intermarché Super', brand: 'Intermarché', address: '17 rue de la République, Bordeaux', country: 'France', distance: 1.7 },
+  { id: '105', name: 'Géant Casino', brand: 'Casino', address: '3 place du Marché, Nice', country: 'France', distance: 2.5 },
+  { id: '106', name: 'Cora', brand: 'Cora', address: '8 avenue Jean Moulin, Strasbourg', country: 'France', distance: 3.2 },
+  { id: '107', name: 'Grand Frais', brand: 'Grand Frais', address: '12 rue des Primeurs, Toulouse', country: 'France', distance: 1.8 },
+  { id: '108', name: 'Biocoop', brand: 'Biocoop', address: '22 rue des Plantes, Montpellier', country: 'France', distance: 2.3 },
+  { id: '109', name: 'Système U Hyper', brand: 'Super U', address: '7 avenue de la Mer, Nantes', country: 'France', distance: 1.5 },
+  { id: '110', name: 'Aldi', brand: 'Aldi', address: '14 rue du Discount, Rennes', country: 'France', distance: 2.7 },
+  { id: '111', name: 'Lidl', brand: 'Lidl', address: '9 avenue des Prix Bas, Grenoble', country: 'France', distance: 2.0 },
+  { id: '112', name: 'Netto', brand: 'Netto', address: '3 rue des Économies, Dijon', country: 'France', distance: 1.6 },
+  { id: '113', name: 'Carrefour Market', brand: 'Carrefour', address: '16 rue du Commerce, Reims', country: 'France', distance: 2.9 },
+  { id: '114', name: 'Monoprix', brand: 'Monoprix', address: '20 rue Centrale, Annecy', country: 'France', distance: 1.4 },
+  { id: '115', name: 'Franprix', brand: 'Franprix', address: '11 avenue des Boutiques, Toulon', country: 'France', distance: 2.2 },
+  { id: '116', name: 'Spar', brand: 'Spar', address: '5 place du Village, Angers', country: 'France', distance: 0.7 },
+  { id: '117', name: 'Colruyt', brand: 'Colruyt', address: '4 rue de Belgique, Metz', country: 'France', distance: 1.9 },
+  { id: '118', name: 'Naturalia', brand: 'Naturalia', address: '8 rue des Plantes, Aix-en-Provence', country: 'France', distance: 2.4 },
+  { id: '119', name: 'Picard', brand: 'Picard', address: '13 rue des Surgelés, Clermont-Ferrand', country: 'France', distance: 1.1 },
+  { id: '120', name: 'La Vie Claire', brand: 'La Vie Claire', address: '6 rue des Vitamines, Brest', country: 'France', distance: 2.6 },
+  
+  // Paris (conservés de la liste originale)
   { id: '6', name: 'Intermarché', brand: 'Intermarché', address: '27 rue du Faubourg Saint-Martin, Paris', country: 'France', distance: 1.7 },
   { id: '7', name: 'Monoprix', brand: 'Monoprix', address: '158 avenue des Ternes, Paris', country: 'France', distance: 2.2 },
   { id: '8', name: 'Casino', brand: 'Casino', address: '35 boulevard de Clichy, Paris', country: 'France', distance: 2.8 },
