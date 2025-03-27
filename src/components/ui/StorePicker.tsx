@@ -1,4 +1,3 @@
-
 import { useState } from 'react';
 import { Store, MapPin, ChevronDown, Globe, Volume2, Tractor, Apple, Carrot, Egg } from 'lucide-react';
 import {
@@ -57,6 +56,14 @@ const STORES: Store[] = [
   { id: '119', name: 'Picard', brand: 'Picard', address: '13 rue des Surgelés, Clermont-Ferrand', country: 'France', distance: 1.1, type: 'supermarket' },
   { id: '120', name: 'La Vie Claire', brand: 'La Vie Claire', address: '6 rue des Vitamines, Brest', country: 'France', distance: 2.6, type: 'supermarket' },
   
+  // Saint-Médard-en-Jalles (Nouvelle Aquitaine)
+  { id: '201', name: 'Intermarché Super', brand: 'Intermarché', address: '2 avenue Montaigne, Saint-Médard-en-Jalles', country: 'France', distance: 1.2, type: 'supermarket' },
+  { id: '202', name: 'Leclerc', brand: 'Leclerc', address: '104 avenue Montesquieu, Saint-Médard-en-Jalles', country: 'France', distance: 0.8, type: 'supermarket' },
+  { id: '203', name: 'Carrefour Market', brand: 'Carrefour', address: '35 rue François Mitterrand, Saint-Médard-en-Jalles', country: 'France', distance: 1.5, type: 'supermarket' },
+  { id: '204', name: 'Lidl', brand: 'Lidl', address: '17 avenue du Haillan, Saint-Médard-en-Jalles', country: 'France', distance: 2.0, type: 'supermarket' },
+  { id: '205', name: 'Aldi', brand: 'Aldi', address: '28 avenue de Magudas, Saint-Médard-en-Jalles', country: 'France', distance: 2.3, type: 'supermarket' },
+  { id: '206', name: 'Bio c\' Bon', brand: 'Bio c\' Bon', address: '12 place de la République, Saint-Médard-en-Jalles', country: 'France', distance: 0.5, type: 'supermarket', organic: true },
+  
   // Paris (conservés de la liste originale)
   { id: '6', name: 'Intermarché', brand: 'Intermarché', address: '27 rue du Faubourg Saint-Martin, Paris', country: 'France', distance: 1.7, type: 'supermarket' },
   { id: '7', name: 'Monoprix', brand: 'Monoprix', address: '158 avenue des Ternes, Paris', country: 'France', distance: 2.2, type: 'supermarket' },
@@ -80,6 +87,11 @@ const STORES: Store[] = [
   { id: 'f8', name: 'Champignonnière de la Seine', brand: 'Champignonnière de la Seine', address: '22 rue des Carrières, Essonne', country: 'France', distance: 30.0, type: 'farm', products: ['Champignons', 'Compost bio'], organic: true },
   { id: 'f9', name: 'Les Terres Maraîchères', brand: 'Terres Maraîchères', address: '17 allée des Maraîchers, Hauts-de-Seine', country: 'France', distance: 15.0, type: 'farm', products: ['Légumes de saison', 'Fruits rouges'], organic: true },
   
+  // Agriculteur près de Saint-Médard-en-Jalles
+  { id: 'f20', name: 'Ferme de la Forêt', brand: 'Ferme de la Forêt', address: 'Route de Lacanau, Saint-Médard-en-Jalles', country: 'France', distance: 3.5, type: 'farm', products: ['Légumes', 'Fruits', 'Miel'], organic: true },
+  { id: 'f21', name: 'Les Jardins Médocains', brand: 'Jardins Médocains', address: 'Chemin des Vignes, Saint-Médard-en-Jalles', country: 'France', distance: 2.8, type: 'farm', products: ['Légumes bio', 'Herbes aromatiques'], organic: true },
+  { id: 'f22', name: 'Élevage du Taillan', brand: 'Élevage du Taillan', address: '45 route de Saint-Aubin, Saint-Médard-en-Jalles', country: 'France', distance: 4.2, type: 'farm', products: ['Volailles', 'Œufs fermiers'], organic: false },
+  
   // Agriculteurs - Lyon et région
   { id: 'f10', name: 'Ferme Bio du Rhône', brand: 'Ferme du Rhône', address: 'Route des Coteaux, Rhône-Alpes', country: 'France', distance: 20.0, type: 'farm', products: ['Légumes', 'Fruits'], organic: true },
   { id: 'f11', name: 'La Chèvrerie de Lyon', brand: 'Chèvrerie de Lyon', address: '8 chemin des Chèvres, Lyon', country: 'France', distance: 18.0, type: 'farm', products: ['Fromages de chèvre', 'Yaourts'], organic: false },
@@ -96,6 +108,9 @@ const STORES: Store[] = [
   { id: 'm1', name: 'Marché d\'Aligre', brand: 'Marché d\'Aligre', address: 'Place d\'Aligre, Paris', country: 'France', distance: 2.5, type: 'market', products: ['Produits frais', 'Produits locaux'] },
   { id: 'm2', name: 'Marché de Rungis', brand: 'Marché de Rungis', address: 'Avenue de Fontainebleau, Rungis', country: 'France', distance: 12.0, type: 'market', products: ['Produits frais', 'Produits en gros'] },
   { id: 'm3', name: 'Marché Bio de Batignolles', brand: 'Marché Bio', address: 'Boulevard des Batignolles, Paris', country: 'France', distance: 3.0, type: 'market', products: ['Produits bio', 'Produits locaux'], organic: true },
+  
+  // Marché local de Saint-Médard-en-Jalles
+  { id: 'm10', name: 'Marché de Saint-Médard', brand: 'Marché de Saint-Médard', address: 'Place de la République, Saint-Médard-en-Jalles', country: 'France', distance: 0.3, type: 'market', products: ['Produits frais', 'Produits locaux'] },
   
   // États-Unis
   { id: '16', name: 'Walmart', brand: 'Walmart', address: '123 Main St, New York', country: 'USA', distance: 1.5, type: 'supermarket' },
