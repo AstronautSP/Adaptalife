@@ -55,7 +55,7 @@ const Header = () => {
           className="flex items-center space-x-2 text-primary font-bold text-xl"
         >
           <span className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-primary to-accent">
-            HandiView
+            VitaForce
           </span>
         </Link>
 

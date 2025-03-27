@@ -8,7 +8,7 @@ const Footer = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 py-8">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           <div className="space-y-4">
-            <h3 className="text-lg font-semibold">HandiView</h3>
+            <h3 className="text-lg font-semibold">VitaForce</h3>
             <p className="text-sm text-muted-foreground">
               Améliorer l'expérience alimentaire des personnes en situation de handicap 
               avec des informations nutritionnelles détaillées et une navigation simplifiée.
@@ -57,7 +57,7 @@ const Footer = () => {
         
         <div className="mt-8 pt-6 border-t border-border flex flex-col sm:flex-row justify-between items-center">
           <p className="text-sm text-muted-foreground">
-            © {new Date().getFullYear()} HandiView. Tous droits réservés.
+            © {new Date().getFullYear()} VitaForce. Tous droits réservés.
           </p>
           
           <div className="flex items-center mt-4 sm:mt-0">
