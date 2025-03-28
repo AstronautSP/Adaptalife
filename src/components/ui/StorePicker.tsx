@@ -1,3 +1,4 @@
+
 import { useState } from 'react';
 import { Store, MapPin, ChevronDown, Globe, Volume2, Tractor, Apple, Carrot, Egg } from 'lucide-react';
 import {
@@ -20,7 +21,7 @@ interface Store {
   address: string;
   distance?: number;
   country?: string;
-  type?: 'supermarket' | 'farm' | 'market';
+  type?: 'supermarket' | 'farm' | 'market' | 'bakery' | 'seafood';
   products?: string[];
   organic?: boolean;
 }
@@ -91,6 +92,30 @@ const STORES: Store[] = [
   { id: 'f20', name: 'Ferme de la Forêt', brand: 'Ferme de la Forêt', address: 'Route de Lacanau, Saint-Médard-en-Jalles', country: 'France', distance: 3.5, type: 'farm', products: ['Légumes', 'Fruits', 'Miel'], organic: true },
   { id: 'f21', name: 'Les Jardins Médocains', brand: 'Jardins Médocains', address: 'Chemin des Vignes, Saint-Médard-en-Jalles', country: 'France', distance: 2.8, type: 'farm', products: ['Légumes bio', 'Herbes aromatiques'], organic: true },
   { id: 'f22', name: 'Élevage du Taillan', brand: 'Élevage du Taillan', address: '45 route de Saint-Aubin, Saint-Médard-en-Jalles', country: 'France', distance: 4.2, type: 'farm', products: ['Volailles', 'Œufs fermiers'], organic: false },
+  
+  // Nouveaux producteurs d'huîtres et fruits de mer - Littoral atlantique
+  { id: 'o1', name: 'Huîtres du Bassin', brand: 'Huîtres du Bassin', address: 'Port ostréicole, Arcachon', country: 'France', distance: 45.0, type: 'seafood', products: ['Huîtres', 'Palourdes', 'Moules'], organic: false },
+  { id: 'o2', name: 'Cabane à Huîtres', brand: 'Cabane à Huîtres', address: 'Jetée Thiers, Arcachon', country: 'France', distance: 46.0, type: 'seafood', products: ['Huîtres', 'Crevettes', 'Bulots'], organic: false },
+  { id: 'o3', name: 'Établissement Marennes-Oléron', brand: 'Marennes-Oléron', address: 'Port de la Cayenne, Marennes', country: 'France', distance: 130.0, type: 'seafood', products: ['Huîtres', 'Coquillages divers'], organic: false },
+  { id: 'o4', name: 'Ostréiculteur Bio de la Pointe', brand: 'Bio de la Pointe', address: 'Pointe du Cap Ferret, Lège-Cap-Ferret', country: 'France', distance: 55.0, type: 'seafood', products: ['Huîtres bio', 'Palourdes bio'], organic: true },
+  
+  // Poissonneries et fruits de mer - Bordeaux et région
+  { id: 's1', name: 'Poissonnerie du Port', brand: 'Poissonnerie du Port', address: '15 quai des Chartrons, Bordeaux', country: 'France', distance: 18.0, type: 'seafood', products: ['Poissons frais', 'Fruits de mer', 'Crustacés'], organic: false },
+  { id: 's2', name: 'Marée Fraîche', brand: 'Marée Fraîche', address: '8 place du Marché, Bordeaux', country: 'France', distance: 15.5, type: 'seafood', products: ['Poissons', 'Plateaux de fruits de mer'], organic: false },
+  
+  // Poissonnier local de Saint-Médard-en-Jalles
+  { id: 's10', name: 'Poissonnerie de Saint-Médard', brand: 'Poissonnerie de Saint-Médard', address: '25 rue Jean Dupérier, Saint-Médard-en-Jalles', country: 'France', distance: 0.7, type: 'seafood', products: ['Poissons frais', 'Huîtres', 'Crevettes'], organic: false },
+  
+  // Boulangeries traditionnelles - France
+  { id: 'b1', name: 'Boulangerie Tartine et Pain Frais', brand: 'Tartine et Pain Frais', address: '45 rue du Four, Paris', country: 'France', distance: 1.8, type: 'bakery', products: ['Pain traditionnel', 'Viennoiseries', 'Pâtisseries'], organic: false },
+  { id: 'b2', name: 'Maison Leblanc', brand: 'Maison Leblanc', address: '12 rue des Boulangeries, Lyon', country: 'France', distance: 2.3, type: 'bakery', products: ['Pain au levain', 'Baguettes', 'Tartes'], organic: false },
+  { id: 'b3', name: 'La Mie Bio', brand: 'La Mie Bio', address: '7 place du Village, Nantes', country: 'France', distance: 1.5, type: 'bakery', products: ['Pain biologique', 'Viennoiseries bio', 'Pâtisseries artisanales'], organic: true },
+  
+  // Boulangeries à Saint-Médard-en-Jalles
+  { id: 'b10', name: 'Boulangerie du Centre', brand: 'Boulangerie du Centre', address: '5 place de l\'Église, Saint-Médard-en-Jalles', country: 'France', distance: 0.4, type: 'bakery', products: ['Pains spéciaux', 'Pâtisseries', 'Viennoiseries'], organic: false },
+  { id: 'b11', name: 'Fournil de Saint-Médard', brand: 'Fournil de Saint-Médard', address: '18 avenue Montesquieu, Saint-Médard-en-Jalles', country: 'France', distance: 0.9, type: 'bakery', products: ['Pain au levain', 'Pain de campagne', 'Pâtisseries fines'], organic: false },
+  { id: 'b12', name: 'Le Pain d\'Antan', brand: 'Le Pain d\'Antan', address: '22 rue Jean Jaurès, Saint-Médard-en-Jalles', country: 'France', distance: 1.1, type: 'bakery', products: ['Pain traditionnel', 'Spécialités régionales', 'Sandwichs'], organic: false },
+  { id: 'b13', name: 'La Mie d\'Or', brand: 'La Mie d\'Or', address: '3 avenue de la Boétie, Saint-Médard-en-Jalles', country: 'France', distance: 1.7, type: 'bakery', products: ['Baguette tradition', 'Pain de seigle', 'Pâtisseries artisanales'], organic: false },
   
   // Agriculteurs - Lyon et région
   { id: 'f10', name: 'Ferme Bio du Rhône', brand: 'Ferme du Rhône', address: 'Route des Coteaux, Rhône-Alpes', country: 'France', distance: 20.0, type: 'farm', products: ['Légumes', 'Fruits'], organic: true },
@@ -181,7 +206,7 @@ interface StorePickerProps {
 const StorePicker = ({ onStoreSelect, className }: StorePickerProps) => {
   const [selectedStore, setSelectedStore] = useState<string>('');
   const [textToSpeech, setTextToSpeech] = useState<boolean>(false);
-  const [storeType, setStoreType] = useState<'all' | 'supermarket' | 'farm' | 'market'>('all');
+  const [storeType, setStoreType] = useState<'all' | 'supermarket' | 'farm' | 'market' | 'bakery' | 'seafood'>('all');
 
   const handleStoreChange = (value: string) => {
     setSelectedStore(value);
@@ -240,12 +265,16 @@ const StorePicker = ({ onStoreSelect, className }: StorePickerProps) => {
     return filtered;
   };
 
-  const getStoreIcon = (type?: 'supermarket' | 'farm' | 'market') => {
+  const getStoreIcon = (type?: 'supermarket' | 'farm' | 'market' | 'bakery' | 'seafood') => {
     switch (type) {
       case 'farm':
         return <Tractor className="h-4 w-4 mr-1" />;
       case 'market':
         return <Apple className="h-4 w-4 mr-1" />;
+      case 'bakery':
+        return <Egg className="h-4 w-4 mr-1" />;
+      case 'seafood':
+        return <Carrot className="h-4 w-4 mr-1" />;
       case 'supermarket':
       default:
         return <Store className="h-4 w-4 mr-1" />;
@@ -270,11 +299,11 @@ const StorePicker = ({ onStoreSelect, className }: StorePickerProps) => {
         </Button>
       </div>
       
-      <div className="flex gap-2 mb-2">
+      <div className="flex flex-wrap gap-2 mb-2">
         <Button 
           variant={storeType === 'all' ? "default" : "outline"} 
           size="sm" 
-          className="text-xs flex-1"
+          className="text-xs"
           onClick={() => setStoreType('all')}
         >
           <Globe className="h-3.5 w-3.5 mr-1" />
@@ -283,7 +312,7 @@ const StorePicker = ({ onStoreSelect, className }: StorePickerProps) => {
         <Button 
           variant={storeType === 'supermarket' ? "default" : "outline"} 
           size="sm" 
-          className="text-xs flex-1"
+          className="text-xs"
           onClick={() => setStoreType('supermarket')}
         >
           <Store className="h-3.5 w-3.5 mr-1" />
@@ -292,7 +321,7 @@ const StorePicker = ({ onStoreSelect, className }: StorePickerProps) => {
         <Button 
           variant={storeType === 'farm' ? "default" : "outline"} 
           size="sm" 
-          className="text-xs flex-1"
+          className="text-xs"
           onClick={() => setStoreType('farm')}
         >
           <Tractor className="h-3.5 w-3.5 mr-1" />
@@ -301,11 +330,29 @@ const StorePicker = ({ onStoreSelect, className }: StorePickerProps) => {
         <Button 
           variant={storeType === 'market' ? "default" : "outline"} 
           size="sm" 
-          className="text-xs flex-1"
+          className="text-xs"
           onClick={() => setStoreType('market')}
         >
-          <Carrot className="h-3.5 w-3.5 mr-1" />
+          <Apple className="h-3.5 w-3.5 mr-1" />
           Marchés
+        </Button>
+        <Button 
+          variant={storeType === 'bakery' ? "default" : "outline"} 
+          size="sm" 
+          className="text-xs"
+          onClick={() => setStoreType('bakery')}
+        >
+          <Egg className="h-3.5 w-3.5 mr-1" />
+          Boulangeries
+        </Button>
+        <Button 
+          variant={storeType === 'seafood' ? "default" : "outline"} 
+          size="sm" 
+          className="text-xs"
+          onClick={() => setStoreType('seafood')}
+        >
+          <Carrot className="h-3.5 w-3.5 mr-1" />
+          Fruits de mer
         </Button>
       </div>
       
@@ -321,8 +368,13 @@ const StorePicker = ({ onStoreSelect, className }: StorePickerProps) => {
                   <SelectLabel className="flex items-center">
                     {type === 'farm' && <Tractor className="h-3.5 w-3.5 mr-1" />}
                     {type === 'market' && <Apple className="h-3.5 w-3.5 mr-1" />}
+                    {type === 'bakery' && <Egg className="h-3.5 w-3.5 mr-1" />}
+                    {type === 'seafood' && <Carrot className="h-3.5 w-3.5 mr-1" />}
                     {type === 'supermarket' && <Store className="h-3.5 w-3.5 mr-1" />}
-                    {type === 'farm' ? 'Producteurs - ' : type === 'market' ? 'Marchés - ' : ''}{country}
+                    {type === 'farm' ? 'Producteurs - ' : 
+                     type === 'market' ? 'Marchés - ' : 
+                     type === 'bakery' ? 'Boulangeries - ' : 
+                     type === 'seafood' ? 'Fruits de mer - ' : ''}{country}
                   </SelectLabel>
                   {countries[country].map((store) => (
                     <SelectItem 
