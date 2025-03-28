@@ -25,6 +25,7 @@ export interface Product {
   healthTags?: string[];
   isHealthyFor?: string[];
   notRecommendedFor?: string[];
+  category?: string;
 }
 
 interface ProductCardProps {
@@ -118,6 +119,15 @@ const ProductCard = ({ product, className, layout = 'grid' }: ProductCardProps) 
             </Tooltip>
           </TooltipProvider>
         </div>
+
+        {/* Category Label (new) */}
+        {product.category && (
+          <div className="absolute top-2 left-2 z-10">
+            <Badge variant="secondary" className="bg-black/60 text-white text-xs">
+              {product.category}
+            </Badge>
+          </div>
+        )}
       </div>
       
       {/* Product Content */}
