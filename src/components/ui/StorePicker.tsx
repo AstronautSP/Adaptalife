@@ -1,4 +1,3 @@
-
 import { useState } from 'react';
 import { Store, MapPin, ChevronDown, Globe, Volume2, Tractor, Apple, Carrot, Egg } from 'lucide-react';
 import {
@@ -26,7 +25,7 @@ interface Store {
   organic?: boolean;
 }
 
-// Liste mondiale de supermarchés
+// Liste de magasins et producteurs en France uniquement
 const STORES: Store[] = [
   // France - Paris
   { id: '1', name: 'Leclerc', brand: 'Leclerc', address: '123 rue de Paris, Paris', country: 'France', distance: 0.8, type: 'supermarket' },
@@ -136,65 +135,50 @@ const STORES: Store[] = [
   
   // Marché local de Saint-Médard-en-Jalles
   { id: 'm10', name: 'Marché de Saint-Médard', brand: 'Marché de Saint-Médard', address: 'Place de la République, Saint-Médard-en-Jalles', country: 'France', distance: 0.3, type: 'market', products: ['Produits frais', 'Produits locaux'] },
-  
-  // États-Unis
-  { id: '16', name: 'Walmart', brand: 'Walmart', address: '123 Main St, New York', country: 'USA', distance: 1.5, type: 'supermarket' },
-  { id: '17', name: 'Target', brand: 'Target', address: '456 Broadway, New York', country: 'USA', distance: 2.3, type: 'supermarket' },
-  { id: '18', name: 'Kroger', brand: 'Kroger', address: '789 5th Ave, New York', country: 'USA', distance: 3.1, type: 'supermarket' },
-  { id: '19', name: 'Whole Foods', brand: 'Whole Foods', address: '101 7th Ave, New York', country: 'USA', distance: 1.8, type: 'supermarket' },
-  { id: '20', name: 'Costco', brand: 'Costco', address: '202 8th St, New York', country: 'USA', distance: 4.2, type: 'supermarket' },
-  
-  // Royaume-Uni
-  { id: '21', name: 'Tesco', brand: 'Tesco', address: '10 Oxford St, London', country: 'UK', distance: 1.2, type: 'supermarket' },
-  { id: '22', name: 'Sainsbury\'s', brand: 'Sainsbury\'s', address: '20 Regent St, London', country: 'UK', distance: 2.5, type: 'supermarket' },
-  { id: '23', name: 'ASDA', brand: 'ASDA', address: '30 Baker St, London', country: 'UK', distance: 3.0, type: 'supermarket' },
-  { id: '24', name: 'Morrisons', brand: 'Morrisons', address: '40 Bond St, London', country: 'UK', distance: 2.1, type: 'supermarket' },
-  { id: '25', name: 'Waitrose', brand: 'Waitrose', address: '50 Carnaby St, London', country: 'UK', distance: 1.7, type: 'supermarket' },
-  
-  // Allemagne
-  { id: '26', name: 'REWE', brand: 'REWE', address: 'Alexanderplatz 1, Berlin', country: 'Allemagne', distance: 1.3, type: 'supermarket' },
-  { id: '27', name: 'Edeka', brand: 'Edeka', address: 'Friedrichstrasse 20, Berlin', country: 'Allemagne', distance: 2.2, type: 'supermarket' },
-  { id: '28', name: 'Kaufland', brand: 'Kaufland', address: 'Potsdamer Platz 5, Berlin', country: 'Allemagne', distance: 3.5, type: 'supermarket' },
-  
-  // Espagne
-  { id: '29', name: 'Mercadona', brand: 'Mercadona', address: 'Gran Via, Madrid', country: 'Espagne', distance: 1.1, type: 'supermarket' },
-  { id: '30', name: 'El Corte Inglés', brand: 'El Corte Inglés', address: 'Sol 15, Madrid', country: 'Espagne', distance: 2.4, type: 'supermarket' },
-  
-  // Italie
-  { id: '31', name: 'Coop', brand: 'Coop', address: 'Via Roma 10, Rome', country: 'Italie', distance: 1.6, type: 'supermarket' },
-  { id: '32', name: 'Esselunga', brand: 'Esselunga', address: 'Via Veneto 25, Rome', country: 'Italie', distance: 2.8, type: 'supermarket' },
-  
-  // Japon
-  { id: '33', name: '7-Eleven', brand: '7-Eleven', address: 'Shibuya 1-1, Tokyo', country: 'Japon', distance: 0.7, type: 'supermarket' },
-  { id: '34', name: 'FamilyMart', brand: 'FamilyMart', address: 'Shinjuku 2-3, Tokyo', country: 'Japon', distance: 1.2, type: 'supermarket' },
-  
-  // Australie
-  { id: '35', name: 'Woolworths', brand: 'Woolworths', address: 'George St 100, Sydney', country: 'Australie', distance: 1.9, type: 'supermarket' },
-  { id: '36', name: 'Coles', brand: 'Coles', address: 'Pitt St 200, Sydney', country: 'Australie', distance: 2.6, type: 'supermarket' },
-  
-  // Canada
-  { id: '37', name: 'Loblaws', brand: 'Loblaws', address: '123 Yonge St, Toronto', country: 'Canada', distance: 1.4, type: 'supermarket' },
-  { id: '38', name: 'Sobeys', brand: 'Sobeys', address: '456 Queen St, Toronto', country: 'Canada', distance: 2.7, type: 'supermarket' },
-  
-  // Brésil
-  { id: '39', name: 'Pão de Açúcar', brand: 'Pão de Açúcar', address: 'Av. Paulista 1000, São Paulo', country: 'Brésil', distance: 2.0, type: 'supermarket' },
-  { id: '40', name: 'Carrefour', brand: 'Carrefour', address: 'Av. Brasil 2000, Rio de Janeiro', country: 'Brésil', distance: 3.2, type: 'supermarket' },
 ];
 
-// Grouper les magasins par type et par pays
-const storesByTypeAndCountry = STORES.reduce((acc, store) => {
+// Grouper les magasins par type et région
+const storesByTypeAndRegion = STORES.reduce((acc, store) => {
   const type = store.type || 'supermarket';
-  const country = store.country || 'Autre';
   
   if (!acc[type]) {
     acc[type] = {};
   }
   
-  if (!acc[type][country]) {
-    acc[type][country] = [];
+  // Extraire la région de l'adresse ou utiliser 'France' comme valeur par défaut
+  let region = 'France';
+  
+  if (store.address.includes('Paris')) {
+    region = 'Île-de-France';
+  } else if (store.address.includes('Lyon') || store.address.includes('Rhône')) {
+    region = 'Auvergne-Rhône-Alpes';
+  } else if (store.address.includes('Marseille') || store.address.includes('Provence') || store.address.includes('Aix')) {
+    region = 'Provence-Alpes-Côte d\'Azur';
+  } else if (store.address.includes('Bordeaux') || store.address.includes('Médoc') || store.address.includes('Saint-Médard-en-Jalles')) {
+    region = 'Nouvelle-Aquitaine';
+  } else if (store.address.includes('Lille')) {
+    region = 'Hauts-de-France';
+  } else if (store.address.includes('Strasbourg')) {
+    region = 'Grand Est';
+  } else if (store.address.includes('Toulouse')) {
+    region = 'Occitanie';
+  } else if (store.address.includes('Nantes')) {
+    region = 'Pays de la Loire';
+  } else if (store.address.includes('Rennes') || store.address.includes('Brest')) {
+    region = 'Bretagne';
+  } else if (store.address.includes('Angers')) {
+    region = 'Pays de la Loire';
+  } else if (store.address.includes('Normandie')) {
+    region = 'Normandie';
+  } else if (store.address.includes('Picardie')) {
+    region = 'Hauts-de-France';
   }
   
-  acc[type][country].push(store);
+  if (!acc[type][region]) {
+    acc[type][region] = [];
+  }
+  
+  acc[type][region].push(store);
   return acc;
 }, {} as Record<string, Record<string, Store[]>>);
 
@@ -256,11 +240,11 @@ const StorePicker = ({ onStoreSelect, className }: StorePickerProps) => {
   // Filtrer les magasins selon le type sélectionné
   const getFilteredStores = () => {
     if (storeType === 'all') {
-      return storesByTypeAndCountry;
+      return storesByTypeAndRegion;
     }
     
     const filtered: Record<string, Record<string, Store[]>> = {};
-    filtered[storeType] = storesByTypeAndCountry[storeType] || {};
+    filtered[storeType] = storesByTypeAndRegion[storeType] || {};
     
     return filtered;
   };
@@ -361,10 +345,10 @@ const StorePicker = ({ onStoreSelect, className }: StorePickerProps) => {
           <SelectValue placeholder="Choisir un point de vente" />
         </SelectTrigger>
         <SelectContent className="max-h-80">
-          {Object.entries(getFilteredStores()).map(([type, countries]) => (
+          {Object.entries(storeType === 'all' ? storesByTypeAndRegion : { [storeType]: storesByTypeAndRegion[storeType] || {} }).map(([type, regions]) => (
             <div key={type}>
-              {Object.keys(countries).sort().map((country) => (
-                <SelectGroup key={`${type}-${country}`}>
+              {Object.keys(regions).sort().map((region) => (
+                <SelectGroup key={`${type}-${region}`}>
                   <SelectLabel className="flex items-center">
                     {type === 'farm' && <Tractor className="h-3.5 w-3.5 mr-1" />}
                     {type === 'market' && <Apple className="h-3.5 w-3.5 mr-1" />}
@@ -374,9 +358,9 @@ const StorePicker = ({ onStoreSelect, className }: StorePickerProps) => {
                     {type === 'farm' ? 'Producteurs - ' : 
                      type === 'market' ? 'Marchés - ' : 
                      type === 'bakery' ? 'Boulangeries - ' : 
-                     type === 'seafood' ? 'Fruits de mer - ' : ''}{country}
+                     type === 'seafood' ? 'Fruits de mer - ' : ''}{region}
                   </SelectLabel>
-                  {countries[country].map((store) => (
+                  {regions[region].map((store) => (
                     <SelectItem 
                       key={store.id} 
                       value={store.id}
@@ -414,9 +398,6 @@ const StorePicker = ({ onStoreSelect, className }: StorePickerProps) => {
               </h4>
               <p className="text-xs text-muted-foreground">
                 {getStoreById(selectedStore)?.address}
-                {getStoreById(selectedStore)?.country && (
-                  <span> ({getStoreById(selectedStore)?.country})</span>
-                )}
               </p>
               {getStoreById(selectedStore)?.products && (
                 <p className="text-xs text-muted-foreground">
