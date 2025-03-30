@@ -133,7 +133,10 @@ const Index = () => {
             <div className="bg-white rounded-xl shadow-md p-6 mb-8">
               <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
                 <div className="md:col-span-2">
-                  <SearchBar placeholder="Rechercher par nom, marque, ou ingrédient..." onSearch={handleSearch} />
+                  <SearchBar 
+                    placeholder="Rechercher par nom, marque, ou ingrédient..." 
+                    onChange={handleSearch} 
+                  />
                 </div>
                 <div className="md:col-span-1">
                   <AllergensFilter 
