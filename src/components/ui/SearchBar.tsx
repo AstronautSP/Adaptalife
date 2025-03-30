@@ -7,12 +7,14 @@ interface SearchBarProps {
   onClose?: () => void;
   placeholder?: string;
   className?: string;
+  onChange?: (query: string) => void;
 }
 
 const SearchBar = ({
   onClose,
   placeholder = "Rechercher un produit, une catégorie, ou un magasin...",
-  className
+  className,
+  onChange
 }: SearchBarProps) => {
   const [query, setQuery] = useState('');
   const [isFocused, setIsFocused] = useState(false);
@@ -30,6 +32,13 @@ const SearchBar = ({
     // Handle search submit logic here
     console.log('Search submitted:', query);
   };
+
+  // Call onChange prop when query changes
+  useEffect(() => {
+    if (onChange) {
+      onChange(query);
+    }
+  }, [query, onChange]);
 
   return (
     <form
