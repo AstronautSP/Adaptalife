@@ -210,7 +210,7 @@ export const products: Product[] = [
   },
   {
     id: '15',
-    name: 'Jus d'orange pressée',
+    name: "Jus d'orange pressée",
     brand: 'Tropicana',
     image: 'https://images.unsplash.com/photo-1600271886742-f049cd451bba?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=80',
     price: 2.95,
