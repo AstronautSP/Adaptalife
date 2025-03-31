@@ -9,6 +9,7 @@ import ProductView from "./pages/ProductView";
 import Settings from "./pages/Settings";
 import Accessibility from "./pages/Accessibility";
 import NotFound from "./pages/NotFound";
+import MapView from "./pages/MapView";
 
 const queryClient = new QueryClient();
 
@@ -23,6 +24,7 @@ const App = () => (
           <Route path="/product/:productId" element={<ProductView />} />
           <Route path="/settings" element={<Settings />} />
           <Route path="/accessibility" element={<Accessibility />} />
+          <Route path="/map" element={<MapView />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>

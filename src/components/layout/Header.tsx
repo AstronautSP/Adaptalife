@@ -10,7 +10,8 @@ import {
   Heart, 
   Settings,
   Home,
-  HelpCircle
+  HelpCircle,
+  Map
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
@@ -36,6 +37,7 @@ const Header = () => {
   const navLinks = [
     { name: 'Accueil', path: '/', icon: <Home className="h-4 w-4" /> },
     { name: 'Produits', path: '/products', icon: <ShoppingCart className="h-4 w-4" /> },
+    { name: 'Plan', path: '/map', icon: <Map className="h-4 w-4" /> },
     { name: 'Favoris', path: '/favorites', icon: <Heart className="h-4 w-4" /> },
     { name: 'Paramètres', path: '/settings', icon: <Settings className="h-4 w-4" /> },
   ];
