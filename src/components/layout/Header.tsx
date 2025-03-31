@@ -9,17 +9,20 @@ import {
   ShoppingCart, 
   Heart, 
   Settings,
-  Home
+  Home,
+  HelpCircle
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 import SearchBar from '@/components/ui/SearchBar';
+import { useToast } from '@/components/ui/use-toast';
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const location = useLocation();
+  const { toast } = useToast();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -38,6 +41,15 @@ const Header = () => {
   ];
 
   const isActive = (path: string) => location.pathname === path;
+  
+  const handleHelpRequest = () => {
+    toast({
+      title: "Assistance activée",
+      description: "Un assistant va vous aider pour vos courses. Veuillez patienter.",
+      duration: 5000,
+    });
+    // Ici on pourrait implémenter une logique plus avancée d'assistance
+  };
 
   return (
     <header 
@@ -80,6 +92,18 @@ const Header = () => {
 
         {/* Actions */}
         <div className="flex items-center space-x-2">
+          {/* Bouton d'assistance */}
+          <Button
+            variant="outline"
+            size="icon"
+            onClick={handleHelpRequest}
+            className="rounded-full bg-primary/10 text-primary hover:bg-primary/20 hover:text-primary"
+            aria-label="Demander de l'aide pour mes courses"
+            title="Demander de l'aide pour mes courses"
+          >
+            <HelpCircle className="h-5 w-5" />
+          </Button>
+          
           <Button
             variant="ghost"
             size="icon"
@@ -157,6 +181,16 @@ const Header = () => {
             >
               <User className="h-4 w-4 mr-2" />
               <span>Mon compte</span>
+            </Button>
+            
+            {/* Bouton d'assistance version mobile */}
+            <Button
+              variant="outline"
+              className="w-full justify-start mt-2 bg-primary/10 text-primary hover:bg-primary/20"
+              onClick={handleHelpRequest}
+            >
+              <HelpCircle className="h-4 w-4 mr-2" />
+              <span>Demander de l'aide</span>
             </Button>
           </div>
         </nav>
