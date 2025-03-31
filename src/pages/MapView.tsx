@@ -1,10 +1,11 @@
 
 import { useState } from 'react';
-import { ArrowLeft, Target } from 'lucide-react';
+import { ArrowLeft, Target, Store, MapPin } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Link } from 'react-router-dom';
 import StoreMap from '@/components/ui/StoreMap';
-import { useToast } from '@/components/ui/use-toast';
+import { useToast } from '@/hooks/use-toast';
+import { StoreLocator, STORE_LOCATIONS } from '@/components/ui/StoreLocator';
 
 const MapView = () => {
   const [storeId, setStoreId] = useState<string | undefined>(undefined);
@@ -34,6 +35,14 @@ const MapView = () => {
     });
   };
 
+  const handleStoreSelect = (selectedStoreId: string) => {
+    setStoreId(selectedStoreId);
+    // Reset user location when changing stores
+    setUserLocation(null);
+  };
+
+  const selectedStore = storeId ? STORE_LOCATIONS.find(store => store.id === storeId) : undefined;
+
   return (
     <div className="container max-w-6xl mx-auto px-4 py-20">
       <div className="mb-6">
@@ -43,19 +52,54 @@ const MapView = () => {
         </p>
       </div>
       
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 lg:grid-cols-4 gap-6">
+        <div className="lg:col-span-1">
+          <StoreLocator onSelectStore={handleStoreSelect} selectedStoreId={storeId} />
+          
+          {selectedStore && (
+            <div className="mt-4 p-4 border rounded-lg bg-card">
+              <h3 className="flex items-center gap-2 font-medium mb-2">
+                <Store className="h-4 w-4 text-primary" />
+                Informations du magasin
+              </h3>
+              <div className="text-sm space-y-2">
+                <p className="font-medium">{selectedStore.name}</p>
+                <p className="text-muted-foreground">{selectedStore.address}</p>
+                <p className="flex items-center gap-1.5">
+                  <MapPin className="h-3.5 w-3.5 text-muted-foreground" />
+                  <span className="text-xs text-muted-foreground">
+                    {selectedStore.coordinates.lat.toFixed(4)}, {selectedStore.coordinates.lng.toFixed(4)}
+                  </span>
+                </p>
+              </div>
+            </div>
+          )}
+        </div>
+        
         <div className="lg:col-span-3">
-          <div className="flex justify-end mb-4">
-            <Button
-              onClick={handleLocateMe}
-              variant="outline"
-              className="flex items-center gap-2"
-            >
-              <Target className="h-4 w-4" />
-              Me localiser
-            </Button>
-          </div>
-          <StoreMap className="w-full h-[600px]" storeId={storeId} userLocation={userLocation} />
+          {storeId ? (
+            <>
+              <div className="flex justify-end mb-4">
+                <Button
+                  onClick={handleLocateMe}
+                  variant="outline"
+                  className="flex items-center gap-2"
+                  disabled={!storeId}
+                >
+                  <Target className="h-4 w-4" />
+                  Me localiser
+                </Button>
+              </div>
+              <StoreMap className="w-full h-[600px]" storeId={storeId} userLocation={userLocation} />
+            </>
+          ) : (
+            <div className="flex flex-col items-center justify-center border rounded-lg bg-muted/20 h-[600px]">
+              <Store className="h-12 w-12 text-muted-foreground mb-2" />
+              <p className="text-muted-foreground text-center max-w-xs">
+                Veuillez sélectionner un magasin pour afficher son plan et vous y localiser.
+              </p>
+            </div>
+          )}
         </div>
       </div>
       
