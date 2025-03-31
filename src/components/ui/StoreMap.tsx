@@ -1,4 +1,3 @@
-
 import React, { useRef, useEffect, useState } from 'react';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
@@ -22,6 +21,7 @@ interface StoreMapProps {
   storeId?: string;
   productId?: string;
   className?: string;
+  userLocation?: {x: number, y: number} | null;
 }
 
 const CATEGORIES = [
@@ -35,14 +35,13 @@ const CATEGORIES = [
   { id: 'household', name: 'Maison', color: 'bg-gray-400' },
 ];
 
-const StoreMap = ({ storeId, productId, className }: StoreMapProps) => {
+const StoreMap = ({ storeId, productId, className, userLocation }: StoreMapProps) => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const [zoom, setZoom] = useState(1);
   const [showFilters, setShowFilters] = useState(false);
   const [activeCategories, setActiveCategories] = useState<string[]>(CATEGORIES.map(c => c.id));
   const [highlightedProduct, setHighlightedProduct] = useState<string | null>(productId || null);
   
-  // Simple mock coordinates for a store layout (just for demonstration)
   const storeSections = [
     { id: 'entrance', x: 50, y: 380, width: 70, height: 40, type: 'entrance', label: 'Entrée' },
     { id: 'checkout', x: 400, y: 380, width: 120, height: 40, type: 'checkout', label: 'Caisses' },
@@ -59,7 +58,6 @@ const StoreMap = ({ storeId, productId, className }: StoreMapProps) => {
     { id: 'household', x: 340, y: 290, width: 120, height: 70, type: 'household', label: 'Maison' },
   ];
 
-  // Mock product location
   const productLocation = { x: 370, y: 120, section: 'dairy' };
 
   const getSectionColor = (type: string) => {
@@ -86,35 +84,28 @@ const StoreMap = ({ storeId, productId, className }: StoreMapProps) => {
     const ctx = canvas.getContext('2d');
     if (!ctx) return;
 
-    // Clear canvas
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     
-    // Set scale based on zoom
     ctx.save();
     ctx.scale(zoom, zoom);
     
-    // Draw store layout
     storeSections.forEach(section => {
-      // Skip sections not in active categories unless they are entrance or checkout
       if (!['entrance', 'checkout'].includes(section.type) && !activeCategories.includes(section.type)) {
         return;
       }
       
-      // Determine if this section contains the highlighted product
       const isHighlighted = highlightedProduct && section.id === productLocation.section;
       
-      // Draw section background
       if (['entrance', 'checkout'].includes(section.type)) {
-        ctx.fillStyle = '#e5e7eb'; // Gray for entrance/checkout
+        ctx.fillStyle = '#e5e7eb';
       } else {
         const colorName = getSectionColor(section.type);
-        ctx.fillStyle = isHighlighted ? `#${colorName}` : `#${colorName}80`; // Add 80 for transparency
+        ctx.fillStyle = isHighlighted ? `#${colorName}` : `#${colorName}80`;
       }
       
       ctx.strokeStyle = isHighlighted ? '#000' : '#64748b';
       ctx.lineWidth = isHighlighted ? 2 : 1;
       
-      // Draw with rounded corners
       const radius = 10;
       ctx.beginPath();
       ctx.moveTo(section.x + radius, section.y);
@@ -130,7 +121,6 @@ const StoreMap = ({ storeId, productId, className }: StoreMapProps) => {
       ctx.fill();
       ctx.stroke();
       
-      // Draw label
       ctx.fillStyle = '#000';
       ctx.font = '12px Arial';
       ctx.textAlign = 'center';
@@ -138,29 +128,44 @@ const StoreMap = ({ storeId, productId, className }: StoreMapProps) => {
       ctx.fillText(section.label, section.x + section.width / 2, section.y + section.height / 2);
     });
     
-    // Draw product location marker if highlighted
     if (highlightedProduct && activeCategories.includes(productLocation.section)) {
-      ctx.fillStyle = '#ef4444'; // Red marker
+      ctx.fillStyle = '#ef4444';
       ctx.beginPath();
       ctx.arc(productLocation.x, productLocation.y, 8, 0, Math.PI * 2);
       ctx.fill();
       
-      // Draw pulsing animation
       ctx.strokeStyle = '#ef4444';
       ctx.lineWidth = 2;
       ctx.beginPath();
       ctx.arc(productLocation.x, productLocation.y, 15, 0, Math.PI * 2);
       ctx.stroke();
       
-      // Add "Votre produit" label
       ctx.fillStyle = '#000';
       ctx.font = 'bold 12px Arial';
       ctx.textAlign = 'center';
       ctx.fillText('Votre produit', productLocation.x, productLocation.y - 20);
     }
     
+    if (userLocation) {
+      ctx.fillStyle = '#3b82f6';
+      ctx.beginPath();
+      ctx.arc(userLocation.x, userLocation.y, 8, 0, Math.PI * 2);
+      ctx.fill();
+      
+      ctx.strokeStyle = '#3b82f6';
+      ctx.lineWidth = 2;
+      ctx.beginPath();
+      ctx.arc(userLocation.x, userLocation.y, 15, 0, Math.PI * 2);
+      ctx.stroke();
+      
+      ctx.fillStyle = '#000';
+      ctx.font = 'bold 12px Arial';
+      ctx.textAlign = 'center';
+      ctx.fillText('Vous êtes ici', userLocation.x, userLocation.y - 20);
+    }
+    
     ctx.restore();
-  }, [zoom, activeCategories, highlightedProduct]);
+  }, [zoom, activeCategories, highlightedProduct, userLocation]);
 
   const handleZoomIn = () => {
     setZoom(prevZoom => Math.min(prevZoom + 0.2, 2));
@@ -172,7 +177,6 @@ const StoreMap = ({ storeId, productId, className }: StoreMapProps) => {
 
   return (
     <div className={cn("relative border rounded-lg bg-white overflow-hidden", className)}>
-      {/* Map Header */}
       <div className="bg-muted/30 p-3 border-b flex items-center justify-between">
         <div className="flex items-center">
           <Map className="h-5 w-5 mr-2 text-primary" />
@@ -237,7 +241,6 @@ const StoreMap = ({ storeId, productId, className }: StoreMapProps) => {
         </div>
       </div>
       
-      {/* Map Canvas Container */}
       <div 
         className={cn(
           "relative overflow-auto bg-slate-50 p-4",
@@ -253,7 +256,6 @@ const StoreMap = ({ storeId, productId, className }: StoreMapProps) => {
         />
       </div>
       
-      {/* Filters Panel */}
       <div 
         className={cn(
           "border-t p-3 overflow-hidden transition-all duration-300 ease-in-out",
@@ -293,11 +295,18 @@ const StoreMap = ({ storeId, productId, className }: StoreMapProps) => {
         </div>
       </div>
       
-      {/* Legend */}
       <div className="border-t p-3 bg-muted/20">
-        <div className="flex items-center space-x-2">
-          <div className="flex h-3 w-3 rounded-full bg-red-500"></div>
-          <span className="text-xs text-muted-foreground">Votre produit</span>
+        <div className="flex flex-col space-y-2">
+          <div className="flex items-center space-x-2">
+            <div className="flex h-3 w-3 rounded-full bg-red-500"></div>
+            <span className="text-xs text-muted-foreground">Votre produit</span>
+          </div>
+          {userLocation && (
+            <div className="flex items-center space-x-2">
+              <div className="flex h-3 w-3 rounded-full bg-blue-500"></div>
+              <span className="text-xs text-muted-foreground">Votre position</span>
+            </div>
+          )}
         </div>
       </div>
     </div>

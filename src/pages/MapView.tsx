@@ -1,12 +1,38 @@
 
 import { useState } from 'react';
-import { ArrowLeft } from 'lucide-react';
+import { ArrowLeft, Target } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Link } from 'react-router-dom';
 import StoreMap from '@/components/ui/StoreMap';
+import { useToast } from '@/components/ui/use-toast';
 
 const MapView = () => {
   const [storeId, setStoreId] = useState<string | undefined>(undefined);
+  const [userLocation, setUserLocation] = useState<{x: number, y: number} | null>(null);
+  const { toast } = useToast();
+
+  const handleLocateMe = () => {
+    // Simuler la géolocalisation dans le magasin
+    // Dans une application réelle, cela pourrait utiliser la géolocalisation interne
+    // ou des balises Bluetooth/WiFi pour localiser l'utilisateur dans le magasin
+    
+    // Position aléatoire dans le magasin pour la démo
+    const demoPositions = [
+      { x: 100, y: 150 },
+      { x: 250, y: 120 },
+      { x: 350, y: 250 },
+      { x: 180, y: 300 }
+    ];
+    
+    const randomPosition = demoPositions[Math.floor(Math.random() * demoPositions.length)];
+    setUserLocation(randomPosition);
+    
+    toast({
+      title: "Localisation activée",
+      description: "Votre position a été localisée sur le plan du magasin.",
+      duration: 3000,
+    });
+  };
 
   return (
     <div className="container max-w-6xl mx-auto px-4 py-20">
@@ -19,7 +45,17 @@ const MapView = () => {
       
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         <div className="lg:col-span-3">
-          <StoreMap className="w-full h-[600px]" storeId={storeId} />
+          <div className="flex justify-end mb-4">
+            <Button
+              onClick={handleLocateMe}
+              variant="outline"
+              className="flex items-center gap-2"
+            >
+              <Target className="h-4 w-4" />
+              Me localiser
+            </Button>
+          </div>
+          <StoreMap className="w-full h-[600px]" storeId={storeId} userLocation={userLocation} />
         </div>
       </div>
       
