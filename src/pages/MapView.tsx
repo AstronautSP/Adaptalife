@@ -1,14 +1,16 @@
 
 import { useState } from 'react';
-import { ArrowLeft, Target, Store, MapPin } from 'lucide-react';
+import { ArrowLeft, Target, Store, MapPin, Map as MapIcon } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Link } from 'react-router-dom';
 import StoreMap from '@/components/ui/StoreMap';
 import { useToast } from '@/hooks/use-toast';
 import { StoreLocator, STORE_LOCATIONS } from '@/components/ui/StoreLocator';
+import { Badge } from '@/components/ui/badge';
 
 const MapView = () => {
   const [storeId, setStoreId] = useState<string | undefined>(undefined);
+  const [showAllStores, setShowAllStores] = useState<boolean>(true);
   const [userLocation, setUserLocation] = useState<{x: number, y: number} | null>(null);
   const { toast } = useToast();
 
@@ -37,7 +39,14 @@ const MapView = () => {
 
   const handleStoreSelect = (selectedStoreId: string) => {
     setStoreId(selectedStoreId);
+    setShowAllStores(false);
     // Reset user location when changing stores
+    setUserLocation(null);
+  };
+
+  const handleViewAllStores = () => {
+    setShowAllStores(true);
+    setStoreId(undefined);
     setUserLocation(null);
   };
 
@@ -46,15 +55,49 @@ const MapView = () => {
   return (
     <div className="container max-w-6xl mx-auto px-4 py-20">
       <div className="mb-6">
-        <h1 className="text-2xl font-bold mb-4">Plan du magasin</h1>
+        <h1 className="text-2xl font-bold mb-4 flex items-center gap-2">
+          <MapIcon className="h-6 w-6 text-primary" />
+          {showAllStores ? "Tous nos magasins" : "Plan du magasin"}
+        </h1>
         <p className="text-muted-foreground mb-6">
-          Utilisez ce plan pour vous orienter dans le magasin et trouver facilement les produits.
+          {showAllStores 
+            ? "Trouvez un magasin près de chez vous et consultez son plan intérieur." 
+            : "Utilisez ce plan pour vous orienter dans le magasin et trouver facilement les produits."}
         </p>
       </div>
       
       <div className="grid grid-cols-1 lg:grid-cols-4 gap-6">
         <div className="lg:col-span-1">
-          <StoreLocator onSelectStore={handleStoreSelect} selectedStoreId={storeId} />
+          <StoreLocator 
+            onSelectStore={handleStoreSelect} 
+            selectedStoreId={storeId}
+            onViewAllStores={handleViewAllStores}
+            showAllStoresButton={!showAllStores}
+          />
+          
+          {showAllStores && (
+            <div className="mt-4 p-4 border rounded-lg bg-card">
+              <h3 className="flex items-center gap-2 font-medium mb-3">
+                <Store className="h-4 w-4 text-primary" />
+                Nos magasins
+              </h3>
+              <div className="space-y-3">
+                {STORE_LOCATIONS.map(store => (
+                  <div 
+                    key={store.id} 
+                    className="p-3 border rounded-md hover:bg-accent transition-colors cursor-pointer"
+                    onClick={() => handleStoreSelect(store.id)}
+                  >
+                    <p className="font-medium mb-1">{store.name}</p>
+                    <p className="text-sm text-muted-foreground mb-2">{store.address}</p>
+                    <Badge variant="outline" className="text-xs">
+                      Voir le plan
+                    </Badge>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
           
           {selectedStore && (
             <div className="mt-4 p-4 border rounded-lg bg-card">
@@ -77,7 +120,44 @@ const MapView = () => {
         </div>
         
         <div className="lg:col-span-3">
-          {storeId ? (
+          {showAllStores ? (
+            <div className="border rounded-lg bg-card overflow-hidden">
+              <div className="bg-muted/30 p-3 border-b">
+                <h3 className="font-medium flex items-center gap-2">
+                  <MapIcon className="h-4 w-4 text-primary" />
+                  Carte des magasins
+                </h3>
+              </div>
+              <div className="p-4 h-[600px] flex flex-col items-center justify-center">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 w-full max-w-3xl">
+                  {STORE_LOCATIONS.map(store => (
+                    <div 
+                      key={store.id}
+                      onClick={() => handleStoreSelect(store.id)}
+                      className="relative border rounded-lg p-4 hover:border-primary cursor-pointer transition-colors"
+                    >
+                      <div className="absolute top-2 right-2">
+                        <MapPin className="h-5 w-5 text-primary" />
+                      </div>
+                      <h3 className="font-medium mb-1">{store.name}</h3>
+                      <p className="text-sm text-muted-foreground mb-3">{store.address}</p>
+                      <div className="flex items-center text-xs text-muted-foreground">
+                        <MapPin className="h-3 w-3 mr-1" />
+                        {store.coordinates.lat.toFixed(4)}, {store.coordinates.lng.toFixed(4)}
+                      </div>
+                      <Button 
+                        variant="outline" 
+                        size="sm" 
+                        className="mt-3 w-full text-xs"
+                      >
+                        Voir le plan du magasin
+                      </Button>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          ) : storeId ? (
             <>
               <div className="flex justify-end mb-4">
                 <Button

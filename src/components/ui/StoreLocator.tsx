@@ -1,6 +1,6 @@
 
 import { useState } from 'react';
-import { MapPin } from 'lucide-react';
+import { MapPin, Map as MapIcon } from 'lucide-react';
 import { Button } from './button';
 import {
   Select,
@@ -21,9 +21,16 @@ const STORE_LOCATIONS = [
 interface StoreLocatorProps {
   onSelectStore: (storeId: string) => void;
   selectedStoreId?: string;
+  onViewAllStores?: () => void;
+  showAllStoresButton?: boolean;
 }
 
-const StoreLocator = ({ onSelectStore, selectedStoreId }: StoreLocatorProps) => {
+const StoreLocator = ({ 
+  onSelectStore, 
+  selectedStoreId, 
+  onViewAllStores, 
+  showAllStoresButton = true 
+}: StoreLocatorProps) => {
   const { toast } = useToast();
   const [storeId, setStoreId] = useState<string>(selectedStoreId || '');
 
@@ -65,6 +72,17 @@ const StoreLocator = ({ onSelectStore, selectedStoreId }: StoreLocatorProps) => 
         <div className="text-sm text-muted-foreground">
           {STORE_LOCATIONS.find(store => store.id === storeId)?.address}
         </div>
+      )}
+
+      {showAllStoresButton && onViewAllStores && (
+        <Button 
+          variant="outline" 
+          className="mt-2 w-full flex items-center justify-center gap-2"
+          onClick={onViewAllStores}
+        >
+          <MapIcon className="h-4 w-4" />
+          Voir tous les magasins
+        </Button>
       )}
     </div>
   );
