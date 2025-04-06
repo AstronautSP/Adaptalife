@@ -16,6 +16,8 @@ const STORE_LOCATIONS = [
   { id: 'paris-2', name: 'Paris - Montparnasse', address: '25 Rue du Départ, 75014 Paris', coordinates: { lat: 48.8417, lng: 2.3226 } },
   { id: 'lyon-1', name: 'Lyon - Part-Dieu', address: '17 Rue du Docteur Bouchut, 69003 Lyon', coordinates: { lat: 45.7597, lng: 4.8589 } },
   { id: 'marseille-1', name: 'Marseille - Vieux Port', address: '33 Quai des Belges, 13001 Marseille', coordinates: { lat: 43.2965, lng: 5.3698 } },
+  { id: 'bordeaux-1', name: 'Bordeaux - Centre', address: '15 Cours de l\'Intendance, 33000 Bordeaux', coordinates: { lat: 44.8378, lng: -0.5792 } },
+  { id: 'lille-1', name: 'Lille - Centre', address: '18 Place du Général de Gaulle, 59800 Lille', coordinates: { lat: 50.6365, lng: 3.0635 } },
 ];
 
 interface StoreLocatorProps {

@@ -1,18 +1,25 @@
 
-import { useState } from 'react';
-import { ArrowLeft, Target, Store, MapPin, Map as MapIcon } from 'lucide-react';
+import { useState, useEffect } from 'react';
+import { ArrowLeft, Target, Store, MapPin, Map as MapIcon, Phone, Clock, Globe } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Link } from 'react-router-dom';
 import StoreMap from '@/components/ui/StoreMap';
 import { useToast } from '@/hooks/use-toast';
 import { StoreLocator, STORE_LOCATIONS } from '@/components/ui/StoreLocator';
 import { Badge } from '@/components/ui/badge';
+import { Capacitor } from '@capacitor/core';
 
 const MapView = () => {
   const [storeId, setStoreId] = useState<string | undefined>(undefined);
   const [showAllStores, setShowAllStores] = useState<boolean>(true);
   const [userLocation, setUserLocation] = useState<{x: number, y: number} | null>(null);
+  const [isMobileApp, setIsMobileApp] = useState<boolean>(false);
   const { toast } = useToast();
+
+  useEffect(() => {
+    // Check if running as a mobile app
+    setIsMobileApp(Capacitor.isNativePlatform());
+  }, []);
 
   const handleLocateMe = () => {
     // Simuler la géolocalisation dans le magasin
@@ -53,7 +60,7 @@ const MapView = () => {
   const selectedStore = storeId ? STORE_LOCATIONS.find(store => store.id === storeId) : undefined;
 
   return (
-    <div className="container max-w-6xl mx-auto px-4 py-20">
+    <div className={`container max-w-6xl mx-auto px-4 ${isMobileApp ? 'py-10' : 'py-20'}`}>
       <div className="mb-6">
         <h1 className="text-2xl font-bold mb-4 flex items-center gap-2">
           <MapIcon className="h-6 w-6 text-primary" />
@@ -105,15 +112,23 @@ const MapView = () => {
                 <Store className="h-4 w-4 text-primary" />
                 Informations du magasin
               </h3>
-              <div className="text-sm space-y-2">
+              <div className="text-sm space-y-3">
                 <p className="font-medium">{selectedStore.name}</p>
                 <p className="text-muted-foreground">{selectedStore.address}</p>
-                <p className="flex items-center gap-1.5">
+                <div className="flex items-center gap-2">
+                  <Phone className="h-3.5 w-3.5 text-muted-foreground" />
+                  <span className="text-muted-foreground">01 23 45 67 89</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <Clock className="h-3.5 w-3.5 text-muted-foreground" />
+                  <span className="text-muted-foreground">9h-19h du lundi au samedi</span>
+                </div>
+                <div className="flex items-center gap-1.5">
                   <MapPin className="h-3.5 w-3.5 text-muted-foreground" />
                   <span className="text-xs text-muted-foreground">
                     {selectedStore.coordinates.lat.toFixed(4)}, {selectedStore.coordinates.lng.toFixed(4)}
                   </span>
-                </p>
+                </div>
               </div>
             </div>
           )}
@@ -141,9 +156,14 @@ const MapView = () => {
                       </div>
                       <h3 className="font-medium mb-1">{store.name}</h3>
                       <p className="text-sm text-muted-foreground mb-3">{store.address}</p>
-                      <div className="flex items-center text-xs text-muted-foreground">
-                        <MapPin className="h-3 w-3 mr-1" />
-                        {store.coordinates.lat.toFixed(4)}, {store.coordinates.lng.toFixed(4)}
+                      <div className="flex items-center justify-between">
+                        <div className="flex items-center text-xs text-muted-foreground">
+                          <MapPin className="h-3 w-3 mr-1" />
+                          {store.coordinates.lat.toFixed(4)}, {store.coordinates.lng.toFixed(4)}
+                        </div>
+                        {isMobileApp && (
+                          <Globe className="h-4 w-4 text-primary" />
+                        )}
                       </div>
                       <Button 
                         variant="outline" 
