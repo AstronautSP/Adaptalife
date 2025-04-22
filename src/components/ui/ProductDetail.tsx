@@ -1,6 +1,5 @@
-
-import { useState } from 'react';
-import { ArrowLeft, Heart, AlertTriangle, CheckCircle, Info, BarChart3 } from 'lucide-react';
+import React, { useState } from 'react';
+import { ArrowLeft, Heart, AlertTriangle, CheckCircle, Info, BarChart3, Book } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
@@ -10,6 +9,7 @@ import FavoriteButton from './FavoriteButton';
 import { toast } from 'sonner';
 import { cn } from '@/lib/utils';
 import { type Product } from './ProductCard';
+import HealthyRecipes from './HealthyRecipes';
 
 interface ProductDetailProps {
   product: Product;
@@ -42,7 +42,6 @@ const ProductDetail = ({ product, className }: ProductDetailProps) => {
   const navigate = useNavigate();
   const [activeTab, setActiveTab] = useState('overview');
   
-  // Mock nutritional values
   const nutritionalValues = {
     calories: 250,
     proteins: 5.2,
@@ -54,7 +53,6 @@ const ProductDetail = ({ product, className }: ProductDetailProps) => {
     salt: 0.8
   };
   
-  // Mock ingredient list
   const ingredients = "Eau, farine de BLÉ 24%, beurre (LAIT), œufs frais 10.6%, sucre, poudre à lever (diphosphate de sodium, carbonate acide de sodium, phosphate monocalcique), sel, arôme naturel de vanille.";
   
   return (
@@ -70,7 +68,6 @@ const ProductDetail = ({ product, className }: ProductDetailProps) => {
       </div>
       
       <div className="flex flex-col lg:flex-row">
-        {/* Product Image */}
         <div className="lg:w-1/2 p-6">
           <div className="relative">
             <img 
@@ -95,7 +92,6 @@ const ProductDetail = ({ product, className }: ProductDetailProps) => {
           </div>
         </div>
         
-        {/* Product Information */}
         <div className="lg:w-1/2 p-6">
           <div className="hidden sm:block">
             <Button variant="outline" size="sm" onClick={() => navigate(-1)} className="mb-4">
@@ -114,38 +110,34 @@ const ProductDetail = ({ product, className }: ProductDetailProps) => {
           
           <Separator className="my-4" />
           
-          {/* Health Recommendations */}
-          <div className="space-y-3 mb-6">
-            {product.isHealthyFor && product.isHealthyFor.length > 0 && (
-              <div className="flex items-start text-green-600">
-                <CheckCircle className="h-5 w-5 mr-2 mt-0.5 flex-shrink-0" />
-                <div>
-                  <p className="font-medium">Recommandé pour:</p>
-                  <ul className="list-disc pl-5 text-sm mt-1 space-y-0.5">
-                    {product.isHealthyFor.map(condition => (
-                      <li key={condition}>{condition}</li>
-                    ))}
-                  </ul>
-                </div>
+          {product.isHealthyFor && product.isHealthyFor.length > 0 && (
+            <div className="flex items-start text-green-600">
+              <CheckCircle className="h-5 w-5 mr-2 mt-0.5 flex-shrink-0" />
+              <div>
+                <p className="font-medium">Recommandé pour:</p>
+                <ul className="list-disc pl-5 text-sm mt-1 space-y-0.5">
+                  {product.isHealthyFor.map(condition => (
+                    <li key={condition}>{condition}</li>
+                  ))}
+                </ul>
               </div>
-            )}
-            
-            {product.notRecommendedFor && product.notRecommendedFor.length > 0 && (
-              <div className="flex items-start text-amber-600">
-                <AlertTriangle className="h-5 w-5 mr-2 mt-0.5 flex-shrink-0" />
-                <div>
-                  <p className="font-medium">Déconseillé pour:</p>
-                  <ul className="list-disc pl-5 text-sm mt-1 space-y-0.5">
-                    {product.notRecommendedFor.map(condition => (
-                      <li key={condition}>{condition}</li>
-                    ))}
-                  </ul>
-                </div>
-              </div>
-            )}
-          </div>
+            </div>
+          )}
           
-          {/* Allergen Information */}
+          {product.notRecommendedFor && product.notRecommendedFor.length > 0 && (
+            <div className="flex items-start text-amber-600">
+              <AlertTriangle className="h-5 w-5 mr-2 mt-0.5 flex-shrink-0" />
+              <div>
+                <p className="font-medium">Déconseillé pour:</p>
+                <ul className="list-disc pl-5 text-sm mt-1 space-y-0.5">
+                  {product.notRecommendedFor.map(condition => (
+                    <li key={condition}>{condition}</li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          )}
+          
           {product.allergens && product.allergens.length > 0 && (
             <div className="mb-6">
               <h3 className="font-medium mb-2 flex items-center">
@@ -164,12 +156,15 @@ const ProductDetail = ({ product, className }: ProductDetailProps) => {
           
           <Separator className="my-6" />
           
-          {/* Tabs for Detailed Information */}
           <Tabs defaultValue="overview" value={activeTab} onValueChange={setActiveTab} className="mt-6">
-            <TabsList className="w-full grid grid-cols-3">
+            <TabsList className="w-full grid grid-cols-4">
               <TabsTrigger value="overview">Vue d'ensemble</TabsTrigger>
               <TabsTrigger value="nutrition">Nutrition</TabsTrigger>
               <TabsTrigger value="ingredients">Ingrédients</TabsTrigger>
+              <TabsTrigger value="recipes" className="flex items-center gap-1">
+                <Book className="h-4 w-4" />
+                <span>Recettes</span>
+              </TabsTrigger>
             </TabsList>
             
             <TabsContent value="overview" className="pt-4">
@@ -257,6 +252,10 @@ const ProductDetail = ({ product, className }: ProductDetailProps) => {
                   Les allergènes sont indiqués en MAJUSCULES.
                 </p>
               </div>
+            </TabsContent>
+            
+            <TabsContent value="recipes" className="pt-4">
+              <HealthyRecipes productName={product.name} />
             </TabsContent>
           </Tabs>
           
