@@ -1,14 +1,9 @@
-
-import { FavoriteButton } from "@/components/ui/FavoriteButton";
+import FavoriteButton from "@/components/ui/FavoriteButton";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { ArrowLeft } from "lucide-react";
 import { useNavigate } from "react-router-dom";
-import { type Product } from "../ProductCard";
-
-interface ProductHeaderProps {
-  product: Product;
-}
+import { type ProductHeaderProps } from "./types";
 
 export const ProductHeader = ({ product }: ProductHeaderProps) => {
   const navigate = useNavigate();

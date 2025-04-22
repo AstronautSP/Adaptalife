@@ -1,15 +1,9 @@
-
 import { Book, BarChart3 } from "lucide-react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { type Product } from "../ProductCard";
+import { Badge } from "@/components/ui/badge";
 import { cn } from "@/lib/utils";
 import HealthyRecipes from "../HealthyRecipes";
-
-interface ProductTabsProps {
-  product: Product;
-  activeTab: string;
-  setActiveTab: (tab: string) => void;
-}
+import { type ProductTabsProps } from "./types";
 
 export const ProductTabs = ({ product, activeTab, setActiveTab }: ProductTabsProps) => {
   const getNutritionScoreDescription = (score: string) => {

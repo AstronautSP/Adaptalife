@@ -1,11 +1,6 @@
-
 import { FavoriteButton } from "@/components/ui/FavoriteButton";
 import { cn } from "@/lib/utils";
-import { type Product } from "../ProductCard";
-
-interface ProductImageProps {
-  product: Product;
-}
+import { type ProductImageProps } from "./types";
 
 export const ProductImage = ({ product }: ProductImageProps) => {
   const getNutritionScoreColor = (score: string) => {

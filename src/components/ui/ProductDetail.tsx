@@ -4,7 +4,7 @@ import { toast } from 'sonner';
 import { Button } from '@/components/ui/button';
 import { Separator } from '@/components/ui/separator';
 import { cn } from '@/lib/utils';
-import { type Product } from './ProductCard';
+import { type Product } from './product/types';
 import { ProductHeader } from './product/ProductHeader';
 import { ProductImage } from './product/ProductImage';
 import { ProductHealthInfo } from './product/ProductHealthInfo';

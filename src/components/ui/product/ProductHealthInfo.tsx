@@ -1,11 +1,6 @@
-
 import { AlertTriangle, CheckCircle, Info } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
-import { type Product } from "../ProductCard";
-
-interface ProductHealthInfoProps {
-  product: Product;
-}
+import { type ProductHealthInfoProps } from "./types";
 
 export const ProductHealthInfo = ({ product }: ProductHealthInfoProps) => {
   return (
