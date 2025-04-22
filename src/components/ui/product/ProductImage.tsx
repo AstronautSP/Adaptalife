@@ -1,4 +1,5 @@
-import { FavoriteButton } from "@/components/ui/FavoriteButton";
+
+import FavoriteButton from "@/components/ui/FavoriteButton";
 import { cn } from "@/lib/utils";
 import { type ProductImageProps } from "./types";
 
