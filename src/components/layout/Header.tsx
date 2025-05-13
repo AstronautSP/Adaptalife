@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { 
@@ -11,7 +12,7 @@ import {
   Home,
   HelpCircle,
   Map,
-  Leaf
+  Apple
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
@@ -69,9 +70,9 @@ const Header = () => {
           className="flex items-center space-x-2"
         >
           <div className="flex items-center space-x-2 bg-primary/10 p-2 rounded-full">
-            <Leaf className="h-6 w-6 text-primary" />
+            <Apple className="h-6 w-6 text-primary" />
             <span className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-primary to-accent hidden sm:inline-block">
-              VitaForce
+              Adaptafood
             </span>
           </div>
         </Link>
