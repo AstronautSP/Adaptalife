@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { 
@@ -12,12 +11,12 @@ import {
   Home,
   HelpCircle,
   Map,
-  Apple
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 import SearchBar from '@/components/ui/SearchBar';
 import { useToast } from '@/components/ui/use-toast';
+import AdaptafoodLogo from '@/components/ui/AdaptafoodLogo';
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -69,12 +68,8 @@ const Header = () => {
           to="/" 
           className="flex items-center space-x-2"
         >
-          <div className="flex items-center space-x-2 bg-primary/10 p-2 rounded-full">
-            <Apple className="h-6 w-6 text-primary" />
-            <span className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-primary to-accent hidden sm:inline-block">
-              Adaptafood
-            </span>
-          </div>
+          <AdaptafoodLogo size="md" showText={true} className="hidden sm:flex" />
+          <AdaptafoodLogo size="sm" showText={false} className="sm:hidden" />
         </Link>
 
         {/* Desktop Navigation */}
