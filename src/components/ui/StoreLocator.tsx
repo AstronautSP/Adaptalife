@@ -1,6 +1,6 @@
 
 import { useState } from 'react';
-import { MapPin, Map as MapIcon, Info } from 'lucide-react';
+import { MapPin, Map as MapIcon, Info, Globe, Search } from 'lucide-react';
 import { Button } from './button';
 import {
   Select,
@@ -37,7 +37,9 @@ const StoreLocator = ({
   const { toast } = useToast();
   const [storeId, setStoreId] = useState<string>(selectedStoreId || '');
   const [showInfoMessage, setShowInfoMessage] = useState<boolean>(true);
-
+  const [isSearchingGlobal, setIsSearchingGlobal] = useState<boolean>(false);
+  const [searchQuery, setSearchQuery] = useState<string>('');
+  
   const handleStoreSelect = (value: string) => {
     setStoreId(value);
     onSelectStore(value);
@@ -54,6 +56,28 @@ const StoreLocator = ({
 
   const dismissInfoMessage = () => {
     setShowInfoMessage(false);
+  };
+  
+  const handleGlobalSearch = () => {
+    setIsSearchingGlobal(true);
+    
+    // Simuler une recherche mondiale avec un délai
+    setTimeout(() => {
+      toast({
+        title: "Recherche mondiale",
+        description: "Nous recherchons tous les magasins du monde entier. Cette fonctionnalité est en développement.",
+        duration: 5000,
+      });
+      
+      setTimeout(() => {
+        setIsSearchingGlobal(false);
+        toast({
+          title: "API de géolocalisation requise",
+          description: "Pour afficher tous les magasins du monde, une intégration avec une API de géolocalisation est nécessaire.",
+          duration: 5000,
+        });
+      }, 3000);
+    }, 2000);
   };
 
   return (
@@ -95,6 +119,33 @@ const StoreLocator = ({
           {STORE_LOCATIONS.find(store => store.id === storeId)?.address}
         </div>
       )}
+
+      {/* Ajout de la recherche mondiale */}
+      <div className="mt-2 pt-3 border-t border-border">
+        <div className="flex items-center gap-2 text-xs text-muted-foreground mb-2">
+          <Globe className="h-3.5 w-3.5" />
+          <span>Besoin de plus de magasins?</span>
+        </div>
+        
+        <Button 
+          variant="outline" 
+          className="w-full flex items-center justify-center gap-2"
+          onClick={handleGlobalSearch}
+          disabled={isSearchingGlobal}
+        >
+          {isSearchingGlobal ? (
+            <>
+              <div className="animate-spin h-3.5 w-3.5 border-2 border-primary border-t-transparent rounded-full" />
+              Recherche en cours...
+            </>
+          ) : (
+            <>
+              <Search className="h-3.5 w-3.5" />
+              Afficher tous les magasins du monde
+            </>
+          )}
+        </Button>
+      </div>
 
       {showAllStoresButton && onViewAllStores && (
         <Button 
