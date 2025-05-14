@@ -1,6 +1,6 @@
 
 import { useState } from 'react';
-import { MapPin, Map as MapIcon } from 'lucide-react';
+import { MapPin, Map as MapIcon, Info } from 'lucide-react';
 import { Button } from './button';
 import {
   Select,
@@ -10,6 +10,7 @@ import {
   SelectValue,
 } from './select';
 import { useToast } from '@/hooks/use-toast';
+import { Alert, AlertDescription } from './alert';
 
 const STORE_LOCATIONS = [
   { id: 'paris-1', name: 'Paris - La Défense', address: '12 Avenue des Champs-Élysées, 75008 Paris', coordinates: { lat: 48.8738, lng: 2.2950 } },
@@ -35,6 +36,7 @@ const StoreLocator = ({
 }: StoreLocatorProps) => {
   const { toast } = useToast();
   const [storeId, setStoreId] = useState<string>(selectedStoreId || '');
+  const [showInfoMessage, setShowInfoMessage] = useState<boolean>(true);
 
   const handleStoreSelect = (value: string) => {
     setStoreId(value);
@@ -50,12 +52,30 @@ const StoreLocator = ({
     }
   };
 
+  const dismissInfoMessage = () => {
+    setShowInfoMessage(false);
+  };
+
   return (
     <div className="flex flex-col gap-4 p-4 border rounded-lg bg-card">
       <h3 className="flex items-center gap-2 font-medium">
         <MapPin className="h-4 w-4 text-primary" />
         Sélectionner un magasin
       </h3>
+      
+      {showInfoMessage && (
+        <Alert variant="default" className="bg-muted/50 mb-2">
+          <AlertDescription className="flex items-start gap-2 text-xs">
+            <Info className="h-4 w-4 text-blue-500 shrink-0 mt-0.5" />
+            <div>
+              <span className="font-medium">Note:</span> Cette application présente un échantillon de magasins à des fins de démonstration. Une version complète intégrerait une API de géolocalisation pour afficher tous les magasins du monde à proximité.
+              <Button variant="link" size="sm" className="h-auto p-0 ml-1" onClick={dismissInfoMessage}>
+                Masquer
+              </Button>
+            </div>
+          </AlertDescription>
+        </Alert>
+      )}
       
       <Select value={storeId} onValueChange={handleStoreSelect}>
         <SelectTrigger>
