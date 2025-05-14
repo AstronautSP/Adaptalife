@@ -8,12 +8,14 @@ import { useToast } from '@/hooks/use-toast';
 import { StoreLocator, STORE_LOCATIONS } from '@/components/ui/StoreLocator';
 import { Badge } from '@/components/ui/badge';
 import { Capacitor } from '@capacitor/core';
+import VoiceNavigation from '@/components/ui/VoiceNavigation';
 
 const MapView = () => {
   const [storeId, setStoreId] = useState<string | undefined>(undefined);
   const [showAllStores, setShowAllStores] = useState<boolean>(true);
   const [userLocation, setUserLocation] = useState<{x: number, y: number} | null>(null);
   const [isMobileApp, setIsMobileApp] = useState<boolean>(false);
+  const [selectedDestination, setSelectedDestination] = useState<string | null>(null);
   const { toast } = useToast();
 
   useEffect(() => {
@@ -55,6 +57,22 @@ const MapView = () => {
     setShowAllStores(true);
     setStoreId(undefined);
     setUserLocation(null);
+  };
+
+  const handleVoiceNavigation = (destination: string) => {
+    setSelectedDestination(destination);
+    
+    // Si l'utilisateur n'est pas encore localisé, le faire automatiquement
+    if (!userLocation) {
+      handleLocateMe();
+    }
+    
+    // Simuler un zoom sur la destination sur la carte
+    toast({
+      title: "Navigation vers " + destination,
+      description: "L'itinéraire est affiché sur le plan du magasin.",
+      duration: 3000,
+    });
   };
 
   const selectedStore = storeId ? STORE_LOCATIONS.find(store => store.id === storeId) : undefined;
@@ -132,6 +150,16 @@ const MapView = () => {
               </div>
             </div>
           )}
+          
+          {selectedStore && !showAllStores && (
+            <div className="mt-4">
+              <VoiceNavigation 
+                onNavigate={handleVoiceNavigation} 
+                userLocation={userLocation} 
+                selectedStore={selectedStore.name}
+              />
+            </div>
+          )}
         </div>
         
         <div className="lg:col-span-3">
@@ -190,7 +218,7 @@ const MapView = () => {
                   Me localiser
                 </Button>
               </div>
-              <StoreMap className="w-full h-[600px]" storeId={storeId} userLocation={userLocation} />
+              <StoreMap className="w-full h-[600px]" storeId={storeId} userLocation={userLocation} productId={selectedDestination || undefined} />
             </>
           ) : (
             <div className="flex flex-col items-center justify-center border rounded-lg bg-muted/20 h-[600px]">
