@@ -9,6 +9,7 @@ import { StoreLocator, STORE_LOCATIONS } from '@/components/ui/StoreLocator';
 import { Badge } from '@/components/ui/badge';
 import { Capacitor } from '@capacitor/core';
 import VoiceNavigation from '@/components/ui/VoiceNavigation';
+import WheelchairAssistance from '@/components/ui/WheelchairAssistance';
 
 const MapView = () => {
   const [storeId, setStoreId] = useState<string | undefined>(undefined);
@@ -147,6 +148,11 @@ const MapView = () => {
                     {selectedStore.coordinates.lat.toFixed(4)}, {selectedStore.coordinates.lng.toFixed(4)}
                   </span>
                 </div>
+                
+                {/* Ajout du composant d'assistance fauteuil roulant */}
+                <div className="pt-2">
+                  <WheelchairAssistance currentStore={selectedStore.name} />
+                </div>
               </div>
             </div>
           )}
@@ -207,7 +213,11 @@ const MapView = () => {
             </div>
           ) : storeId ? (
             <>
-              <div className="flex justify-end mb-4">
+              <div className="flex justify-between items-center mb-4">
+                <div className="flex gap-2">
+                  {/* Ajout du bouton d'assistance fauteuil roulant dans la barre d'outils */}
+                  <WheelchairAssistance currentStore={selectedStore?.name} />
+                </div>
                 <Button
                   onClick={handleLocateMe}
                   variant="outline"
