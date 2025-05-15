@@ -1,6 +1,7 @@
 
+
 import { useState } from 'react';
-import { Wheelchair, BellRing, CheckCircle, Store } from 'lucide-react';
+import { Accessibility, BellRing, CheckCircle, Store } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
@@ -64,7 +65,7 @@ const WheelchairAssistance = ({ className, currentStore }: WheelchairAssistanceP
         className="flex items-center gap-2 bg-blue-50 hover:bg-blue-100 border-blue-200"
         onClick={() => setIsDialogOpen(true)}
       >
-        <Wheelchair className="h-4 w-4 text-blue-600" />
+        <Accessibility className="h-4 w-4 text-blue-600" />
         <span className="text-blue-700">Assistance fauteuil roulant</span>
       </Button>
 
@@ -72,7 +73,7 @@ const WheelchairAssistance = ({ className, currentStore }: WheelchairAssistanceP
         <DialogContent className="max-w-md">
           <DialogHeader>
             <DialogTitle className="flex items-center gap-2">
-              <Wheelchair className="h-5 w-5 text-primary" />
+              <Accessibility className="h-5 w-5 text-primary" />
               Assistance fauteuil roulant
             </DialogTitle>
           </DialogHeader>
@@ -186,3 +187,4 @@ const WheelchairAssistance = ({ className, currentStore }: WheelchairAssistanceP
 };
 
 export default WheelchairAssistance;
+

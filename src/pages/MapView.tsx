@@ -1,6 +1,5 @@
-
 import { useState, useEffect } from 'react';
-import { ArrowLeft, Target, Store, MapPin, Map as MapIcon, Phone, Clock, Globe } from 'lucide-react';
+import { ArrowLeft, Target, Store, MapPin, Map as MapIcon, Phone, Clock, Globe, Accessibility } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Link } from 'react-router-dom';
 import StoreMap from '@/components/ui/StoreMap';
