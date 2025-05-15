@@ -9,3 +9,36 @@
   color: hsl(var(--muted-foreground));
   font-size: 0.875rem;
 }
+
+/* Styles pour le bouclier sensoriel */
+.sensory-shield-active {
+  /* Styles de base pour le mode bouclier sensoriel */
+}
+
+/* Animation plus douce pour mode autisme */
+.sensory-shield-active * {
+  animation-duration: 0.5s !important;
+  transition-duration: 0.5s !important;
+}
+
+/* Effet d'atténuation pour le mode autisme */
+.sensory-shield-overlay {
+  backdrop-filter: blur(1px);
+}
+
+/* Ajustement du bouton du bouclier */
+@keyframes pulse-gentle {
+  0% {
+    box-shadow: 0 0 0 0 rgba(147, 51, 234, 0.4);
+  }
+  70% {
+    box-shadow: 0 0 0 6px rgba(147, 51, 234, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(147, 51, 234, 0);
+  }
+}
+
+.sensory-shield-button.active {
+  animation: pulse-gentle 2s infinite;
+}

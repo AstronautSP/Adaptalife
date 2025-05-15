@@ -1,6 +1,5 @@
-
 import { useState } from 'react';
-import { Headphones, Globe, Volume2, MicOff, Languages, Accessibility } from 'lucide-react';
+import { Headphones, Globe, Volume2, MicOff, Languages, Accessibility, ShieldAlert } from 'lucide-react';
 import { toast } from 'sonner';
 
 import { Button } from "@/components/ui/button";
@@ -10,6 +9,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Label } from "@/components/ui/label";
 import LanguagePicker from "@/components/ui/LanguagePicker";
 import AccessibilityReader from "@/components/ui/AccessibilityReader";
+import SensoryShield from "@/components/ui/SensoryShield";
 
 const AccessibilityPage = () => {
   const [textToSpeech, setTextToSpeech] = useState<boolean>(false);
@@ -69,10 +69,16 @@ const AccessibilityPage = () => {
         <LanguagePicker />
       </div>
       
+      {/* Bouton d'accès rapide au bouclier sensoriel */}
+      <div className="mb-8">
+        <SensoryShield className="max-w-xl mx-auto" />
+      </div>
+      
       <Tabs defaultValue="visual" className="mt-6">
-        <TabsList className="grid w-full grid-cols-3">
+        <TabsList className="grid w-full grid-cols-4">
           <TabsTrigger value="visual">Visuel</TabsTrigger>
           <TabsTrigger value="audio">Audio</TabsTrigger>
+          <TabsTrigger value="sensory">Sensoriel</TabsTrigger>
           <TabsTrigger value="languages">Langues</TabsTrigger>
         </TabsList>
         
@@ -135,6 +141,41 @@ const AccessibilityPage = () => {
                   </p>
                 </div>
                 <Switch checked={textToSpeech} onCheckedChange={toggleTextToSpeech} />
+              </div>
+            </CardContent>
+          </Card>
+        </TabsContent>
+        
+        <TabsContent value="sensory" className="mt-6 space-y-6">
+          <Card>
+            <CardHeader>
+              <CardTitle>Bouclier sensoriel</CardTitle>
+              <CardDescription>
+                Options pour réduire les stimuli visuels et sonores, adapté pour les personnes autistes
+              </CardDescription>
+            </CardHeader>
+            <CardContent className="space-y-6">
+              <div className="space-y-6">
+                <p className="text-sm">
+                  Le bouclier sensoriel réduit l'intensité visuelle et sonore de l'application pour 
+                  créer une expérience plus apaisante pour les personnes sensibles aux stimuli. 
+                  Les paramètres peuvent être personnalisés selon vos besoins.
+                </p>
+                
+                <div className="bg-muted/30 p-4 rounded-lg">
+                  <div className="flex items-center gap-2 mb-4">
+                    <ShieldAlert className="h-5 w-5 text-primary" />
+                    <h3 className="font-medium">Fonctionnalités du bouclier sensoriel:</h3>
+                  </div>
+                  <ul className="list-disc list-inside space-y-2 text-sm">
+                    <li>Réduction de la luminosité et du contraste</li>
+                    <li>Réduction du volume des éléments audio</li>
+                    <li>Limitation des animations et des transitions</li>
+                    <li>Préréglages pour différents niveaux de sensibilité</li>
+                  </ul>
+                </div>
+                
+                <SensoryShield />
               </div>
             </CardContent>
           </Card>
