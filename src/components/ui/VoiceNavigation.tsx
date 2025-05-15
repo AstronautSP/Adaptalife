@@ -4,7 +4,6 @@ import { Mic, MicOff, Navigation, Volume2 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { toast } from 'sonner';
 import { useToast } from '@/hooks/use-toast';
 
 interface VoiceNavigationProps {
@@ -24,7 +23,7 @@ const VoiceNavigation = ({
   const [transcript, setTranscript] = useState('');
   const [destinations, setDestinations] = useState<string[]>([]);
   const [lastInstruction, setLastInstruction] = useState('');
-  const recognitionRef = useRef<SpeechRecognition | null>(null);
+  const recognitionRef = useRef<any>(null);
   const { toast } = useToast();
 
   // Liste des destinations possibles dans le magasin
@@ -137,7 +136,9 @@ const VoiceNavigation = ({
       // Utilisation de la synthèse vocale pour répondre
       speak(instructions);
       
-      toast.info(`Navigation vers: ${destination}`);
+      toast({
+        title: `Navigation vers: ${destination}`,
+      });
     } else if (lowerCommand.includes('aide') || lowerCommand.includes('help')) {
       const helpMessage = "Je peux vous aider à naviguer dans le magasin. Dites par exemple 'Où sont les fruits et légumes' ou 'Comment aller aux caisses'.";
       speak(helpMessage);
@@ -174,14 +175,19 @@ const VoiceNavigation = ({
         recognitionRef.current.stop();
       }
       setIsListening(false);
-      toast.info("Assistant vocal désactivé");
+      toast({
+        title: "Assistant vocal désactivé",
+      });
     } else {
       if ('SpeechRecognition' in window || 'webkitSpeechRecognition' in window) {
         if (recognitionRef.current) {
           try {
             recognitionRef.current.start();
             setIsListening(true);
-            toast.success("Assistant vocal activé - Parlez maintenant");
+            toast({
+              title: "Assistant vocal activé",
+              description: "Parlez maintenant",
+            });
             
             // Message d'accueil
             const welcomeMessage = selectedStore 
