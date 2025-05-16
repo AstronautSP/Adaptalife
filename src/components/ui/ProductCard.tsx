@@ -1,7 +1,7 @@
 
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Info, Tally1, AlertTriangle } from 'lucide-react';
+import { Info, Tally1, AlertTriangle, Shirt, Droplet } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
@@ -13,20 +13,7 @@ import {
 } from '@/components/ui/tooltip';
 import FavoriteButton from './FavoriteButton';
 import { cn } from '@/lib/utils';
-
-export interface Product {
-  id: string;
-  name: string;
-  brand: string;
-  image: string;
-  price: number;
-  nutritionScore: 'A' | 'B' | 'C' | 'D' | 'E';
-  allergens: string[];
-  healthTags?: string[];
-  isHealthyFor?: string[];
-  notRecommendedFor?: string[];
-  category?: string;
-}
+import { Product } from '@/components/ui/product/types';
 
 interface ProductCardProps {
   product: Product;
@@ -58,8 +45,30 @@ const getHealthTag = (tag: string) => {
   }
 };
 
+const getCategoryIcon = (category?: string) => {
+  switch (category) {
+    case 'clothing':
+      return <Shirt className="h-4 w-4 mr-1" />;
+    case 'cosmetics':
+      return <Droplet className="h-4 w-4 mr-1" />;
+    default:
+      return null;
+  }
+};
+
+const getScoreLabel = (product: Product) => {
+  if (product.category === 'clothing') {
+    return 'Score Matière';
+  } else if (product.category === 'cosmetics') {
+    return 'Score Écologique';
+  } else {
+    return 'Score Nutri-Score';
+  }
+};
+
 const ProductCard = ({ product, className, layout = 'grid' }: ProductCardProps) => {
   const [isImageLoaded, setIsImageLoaded] = useState(false);
+  const isApparel = product.category === 'clothing' || product.category === 'cosmetics';
 
   return (
     <Card 
@@ -101,7 +110,7 @@ const ProductCard = ({ product, className, layout = 'grid' }: ProductCardProps) 
           <FavoriteButton productId={product.id} size="sm" />
         </div>
         
-        {/* Nutrition score badge */}
+        {/* Score badge */}
         <div className="absolute bottom-2 left-2 z-10">
           <TooltipProvider>
             <Tooltip>
@@ -114,16 +123,23 @@ const ProductCard = ({ product, className, layout = 'grid' }: ProductCardProps) 
                 </div>
               </TooltipTrigger>
               <TooltipContent side="top">
-                <p>Score Nutri-Score: {product.nutritionScore}</p>
+                <p>{getScoreLabel(product)}: {product.nutritionScore}</p>
               </TooltipContent>
             </Tooltip>
           </TooltipProvider>
         </div>
 
-        {/* Category Label (new) */}
+        {/* Category Label */}
         {product.category && (
           <div className="absolute top-2 left-2 z-10">
-            <Badge variant="secondary" className="bg-black/60 text-white text-xs">
+            <Badge 
+              variant="secondary" 
+              className={cn(
+                "bg-black/60 text-white text-xs flex items-center",
+                isApparel && "bg-primary/80"
+              )}
+            >
+              {getCategoryIcon(product.category)}
               {product.category}
             </Badge>
           </div>
@@ -172,7 +188,8 @@ const ProductCard = ({ product, className, layout = 'grid' }: ProductCardProps) 
           {product.isHealthyFor && product.isHealthyFor.length > 0 && (
             <div className="flex items-center text-green-600 mb-1">
               <Tally1 className="h-3.5 w-3.5 mr-1" />
-              Adapté pour: {product.isHealthyFor.slice(0, 1).join(', ')}
+              {isApparel ? 'Adapté pour' : 'Adapté pour'}:&nbsp;
+              {product.isHealthyFor.slice(0, 1).join(', ')}
               {product.isHealthyFor.length > 1 && '...'}
             </div>
           )}
@@ -181,7 +198,8 @@ const ProductCard = ({ product, className, layout = 'grid' }: ProductCardProps) 
           {product.notRecommendedFor && product.notRecommendedFor.length > 0 && (
             <div className="flex items-center text-amber-600">
               <AlertTriangle className="h-3.5 w-3.5 mr-1" />
-              À éviter si: {product.notRecommendedFor.slice(0, 1).join(', ')}
+              {isApparel ? 'À éviter si' : 'À éviter si'}:&nbsp;
+              {product.notRecommendedFor.slice(0, 1).join(', ')}
               {product.notRecommendedFor.length > 1 && '...'}
             </div>
           )}

@@ -1,4 +1,4 @@
-import { Product } from '@/components/ui/ProductCard';
+import { Product } from '@/components/ui/product/types';
 
 export const productCategories = [
   { id: 'dairy', name: 'Produits laitiers' },
@@ -10,7 +10,9 @@ export const productCategories = [
   { id: 'frozen', name: 'Surgelés' },
   { id: 'hygiene', name: 'Hygiène et soins' },
   { id: 'baby', name: 'Bébé et enfant' },
-  { id: 'household', name: 'Produits ménagers' }
+  { id: 'household', name: 'Produits ménagers' },
+  { id: 'clothing', name: 'Vêtements' },
+  { id: 'cosmetics', name: 'Cosmétiques' }
 ];
 
 export const products: Product[] = [
@@ -344,5 +346,113 @@ export const products: Product[] = [
     isHealthyFor: [],
     notRecommendedFor: ['Allergie aux parfums de synthèse'],
     category: 'household'
+  },
+
+  // Vêtements
+  {
+    id: '25',
+    name: 'T-shirt en coton bio',
+    brand: 'Éthique Style',
+    image: 'https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=80',
+    price: 19.99,
+    nutritionScore: 'A',
+    allergens: ['Latex'],
+    healthTags: ['Bio', 'Commerce équitable', 'Tissus naturels'],
+    isHealthyFor: ['Peau sensible', 'Dermatite atopique'],
+    notRecommendedFor: ['Allergie au latex'],
+    category: 'clothing'
+  },
+  {
+    id: '26',
+    name: 'Pantalon adaptable PMR',
+    brand: 'AdaptaWear',
+    image: 'https://images.unsplash.com/photo-1541099649105-f69ad21f3246?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=80',
+    price: 49.95,
+    nutritionScore: 'A',
+    allergens: [],
+    healthTags: ['Facile à enfiler', 'Adapté PMR', 'Confort'],
+    isHealthyFor: ['Mobilité réduite', 'Arthrite'],
+    notRecommendedFor: [],
+    category: 'clothing'
+  },
+  {
+    id: '27',
+    name: 'Pull sans étiquettes',
+    brand: 'Sensory Comfort',
+    image: 'https://images.unsplash.com/photo-1620799140408-edc6dcb6d633?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=80',
+    price: 34.50,
+    nutritionScore: 'A',
+    allergens: ['Laine'],
+    healthTags: ['Sans étiquette', 'Douceur maximale'],
+    isHealthyFor: ['Hypersensibilité sensorielle', 'Trouble du spectre autistique'],
+    notRecommendedFor: ['Allergie à la laine'],
+    category: 'clothing'
+  },
+  {
+    id: '28',
+    name: 'Chaussettes compressives',
+    brand: 'ComfortSteps',
+    image: 'https://images.unsplash.com/photo-1586350977771-99c5e9a03561?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=80',
+    price: 15.99,
+    nutritionScore: 'B',
+    allergens: ['Élasthanne'],
+    healthTags: ['Circulation sanguine', 'Compression graduée'],
+    isHealthyFor: ['Problèmes circulatoires', 'Jambes lourdes'],
+    notRecommendedFor: ['Plaies ouvertes'],
+    category: 'clothing'
+  },
+  
+  // Cosmétiques
+  {
+    id: '29',
+    name: 'Crème hydratante sans parfum',
+    brand: 'DermaSense',
+    image: 'https://images.unsplash.com/photo-1556760544-74068565f05c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=80',
+    price: 14.90,
+    nutritionScore: 'A',
+    allergens: ['Lanoline'],
+    healthTags: ['Sans parfum', 'Hypoallergénique'],
+    isHealthyFor: ['Peau sensible', 'Dermatite atopique'],
+    notRecommendedFor: ['Allergie à la lanoline'],
+    category: 'cosmetics'
+  },
+  {
+    id: '30',
+    name: 'Shampoing solide pour cuir chevelu sensible',
+    brand: 'NatureCare',
+    image: 'https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=80',
+    price: 9.95,
+    nutritionScore: 'A',
+    allergens: ['Huiles essentielles'],
+    healthTags: ['pH neutre', 'Bio', 'Zéro déchet'],
+    isHealthyFor: ['Cuir chevelu sensible', 'Psoriasis'],
+    notRecommendedFor: ['Allergie aux huiles essentielles'],
+    category: 'cosmetics'
+  },
+  {
+    id: '31',
+    name: 'Déodorant adapté grande taille et prise facile',
+    brand: 'EasyGrip',
+    image: 'https://images.unsplash.com/photo-1594035910387-fea47794261f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=80',
+    price: 8.50,
+    nutritionScore: 'B',
+    allergens: ['Bicarbonate de soude'],
+    healthTags: ['Prise large', 'Facilité d\'utilisation', 'Sans aluminium'],
+    isHealthyFor: ['Mobilité réduite des mains', 'Arthrite'],
+    notRecommendedFor: ['Allergie au bicarbonate'],
+    category: 'cosmetics'
+  },
+  {
+    id: '32',
+    name: 'Brosse à dents à manche adapté',
+    brand: 'DentaGrip',
+    image: 'https://images.unsplash.com/photo-1559591937-abc3e4def602?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=80',
+    price: 7.99,
+    nutritionScore: 'A',
+    allergens: [],
+    healthTags: ['Manche ergonomique', 'Poils souples'],
+    isHealthyFor: ['Dextérité limitée', 'Arthrite'],
+    notRecommendedFor: [],
+    category: 'cosmetics'
   }
 ];
