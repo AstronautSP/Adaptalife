@@ -9,7 +9,7 @@ interface LogoProps {
   className?: string;
 }
 
-const AdaptafoodLogo: React.FC<LogoProps> = ({ 
+const AdaptalifeLog: React.FC<LogoProps> = ({ 
   size = 'md', 
   showText = true,
   className
@@ -40,11 +40,11 @@ const AdaptafoodLogo: React.FC<LogoProps> = ({
       </div>
       {showText && (
         <span className="font-bold bg-clip-text text-transparent bg-gradient-to-r from-primary to-accent">
-          Adaptafood
+          Adaptalife
         </span>
       )}
     </div>
   );
 };
 
-export default AdaptafoodLogo;
+export default AdaptalifeLog;

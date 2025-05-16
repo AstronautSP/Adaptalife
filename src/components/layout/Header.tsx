@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { 
@@ -16,7 +17,7 @@ import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 import SearchBar from '@/components/ui/SearchBar';
 import { useToast } from '@/components/ui/use-toast';
-import AdaptafoodLogo from '@/components/ui/AdaptafoodLogo';
+import AdaptalifeLog from '@/components/ui/AdaptalifeLog';
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -68,8 +69,8 @@ const Header = () => {
           to="/" 
           className="flex items-center space-x-2"
         >
-          <AdaptafoodLogo size="md" showText={true} className="hidden sm:flex" />
-          <AdaptafoodLogo size="sm" showText={false} className="sm:hidden" />
+          <AdaptalifeLog size="md" showText={true} className="hidden sm:flex" />
+          <AdaptalifeLog size="sm" showText={false} className="sm:hidden" />
         </Link>
 
         {/* Desktop Navigation */}
