@@ -1,7 +1,7 @@
 
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Info, Tally1, AlertTriangle, Shirt, Droplet } from 'lucide-react';
+import { Info, Tally1, AlertTriangle, Shirt, Droplet, Bath, Soap, Scissors, ShoppingBag } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
@@ -41,6 +41,10 @@ const getHealthTag = (tag: string) => {
     case 'high-fiber': return 'Riche en fibres';
     case 'gluten-free': return 'Sans gluten';
     case 'organic': return 'Bio';
+    case 'sans-parfum': return 'Sans parfum';
+    case 'hypoallergénique': return 'Hypoallergénique';
+    case 'adapté-pmr': return 'Adapté PMR';
+    case 'facile-à-enfiler': return 'Facile à enfiler';
     default: return tag;
   }
 };
@@ -48,27 +52,68 @@ const getHealthTag = (tag: string) => {
 const getCategoryIcon = (category?: string) => {
   switch (category) {
     case 'clothing':
+    case 'adaptive':
+    case 'underwear':
       return <Shirt className="h-4 w-4 mr-1" />;
     case 'cosmetics':
       return <Droplet className="h-4 w-4 mr-1" />;
+    case 'hygiene':
+      return <Soap className="h-4 w-4 mr-1" />;
+    case 'hair':
+      return <Scissors className="h-4 w-4 mr-1" />;
+    case 'skin':
+      return <Droplet className="h-4 w-4 mr-1" />;
+    case 'oral':
+      return <Bath className="h-4 w-4 mr-1" />;
+    case 'accessories':
+    case 'shoes':
+      return <ShoppingBag className="h-4 w-4 mr-1" />;
     default:
       return null;
   }
 };
 
+const getMainCategory = (category?: string): string => {
+  const personalCareCategories = ['hygiene', 'cosmetics', 'hair', 'skin', 'oral'];
+  const clothingCategories = ['clothing', 'shoes', 'accessories', 'adaptive', 'underwear'];
+  
+  if (!category) return 'food';
+  if (personalCareCategories.includes(category)) return 'personal_care';
+  if (clothingCategories.includes(category)) return 'clothing';
+  return 'food';
+};
+
 const getScoreLabel = (product: Product) => {
-  if (product.category === 'clothing') {
+  const mainCategory = getMainCategory(product.category);
+  
+  if (mainCategory === 'clothing') {
     return 'Score Matière';
-  } else if (product.category === 'cosmetics') {
+  } else if (mainCategory === 'personal_care') {
     return 'Score Écologique';
   } else {
     return 'Score Nutri-Score';
   }
 };
 
+const getHealthInfo = (product: Product, isApparel: boolean) => {
+  if (isApparel) {
+    return {
+      forLabel: 'Adapté pour',
+      againstLabel: 'À éviter si'
+    };
+  } else {
+    return {
+      forLabel: 'Recommandé pour',
+      againstLabel: 'À éviter si'
+    };
+  }
+};
+
 const ProductCard = ({ product, className, layout = 'grid' }: ProductCardProps) => {
   const [isImageLoaded, setIsImageLoaded] = useState(false);
-  const isApparel = product.category === 'clothing' || product.category === 'cosmetics';
+  const mainCategory = getMainCategory(product.category);
+  const isApparel = mainCategory === 'clothing' || mainCategory === 'personal_care';
+  const healthInfo = getHealthInfo(product, isApparel);
 
   return (
     <Card 
@@ -188,7 +233,7 @@ const ProductCard = ({ product, className, layout = 'grid' }: ProductCardProps) 
           {product.isHealthyFor && product.isHealthyFor.length > 0 && (
             <div className="flex items-center text-green-600 mb-1">
               <Tally1 className="h-3.5 w-3.5 mr-1" />
-              {isApparel ? 'Adapté pour' : 'Adapté pour'}:&nbsp;
+              {healthInfo.forLabel}:&nbsp;
               {product.isHealthyFor.slice(0, 1).join(', ')}
               {product.isHealthyFor.length > 1 && '...'}
             </div>
@@ -198,7 +243,7 @@ const ProductCard = ({ product, className, layout = 'grid' }: ProductCardProps) 
           {product.notRecommendedFor && product.notRecommendedFor.length > 0 && (
             <div className="flex items-center text-amber-600">
               <AlertTriangle className="h-3.5 w-3.5 mr-1" />
-              {isApparel ? 'À éviter si' : 'À éviter si'}:&nbsp;
+              {healthInfo.againstLabel}:&nbsp;
               {product.notRecommendedFor.slice(0, 1).join(', ')}
               {product.notRecommendedFor.length > 1 && '...'}
             </div>

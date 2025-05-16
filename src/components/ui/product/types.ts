@@ -11,6 +11,13 @@ export interface Product {
   isHealthyFor?: string[];
   notRecommendedFor?: string[];
   category?: string;
+  description?: string;
+  ingredients?: string[];
+  material?: string;
+  careInstructions?: string;
+  sustainability?: string[];
+  sizes?: string[];
+  certifications?: string[];
 }
 
 export interface ProductHeaderProps {
@@ -29,4 +36,15 @@ export interface ProductTabsProps {
   product: Product;
   activeTab: string;
   setActiveTab: (tab: string) => void;
+}
+
+export interface MainCategory {
+  id: string;
+  name: string;
+}
+
+export interface ProductCategory {
+  id: string;
+  name: string;
+  mainCategory: string;
 }

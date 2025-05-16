@@ -1,18 +1,37 @@
 import { Product } from '@/components/ui/product/types';
 
+export const mainCategories = [
+  { id: 'all', name: 'Toutes les catégories' },
+  { id: 'food', name: 'Alimentaire' },
+  { id: 'personal_care', name: 'Hygiène & Beauté' },
+  { id: 'clothing', name: 'Vêtements & Accessoires' }
+];
+
 export const productCategories = [
-  { id: 'dairy', name: 'Produits laitiers' },
-  { id: 'bakery', name: 'Boulangerie et pâtisserie' },
-  { id: 'meat', name: 'Viandes et poissons' },
-  { id: 'fruits', name: 'Fruits et légumes' },
-  { id: 'snacks', name: 'Snacks et confiseries' },
-  { id: 'beverages', name: 'Boissons' },
-  { id: 'frozen', name: 'Surgelés' },
-  { id: 'hygiene', name: 'Hygiène et soins' },
-  { id: 'baby', name: 'Bébé et enfant' },
-  { id: 'household', name: 'Produits ménagers' },
-  { id: 'clothing', name: 'Vêtements' },
-  { id: 'cosmetics', name: 'Cosmétiques' }
+  // Catégories alimentaires
+  { id: 'dairy', name: 'Produits laitiers', mainCategory: 'food' },
+  { id: 'bakery', name: 'Boulangerie et pâtisserie', mainCategory: 'food' },
+  { id: 'meat', name: 'Viandes et poissons', mainCategory: 'food' },
+  { id: 'fruits', name: 'Fruits et légumes', mainCategory: 'food' },
+  { id: 'snacks', name: 'Snacks et confiseries', mainCategory: 'food' },
+  { id: 'beverages', name: 'Boissons', mainCategory: 'food' },
+  { id: 'frozen', name: 'Surgelés', mainCategory: 'food' },
+  
+  // Catégories hygiène et beauté
+  { id: 'hygiene', name: 'Hygiène corporelle', mainCategory: 'personal_care' },
+  { id: 'baby', name: 'Bébé et enfant', mainCategory: 'personal_care' },
+  { id: 'household', name: 'Produits ménagers', mainCategory: 'personal_care' },
+  { id: 'cosmetics', name: 'Cosmétiques', mainCategory: 'personal_care' },
+  { id: 'oral', name: 'Hygiène bucco-dentaire', mainCategory: 'personal_care' },
+  { id: 'hair', name: 'Soins capillaires', mainCategory: 'personal_care' },
+  { id: 'skin', name: 'Soins de la peau', mainCategory: 'personal_care' },
+  
+  // Catégories vêtements
+  { id: 'clothing', name: 'Vêtements', mainCategory: 'clothing' },
+  { id: 'shoes', name: 'Chaussures', mainCategory: 'clothing' },
+  { id: 'accessories', name: 'Accessoires', mainCategory: 'clothing' },
+  { id: 'adaptive', name: 'Vêtements adaptés', mainCategory: 'clothing' },
+  { id: 'underwear', name: 'Sous-vêtements', mainCategory: 'clothing' }
 ];
 
 export const products: Product[] = [
@@ -263,7 +282,7 @@ export const products: Product[] = [
     healthTags: ['Bio', 'Zéro déchet', 'Sans sulfates'],
     isHealthyFor: ['Peau sensible', 'Cuir chevelu sensible'],
     notRecommendedFor: ['Allergie aux huiles essentielles'],
-    category: 'hygiene'
+    category: 'hair'
   },
   {
     id: '19',
@@ -289,7 +308,7 @@ export const products: Product[] = [
     healthTags: ['Bio', 'Sans fluor'],
     isHealthyFor: ['Gencives sensibles'],
     notRecommendedFor: ['Allergie à la menthe'],
-    category: 'hygiene'
+    category: 'oral'
   },
 
   // Bébé et enfant
@@ -373,7 +392,7 @@ export const products: Product[] = [
     healthTags: ['Facile à enfiler', 'Adapté PMR', 'Confort'],
     isHealthyFor: ['Mobilité réduite', 'Arthrite'],
     notRecommendedFor: [],
-    category: 'clothing'
+    category: 'adaptive'
   },
   {
     id: '27',
@@ -414,7 +433,7 @@ export const products: Product[] = [
     healthTags: ['Sans parfum', 'Hypoallergénique'],
     isHealthyFor: ['Peau sensible', 'Dermatite atopique'],
     notRecommendedFor: ['Allergie à la lanoline'],
-    category: 'cosmetics'
+    category: 'skin'
   },
   {
     id: '30',
@@ -427,7 +446,7 @@ export const products: Product[] = [
     healthTags: ['pH neutre', 'Bio', 'Zéro déchet'],
     isHealthyFor: ['Cuir chevelu sensible', 'Psoriasis'],
     notRecommendedFor: ['Allergie aux huiles essentielles'],
-    category: 'cosmetics'
+    category: 'hair'
   },
   {
     id: '31',
@@ -440,7 +459,7 @@ export const products: Product[] = [
     healthTags: ['Prise large', 'Facilité d\'utilisation', 'Sans aluminium'],
     isHealthyFor: ['Mobilité réduite des mains', 'Arthrite'],
     notRecommendedFor: ['Allergie au bicarbonate'],
-    category: 'cosmetics'
+    category: 'hygiene'
   },
   {
     id: '32',
@@ -453,6 +472,246 @@ export const products: Product[] = [
     healthTags: ['Manche ergonomique', 'Poils souples'],
     isHealthyFor: ['Dextérité limitée', 'Arthrite'],
     notRecommendedFor: [],
+    category: 'oral'
+  },
+  
+  // Ajout de nouveaux produits pour toutes les catégories
+  
+  // Vêtements supplémentaires
+  {
+    id: '33',
+    name: 'Veste chauffante adaptée',
+    brand: 'ThermoComfort',
+    image: 'https://images.unsplash.com/photo-1591047139829-d91aecb6caea?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=80',
+    price: 129.99,
+    nutritionScore: 'A',
+    allergens: ['Polyester'],
+    healthTags: ['Thermique', 'Batterie rechargeable', 'Lavable'],
+    isHealthyFor: ['Sensibilité au froid', 'Arthrite', 'Fibromyalgie'],
+    notRecommendedFor: ['Allergie au polyester'],
+    category: 'clothing'
+  },
+  {
+    id: '34',
+    name: 'Pantalon avec fermetures magnétiques',
+    brand: 'MagSecure',
+    image: 'https://images.unsplash.com/photo-1541099649105-f69ad21f3246?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=80',
+    price: 59.95,
+    nutritionScore: 'A',
+    allergens: [],
+    healthTags: ['Fermetures faciles', 'Confort maximal'],
+    isHealthyFor: ['Dextérité réduite', 'Tremblements', 'Personnes âgées'],
+    notRecommendedFor: ['Porteurs de pacemaker'],
+    category: 'adaptive'
+  },
+  {
+    id: '35',
+    name: 'Robe adaptée pour fauteuil roulant',
+    brand: 'WheelStyle',
+    image: 'https://images.unsplash.com/photo-1589810635657-232948472d98?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=80',
+    price: 79.90,
+    nutritionScore: 'A',
+    allergens: [],
+    healthTags: ['Coupe adaptée', 'Confort assis', 'Facilité d\'habillage'],
+    isHealthyFor: ['Utilisateurs de fauteuil roulant', 'Mobilité réduite'],
+    notRecommendedFor: [],
+    category: 'adaptive'
+  },
+  {
+    id: '36',
+    name: 'Gants tactiles adaptés',
+    brand: 'TouchComfort',
+    image: 'https://images.unsplash.com/photo-1584359983106-ef9991e72965?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=80',
+    price: 29.99,
+    nutritionScore: 'A',
+    allergens: ['Élasthanne'],
+    healthTags: ['Sensibilité tactile', 'Isolation thermique'],
+    isHealthyFor: ['Raynaud', 'Arthrite des mains'],
+    notRecommendedFor: [],
+    category: 'accessories'
+  },
+  {
+    id: '37',
+    name: 'Soutien-gorge post-mastectomie',
+    brand: 'ComfortCare',
+    image: 'https://images.unsplash.com/photo-1566706546199-a93cce1f8c22?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=80',
+    price: 45.50,
+    nutritionScore: 'A',
+    allergens: ['Lycra'],
+    healthTags: ['Post-opératoire', 'Poches prothèses', 'Sans armatures'],
+    isHealthyFor: ['Post-mastectomie', 'Cancer du sein'],
+    notRecommendedFor: ['Allergie au lycra'],
+    category: 'underwear'
+  },
+  {
+    id: '38',
+    name: 'Chaussures orthopédiques ajustables',
+    brand: 'StepRight',
+    image: 'https://images.unsplash.com/photo-1608231387042-66d1773070a5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=80',
+    price: 89.95,
+    nutritionScore: 'A',
+    allergens: [],
+    healthTags: ['Semelle orthopédique', 'Fermeture velcro', 'Support voûte plantaire'],
+    isHealthyFor: ['Diabète', 'Arthrite', 'Problèmes d\'équilibre'],
+    notRecommendedFor: [],
+    category: 'shoes'
+  },
+  
+  // Cosmétiques et hygiène supplémentaires
+  {
+    id: '39',
+    name: 'Savon surgras pour peaux atopiques',
+    brand: 'DermaPeace',
+    image: 'https://images.unsplash.com/photo-1607006483937-b8255275bdb5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=80',
+    price: 5.95,
+    nutritionScore: 'A',
+    allergens: [],
+    healthTags: ['Sans parfum', 'pH neutre', 'Surgras'],
+    isHealthyFor: ['Eczéma', 'Psoriasis', 'Peau très sèche'],
+    notRecommendedFor: [],
+    category: 'hygiene'
+  },
+  {
+    id: '40',
+    name: 'Crème solaire minérale teintée',
+    brand: 'SunSafe',
+    image: 'https://images.unsplash.com/photo-1526947425960-945c6e72858f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=80',
+    price: 19.99,
+    nutritionScore: 'A',
+    allergens: [],
+    healthTags: ['Filtre minéral', 'SPF 50', 'Sans nanoparticules'],
+    isHealthyFor: ['Peaux sensibles', 'Vitiligo', 'Protection UV'],
+    notRecommendedFor: ['Allergie à l\'oxyde de zinc'],
+    category: 'skin'
+  },
+  {
+    id: '41',
+    name: 'Gel douche sans parfum pour peaux sensibles',
+    brand: 'PureTouch',
+    image: 'https://images.unsplash.com/photo-1643123573723-70df1f4d7269?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=80',
+    price: 8.99,
+    nutritionScore: 'A',
+    allergens: [],
+    healthTags: ['Sans parfum', 'Hypoallergénique', 'pH neutre'],
+    isHealthyFor: ['Peau très sensible', 'Dermatite'],
+    notRecommendedFor: [],
+    category: 'hygiene'
+  },
+  {
+    id: '42',
+    name: 'Brosse à cheveux démêlante ergonomique',
+    brand: 'HairEase',
+    image: 'https://images.unsplash.com/photo-1584297091582-222400887911?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=80',
+    price: 15.95,
+    nutritionScore: 'A',
+    allergens: [],
+    healthTags: ['Poignée ergonomique', 'Démêlant sans douleur', 'Grande prise'],
+    isHealthyFor: ['Dextérité réduite', 'Cheveux sensibles'],
+    notRecommendedFor: [],
+    category: 'hair'
+  },
+  {
+    id: '43',
+    name: 'Maquillage hypoallergénique fond de teint',
+    brand: 'PureSkin',
+    image: 'https://images.unsplash.com/photo-1596704017254-9759221a48f1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=80',
+    price: 24.50,
+    nutritionScore: 'A',
+    allergens: [],
+    healthTags: ['Hypoallergénique', 'Non testé sur les animaux', 'Longue tenue'],
+    isHealthyFor: ['Peau sensible', 'Rosacée', 'Acné'],
+    notRecommendedFor: [],
     category: 'cosmetics'
+  },
+  {
+    id: '44',
+    name: 'Dissolvant sans acétone',
+    brand: 'NailCare',
+    image: 'https://images.unsplash.com/photo-1632345031435-8727f6897d53?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=80',
+    price: 6.49,
+    nutritionScore: 'B',
+    allergens: [],
+    healthTags: ['Sans acétone', 'Huile nourrissante'],
+    isHealthyFor: ['Ongles fragiles', 'Diabète'],
+    notRecommendedFor: [],
+    category: 'cosmetics'
+  },
+  {
+    id: '45',
+    name: 'Dentifrice pour sensibilité dentaire',
+    brand: 'SensoDent',
+    image: 'https://images.unsplash.com/photo-1559589311-5f0f0c91d142?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=80',
+    price: 7.95,
+    nutritionScore: 'A',
+    allergens: ['Menthol'],
+    healthTags: ['Protection contre sensibilité', 'Fluor', 'Reminéralisant'],
+    isHealthyFor: ['Dents sensibles', 'Érosion de l\'émail'],
+    notRecommendedFor: ['Allergie au menthol'],
+    category: 'oral'
+  },
+  {
+    id: '46',
+    name: 'Serviettes hygiéniques bio',
+    brand: 'NaturaCare',
+    image: 'https://images.unsplash.com/photo-1581646741897-32d6391318e7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=80',
+    price: 4.99,
+    nutritionScore: 'A',
+    allergens: [],
+    healthTags: ['Coton bio', 'Sans parfum', 'Sans chlore'],
+    isHealthyFor: ['Peau sensible', 'Mycoses récurrentes'],
+    notRecommendedFor: [],
+    category: 'hygiene'
+  },
+  {
+    id: '47',
+    name: 'Lingettes nettoyantes visage biodégradables',
+    brand: 'EcoClean',
+    image: 'https://images.unsplash.com/photo-1614806687794-3070cf063b76?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=80',
+    price: 3.95,
+    nutritionScore: 'A',
+    allergens: ['Aloe Vera'],
+    healthTags: ['Biodégradables', 'Sans alcool', 'pH neutre'],
+    isHealthyFor: ['Peau sensible', 'Démaquillage doux'],
+    notRecommendedFor: ['Allergie à l\'aloe vera'],
+    category: 'skin'
+  },
+  {
+    id: '48',
+    name: 'Spray coiffant à pompe facile',
+    brand: 'EasyStyle',
+    image: 'https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=80',
+    price: 9.99,
+    nutritionScore: 'B',
+    allergens: ['Parfum'],
+    healthTags: ['Prise facile', 'Sans gaz propulseur', 'Fixation légère'],
+    isHealthyFor: ['Dextérité limitée', 'Force limitée des mains'],
+    notRecommendedFor: ['Allergies respiratoires sévères'],
+    category: 'hair'
+  },
+  {
+    id: '49',
+    name: 'Bain de bouche sans alcool',
+    brand: 'MouthPure',
+    image: 'https://images.unsplash.com/photo-1612473741370-66f3af5db6d1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=80',
+    price: 5.99,
+    nutritionScore: 'A',
+    allergens: ['Menthe'],
+    healthTags: ['Sans alcool', 'Protection gencives', 'Haleine fraîche'],
+    isHealthyFor: ['Bouche sèche', 'Sensibilité buccale'],
+    notRecommendedFor: ['Allergie à la menthe'],
+    category: 'oral'
+  },
+  {
+    id: '50',
+    name: 'Crème mains réparatrice adaptée',
+    brand: 'HandCare',
+    image: 'https://images.unsplash.com/photo-1596189181426-7f63a1737f0d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=80',
+    price: 8.75,
+    nutritionScore: 'A',
+    allergens: [],
+    healthTags: ['Tube à ouverture facile', 'Non grasse', 'Réparatrice'],
+    isHealthyFor: ['Peau très sèche', 'Eczéma', 'Arthrite des mains'],
+    notRecommendedFor: [],
+    category: 'skin'
   }
 ];
