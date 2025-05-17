@@ -1,7 +1,6 @@
-
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Info, Tally1, AlertTriangle, Shirt, Droplet, Bath, Soap, Scissors, ShoppingBag } from 'lucide-react';
+import { Info, Tally1, AlertTriangle, Shirt, Droplet, Bath, ShoppingBag, Scissors } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
@@ -58,7 +57,7 @@ const getCategoryIcon = (category?: string) => {
     case 'cosmetics':
       return <Droplet className="h-4 w-4 mr-1" />;
     case 'hygiene':
-      return <Soap className="h-4 w-4 mr-1" />;
+      return <Bath className="h-4 w-4 mr-1" />;
     case 'hair':
       return <Scissors className="h-4 w-4 mr-1" />;
     case 'skin':
