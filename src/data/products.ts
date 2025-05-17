@@ -1,3 +1,4 @@
+
 import { Product } from '@/components/ui/product/types';
 
 export const mainCategories = [
@@ -468,4 +469,12 @@ export const products: Product[] = [
     name: 'Déodorant adapté grande taille et prise facile',
     brand: 'EasyGrip',
     image: 'https://images.unsplash.com/photo-1594035910387-fea47794261f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=80',
-    price
+    price: 12.50,
+    nutritionScore: 'A',
+    allergens: ['Parfum'],
+    healthTags: ['Adapté PMR', 'Prise en main facile', 'Naturel'],
+    isHealthyFor: ['Arthrite', 'Mobilité réduite des doigts'],
+    notRecommendedFor: ['Allergie aux parfums'],
+    category: 'hygiene'
+  }
+];
