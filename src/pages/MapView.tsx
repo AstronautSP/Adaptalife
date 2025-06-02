@@ -3,6 +3,7 @@ import { ArrowLeft, Target, Store, MapPin, Map as MapIcon, Phone, Clock, Globe, 
 import { Button } from '@/components/ui/button';
 import { Link } from 'react-router-dom';
 import StoreMap from '@/components/ui/StoreMap';
+import StoreMap3D from '@/components/ui/StoreMap3D';
 import { useToast } from '@/hooks/use-toast';
 import { StoreLocator, STORE_LOCATIONS } from '@/components/ui/StoreLocator';
 import { Badge } from '@/components/ui/badge';
@@ -227,7 +228,7 @@ const MapView = () => {
                   Me localiser
                 </Button>
               </div>
-              <StoreMap className="w-full h-[600px]" storeId={storeId} userLocation={userLocation} productId={selectedDestination || undefined} />
+              <StoreMap3D className="w-full h-[600px]" storeId={storeId} userLocation={userLocation} productId={selectedDestination || undefined} />
             </>
           ) : (
             <div className="flex flex-col items-center justify-center border rounded-lg bg-muted/20 h-[600px]">

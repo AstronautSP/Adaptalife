@@ -1,11 +1,10 @@
-
 import { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { ArrowLeft, ChevronRight, Map, Store } from 'lucide-react';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import ProductDetail from '@/components/ui/ProductDetail';
-import StoreMap from '@/components/ui/StoreMap';
+import StoreMap3D from '@/components/ui/StoreMap3D';
 import { products } from '@/data/products';
 
 const ProductView = () => {
@@ -110,7 +109,7 @@ const ProductView = () => {
         </div>
         
         <div className={`lg:col-span-1 ${activeTab !== 'map' && 'hidden sm:block'}`}>
-          <StoreMap productId={product.id} />
+          <StoreMap3D productId={product.id} />
         </div>
       </div>
       
