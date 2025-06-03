@@ -23,6 +23,10 @@ export const productCategories = [
   { id: 'diabetic', name: 'Produits pour diabétiques', mainCategory: 'food' },
   { id: 'glutenfree', name: 'Sans gluten', mainCategory: 'food' },
   { id: 'vegan', name: 'Produits végans', mainCategory: 'food' },
+  { id: 'canned', name: 'Conserves', mainCategory: 'food' },
+  { id: 'spices', name: 'Épices et herbes', mainCategory: 'food' },
+  { id: 'pasta', name: 'Pâtes et riz', mainCategory: 'food' },
+  { id: 'oils', name: 'Huiles et vinaigres', mainCategory: 'food' },
   
   // Catégories hygiène et beauté
   { id: 'hygiene', name: 'Hygiène corporelle', mainCategory: 'personal_care' },
@@ -36,6 +40,7 @@ export const productCategories = [
   { id: 'fragrance', name: 'Parfums', mainCategory: 'personal_care' },
   { id: 'senior', name: 'Soins seniors', mainCategory: 'personal_care' },
   { id: 'mobility', name: 'Aides à la mobilité', mainCategory: 'personal_care' },
+  { id: 'makeup', name: 'Maquillage', mainCategory: 'personal_care' },
   
   // Catégories vêtements
   { id: 'clothing', name: 'Vêtements', mainCategory: 'clothing' },
@@ -91,8 +96,6 @@ export const products: Product[] = [
     notRecommendedFor: ['Régime hypocalorique', 'Cholestérol élevé'],
     category: 'dairy'
   },
-
-  // Boulangerie et pâtisserie
   {
     id: '4',
     name: 'Pain de mie complet sans gluten',
@@ -132,8 +135,6 @@ export const products: Product[] = [
     notRecommendedFor: ['Diabète', 'Régime hypocalorique', 'Intolérance au gluten'],
     category: 'bakery'
   },
-
-  // Viandes et poissons
   {
     id: '7',
     name: 'Filet de poulet fermier',
@@ -160,8 +161,6 @@ export const products: Product[] = [
     notRecommendedFor: ['Allergie aux poissons'],
     category: 'meat'
   },
-
-  // Fruits et légumes
   {
     id: '9',
     name: 'Bananes Bio',
@@ -188,8 +187,6 @@ export const products: Product[] = [
     notRecommendedFor: [],
     category: 'fruits'
   },
-
-  // Snacks et confiseries
   {
     id: '11',
     name: 'Tablette de chocolat noir 70%',
@@ -229,8 +226,6 @@ export const products: Product[] = [
     notRecommendedFor: ['Diabète', 'Régime hypocalorique', 'Intolérance au gluten'],
     category: 'snacks'
   },
-
-  // Boissons
   {
     id: '14',
     name: 'Eau minérale naturelle',
@@ -257,8 +252,6 @@ export const products: Product[] = [
     notRecommendedFor: ['Diabète sévère'],
     category: 'beverages'
   },
-
-  // Surgelés
   {
     id: '16',
     name: 'Pizza margherita surgelée',
@@ -285,8 +278,6 @@ export const products: Product[] = [
     notRecommendedFor: [],
     category: 'frozen'
   },
-
-  // Hygiène et soins
   {
     id: '18',
     name: 'Shampoing solide bio',
@@ -326,8 +317,6 @@ export const products: Product[] = [
     notRecommendedFor: ['Allergie à la menthe'],
     category: 'oral'
   },
-
-  // Bébé et enfant
   {
     id: '21',
     name: 'Couches écologiques taille 3',
@@ -354,8 +343,6 @@ export const products: Product[] = [
     notRecommendedFor: ['Allergie aux protéines de lait de vache'],
     category: 'baby'
   },
-
-  // Produits ménagers
   {
     id: '23',
     name: 'Lessive écologique concentrée',
@@ -382,8 +369,6 @@ export const products: Product[] = [
     notRecommendedFor: ['Allergie aux parfums de synthèse'],
     category: 'household'
   },
-
-  // Vêtements
   {
     id: '25',
     name: 'T-shirt en coton bio',
@@ -436,8 +421,6 @@ export const products: Product[] = [
     notRecommendedFor: ['Plaies ouvertes'],
     category: 'clothing'
   },
-  
-  // Cosmétiques
   {
     id: '29',
     name: 'Crème hydratante sans parfum',
@@ -476,5 +459,522 @@ export const products: Product[] = [
     isHealthyFor: ['Arthrite', 'Mobilité réduite des doigts'],
     notRecommendedFor: ['Allergie aux parfums'],
     category: 'hygiene'
+  },
+
+  // NOUVEAUX PRODUITS ALIMENTAIRES
+  {
+    id: '32',
+    name: 'Roquefort AOP',
+    brand: 'Société',
+    image: 'https://images.unsplash.com/photo-1631896928536-d9ee55df3cdf?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80',
+    price: 4.95,
+    nutritionScore: 'D',
+    allergens: ['Lait'],
+    healthTags: ['AOP', 'Fromage traditionnel'],
+    isHealthyFor: [],
+    notRecommendedFor: ['Femmes enceintes', 'Cholestérol élevé'],
+    category: 'dairy'
+  },
+  {
+    id: '33',
+    name: 'Brie de Meaux',
+    brand: 'Rouzaire',
+    image: 'https://images.unsplash.com/photo-1486297678162-eb2a19b0a32d?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80',
+    price: 3.89,
+    nutritionScore: 'D',
+    allergens: ['Lait'],
+    healthTags: ['Fromage français traditionnel'],
+    isHealthyFor: [],
+    notRecommendedFor: ['Régime hypocalorique'],
+    category: 'dairy'
+  },
+  {
+    id: '34',
+    name: 'Mozzarella di Bufala',
+    brand: 'Galbani',
+    image: 'https://images.unsplash.com/photo-1599948128020-9a44d91d3ad5?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80',
+    price: 5.25,
+    nutritionScore: 'C',
+    allergens: ['Lait'],
+    healthTags: ['Fromage italien', 'Riche en protéines'],
+    isHealthyFor: ['Cuisine méditerranéenne'],
+    notRecommendedFor: ['Intolérance au lactose'],
+    category: 'dairy'
+  },
+  {
+    id: '35',
+    name: 'Jambon de Bayonne AOP',
+    brand: 'Montamat',
+    image: 'https://images.unsplash.com/photo-1544025162-d76694265947?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80',
+    price: 8.95,
+    nutritionScore: 'D',
+    allergens: [],
+    healthTags: ['AOP', 'Séché naturellement'],
+    isHealthyFor: [],
+    notRecommendedFor: ['Hypertension', 'Régime pauvre en sel'],
+    category: 'meat'
+  },
+  {
+    id: '36',
+    name: 'Saucisson sec pur porc',
+    brand: 'Cochonou',
+    image: 'https://images.unsplash.com/photo-1607623814075-e51df1bdc82f?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80',
+    price: 4.50,
+    nutritionScore: 'D',
+    allergens: [],
+    healthTags: ['Charcuterie traditionnelle'],
+    isHealthyFor: [],
+    notRecommendedFor: ['Hypertension', 'Cholestérol élevé'],
+    category: 'meat'
+  },
+  {
+    id: '37',
+    name: 'Thon à l\'huile d\'olive',
+    brand: 'Petit Navire',
+    image: 'https://images.unsplash.com/photo-1544550581-5b62292f7de5?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80',
+    price: 2.35,
+    nutritionScore: 'B',
+    allergens: ['Poisson'],
+    healthTags: ['Riche en protéines', 'Oméga-3'],
+    isHealthyFor: ['Sportifs', 'Santé cardiovasculaire'],
+    notRecommendedFor: ['Allergie aux poissons'],
+    category: 'canned'
+  },
+  {
+    id: '38',
+    name: 'Sardines à l\'huile d\'olive',
+    brand: 'Connétable',
+    image: 'https://images.unsplash.com/photo-1544550581-f77554166e98?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80',
+    price: 1.95,
+    nutritionScore: 'A',
+    allergens: ['Poisson'],
+    healthTags: ['Riche en oméga-3', 'Calcium'],
+    isHealthyFor: ['Santé osseuse', 'Cardiovasculaire'],
+    notRecommendedFor: ['Allergie aux poissons'],
+    category: 'canned'
+  },
+  {
+    id: '39',
+    name: 'Cassoulet traditionnel',
+    brand: 'William Saurin',
+    image: 'https://images.unsplash.com/photo-1585238342024-78d387f4a707?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80',
+    price: 3.65,
+    nutritionScore: 'C',
+    allergens: [],
+    healthTags: ['Plat traditionnel français'],
+    isHealthyFor: [],
+    notRecommendedFor: ['Régime hypocalorique'],
+    category: 'canned'
+  },
+  {
+    id: '40',
+    name: 'Pâtes complètes bio',
+    brand: 'Barilla',
+    image: 'https://images.unsplash.com/photo-1551892374-ecf8df4d6fdc?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80',
+    price: 1.89,
+    nutritionScore: 'A',
+    allergens: ['Gluten'],
+    healthTags: ['Bio', 'Riche en fibres', 'Complet'],
+    isHealthyFor: ['Transit intestinal', 'Sportifs'],
+    notRecommendedFor: ['Intolérance au gluten'],
+    category: 'pasta'
+  },
+  {
+    id: '41',
+    name: 'Riz basmati bio',
+    brand: 'Taureau Ailé',
+    image: 'https://images.unsplash.com/photo-1536304993881-ff6e9eefa2a6?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80',
+    price: 2.95,
+    nutritionScore: 'A',
+    allergens: [],
+    healthTags: ['Bio', 'Sans gluten', 'Grain long'],
+    isHealthyFor: ['Sans gluten', 'Diabète'],
+    notRecommendedFor: [],
+    category: 'pasta'
+  },
+  {
+    id: '42',
+    name: 'Huile d\'olive extra vierge',
+    brand: 'Puget',
+    image: 'https://images.unsplash.com/photo-1474979266404-7eaacbcd87c5?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80',
+    price: 4.95,
+    nutritionScore: 'C',
+    allergens: [],
+    healthTags: ['Extra vierge', 'Antioxydants'],
+    isHealthyFor: ['Santé cardiovasculaire'],
+    notRecommendedFor: [],
+    category: 'oils'
+  },
+  {
+    id: '43',
+    name: 'Vinaigre balsamique de Modène',
+    brand: 'Monini',
+    image: 'https://images.unsplash.com/photo-1472476443507-c7a5948772fc?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80',
+    price: 3.75,
+    nutritionScore: 'B',
+    allergens: [],
+    healthTags: ['IGP Modène', 'Vieilli en fûts'],
+    isHealthyFor: [],
+    notRecommendedFor: [],
+    category: 'oils'
+  },
+  {
+    id: '44',
+    name: 'Basilic séché bio',
+    brand: 'Ducros',
+    image: 'https://images.unsplash.com/photo-1618164436241-4473940d1f5c?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80',
+    price: 2.45,
+    nutritionScore: 'A',
+    allergens: [],
+    healthTags: ['Bio', 'Herbes aromatiques'],
+    isHealthyFor: ['Digestion'],
+    notRecommendedFor: [],
+    category: 'spices'
+  },
+  {
+    id: '45',
+    name: 'Curcuma en poudre',
+    brand: 'Cook',
+    image: 'https://images.unsplash.com/photo-1615485290382-441e4d049cb5?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80',
+    price: 1.95,
+    nutritionScore: 'A',
+    allergens: [],
+    healthTags: ['Anti-inflammatoire', 'Antioxydant'],
+    isHealthyFor: ['Inflammation', 'Digestion'],
+    notRecommendedFor: [],
+    category: 'spices'
+  },
+
+  // NOUVEAUX PRODUITS COSMÉTIQUES ET HYGIÈNE
+  {
+    id: '46',
+    name: 'Rouge à lèvres mat longue tenue',
+    brand: 'L\'Oréal Paris',
+    image: 'https://images.unsplash.com/photo-1571019613540-996cd20632de?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80',
+    price: 12.95,
+    nutritionScore: 'B',
+    allergens: ['Parfum'],
+    healthTags: ['Longue tenue', 'Mat'],
+    isHealthyFor: ['Maquillage quotidien'],
+    notRecommendedFor: ['Allergie aux parfums'],
+    category: 'makeup'
+  },
+  {
+    id: '47',
+    name: 'Fond de teint bio',
+    brand: 'ZAO',
+    image: 'https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80',
+    price: 24.90,
+    nutritionScore: 'A',
+    allergens: [],
+    healthTags: ['Bio', 'Rechargeable', 'Naturel'],
+    isHealthyFor: ['Peau sensible'],
+    notRecommendedFor: [],
+    category: 'makeup'
+  },
+  {
+    id: '48',
+    name: 'Mascara volume et longueur',
+    brand: 'Maybelline',
+    image: 'https://images.unsplash.com/photo-1512496015851-a90c231dcace?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80',
+    price: 8.95,
+    nutritionScore: 'B',
+    allergens: ['Parfum'],
+    healthTags: ['Volume', 'Longueur'],
+    isHealthyFor: ['Yeux sensibles (formule testée)'],
+    notRecommendedFor: ['Conjonctivite'],
+    category: 'makeup'
+  },
+  {
+    id: '49',
+    name: 'Eau de parfum femme',
+    brand: 'Chanel N°5',
+    image: 'https://images.unsplash.com/photo-1541643600914-78b084683601?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80',
+    price: 89.00,
+    nutritionScore: 'C',
+    allergens: ['Parfum', 'Alcool'],
+    healthTags: ['Parfum de luxe'],
+    isHealthyFor: [],
+    notRecommendedFor: ['Allergie aux parfums', 'Grossesse'],
+    category: 'fragrance'
+  },
+  {
+    id: '50',
+    name: 'Eau de toilette homme sport',
+    brand: 'Hugo Boss',
+    image: 'https://images.unsplash.com/photo-1595425970377-c9703cf48849?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80',
+    price: 45.90,
+    nutritionScore: 'C',
+    allergens: ['Parfum', 'Alcool'],
+    healthTags: ['Fraîcheur sportive'],
+    isHealthyFor: [],
+    notRecommendedFor: ['Allergie aux parfums'],
+    category: 'fragrance'
+  },
+  {
+    id: '51',
+    name: 'Savon surgras peaux sèches',
+    brand: 'Dove',
+    image: 'https://images.unsplash.com/photo-1629831455095-3b23fb3e5b80?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80',
+    price: 2.95,
+    nutritionScore: 'A',
+    allergens: ['Parfum'],
+    healthTags: ['Surgras', 'Hydratant'],
+    isHealthyFor: ['Peaux sèches', 'Dermatite atopique'],
+    notRecommendedFor: ['Allergie aux parfums'],
+    category: 'hygiene'
+  },
+  {
+    id: '52',
+    name: 'Gel douche énergisant menthe',
+    brand: 'Le Petit Marseillais',
+    image: 'https://images.unsplash.com/photo-1618773928121-c32242e63f39?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80',
+    price: 1.85,
+    nutritionScore: 'B',
+    allergens: ['Parfum', 'Menthe'],
+    healthTags: ['Énergisant', 'Rafraîchissant'],
+    isHealthyFor: ['Réveil matinal'],
+    notRecommendedFor: ['Allergie à la menthe'],
+    category: 'hygiene'
+  },
+  {
+    id: '53',
+    name: 'Serviettes hygiéniques bio',
+    brand: 'Natracare',
+    image: 'https://images.unsplash.com/photo-1559757175-d16b94c0ca9c?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80',
+    price: 4.95,
+    nutritionScore: 'A',
+    allergens: [],
+    healthTags: ['Bio', 'Sans plastique', 'Biodégradable'],
+    isHealthyFor: ['Peau sensible', 'Écologie'],
+    notRecommendedFor: [],
+    category: 'feminine'
+  },
+  {
+    id: '54',
+    name: 'Tampons en coton bio',
+    brand: 'Organyc',
+    image: 'https://images.unsplash.com/photo-1559757175-d16b94c0ca9c?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80',
+    price: 3.95,
+    nutritionScore: 'A',
+    allergens: [],
+    healthTags: ['Coton bio', 'Sans chlore'],
+    isHealthyFor: ['Peau sensible'],
+    notRecommendedFor: [],
+    category: 'feminine'
+  },
+
+  // NOUVEAUX VÊTEMENTS ET ACCESSOIRES
+  {
+    id: '55',
+    name: 'Jean skinny taille haute',
+    brand: 'Levi\'s',
+    image: 'https://images.unsplash.com/photo-1542272604-787c3835535d?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80',
+    price: 89.90,
+    nutritionScore: 'B',
+    allergens: [],
+    healthTags: ['Coupe moderne', 'Denim de qualité'],
+    isHealthyFor: ['Mode quotidienne'],
+    notRecommendedFor: [],
+    category: 'clothing'
+  },
+  {
+    id: '56',
+    name: 'Robe d\'été en lin bio',
+    brand: 'Thinking MU',
+    image: 'https://images.unsplash.com/photo-1515372039744-b8f02a3ae446?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80',
+    price: 75.00,
+    nutritionScore: 'A',
+    allergens: [],
+    healthTags: ['Bio', 'Lin naturel', 'Éthique'],
+    isHealthyFor: ['Peau sensible', 'Chaleur'],
+    notRecommendedFor: [],
+    category: 'clothing'
+  },
+  {
+    id: '57',
+    name: 'Baskets running femme',
+    brand: 'Nike',
+    image: 'https://images.unsplash.com/photo-1549298916-b41d501d3772?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80',
+    price: 119.90,
+    nutritionScore: 'B',
+    allergens: ['Latex'],
+    healthTags: ['Sport', 'Amorti', 'Respirant'],
+    isHealthyFor: ['Sport', 'Course à pied'],
+    notRecommendedFor: ['Allergie au latex'],
+    category: 'shoes'
+  },
+  {
+    id: '58',
+    name: 'Chaussures de sécurité',
+    brand: 'Timberland Pro',
+    image: 'https://images.unsplash.com/photo-1544966503-7cc5ac882d5f?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80',
+    price: 149.90,
+    nutritionScore: 'B',
+    allergens: [],
+    healthTags: ['Protection', 'Antidérapant', 'Robuste'],
+    isHealthyFor: ['Travail BTP', 'Sécurité'],
+    notRecommendedFor: [],
+    category: 'shoes'
+  },
+  {
+    id: '59',
+    name: 'Sac à main cuir végétal',
+    brand: 'Stella McCartney',
+    image: 'https://images.unsplash.com/photo-1553062407-98eeb64c6a62?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80',
+    price: 299.00,
+    nutritionScore: 'A',
+    allergens: [],
+    healthTags: ['Vegan', 'Cuir végétal', 'Éthique'],
+    isHealthyFor: ['Mode éthique'],
+    notRecommendedFor: [],
+    category: 'accessories'
+  },
+  {
+    id: '60',
+    name: 'Montre connectée sport',
+    brand: 'Garmin',
+    image: 'https://images.unsplash.com/photo-1523275335684-37898b6baf30?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80',
+    price: 249.90,
+    nutritionScore: 'B',
+    allergens: ['Nickel'],
+    healthTags: ['GPS', 'Cardio', 'Étanche'],
+    isHealthyFor: ['Sport', 'Suivi santé'],
+    notRecommendedFor: ['Allergie au nickel'],
+    category: 'accessories'
+  },
+  {
+    id: '61',
+    name: 'Soutien-gorge sport sans armatures',
+    brand: 'Décathlon',
+    image: 'https://images.unsplash.com/photo-1584464491033-06628f3a6b7b?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80',
+    price: 14.99,
+    nutritionScore: 'A',
+    allergens: ['Élasthanne'],
+    healthTags: ['Sans armatures', 'Sport', 'Respirant'],
+    isHealthyFor: ['Sport', 'Confort'],
+    notRecommendedFor: ['Allergie à l\'élasthanne'],
+    category: 'underwear'
+  },
+  {
+    id: '62',
+    name: 'Caleçon en bambou',
+    brand: 'UNIQLO',
+    image: 'https://images.unsplash.com/photo-1489987707025-afc232f7ea0f?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80',
+    price: 9.90,
+    nutritionScore: 'A',
+    allergens: [],
+    healthTags: ['Bambou', 'Antibactérien', 'Respirant'],
+    isHealthyFor: ['Peau sensible', 'Transpiration'],
+    notRecommendedFor: [],
+    category: 'underwear'
+  },
+  {
+    id: '63',
+    name: 'Veste polaire recyclée',
+    brand: 'Patagonia',
+    image: 'https://images.unsplash.com/photo-1551698618-1dfe5d97d256?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80',
+    price: 89.90,
+    nutritionScore: 'A',
+    allergens: [],
+    healthTags: ['Recyclé', 'Éco-responsable', 'Chaud'],
+    isHealthyFor: ['Froid', 'Écologie'],
+    notRecommendedFor: [],
+    category: 'outerwear'
+  },
+  {
+    id: '64',
+    name: 'Pyjama en coton bio',
+    brand: 'Petit Bateau',
+    image: 'https://images.unsplash.com/photo-1620799140408-edc6dcb6d633?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80',
+    price: 45.00,
+    nutritionScore: 'A',
+    allergens: [],
+    healthTags: ['Coton bio', 'Doux', 'Confort'],
+    isHealthyFor: ['Sommeil', 'Peau sensible'],
+    notRecommendedFor: [],
+    category: 'sleepwear'
+  },
+
+  // PRODUITS POUR BÉBÉS ET ENFANTS
+  {
+    id: '65',
+    name: 'Petit pot légumes bio 6 mois',
+    brand: 'Blédina',
+    image: 'https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80',
+    price: 1.25,
+    nutritionScore: 'A',
+    allergens: [],
+    healthTags: ['Bio', 'Sans sel ajouté', '6 mois+'],
+    isHealthyFor: ['Diversification alimentaire'],
+    notRecommendedFor: ['Moins de 6 mois'],
+    category: 'baby'
+  },
+  {
+    id: '66',
+    name: 'Lingettes bébé sans parfum',
+    brand: 'Pampers',
+    image: 'https://images.unsplash.com/photo-1607793002871-c73a8b15c2b7?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80',
+    price: 3.95,
+    nutritionScore: 'A',
+    allergens: [],
+    healthTags: ['Sans parfum', 'Hypoallergénique'],
+    isHealthyFor: ['Peau sensible de bébé'],
+    notRecommendedFor: [],
+    category: 'baby'
+  },
+  {
+    id: '67',
+    name: 'Shampoing doux bébé',
+    brand: 'Mustela',
+    image: 'https://images.unsplash.com/photo-1584464491034-06628f3a6b7b?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80',
+    price: 6.90,
+    nutritionScore: 'A',
+    allergens: [],
+    healthTags: ['Doux', 'Ne pique pas les yeux'],
+    isHealthyFor: ['Cuir chevelu bébé'],
+    notRecommendedFor: [],
+    category: 'baby'
+  },
+
+  // PRODUITS MÉNAGERS SUPPLÉMENTAIRES
+  {
+    id: '68',
+    name: 'Nettoyant multi-surfaces citron',
+    brand: 'Cif',
+    image: 'https://images.unsplash.com/photo-1603796846097-bee99e4a601f?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80',
+    price: 2.85,
+    nutritionScore: 'B',
+    allergens: ['Parfum', 'Citron'],
+    healthTags: ['Multi-surfaces', 'Dégraissant'],
+    isHealthyFor: [],
+    notRecommendedFor: ['Allergie aux agrumes'],
+    category: 'household'
+  },
+  {
+    id: '69',
+    name: 'Liquide vaisselle concentré',
+    brand: 'Paic',
+    image: 'https://images.unsplash.com/photo-1585413410666-910bbe936c44?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80',
+    price: 1.95,
+    nutritionScore: 'B',
+    allergens: ['Parfum'],
+    healthTags: ['Concentré', 'Dégraissant'],
+    isHealthyFor: [],
+    notRecommendedFor: ['Peau très sensible'],
+    category: 'household'
+  },
+  {
+    id: '70',
+    name: 'Adoucissant hypoallergénique',
+    brand: 'Lenor',
+    image: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80',
+    price: 3.45,
+    nutritionScore: 'A',
+    allergens: [],
+    healthTags: ['Hypoallergénique', 'Douceur'],
+    isHealthyFor: ['Peau sensible', 'Bébés'],
+    notRecommendedFor: [],
+    category: 'household'
   }
 ];
