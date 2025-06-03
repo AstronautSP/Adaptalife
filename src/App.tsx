@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
@@ -15,6 +14,8 @@ import Accessibility from "./pages/Accessibility";
 import NotFound from "./pages/NotFound";
 import MapView from "./pages/MapView";
 import SensoryShield from "./components/ui/SensoryShield";
+import Products from "./pages/Products";
+import Favorites from "./pages/Favorites";
 
 const queryClient = new QueryClient();
 
@@ -46,6 +47,8 @@ const App = () => {
 
           <Routes>
             <Route path="/" element={<Index />} />
+            <Route path="/products" element={<Products />} />
+            <Route path="/favorites" element={<Favorites />} />
             <Route path="/product/:productId" element={<ProductView />} />
             <Route path="/settings" element={<Settings />} />
             <Route path="/accessibility" element={<Accessibility />} />
