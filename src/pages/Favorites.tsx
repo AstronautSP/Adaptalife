@@ -1,7 +1,7 @@
 
 import { useState, useEffect } from 'react';
 import Header from '@/components/layout/Header';
-import { ProductCard } from '@/components/ui/ProductCard';
+import ProductCard from '@/components/ui/ProductCard';
 import { products } from '@/data/products';
 import { Heart } from 'lucide-react';
 

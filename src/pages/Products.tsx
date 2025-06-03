@@ -1,8 +1,8 @@
 
 import { useState } from 'react';
 import Header from '@/components/layout/Header';
-import { CategoryPicker } from '@/components/ui/CategoryPicker';
-import { ProductCard } from '@/components/ui/ProductCard';
+import CategoryPicker from '@/components/ui/CategoryPicker';
+import ProductCard from '@/components/ui/ProductCard';
 import { products } from '@/data/products';
 
 const Products = () => {
@@ -20,8 +20,8 @@ const Products = () => {
           <div className="mb-8">
             <h1 className="text-3xl font-bold mb-4">Tous les produits</h1>
             <CategoryPicker 
-              selectedCategory={selectedCategory}
-              onCategoryChange={setSelectedCategory}
+              activeCategory={selectedCategory}
+              onChange={setSelectedCategory}
             />
           </div>
           
