@@ -460,8 +460,6 @@ export const products: Product[] = [
     notRecommendedFor: ['Allergie aux parfums'],
     category: 'hygiene'
   },
-
-  // NOUVEAUX PRODUITS ALIMENTAIRES
   {
     id: '32',
     name: 'Roquefort AOP',
@@ -644,8 +642,6 @@ export const products: Product[] = [
     notRecommendedFor: [],
     category: 'spices'
   },
-
-  // NOUVEAUX PRODUITS COSMÉTIQUES ET HYGIÈNE
   {
     id: '46',
     name: 'Rouge à lèvres mat longue tenue',
@@ -763,8 +759,6 @@ export const products: Product[] = [
     notRecommendedFor: [],
     category: 'feminine'
   },
-
-  // NOUVEAUX VÊTEMENTS ET ACCESSOIRES
   {
     id: '55',
     name: 'Jean skinny taille haute',
@@ -895,8 +889,6 @@ export const products: Product[] = [
     notRecommendedFor: [],
     category: 'sleepwear'
   },
-
-  // PRODUITS POUR BÉBÉS ET ENFANTS
   {
     id: '65',
     name: 'Petit pot légumes bio 6 mois',
@@ -936,8 +928,6 @@ export const products: Product[] = [
     notRecommendedFor: [],
     category: 'baby'
   },
-
-  // PRODUITS MÉNAGERS SUPPLÉMENTAIRES
   {
     id: '68',
     name: 'Nettoyant multi-surfaces citron',
@@ -976,5 +966,533 @@ export const products: Product[] = [
     isHealthyFor: ['Peau sensible', 'Bébés'],
     notRecommendedFor: [],
     category: 'household'
+  },
+
+  // NOUVEAUX PRODUITS ALIMENTAIRES SUPPLÉMENTAIRES
+  {
+    id: '71',
+    name: 'Lait entier bio',
+    brand: 'Lactel',
+    image: 'https://images.unsplash.com/photo-1550583724-b2692b85169f?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80',
+    price: 1.35,
+    nutritionScore: 'B',
+    allergens: ['Lait'],
+    healthTags: ['Bio', 'Riche en calcium'],
+    isHealthyFor: ['Croissance', 'Santé osseuse'],
+    notRecommendedFor: ['Intolérance au lactose'],
+    category: 'dairy'
+  },
+  {
+    id: '72',
+    name: 'Beurre doux AOP',
+    brand: 'Président',
+    image: 'https://images.unsplash.com/photo-1589985270826-4b7bb135bc9d?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80',
+    price: 2.85,
+    nutritionScore: 'D',
+    allergens: ['Lait'],
+    healthTags: ['AOP', 'Beurre traditionnel'],
+    isHealthyFor: [],
+    notRecommendedFor: ['Cholestérol élevé', 'Régime hypocalorique'],
+    category: 'dairy'
+  },
+  {
+    id: '73',
+    name: 'Œufs bio plein air',
+    brand: 'Matines',
+    image: 'https://images.unsplash.com/photo-1586281380349-632531db7ed4?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80',
+    price: 3.45,
+    nutritionScore: 'A',
+    allergens: ['Œuf'],
+    healthTags: ['Bio', 'Plein air', 'Protéines complètes'],
+    isHealthyFor: ['Sportifs', 'Croissance'],
+    notRecommendedFor: ['Allergie aux œufs'],
+    category: 'dairy'
+  },
+  {
+    id: '74',
+    name: 'Baguette tradition',
+    brand: 'Banette',
+    image: 'https://images.unsplash.com/photo-1549931319-a545dcf3bc73?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80',
+    price: 1.25,
+    nutritionScore: 'C',
+    allergens: ['Gluten'],
+    healthTags: ['Tradition française'],
+    isHealthyFor: [],
+    notRecommendedFor: ['Intolérance au gluten', 'Diabète'],
+    category: 'bakery'
+  },
+  {
+    id: '75',
+    name: 'Viennoiseries aux amandes',
+    brand: 'Paul',
+    image: 'https://images.unsplash.com/photo-1586444248902-2f64eddc13df?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80',
+    price: 4.50,
+    nutritionScore: 'D',
+    allergens: ['Gluten', 'Lait', 'Œuf', 'Fruits à coque'],
+    healthTags: ['Artisanal'],
+    isHealthyFor: [],
+    notRecommendedFor: ['Diabète', 'Allergies multiples'],
+    category: 'bakery'
+  },
+  {
+    id: '76',
+    name: 'Escalope de dinde',
+    brand: 'Fleury Michon',
+    image: 'https://images.unsplash.com/photo-1548943487-a2e4e43b4853?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80',
+    price: 5.95,
+    nutritionScore: 'A',
+    allergens: [],
+    healthTags: ['Maigre', 'Riche en protéines'],
+    isHealthyFor: ['Régime protéiné', 'Sportifs'],
+    notRecommendedFor: [],
+    category: 'meat'
+  },
+  {
+    id: '77',
+    name: 'Steak haché 5% MG',
+    brand: 'Charal',
+    image: 'https://images.unsplash.com/photo-1588347818107-b81b25df3c12?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80',
+    price: 7.25,
+    nutritionScore: 'B',
+    allergens: [],
+    healthTags: ['Faible en gras', 'Riche en fer'],
+    isHealthyFor: ['Sportifs', 'Anémie'],
+    notRecommendedFor: ['Régime végétarien'],
+    category: 'meat'
+  },
+  {
+    id: '78',
+    name: 'Pommes Golden bio',
+    brand: 'Vergers Écoresponsables',
+    image: 'https://images.unsplash.com/photo-1568702846914-96b305d2aaeb?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80',
+    price: 2.85,
+    nutritionScore: 'A',
+    allergens: [],
+    healthTags: ['Bio', 'Riche en fibres', 'Antioxydants'],
+    isHealthyFor: ['Transit intestinal', 'Cholestérol'],
+    notRecommendedFor: [],
+    category: 'fruits'
+  },
+  {
+    id: '79',
+    name: 'Épinards frais bio',
+    brand: 'Jardin BiO étic',
+    image: 'https://images.unsplash.com/photo-1576045057995-568f588f82fb?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80',
+    price: 2.45,
+    nutritionScore: 'A',
+    allergens: [],
+    healthTags: ['Bio', 'Riche en fer', 'Vitamines'],
+    isHealthyFor: ['Anémie', 'Grossesse'],
+    notRecommendedFor: [],
+    category: 'fruits'
+  },
+  {
+    id: '80',
+    name: 'Chocolat au lait',
+    brand: 'Milka',
+    image: 'https://images.unsplash.com/photo-1511381939415-e44015466834?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80',
+    price: 2.15,
+    nutritionScore: 'D',
+    allergens: ['Lait', 'Soja'],
+    healthTags: ['Plaisir'],
+    isHealthyFor: [],
+    notRecommendedFor: ['Diabète', 'Intolérance au lactose'],
+    category: 'snacks'
+  },
+  {
+    id: '81',
+    name: 'Barres céréales bio',
+    brand: 'Grillon d\'Or',
+    image: 'https://images.unsplash.com/photo-1574484284002-952d92456975?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80',
+    price: 3.95,
+    nutritionScore: 'B',
+    allergens: ['Gluten', 'Fruits à coque'],
+    healthTags: ['Bio', 'Fibres', 'Énergie'],
+    isHealthyFor: ['Sportifs', 'Petit-déjeuner'],
+    notRecommendedFor: ['Allergie aux noix'],
+    category: 'snacks'
+  },
+  {
+    id: '82',
+    name: 'Coca-Cola Classic',
+    brand: 'Coca-Cola',
+    image: 'https://images.unsplash.com/photo-1581636625402-29b2a704ef13?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80',
+    price: 1.45,
+    nutritionScore: 'E',
+    allergens: [],
+    healthTags: [],
+    isHealthyFor: [],
+    notRecommendedFor: ['Diabète', 'Régime hypocalorique'],
+    category: 'beverages'
+  },
+  {
+    id: '83',
+    name: 'Thé vert bio',
+    brand: 'Kusmi Tea',
+    image: 'https://images.unsplash.com/photo-1597318380823-f8537b98bd32?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80',
+    price: 8.90,
+    nutritionScore: 'A',
+    allergens: [],
+    healthTags: ['Bio', 'Antioxydants', 'Sans calories'],
+    isHealthyFor: ['Hydratation', 'Détox'],
+    notRecommendedFor: ['Sensibilité à la théine'],
+    category: 'beverages'
+  },
+  {
+    id: '84',
+    name: 'Glace vanille artisanale',
+    brand: 'Häagen-Dazs',
+    image: 'https://images.unsplash.com/photo-1563805042-7684c019e1cb?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80',
+    price: 5.95,
+    nutritionScore: 'D',
+    allergens: ['Lait', 'Œuf'],
+    healthTags: ['Artisanal', 'Ingrédients naturels'],
+    isHealthyFor: [],
+    notRecommendedFor: ['Diabète', 'Intolérance au lactose'],
+    category: 'frozen'
+  },
+  {
+    id: '85',
+    name: 'Céréales muesli bio',
+    brand: 'Bjorg',
+    image: 'https://images.unsplash.com/photo-1571067401002-05a0127c6c6f?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80',
+    price: 4.25,
+    nutritionScore: 'B',
+    allergens: ['Gluten', 'Fruits à coque'],
+    healthTags: ['Bio', 'Fibres', 'Sans sucre ajouté'],
+    isHealthyFor: ['Transit intestinal', 'Petit-déjeuner équilibré'],
+    notRecommendedFor: ['Allergie aux noix'],
+    category: 'cereals'
+  },
+  {
+    id: '86',
+    name: 'Moutarde de Dijon',
+    brand: 'Maille',
+    image: 'https://images.unsplash.com/photo-1620016779964-4a13b20e6e5b?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80',
+    price: 2.35,
+    nutritionScore: 'B',
+    allergens: ['Sulfites'],
+    healthTags: ['Traditionnelle', 'Sans conservateurs'],
+    isHealthyFor: ['Digestion'],
+    notRecommendedFor: ['Allergie aux sulfites'],
+    category: 'condiments'
+  },
+  {
+    id: '87',
+    name: 'Quinoa bio',
+    brand: 'Priméal',
+    image: 'https://images.unsplash.com/photo-1586560002711-aaac16813c0a?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80',
+    price: 5.45,
+    nutritionScore: 'A',
+    allergens: [],
+    healthTags: ['Bio', 'Sans gluten', 'Protéines complètes'],
+    isHealthyFor: ['Végétariens', 'Sans gluten'],
+    notRecommendedFor: [],
+    category: 'pasta'
+  },
+  {
+    id: '88',
+    name: 'Huile de coco vierge',
+    brand: 'Emile Noël',
+    image: 'https://images.unsplash.com/photo-1601152703109-56bb73da6e9d?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80',
+    price: 7.90,
+    nutritionScore: 'C',
+    allergens: [],
+    healthTags: ['Vierge', 'Première pression', 'Bio'],
+    isHealthyFor: ['Cuisson haute température'],
+    notRecommendedFor: ['Cholestérol élevé'],
+    category: 'oils'
+  },
+
+  // NOUVEAUX PRODUITS COSMÉTIQUES ET HYGIÈNE
+  {
+    id: '89',
+    name: 'Crème de jour anti-âge',
+    brand: 'L\'Oréal',
+    image: 'https://images.unsplash.com/photo-1570194065650-d99fb4bedf0d?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80',
+    price: 18.90,
+    nutritionScore: 'B',
+    allergens: ['Parfum'],
+    healthTags: ['Anti-âge', 'Hydratant'],
+    isHealthyFor: ['Peau mature'],
+    notRecommendedFor: ['Allergie aux parfums'],
+    category: 'skin'
+  },
+  {
+    id: '90',
+    name: 'Sérum vitamine C',
+    brand: 'The Ordinary',
+    image: 'https://images.unsplash.com/photo-1599450759970-4e86ee6d1c90?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80',
+    price: 12.50,
+    nutritionScore: 'A',
+    allergens: [],
+    healthTags: ['Antioxydant', 'Éclat'],
+    isHealthyFor: ['Taches pigmentaires', 'Anti-âge'],
+    notRecommendedFor: ['Peau très sensible'],
+    category: 'skin'
+  },
+  {
+    id: '91',
+    name: 'Après-shampoing réparateur',
+    brand: 'Kérastase',
+    image: 'https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80',
+    price: 24.90,
+    nutritionScore: 'B',
+    allergens: ['Parfum'],
+    healthTags: ['Réparateur', 'Nutrition'],
+    isHealthyFor: ['Cheveux abîmés'],
+    notRecommendedFor: ['Allergie aux parfums'],
+    category: 'hair'
+  },
+  {
+    id: '92',
+    name: 'Masque capillaire maison',
+    brand: 'Garnier',
+    image: 'https://images.unsplash.com/photo-1617897903246-719242758050?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80',
+    price: 7.95,
+    nutritionScore: 'B',
+    allergens: ['Parfum'],
+    healthTags: ['Hydratant', 'Réparateur'],
+    isHealthyFor: ['Cheveux secs'],
+    notRecommendedFor: ['Cuir chevelu sensible'],
+    category: 'hair'
+  },
+  {
+    id: '93',
+    name: 'Brosse à dents électrique',
+    brand: 'Oral-B',
+    image: 'https://images.unsplash.com/photo-1606107557195-0e29a4b5b4aa?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80',
+    price: 45.90,
+    nutritionScore: 'A',
+    allergens: [],
+    healthTags: ['Efficace', 'Timer intégré'],
+    isHealthyFor: ['Hygiène dentaire'],
+    notRecommendedFor: [],
+    category: 'oral'
+  },
+  {
+    id: '94',
+    name: 'Bain de bouche sans alcool',
+    brand: 'Listerine',
+    image: 'https://images.unsplash.com/photo-1609840114035-3c981b782dfe?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80',
+    price: 4.95,
+    nutritionScore: 'A',
+    allergens: ['Menthe'],
+    healthTags: ['Sans alcool', 'Protection complète'],
+    isHealthyFor: ['Hygiène bucco-dentaire'],
+    notRecommendedFor: ['Allergie à la menthe'],
+    category: 'oral'
+  },
+  {
+    id: '95',
+    name: 'Eyeliner longue tenue',
+    brand: 'Urban Decay',
+    image: 'https://images.unsplash.com/photo-1583241800398-4be3b53bee0a?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80',
+    price: 22.00,
+    nutritionScore: 'B',
+    allergens: ['Parfum'],
+    healthTags: ['Waterproof', 'Longue tenue'],
+    isHealthyFor: ['Maquillage intense'],
+    notRecommendedFor: ['Yeux sensibles'],
+    category: 'makeup'
+  },
+  {
+    id: '96',
+    name: 'Poudre libre translucide',
+    brand: 'Laura Mercier',
+    image: 'https://images.unsplash.com/photo-1596462502278-27bfdc403348?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80',
+    price: 38.00,
+    nutritionScore: 'A',
+    allergens: [],
+    healthTags: ['Matifiant', 'Tous types de peau'],
+    isHealthyFor: ['Peau grasse', 'Finition maquillage'],
+    notRecommendedFor: [],
+    category: 'makeup'
+  },
+
+  // NOUVEAUX VÊTEMENTS ET ACCESSOIRES
+  {
+    id: '97',
+    name: 'Chemise en lin blanc',
+    brand: 'Massimo Dutti',
+    image: 'https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80',
+    price: 59.95,
+    nutritionScore: 'A',
+    allergens: [],
+    healthTags: ['Lin naturel', 'Respirant'],
+    isHealthyFor: ['Chaleur', 'Peau sensible'],
+    notRecommendedFor: [],
+    category: 'clothing'
+  },
+  {
+    id: '98',
+    name: 'Jupe plissée midi',
+    brand: 'Zara',
+    image: 'https://images.unsplash.com/photo-1583496661160-fb5886a13d94?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80',
+    price: 29.95,
+    nutritionScore: 'B',
+    allergens: [],
+    healthTags: ['Coupe flatteuse'],
+    isHealthyFor: ['Mode féminine'],
+    notRecommendedFor: [],
+    category: 'clothing'
+  },
+  {
+    id: '99',
+    name: 'Escarpins confort',
+    brand: 'Clarks',
+    image: 'https://images.unsplash.com/photo-1543163521-1bf539c55dd2?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80',
+    price: 89.95,
+    nutritionScore: 'B',
+    allergens: [],
+    healthTags: ['Confort', 'Semelle amortissante'],
+    isHealthyFor: ['Bureau', 'Marche prolongée'],
+    notRecommendedFor: [],
+    category: 'shoes'
+  },
+  {
+    id: '100',
+    name: 'Sandales orthopédiques',
+    brand: 'Scholl',
+    image: 'https://images.unsplash.com/photo-1603487742131-4160ec999306?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80',
+    price: 65.00,
+    nutritionScore: 'A',
+    allergens: [],
+    healthTags: ['Orthopédiques', 'Soutien plantaire'],
+    isHealthyFor: ['Problèmes de pieds', 'Plantaire'],
+    notRecommendedFor: [],
+    category: 'adaptive-shoes'
+  },
+  {
+    id: '101',
+    name: 'Ceinture cuir ajustable',
+    brand: 'Tommy Hilfiger',
+    image: 'https://images.unsplash.com/photo-1553062407-98eeb64c6a62?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80',
+    price: 45.00,
+    nutritionScore: 'B',
+    allergens: [],
+    healthTags: ['Cuir véritable', 'Ajustable'],
+    isHealthyFor: ['Style classique'],
+    notRecommendedFor: [],
+    category: 'accessories'
+  },
+  {
+    id: '102',
+    name: 'Lunettes anti-lumière bleue',
+    brand: 'Blue Light',
+    image: 'https://images.unsplash.com/photo-1577803645773-f96470509666?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80',
+    price: 35.90,
+    nutritionScore: 'A',
+    allergens: [],
+    healthTags: ['Protection écrans', 'Confort visuel'],
+    isHealthyFor: ['Travail sur écran', 'Fatigue oculaire'],
+    notRecommendedFor: [],
+    category: 'accessories'
+  },
+  {
+    id: '103',
+    name: 'Culotte menstruelle bio',
+    brand: 'Réjeanne',
+    image: 'https://images.unsplash.com/photo-1584464491033-06628f3a6b7b?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80',
+    price: 25.00,
+    nutritionScore: 'A',
+    allergens: [],
+    healthTags: ['Bio', 'Zéro déchet', 'Absorption'],
+    isHealthyFor: ['Règles', 'Écologie'],
+    notRecommendedFor: [],
+    category: 'underwear'
+  },
+  {
+    id: '104',
+    name: 'Boxer anti-irritation',
+    brand: 'Dim',
+    image: 'https://images.unsplash.com/photo-1489987707025-afc232f7ea0f?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80',
+    price: 12.95,
+    nutritionScore: 'A',
+    allergens: [],
+    healthTags: ['Anti-irritation', 'Doux'],
+    isHealthyFor: ['Peau sensible', 'Sport'],
+    notRecommendedFor: [],
+    category: 'underwear'
+  },
+  {
+    id: '105',
+    name: 'Manteau hiver imperméable',
+    brand: 'The North Face',
+    image: 'https://images.unsplash.com/photo-1551698618-1dfe5d97d256?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80',
+    price: 189.90,
+    nutritionScore: 'B',
+    allergens: [],
+    healthTags: ['Imperméable', 'Isolant', 'Respirant'],
+    isHealthyFor: ['Froid intense', 'Activités extérieures'],
+    notRecommendedFor: [],
+    category: 'outerwear'
+  },
+  {
+    id: '106',
+    name: 'Chemise de nuit coton',
+    brand: 'Etam',
+    image: 'https://images.unsplash.com/photo-1620799140408-edc6dcb6d633?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80',
+    price: 24.95,
+    nutritionScore: 'A',
+    allergens: [],
+    healthTags: ['Coton doux', 'Confort'],
+    isHealthyFor: ['Sommeil', 'Peau sensible'],
+    notRecommendedFor: [],
+    category: 'sleepwear'
+  },
+  
+  // PRODUITS SPÉCIALISÉS SUPPLÉMENTAIRES
+  {
+    id: '107',
+    name: 'Lait de croissance 3ème âge',
+    brand: 'Gallia',
+    image: 'https://images.unsplash.com/photo-1614267861476-0d129972a0f4?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80',
+    price: 15.90,
+    nutritionScore: 'A',
+    allergens: ['Lait'],
+    healthTags: ['Enrichi vitamines', 'Croissance'],
+    isHealthyFor: ['Enfants 1-3 ans'],
+    notRecommendedFor: ['Allergie au lait'],
+    category: 'baby'
+  },
+  {
+    id: '108',
+    name: 'Compotes sans sucre ajouté',
+    brand: 'Andros',
+    image: 'https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80',
+    price: 2.45,
+    nutritionScore: 'A',
+    allergens: [],
+    healthTags: ['Sans sucre ajouté', 'Fruits'],
+    isHealthyFor: ['Enfants', 'Diabète'],
+    notRecommendedFor: [],
+    category: 'baby'
+  },
+  {
+    id: '109',
+    name: 'Déodorant spray',
+    brand: 'Nivea',
+    image: 'https://images.unsplash.com/photo-1626279235845-c697f8406e53?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80',
+    price: 3.95,
+    nutritionScore: 'B',
+    allergens: ['Parfum', 'Alcool'],
+    healthTags: ['Longue durée', 'Fraîcheur'],
+    isHealthyFor: ['Protection quotidienne'],
+    notRecommendedFor: ['Peau très sensible'],
+    category: 'hygiene'
+  },
+  {
+    id: '110',
+    name: 'Parfum d\'ambiance naturel',
+    brand: 'Esteban',
+    image: 'https://images.unsplash.com/photo-1541643600914-78b084683601?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80',
+    price: 24.90,
+    nutritionScore: 'A',
+    allergens: ['Parfum'],
+    healthTags: ['Naturel', 'Huiles essentielles'],
+    isHealthyFor: ['Ambiance zen'],
+    notRecommendedFor: ['Allergie aux huiles essentielles'],
+    category: 'fragrance'
   }
 ];
