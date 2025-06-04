@@ -35,6 +35,7 @@ export const productCategories: ProductCategory[] = [
   { id: 'farmers-eggs', name: 'Œufs fermiers', mainCategory: 'farmers' },
   { id: 'farmers-honey', name: 'Miel fermier', mainCategory: 'farmers' },
   { id: 'farmers-bread', name: 'Pain fermier', mainCategory: 'farmers' },
+  { id: 'farmers-seafood', name: 'Produits de la mer fermiers', mainCategory: 'farmers' },
 ];
 
 export const products: Product[] = [
@@ -435,5 +436,103 @@ export const products: Product[] = [
     description: 'Pain de seigle complet, farine moulue sur meule de pierre',
     ingredients: ['Farine de seigle complète', 'Eau', 'Levain', 'Sel'],
     sustainability: ['Mouture traditionnelle', 'Céréales locales']
+  },
+
+  // Produits fermiers - Produits de la mer
+  {
+    id: 'farm-oysters-fine-claire',
+    name: 'Huîtres fines de Claire',
+    brand: 'Ostréiculture de l\'Atlantique',
+    image: 'https://images.unsplash.com/photo-1618160702438-9b02ab6515c9?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3',
+    price: 24.50,
+    nutritionScore: 'A',
+    allergens: ['mollusques'],
+    healthTags: ['high-protein', 'omega-3', 'local'],
+    isHealthyFor: ['adultes', 'sportifs'],
+    notRecommendedFor: ['allergiques aux mollusques', 'femmes enceintes'],
+    category: 'farmers-seafood',
+    description: 'Huîtres élevées en claires ostréicoles, goût iodé authentique',
+    ingredients: ['Huîtres'],
+    sustainability: ['Élevage durable', 'Purification naturelle', 'Circuit court']
+  },
+  {
+    id: 'farm-mussels-bouchot',
+    name: 'Moules de bouchot AOP',
+    brand: 'Mytiliculture Baie du Mont',
+    image: '/placeholder.svg',
+    price: 8.90,
+    nutritionScore: 'A',
+    allergens: ['mollusques'],
+    healthTags: ['high-protein', 'low-fat', 'local'],
+    isHealthyFor: ['sportifs', 'adultes'],
+    notRecommendedFor: ['allergiques aux mollusques'],
+    category: 'farmers-seafood',
+    description: 'Moules élevées sur bouchots, saveur marine intense',
+    ingredients: ['Moules'],
+    sustainability: ['Élevage sur estran', 'Méthode traditionnelle', 'AOP']
+  },
+  {
+    id: 'farm-scallops-diver',
+    name: 'Coquilles Saint-Jacques plongée',
+    brand: 'Pêcherie Artisanale Bretonne',
+    image: '/placeholder.svg',
+    price: 32.00,
+    nutritionScore: 'A',
+    allergens: ['mollusques'],
+    healthTags: ['high-protein', 'low-fat', 'sustainable'],
+    isHealthyFor: ['adultes', 'sportifs'],
+    notRecommendedFor: ['allergiques aux mollusques'],
+    category: 'farmers-seafood',
+    description: 'Coquilles Saint-Jacques pêchées à la plongée, fraîcheur garantie',
+    ingredients: ['Coquilles Saint-Jacques'],
+    sustainability: ['Pêche artisanale', 'Méthode sélective', 'Préservation des fonds']
+  },
+  {
+    id: 'farm-sea-bass-aquaculture',
+    name: 'Bar d\'élevage bio',
+    brand: 'Aquaculture Marine Durable',
+    image: '/placeholder.svg',
+    price: 22.80,
+    nutritionScore: 'B',
+    allergens: ['poisson'],
+    healthTags: ['organic', 'omega-3', 'local'],
+    isHealthyFor: ['adultes', 'enfants', 'sportifs'],
+    notRecommendedFor: ['allergiques au poisson'],
+    category: 'farmers-seafood',
+    description: 'Bar élevé en aquaculture biologique, alimentation naturelle',
+    ingredients: ['Bar d\'élevage biologique'],
+    sustainability: ['Aquaculture biologique', 'Alimentation durable', 'Bien-être animal']
+  },
+  {
+    id: 'farm-seaweed-wakame',
+    name: 'Algues wakamé fraîches',
+    brand: 'Algoculteur des Côtes',
+    image: '/placeholder.svg',
+    price: 12.50,
+    nutritionScore: 'A',
+    allergens: [],
+    healthTags: ['organic', 'high-fiber', 'vegan'],
+    isHealthyFor: ['végétaliens', 'sportifs', 'tous'],
+    notRecommendedFor: ['personnes sous anticoagulants'],
+    category: 'farmers-seafood',
+    description: 'Algues wakamé cultivées en mer, récoltées à la main',
+    ingredients: ['Algues wakamé'],
+    sustainability: ['Culture marine durable', 'Récolte manuelle', 'Zéro déchet']
+  },
+  {
+    id: 'farm-sea-salt-artisanal',
+    name: 'Sel de mer artisanal',
+    brand: 'Salines Traditionelles',
+    image: '/placeholder.svg',
+    price: 8.20,
+    nutritionScore: 'B',
+    allergens: [],
+    healthTags: ['artisanal', 'natural', 'local'],
+    isHealthyFor: ['tous (avec modération)'],
+    notRecommendedFor: ['personnes hypertendues'],
+    category: 'farmers-seafood',
+    description: 'Sel de mer récolté selon les méthodes traditionnelles',
+    ingredients: ['Sel de mer'],
+    sustainability: ['Méthode traditionnelle', 'Évaporation naturelle', 'Préservation du patrimoine']
   }
 ];
