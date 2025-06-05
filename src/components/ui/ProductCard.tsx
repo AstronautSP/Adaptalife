@@ -1,6 +1,7 @@
+
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Info, Tally1, AlertTriangle, Shirt, Droplet, Bath, ShoppingBag, Scissors } from 'lucide-react';
+import { Info, Tally1, AlertTriangle, Shirt, Droplet, Bath, ShoppingBag, Scissors, Fish, Wheat, Apple } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
@@ -44,6 +45,20 @@ const getHealthTag = (tag: string) => {
     case 'hypoallergénique': return 'Hypoallergénique';
     case 'adapté-pmr': return 'Adapté PMR';
     case 'facile-à-enfiler': return 'Facile à enfiler';
+    case 'local': return 'Local';
+    case 'seasonal': return 'De saison';
+    case 'raw': return 'Cru';
+    case 'artisanal': return 'Artisanal';
+    case 'free-range': return 'Plein air';
+    case 'grass-fed': return 'Nourri à l\'herbe';
+    case 'omega-3': return 'Riche en oméga-3';
+    case 'sustainable': return 'Durable';
+    case 'heritage-variety': return 'Variété ancienne';
+    case 'single-flower': return 'Monofloral';
+    case 'sourdough': return 'Au levain';
+    case 'whole-grain': return 'Complet';
+    case 'vegan': return 'Végan';
+    case 'natural': return 'Naturel';
     default: return tag;
   }
 };
@@ -67,6 +82,17 @@ const getCategoryIcon = (category?: string) => {
     case 'accessories':
     case 'shoes':
       return <ShoppingBag className="h-4 w-4 mr-1" />;
+    case 'farmers-seafood':
+      return <Fish className="h-4 w-4 mr-1" />;
+    case 'farmers-bread':
+    case 'farmers-honey':
+      return <Wheat className="h-4 w-4 mr-1" />;
+    case 'farmers-vegetables':
+    case 'farmers-fruits':
+    case 'farmers-dairy':
+    case 'farmers-meat':
+    case 'farmers-eggs':
+      return <Apple className="h-4 w-4 mr-1" />;
     default:
       return null;
   }
@@ -75,10 +101,15 @@ const getCategoryIcon = (category?: string) => {
 const getMainCategory = (category?: string): string => {
   const personalCareCategories = ['hygiene', 'cosmetics', 'hair', 'skin', 'oral'];
   const clothingCategories = ['clothing', 'shoes', 'accessories', 'adaptive', 'underwear'];
+  const farmersCategories = [
+    'farmers-vegetables', 'farmers-fruits', 'farmers-dairy', 'farmers-meat', 
+    'farmers-eggs', 'farmers-honey', 'farmers-bread', 'farmers-seafood'
+  ];
   
   if (!category) return 'food';
   if (personalCareCategories.includes(category)) return 'personal_care';
   if (clothingCategories.includes(category)) return 'clothing';
+  if (farmersCategories.includes(category)) return 'farmers';
   return 'food';
 };
 
@@ -89,6 +120,8 @@ const getScoreLabel = (product: Product) => {
     return 'Score Matière';
   } else if (mainCategory === 'personal_care') {
     return 'Score Écologique';
+  } else if (mainCategory === 'farmers') {
+    return 'Score Qualité';
   } else {
     return 'Score Nutri-Score';
   }
@@ -180,11 +213,12 @@ const ProductCard = ({ product, className, layout = 'grid' }: ProductCardProps) 
               variant="secondary" 
               className={cn(
                 "bg-black/60 text-white text-xs flex items-center",
-                isApparel && "bg-primary/80"
+                isApparel && "bg-primary/80",
+                mainCategory === 'farmers' && "bg-green-700/80"
               )}
             >
               {getCategoryIcon(product.category)}
-              {product.category}
+              {product.category?.replace('farmers-', '')}
             </Badge>
           </div>
         )}
