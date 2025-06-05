@@ -22,7 +22,7 @@ export const productCategories: ProductCategory[] = [
   { id: 'cosmetics', name: 'Cosmétiques', mainCategory: 'personal_care' },
   { id: 'hair', name: 'Cheveux', mainCategory: 'personal_care' },
   { id: 'skin', name: 'Peau', mainCategory: 'personal_care' },
-   { id: 'oral', name: 'Hygiène buccale', mainCategory: 'personal_care' },
+  { id: 'oral', name: 'Hygiène buccale', mainCategory: 'personal_care' },
   { id: 'clothing', name: 'Vêtements', mainCategory: 'clothing' },
   { id: 'shoes', name: 'Chaussures', mainCategory: 'clothing' },
   { id: 'accessories', name: 'Accessoires', mainCategory: 'clothing' },
@@ -167,7 +167,7 @@ export const products: Product[] = [
     ingredients: ['Pâte de cacao', 'Sucre', 'Beurre de cacao'],
     sustainability: ['Cacao durable', 'Emballage recyclable']
   },
-   {
+  {
     id: 'organic-soap',
     name: 'Savon bio',
     brand: 'Nature et Senteurs',
@@ -200,7 +200,7 @@ export const products: Product[] = [
     sustainability: ['Coton biologique', 'Production éthique']
   },
   
-  // Produits fermiers - Légumes (considérablement étoffés)
+  // Produits fermiers - Légumes
   {
     id: 'farm-carrots-organic',
     name: 'Carottes bio de saison',
@@ -282,7 +282,7 @@ export const products: Product[] = [
     sustainability: ['Agriculture biologique', 'Récolte manuelle']
   },
 
-  // Produits fermiers - Fruits (étoffés)
+  // Produits fermiers - Fruits
   {
     id: 'farm-apples-local',
     name: 'Pommes du verger',
@@ -348,7 +348,7 @@ export const products: Product[] = [
     sustainability: ['AOP', 'Variété protégée', 'Culture traditionnelle']
   },
 
-  // Produits fermiers - Produits laitiers (étoffés)
+  // Produits fermiers - Produits laitiers
   {
     id: 'farm-milk-raw',
     name: 'Lait cru de vache',
@@ -414,7 +414,7 @@ export const products: Product[] = [
     sustainability: ['Élevage extensif', 'Production artisanale']
   },
 
-  // Produits fermiers - Viandes (étoffés)
+  // Produits fermiers - Viandes
   {
     id: 'farm-beef-grass-fed',
     name: 'Bœuf nourri à l\'herbe',
@@ -480,7 +480,7 @@ export const products: Product[] = [
     sustainability: ['Élevage extensif', 'Pâturage d\'altitude', 'Bien-être animal']
   },
 
-  // Produits fermiers - Œufs (étoffés)
+  // Produits fermiers - Œufs
   {
     id: 'farm-eggs-free-range',
     name: 'Œufs de poules élevées au sol',
@@ -530,7 +530,7 @@ export const products: Product[] = [
     sustainability: ['Élevage artisanal', 'Production limitée']
   },
 
-  // Produits fermiers - Miel (étoffés)
+  // Produits fermiers - Miel
   {
     id: 'farm-honey-wildflower',
     name: 'Miel de fleurs sauvages',
@@ -596,7 +596,7 @@ export const products: Product[] = [
     sustainability: ['Forêt durable', 'Apiculture extensive']
   },
 
-  // Produits fermiers - Pain (étoffés)
+  // Produits fermiers - Pain
   {
     id: 'farm-bread-sourdough',
     name: 'Pain au levain naturel',
@@ -662,7 +662,7 @@ export const products: Product[] = [
     sustainability: ['Céréale ancestrale', 'Mouture traditionnelle']
   },
 
-  // Produits fermiers - Produits de la mer (étoffés avec images corrigées)
+  // Produits fermiers - Produits de la mer
   {
     id: 'farm-oysters-fine-claire',
     name: 'Huîtres fines de Claire',
