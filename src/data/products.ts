@@ -1,4 +1,3 @@
-
 import { Product, MainCategory, ProductCategory } from '@/components/ui/product/types';
 
 export const mainCategories: MainCategory[] = [
@@ -52,7 +51,7 @@ export const products: Product[] = [
     isHealthyFor: ['enfants', 'adultes'],
     notRecommendedFor: [],
     category: 'fruits',
-    description: 'Délicieuses pommes biologiques cultivées localement.',
+    description: 'Délicieuses pommes biologiques cultivées localement. Recettes conseillées : Compote maison sans sucre ajouté, Tarte aux pommes allégée avec pâte à l\'avoine, Smoothie pomme-cannelle. Alternatives pour diabétiques : Poires ou fruits rouges en petites portions.',
     ingredients: ['Pommes biologiques'],
     sustainability: ['Agriculture biologique', 'Emballage minimal']
   },
@@ -68,7 +67,7 @@ export const products: Product[] = [
     isHealthyFor: ['coeliaques', 'sensibles au gluten'],
     notRecommendedFor: [],
     category: 'bread',
-    description: 'Pain frais sans gluten, idéal pour les personnes intolérantes.',
+    description: 'Pain frais sans gluten, idéal pour les personnes intolérantes. Recettes conseillées : Toast à l\'avocat et graines, Croque-monsieur végétarien, Pain perdu aux fruits. Alternative classique : Pain complet traditionnel pour non-intolérants.',
     ingredients: ['Farine de riz', 'Amidon de tapioca', 'Levure', 'Huile d\'olive'],
     sustainability: ['Ingrédients durables', 'Production locale']
   },
@@ -84,7 +83,7 @@ export const products: Product[] = [
     isHealthyFor: ['sportifs', 'personnes au régime'],
     notRecommendedFor: [],
     category: 'dairy',
-    description: 'Yogourt crémeux faible en matières grasses, riche en protéines.',
+    description: 'Yogourt crémeux faible en matières grasses, riche en protéines. Recettes conseillées : Parfait aux fruits et granola, Smoothie bowl protéiné, Sauce yogourt aux herbes. Alternative végétale : Yogourt de coco ou d\'amande pour intolérants au lactose.',
     ingredients: ['Lait écrémé', 'Ferments lactiques'],
     sustainability: ['Emballage recyclable', 'Lait de ferme locale']
   },
@@ -100,7 +99,7 @@ export const products: Product[] = [
     isHealthyFor: ['enfants', 'adultes'],
     notRecommendedFor: [],
     category: 'vegetables',
-    description: 'Carottes biologiques croquantes et savoureuses.',
+    description: 'Carottes biologiques croquantes et savoureuses. Recettes conseillées : Soupe de carottes au gingembre, Bâtonnets crus avec houmous, Cake aux carottes sans sucre. Alternative pour diabétiques : Céleri-rave ou radis pour moins de glucides.',
     ingredients: ['Carottes biologiques'],
     sustainability: ['Agriculture biologique', 'Zéro pesticide']
   },
@@ -116,7 +115,7 @@ export const products: Product[] = [
     isHealthyFor: ['végétaliens', 'intolérants au lactose'],
     notRecommendedFor: ['allergiques aux amandes'],
     category: 'beverages',
-    description: 'Lait d\'amande onctueux, sans sucres ajoutés.',
+    description: 'Lait d\'amande onctueux, sans sucres ajoutés. Recettes conseillées : Porridge d\'avoine au lait d\'amande, Smoothie vert, Chia pudding. Alternative pour allergiques : Lait d\'avoine ou de riz sans allergènes.',
     ingredients: ['Amandes', 'Eau'],
     sustainability: ['Production durable', 'Emballage recyclable']
   },
@@ -132,7 +131,7 @@ export const products: Product[] = [
     isHealthyFor: ['sportifs', 'adultes'],
     notRecommendedFor: ['végétariens'],
     category: 'meat',
-    description: 'Poitrine de poulet biologique, élevée en plein air.',
+    description: 'Poitrine de poulet biologique, élevée en plein air. Recettes conseillées : Poulet grillé aux herbes, Curry de poulet léger, Salade César protéinée. Alternative végétarienne : Tofu grillé ou tempeh pour les mêmes protéines.',
     ingredients: ['Poitrine de poulet biologique'],
     sustainability: ['Élevage biologique', 'Alimentation naturelle']
   },
@@ -148,7 +147,7 @@ export const products: Product[] = [
     isHealthyFor: ['diabétiques', 'sportifs'],
     notRecommendedFor: ['coeliaques'],
     category: 'canned',
-    description: 'Pâtes complètes riches en fibres, idéales pour une alimentation équilibrée.',
+    description: 'Pâtes complètes riches en fibres, idéales pour une alimentation équilibrée. Recettes conseillées : Pasta aux légumes grillés, Salade de pâtes méditerranéenne, Bolognaise végétarienne. Alternative sans gluten : Pâtes de riz complet ou de légumineuses.',
     ingredients: ['Semoule de blé complet'],
     sustainability: ['Ingrédients durables', 'Production locale']
   },
@@ -164,7 +163,7 @@ export const products: Product[] = [
     isHealthyFor: ['amateurs de chocolat noir'],
     notRecommendedFor: ['diabétiques (en grande quantité)'],
     category: 'snacks',
-    description: 'Tablette de chocolat noir intense, avec un pourcentage élevé de cacao.',
+    description: 'Tablette de chocolat noir intense, avec un pourcentage élevé de cacao. Recettes conseillées : Mousse au chocolat allégée, Truffes maison, Fondue de fruits. Alternative pour diabétiques : Chocolat noir 90% cacao ou poudre de cacao pure.',
     ingredients: ['Pâte de cacao', 'Sucre', 'Beurre de cacao'],
     sustainability: ['Cacao durable', 'Emballage recyclable']
   },
@@ -180,7 +179,7 @@ export const products: Product[] = [
     isHealthyFor: ['peaux sensibles', 'bébés'],
     notRecommendedFor: [],
     category: 'hygiene',
-    description: 'Savon bio doux pour la peau, sans parfum ni colorant.',
+    description: 'Savon bio doux pour la peau, sans parfum ni colorant. Conseils d\'usage : Idéal pour le lavage quotidien, peut servir de shampoing doux. Alternative pour peaux très sèches : Savon surgras à l\'huile d\'argan ou au karité.',
     ingredients: ['Huile d\'olive biologique', 'Huile de coco biologique', 'Eau', 'Glycérine'],
     sustainability: ['Ingrédients biologiques', 'Emballage minimal', 'Production artisanale']
   },
@@ -196,7 +195,7 @@ export const products: Product[] = [
     isHealthyFor: ['personnes à mobilité réduite'],
     notRecommendedFor: [],
     category: 'adaptive',
-    description: 'T-shirt conçu pour faciliter l\'habillage des personnes à mobilité réduite.',
+    description: 'T-shirt conçu pour faciliter l\'habillage des personnes à mobilité réduite. Caractéristiques : Ouverture dans le dos avec fermetures magnétiques, coutures plates anti-irritation. Alternative standard : T-shirt classique en coton bio pour personnes sans besoins spécifiques.',
     ingredients: ['Coton biologique', 'Fermetures magnétiques'],
     sustainability: ['Coton biologique', 'Production éthique']
   },
@@ -214,7 +213,7 @@ export const products: Product[] = [
     isHealthyFor: ['enfants', 'personnes âgées', 'diabétiques'],
     notRecommendedFor: [],
     category: 'farmers-vegetables',
-    description: 'Carottes cultivées sans pesticides dans notre ferme familiale',
+    description: 'Carottes cultivées sans pesticides dans notre ferme familiale. Recettes fermières : Potage de carottes au thym du jardin, Carottes confites au miel local, Jus de carotte fraîchement pressé. Alternative urbaine : Carottes bio de supermarché.',
     ingredients: ['Carottes biologiques'],
     sustainability: ['Agriculture biologique', 'Circuit court', 'Zéro pesticide']
   },
@@ -230,7 +229,7 @@ export const products: Product[] = [
     isHealthyFor: ['sportifs', 'enfants'],
     notRecommendedFor: [],
     category: 'farmers-vegetables',
-    description: 'Pommes de terre nouvelles récoltées cette semaine',
+    description: 'Pommes de terre nouvelles récoltées cette semaine. Recettes fermières : Gratin dauphinois allégé, Pommes de terre vapeur aux herbes, Salade de pommes de terre tiède. Alternative pour diabétiques : Patates douces ou topinambours avec index glycémique plus bas.',
     ingredients: ['Pommes de terre'],
     sustainability: ['Agriculture locale', 'Récolte fraîche']
   },
@@ -246,7 +245,7 @@ export const products: Product[] = [
     isHealthyFor: ['tous'],
     notRecommendedFor: [],
     category: 'farmers-vegetables',
-    description: 'Variétés anciennes de tomates cultivées avec passion',
+    description: 'Variétés anciennes de tomates cultivées avec passion. Recettes patrimoine : Salade de tomates anciennes à l\'huile d\'olive, Gazpacho coloré, Tarte fine aux tomates multicolores. Alternative hybride : Tomates cerises classiques pour goût plus sucré.',
     ingredients: ['Tomates variétés anciennes'],
     sustainability: ['Biodiversité', 'Semences paysannes', 'Agriculture biologique']
   },
@@ -262,7 +261,7 @@ export const products: Product[] = [
     isHealthyFor: ['tous', 'diabétiques'],
     notRecommendedFor: [],
     category: 'farmers-vegetables',
-    description: 'Poireaux d\'hiver cultivés en pleine terre, saveur authentique',
+    description: 'Poireaux d\'hiver cultivés en pleine terre, saveur authentique. Recettes traditionnelles : Potée aux poireaux et lentilles, Flamiche aux poireaux, Velouté de poireaux pommes de terre. Alternative printanière : Poireaux primeurs ou oignons nouveaux.',
     ingredients: ['Poireaux'],
     sustainability: ['Culture de saison', 'Sans serres chauffées']
   },
@@ -278,7 +277,7 @@ export const products: Product[] = [
     isHealthyFor: ['sportifs', 'végétariens', 'enfants'],
     notRecommendedFor: [],
     category: 'farmers-vegetables',
-    description: 'Jeunes pousses d\'épinards tendres, récoltées à la main',
+    description: 'Jeunes pousses d\'épinards tendres, récoltées à la main. Recettes fraîcheur : Salade d\'épinards aux noix et chèvre, Smoothie vert détox, Épinards sautés à l\'ail. Alternative pour fer : Roquette ou mâche avec vitamines similaires.',
     ingredients: ['Épinards biologiques'],
     sustainability: ['Agriculture biologique', 'Récolte manuelle']
   },
@@ -296,7 +295,7 @@ export const products: Product[] = [
     isHealthyFor: ['enfants', 'personnes âgées'],
     notRecommendedFor: [],
     category: 'farmers-fruits',
-    description: 'Pommes fraîches cueillies dans notre verger familial',
+    description: 'Pommes fraîches cueillies dans notre verger familial. Recettes du verger : Tarte aux pommes de grand-mère, Compote maison, Chutney de pommes aux épices. Alternative exotique : Mangues ou ananas pour vitamines tropicales.',
     ingredients: ['Pommes'],
     sustainability: ['Agriculture raisonnée', 'Verger local']
   },
@@ -312,7 +311,7 @@ export const products: Product[] = [
     isHealthyFor: ['enfants', 'sportifs'],
     notRecommendedFor: [],
     category: 'farmers-fruits',
-    description: 'Fraises biologiques cultivées sans traitement chimique',
+    description: 'Fraises biologiques cultivées sans traitement chimique. Recettes gourmandes : Fraisier léger, Coulis de fraises sans sucre, Salade de fruits rouges. Alternative hiver : Fruits rouges surgelés bio ou framboises.',
     ingredients: ['Fraises biologiques'],
     sustainability: ['Agriculture biologique', 'Cueillette fraîche']
   },
@@ -328,7 +327,7 @@ export const products: Product[] = [
     isHealthyFor: ['enfants', 'diabétiques'],
     notRecommendedFor: [],
     category: 'farmers-fruits',
-    description: 'Poires Conférence juteuses, cultivées en agriculture raisonnée',
+    description: 'Poires Conférence juteuses, cultivées en agriculture raisonnée. Recettes délicates : Poires pochées au vin rouge, Crumble poires-amandes, Salade de poires au roquefort. Alternative tropicale : Papaye ou fruit de la passion.',
     ingredients: ['Poires Conférence'],
     sustainability: ['Agriculture raisonnée', 'Variété traditionnelle']
   },
@@ -344,7 +343,7 @@ export const products: Product[] = [
     isHealthyFor: ['enfants', 'sportifs'],
     notRecommendedFor: [],
     category: 'farmers-fruits',
-    description: 'Mirabelles de Lorraine AOP, petit fruit doré au goût unique',
+    description: 'Mirabelles de Lorraine AOP, petit fruit doré au goût unique. Recettes lorraines : Tarte aux mirabelles, Confiture traditionnelle, Eau-de-vie artisanale. Alternative abricots : Abricots frais avec saveur similaire.',
     ingredients: ['Mirabelles de Lorraine'],
     sustainability: ['AOP', 'Variété protégée', 'Culture traditionnelle']
   },
@@ -362,7 +361,7 @@ export const products: Product[] = [
     isHealthyFor: ['adultes'],
     notRecommendedFor: ['femmes enceintes', 'jeunes enfants', 'personnes immunodéprimées'],
     category: 'farmers-dairy',
-    description: 'Lait cru de nos vaches nourries au pâturage',
+    description: 'Lait cru de nos vaches nourries au pâturage. Utilisations fermières : Fromage blanc maison, Beurre battu, Yaourt artisanal. Alternative pasteurisée : Lait bio pasteurisé pour populations sensibles.',
     ingredients: ['Lait cru de vache'],
     sustainability: ['Élevage extensif', 'Bien-être animal']
   },
@@ -378,7 +377,7 @@ export const products: Product[] = [
     isHealthyFor: ['adultes'],
     notRecommendedFor: ['intolérants au lactose'],
     category: 'farmers-dairy',
-    description: 'Fromage artisanal fabriqué avec le lait de nos chèvres',
+    description: 'Fromage artisanal fabriqué avec le lait de nos chèvres. Recettes fromagères : Salade de chèvre chaud, Tarte aux épinards et chèvre, Tartines miel-chèvre. Alternative végétale : Fromage de noix de cajou ou tofu fermenté.',
     ingredients: ['Lait de chèvre', 'Présure', 'Sel'],
     sustainability: ['Production artisanale', 'Élevage local']
   },
@@ -394,7 +393,7 @@ export const products: Product[] = [
     isHealthyFor: ['adultes (avec modération)'],
     notRecommendedFor: ['intolérants au lactose'],
     category: 'farmers-dairy',
-    description: 'Beurre traditionnel baratte à l\'ancienne, goût authentique',
+    description: 'Beurre traditionnel baratte à l\'ancienne, goût authentique. Recettes traditionnelles : Beurre aux herbes fraîches, Sablés bretons, Escargots au beurre d\'ail. Alternative végétale : Margarine bio ou huile de coco.',
     ingredients: ['Crème de lait', 'Sel de mer'],
     sustainability: ['Méthode traditionnelle', 'Lait local']
   },
@@ -410,7 +409,7 @@ export const products: Product[] = [
     isHealthyFor: ['sportifs', 'adultes'],
     notRecommendedFor: ['intolérants au lactose'],
     category: 'farmers-dairy',
-    description: 'Yaourt onctueux au lait de brebis, riche en protéines',
+    description: 'Yaourt onctueux au lait de brebis, riche en protéines. Recettes méditerranéennes : Tzatziki au yaourt de brebis, Parfait aux fruits secs, Lassi salé. Alternative chèvre : Yaourt de chèvre avec goût plus doux.',
     ingredients: ['Lait de brebis', 'Ferments lactiques'],
     sustainability: ['Élevage extensif', 'Production artisanale']
   },
@@ -428,7 +427,7 @@ export const products: Product[] = [
     isHealthyFor: ['sportifs', 'adultes'],
     notRecommendedFor: ['végétariens'],
     category: 'farmers-meat',
-    description: 'Viande de bœuf d\'animaux élevés au pâturage naturel',
+    description: 'Viande de bœuf d\'animaux élevés au pâturage naturel. Recettes traditionnelles : Pot-au-feu fermier, Bœuf bourguignon, Carpaccio de bœuf. Alternative végétale : Seitan ou steaks de légumineuses pour protéines végétales.',
     ingredients: ['Viande de bœuf'],
     sustainability: ['Élevage extensif', 'Pâturage naturel', 'Bien-être animal']
   },
@@ -444,7 +443,7 @@ export const products: Product[] = [
     isHealthyFor: ['sportifs', 'enfants'],
     notRecommendedFor: ['végétariens'],
     category: 'farmers-meat',
-    description: 'Poulet élevé en liberté avec accès aux parcours extérieurs',
+    description: 'Poulet élevé en liberté avec accès aux parcours extérieurs. Recettes fermières : Coq au vin, Poule au pot, Blanquette de volaille. Alternative végétarienne : Tofu fumé ou tempeh mariné.',
     ingredients: ['Viande de poulet'],
     sustainability: ['Élevage en plein air', 'Alimentation naturelle']
   },
@@ -460,7 +459,7 @@ export const products: Product[] = [
     isHealthyFor: ['adultes'],
     notRecommendedFor: ['végétariens'],
     category: 'farmers-meat',
-    description: 'Porc de race locale élevé en plein air, goût authentique',
+    description: 'Porc de race locale élevé en plein air, goût authentique. Recettes régionales : Rillettes maison, Potée auvergnate, Côtes de porc aux pommes. Alternative halal : Agneau ou bœuf selon préférences religieuses.',
     ingredients: ['Viande de porc'],
     sustainability: ['Race locale', 'Élevage extensif', 'Préservation génétique']
   },
@@ -476,7 +475,7 @@ export const products: Product[] = [
     isHealthyFor: ['adultes', 'sportifs'],
     notRecommendedFor: ['végétariens'],
     category: 'farmers-meat',
-    description: 'Agneau de printemps élevé au pâturage en montagne',
+    description: 'Agneau de printemps élevé au pâturage en montagne. Recettes d\'altitude : Gigot aux herbes de montagne, Navarin printanier, Brochettes d\'agneau. Alternative jeune : Chevreau ou cabri avec goût plus délicat.',
     ingredients: ['Viande d\'agneau'],
     sustainability: ['Élevage extensif', 'Pâturage d\'altitude', 'Bien-être animal']
   },
@@ -494,7 +493,7 @@ export const products: Product[] = [
     isHealthyFor: ['sportifs', 'enfants', 'adultes'],
     notRecommendedFor: ['allergiques aux œufs'],
     category: 'farmers-eggs',
-    description: 'Œufs frais de poules élevées en liberté',
+    description: 'Œufs frais de poules élevées en liberté. Recettes fermières : Omelette aux herbes du jardin, Œufs à la coque mouillettes, Mayonnaise maison. Alternative végétale : Substitut d\'œuf à base de graines de lin ou aquafaba.',
     ingredients: ['Œufs de poule'],
     sustainability: ['Élevage en plein air', 'Bien-être animal']
   },
@@ -510,7 +509,7 @@ export const products: Product[] = [
     isHealthyFor: ['sportifs', 'cuisiniers'],
     notRecommendedFor: ['allergiques aux œufs'],
     category: 'farmers-eggs',
-    description: 'Œufs de cane plus riches, parfaits pour la pâtisserie',
+    description: 'Œufs de cane plus riches, parfaits pour la pâtisserie. Recettes pâtissières : Brioche dorée, Flan pâtissier, Crème anglaise. Alternative poule : Œufs de poule bio avec goût plus doux.',
     ingredients: ['Œufs de cane'],
     sustainability: ['Élevage extensif', 'Alimentation naturelle']
   },
@@ -526,7 +525,7 @@ export const products: Product[] = [
     isHealthyFor: ['gourmets', 'sportifs'],
     notRecommendedFor: ['allergiques aux œufs'],
     category: 'farmers-eggs',
-    description: 'Petits œufs de caille au goût délicat, spécialité gastronomique',
+    description: 'Petits œufs de caille au goût délicat, spécialité gastronomique. Recettes raffinées : Œufs de caille à la russe, Canapés gourmets, Salade tiède. Alternative accessible : Œufs de poule fermiers pour usage quotidien.',
     ingredients: ['Œufs de caille'],
     sustainability: ['Élevage artisanal', 'Production limitée']
   },
@@ -544,7 +543,7 @@ export const products: Product[] = [
     isHealthyFor: ['adultes', 'enfants de plus de 1 an'],
     notRecommendedFor: ['nourrissons de moins de 1 an'],
     category: 'farmers-honey',
-    description: 'Miel artisanal récolté dans nos ruches locales',
+    description: 'Miel artisanal récolté dans nos ruches locales. Utilisations santé : Infusion miel-citron, Masque visage naturel, Pansement cicatrisant. Alternative diabétiques : Sirop d\'agave ou édulcorants naturels.',
     ingredients: ['Miel de fleurs sauvages'],
     sustainability: ['Apiculture durable', 'Protection des abeilles']
   },
@@ -560,7 +559,7 @@ export const products: Product[] = [
     isHealthyFor: ['adultes', 'enfants de plus de 1 an'],
     notRecommendedFor: ['nourrissons de moins de 1 an'],
     category: 'farmers-honey',
-    description: 'Miel d\'acacia pur, récolte de printemps',
+    description: 'Miel d\'acacia pur, récolte de printemps. Propriétés : Miel liquide qui ne cristallise pas, goût délicat. Alternative polyfloral : Miel toutes fleurs pour saveur plus complexe.',
     ingredients: ['Miel d\'acacia'],
     sustainability: ['Monofloral', 'Récolte traditionnelle']
   },
@@ -576,7 +575,7 @@ export const products: Product[] = [
     isHealthyFor: ['adultes', 'enfants de plus de 1 an'],
     notRecommendedFor: ['nourrissons de moins de 1 an'],
     category: 'farmers-honey',
-    description: 'Miel de lavande aux notes florales, récolte estivale',
+    description: 'Miel de lavande aux notes florales, récolte estivale. Bienfaits : Propriétés apaisantes et relaxantes, idéal avant le coucher. Alternative neutre : Miel d\'acacia sans parfum marqué.',
     ingredients: ['Miel de lavande'],
     sustainability: ['Monofloral', 'Culture de lavande bio']
   },
@@ -592,7 +591,7 @@ export const products: Product[] = [
     isHealthyFor: ['adultes', 'enfants de plus de 1 an'],
     notRecommendedFor: ['nourrissons de moins de 1 an'],
     category: 'farmers-honey',
-    description: 'Miel de châtaignier au goût corsé, riche en minéraux',
+    description: 'Miel de châtaignier au goût corsé, riche en minéraux. Caractère : Goût tannique et boisé, couleur ambrée foncée. Alternative douce : Miel de tilleul pour goût plus délicat.',
     ingredients: ['Miel de châtaignier'],
     sustainability: ['Forêt durable', 'Apiculture extensive']
   },
@@ -610,7 +609,7 @@ export const products: Product[] = [
     isHealthyFor: ['adultes', 'enfants'],
     notRecommendedFor: ['cœliaques', 'intolérants au gluten'],
     category: 'farmers-bread',
-    description: 'Pain artisanal au levain naturel, farine de blé local',
+    description: 'Pain artisanal au levain naturel, farine de blé local. Recettes artisanales : Tartines gourmandes, Pain perdu brioché, Chapelure maison. Alternative sans gluten : Pain aux farines de riz et sarrasin.',
     ingredients: ['Farine de blé', 'Eau', 'Levain naturel', 'Sel'],
     sustainability: ['Farine locale', 'Fabrication artisanale']
   },
@@ -626,7 +625,7 @@ export const products: Product[] = [
     isHealthyFor: ['diabétiques', 'sportifs'],
     notRecommendedFor: ['cœliaques'],
     category: 'farmers-bread',
-    description: 'Pain de seigle complet, farine moulue sur meule de pierre',
+    description: 'Pain de seigle complet, farine moulue sur meule de pierre. Avantages : Index glycémique bas, riche en fibres, longue conservation. Alternative légère : Pain d\'épeautre plus digestible.',
     ingredients: ['Farine de seigle complète', 'Eau', 'Levain', 'Sel'],
     sustainability: ['Mouture traditionnelle', 'Céréales locales']
   },
@@ -642,7 +641,7 @@ export const products: Product[] = [
     isHealthyFor: ['adultes', 'sportifs'],
     notRecommendedFor: ['cœliaques', 'allergiques aux noix'],
     category: 'farmers-bread',
-    description: 'Pain artisanal aux cerneaux de noix, cuit au feu de bois',
+    description: 'Pain artisanal aux cerneaux de noix, cuit au feu de bois. Richesse : Oméga-3 des noix, goût rustique authentique. Alternative noix : Pain aux graines de tournesol sans allergènes.',
     ingredients: ['Farine de blé', 'Cerneaux de noix', 'Levain', 'Sel'],
     sustainability: ['Cuisson au bois', 'Noix locales']
   },
@@ -658,7 +657,7 @@ export const products: Product[] = [
     isHealthyFor: ['sensibles au gluten moderne', 'sportifs'],
     notRecommendedFor: ['cœliaques'],
     category: 'farmers-bread',
-    description: 'Pain d\'épeautre, céréale ancestrale plus digestible',
+    description: 'Pain d\'épeautre, céréale ancestrale plus digestible. Spécificités : Gluten plus faible, protéines complètes, saveur de noisette. Alternative moderne : Pain complet au blé dur.',
     ingredients: ['Farine d\'épeautre', 'Eau', 'Levain', 'Sel'],
     sustainability: ['Céréale ancestrale', 'Mouture traditionnelle']
   },
@@ -676,7 +675,7 @@ export const products: Product[] = [
     isHealthyFor: ['adultes', 'sportifs'],
     notRecommendedFor: ['allergiques aux mollusques', 'femmes enceintes'],
     category: 'farmers-seafood',
-    description: 'Huîtres élevées en claires ostréicoles, goût iodé authentique',
+    description: 'Huîtres élevées en claires ostréicoles, goût iodé authentique. Dégustation : Citron et échalotes, champagne rosé, pain de seigle beurré. Alternative terre : Escargots de Bourgogne pour texture similaire.',
     ingredients: ['Huîtres'],
     sustainability: ['Élevage durable', 'Purification naturelle', 'Circuit court']
   },
@@ -692,7 +691,7 @@ export const products: Product[] = [
     isHealthyFor: ['sportifs', 'adultes'],
     notRecommendedFor: ['allergiques aux mollusques'],
     category: 'farmers-seafood',
-    description: 'Moules élevées sur bouchots, saveur marine intense',
+    description: 'Moules élevées sur bouchots, saveur marine intense. Recettes traditionnelles : Moules marinières, Moules au roquefort, Soupe de moules. Alternative végétale : Champignons de mer ou algues pour iode.',
     ingredients: ['Moules'],
     sustainability: ['Élevage sur estran', 'Méthode traditionnelle', 'AOP']
   },
@@ -708,7 +707,7 @@ export const products: Product[] = [
     isHealthyFor: ['adultes', 'sportifs'],
     notRecommendedFor: ['allergiques aux mollusques'],
     category: 'farmers-seafood',
-    description: 'Coquilles Saint-Jacques pêchées à la plongée, fraîcheur garantie',
+    description: 'Coquilles Saint-Jacques pêchées à la plongée, fraîcheur garantie. Recettes raffinées : Saint-Jacques poêlées, Carpaccio de Saint-Jacques, Risotto aux Saint-Jacques. Alternative poisson : Lotte ou turbot pour texture ferme.',
     ingredients: ['Coquilles Saint-Jacques'],
     sustainability: ['Pêche artisanale', 'Méthode sélective', 'Préservation des fonds']
   },
@@ -724,7 +723,7 @@ export const products: Product[] = [
     isHealthyFor: ['adultes', 'enfants', 'sportifs'],
     notRecommendedFor: ['allergiques au poisson'],
     category: 'farmers-seafood',
-    description: 'Bar élevé en aquaculture biologique, alimentation naturelle',
+    description: 'Bar élevé en aquaculture biologique, alimentation naturelle. Recettes marines : Bar en croûte de sel, Filets de bar aux herbes, Ceviche de bar. Alternative rivière : Truite bio d\'élevage pour goût plus doux.',
     ingredients: ['Bar d\'élevage biologique'],
     sustainability: ['Aquaculture biologique', 'Alimentation durable', 'Bien-être animal']
   },
@@ -740,7 +739,7 @@ export const products: Product[] = [
     isHealthyFor: ['végétaliens', 'sportifs', 'tous'],
     notRecommendedFor: ['personnes sous anticoagulants'],
     category: 'farmers-seafood',
-    description: 'Algues wakamé cultivées en mer, récoltées à la main',
+    description: 'Algues wakamé cultivées en mer, récoltées à la main. Recettes asiatiques : Soupe miso au wakamé, Salade d\'algues, Sushis végétariens. Alternative terrestre : Épinards ou blettes pour minéraux similaires.',
     ingredients: ['Algues wakamé'],
     sustainability: ['Culture marine durable', 'Récolte manuelle', 'Zéro déchet']
   },
@@ -756,7 +755,7 @@ export const products: Product[] = [
     isHealthyFor: ['tous (avec modération)'],
     notRecommendedFor: ['personnes hypertendues'],
     category: 'farmers-seafood',
-    description: 'Sel de mer récolté selon les méthodes traditionnelles',
+    description: 'Sel de mer récolté selon les méthodes traditionnelles. Utilisations : Cuisson en croûte de sel, Conservation des légumes, Gommage corporel. Alternative réduite : Sel de Guérande ou herbes aromatiques.',
     ingredients: ['Sel de mer'],
     sustainability: ['Méthode traditionnelle', 'Évaporation naturelle', 'Préservation du patrimoine']
   },
@@ -772,7 +771,7 @@ export const products: Product[] = [
     isHealthyFor: ['adultes', 'sportifs', 'enfants'],
     notRecommendedFor: ['allergiques au poisson'],
     category: 'farmers-seafood',
-    description: 'Sardines fraîches pêchées à la senne, méthode durable',
+    description: 'Sardines fraîches pêchées à la senne, méthode durable. Recettes méditerranéennes : Sardines grillées au barbecue, Escabèche de sardines, Pâté de sardines. Alternative conserve : Sardines à l\'huile d\'olive bio.',
     ingredients: ['Sardines fraîches'],
     sustainability: ['Pêche côtière', 'Méthode sélective', 'Stock durable']
   },
@@ -788,7 +787,7 @@ export const products: Product[] = [
     isHealthyFor: ['adultes', 'sportifs'],
     notRecommendedFor: ['allergiques au poisson'],
     category: 'farmers-seafood',
-    description: 'Dorade royale sauvage pêchée à la ligne, chair ferme',
+    description: 'Dorade royale sauvage pêchée à la ligne, chair ferme. Recettes nobles : Dorade au four aux légumes, Carpaccio de dorade, Bouillabaisse royale. Alternative élevage : Dorade d\'aquaculture bio pour prix accessible.',
     ingredients: ['Dorade sauvage'],
     sustainability: ['Pêche à la ligne', 'Méthode artisanale', 'Préservation des stocks']
   }
