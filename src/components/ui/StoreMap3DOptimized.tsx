@@ -1,4 +1,3 @@
-
 import React, { useRef, useEffect, useState, useCallback, useMemo } from 'react';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
@@ -120,7 +119,10 @@ const StoreMap3DOptimized = ({ storeId, productId, className, userLocation }: St
       
       // Nettoyage de la scène précédente
       if (sceneRef.current) {
-        sceneRef.current.clear();
+        // Nettoyer tous les objets de la scène
+        while(sceneRef.current.children.length > 0) {
+          sceneRef.current.remove(sceneRef.current.children[0]);
+        }
         meshesRef.current = [];
       }
       
