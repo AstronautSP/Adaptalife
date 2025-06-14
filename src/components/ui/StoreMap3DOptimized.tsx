@@ -1,4 +1,3 @@
-
 import React, { useRef, useEffect, useState, useCallback, useMemo } from 'react';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
@@ -63,34 +62,106 @@ const StoreMap3DOptimized = ({ storeId, productId, className, userLocation }: St
     TemporalDataService.generateTemporalData(14)
   );
 
-  // Optimisation du layout du magasin avec plus de détails
-  const storeSections = useMemo(() => [
-    // Entrée et sortie
-    { id: 'entrance', x: 2, z: 19, width: 4, height: 1, depth: 2, type: 'entrance', label: 'Entrée', color: '#e5e7eb' },
-    { id: 'exit', x: 20, z: 19, width: 4, height: 1, depth: 2, type: 'entrance', label: 'Sortie', color: '#e5e7eb' },
+  // Layout réaliste du Leclerc Saint-Médard-en-Jalles
+  const storeSections = useMemo(() => {
+    // Plan spécifique au Leclerc de Saint-Médard-en-Jalles si sélectionné
+    if (storeId === 'leclerc-saint-medard') {
+      return [
+        // Entrée principale - typique des Leclerc, large entrée côté parking
+        { id: 'entrance', x: 2, z: 28, width: 8, height: 1, depth: 3, type: 'entrance', label: 'Entrée Principale', color: '#e5e7eb' },
+        
+        // Zone d'accueil et services - souvent près de l'entrée dans les Leclerc
+        { id: 'services', x: 12, z: 28, width: 6, height: 1, depth: 3, type: 'services', label: 'Accueil & Services', color: '#94a3b8' },
+        
+        // Galerie marchande - sortie vers autres boutiques
+        { id: 'exit-gallery', x: 22, z: 28, width: 6, height: 1, depth: 3, type: 'entrance', label: 'Galerie Marchande', color: '#e5e7eb' },
+        
+        // Ligne de caisses - configuration typique Leclerc avec beaucoup de caisses
+        { id: 'checkout1', x: 4, z: 24, width: 2, height: 1, depth: 1.5, type: 'checkout', label: 'Caisses 1-3', color: '#94a3b8' },
+        { id: 'checkout2', x: 7, z: 24, width: 2, height: 1, depth: 1.5, type: 'checkout', label: 'Caisses 4-6', color: '#94a3b8' },
+        { id: 'checkout3', x: 10, z: 24, width: 2, height: 1, depth: 1.5, type: 'checkout', label: 'Caisses 7-9', color: '#94a3b8' },
+        { id: 'checkout4', x: 13, z: 24, width: 2, height: 1, depth: 1.5, type: 'checkout', label: 'Caisses 10-12', color: '#94a3b8' },
+        { id: 'checkout5', x: 16, z: 24, width: 2, height: 1, depth: 1.5, type: 'checkout', label: 'Caisses Rapides', color: '#94a3b8' },
+        { id: 'self-checkout', x: 19, z: 24, width: 4, height: 1, depth: 1.5, type: 'checkout', label: 'Caisses Automatiques', color: '#94a3b8' },
+        
+        // Fruits & Légumes - toujours près de l'entrée dans les Leclerc, grand espace
+        { id: 'produce', x: 2, z: 18, width: 12, height: 2, depth: 5, type: 'produce', label: 'Fruits & Légumes Bio', color: '#10b981' },
+        
+        // Boulangerie & Pâtisserie - souvent visible dès l'entrée
+        { id: 'bakery', x: 16, z: 18, width: 8, height: 2, depth: 5, type: 'bakery', label: 'Boulangerie Pâtisserie', color: '#f59e0b' },
+        
+        // Traiteur & Plats préparés - zone premium Leclerc
+        { id: 'deli', x: 26, z: 18, width: 6, height: 2, depth: 5, type: 'meat', label: 'Traiteur', color: '#f97316' },
+        
+        // Boucherie traditionnelle - service à la coupe
+        { id: 'butchery', x: 2, z: 12, width: 6, height: 2, depth: 5, type: 'meat', label: 'Boucherie Traditionnelle', color: '#ef4444' },
+        
+        // Poissonnerie - service à la coupe, souvent adjacente à la boucherie
+        { id: 'fishmonger', x: 9, z: 12, width: 6, height: 2, depth: 5, type: 'meat', label: 'Poissonnerie', color: '#0ea5e9' },
+        
+        // Charcuterie & Fromage à la coupe
+        { id: 'cheese-deli', x: 16, z: 12, width: 6, height: 2, depth: 5, type: 'dairy', label: 'Fromage & Charcuterie', color: '#eab308' },
+        
+        // Produits laitiers libre-service
+        { id: 'dairy', x: 23, z: 12, width: 9, height: 2, depth: 5, type: 'dairy', label: 'Produits Laitiers', color: '#3b82f6' },
+        
+        // Surgelés - mur réfrigéré le long d'un côté
+        { id: 'frozen', x: 29, z: 6, width: 3, height: 2, depth: 12, type: 'frozen', label: 'Surgelés', color: '#06b6d4' },
+        
+        // Épicerie salée - allées centrales
+        { id: 'grocery-salty', x: 2, z: 6, width: 8, height: 2, depth: 5, type: 'household', label: 'Épicerie Salée', color: '#84cc16' },
+        
+        // Épicerie sucrée & Petit-déjeuner
+        { id: 'grocery-sweet', x: 11, z: 6, width: 8, height: 2, depth: 5, type: 'household', label: 'Épicerie Sucrée', color: '#a855f7' },
+        
+        // Boissons - souvent une allée dédiée
+        { id: 'beverages', x: 20, z: 6, width: 8, height: 2, depth: 5, type: 'beverages', label: 'Boissons', color: '#8b5cf6' },
+        
+        // Hygiène & Beauté
+        { id: 'health-beauty', x: 2, z: 1, width: 10, height: 2, depth: 4, type: 'health', label: 'Hygiène & Beauté', color: '#ec4899' },
+        
+        // Entretien & Maison
+        { id: 'household-cleaning', x: 13, z: 1, width: 8, height: 2, depth: 4, type: 'household', label: 'Entretien & Maison', color: '#6b7280' },
+        
+        // Textile & Bazar
+        { id: 'textile', x: 22, z: 1, width: 10, height: 2, depth: 4, type: 'household', label: 'Textile & Bazar', color: '#8d4654' },
+        
+        // Allées principales de circulation
+        { id: 'main-aisle-1', x: 15, z: 14, width: 1, height: 0.1, depth: 20, type: 'aisle', label: 'Allée Principale 1', color: '#f1f5f9' },
+        { id: 'main-aisle-2', x: 25, z: 8, width: 1, height: 0.1, depth: 16, type: 'aisle', label: 'Allée Principale 2', color: '#f1f5f9' },
+        { id: 'cross-aisle', x: 16, z: 8, width: 12, height: 0.1, depth: 1, type: 'aisle', label: 'Allée Transversale', color: '#f1f5f9' },
+      ];
+    }
     
-    // Caisses
-    { id: 'checkout1', x: 14, z: 18, width: 2, height: 1, depth: 1.5, type: 'checkout', label: 'Caisse 1', color: '#94a3b8' },
-    { id: 'checkout2', x: 16.5, z: 18, width: 2, height: 1, depth: 1.5, type: 'checkout', label: 'Caisse 2', color: '#94a3b8' },
-    { id: 'checkout3', x: 19, z: 18, width: 2, height: 1, depth: 1.5, type: 'checkout', label: 'Caisse 3', color: '#94a3b8' },
-    
-    // Rayons alimentaires
-    { id: 'produce', x: 3, z: 3, width: 8, height: 2, depth: 6, type: 'produce', label: 'Fruits & Légumes', color: '#10b981' },
-    { id: 'bakery', x: 3, z: 10, width: 8, height: 2, depth: 4, type: 'bakery', label: 'Boulangerie', color: '#f59e0b' },
-    { id: 'meat', x: 13, z: 3, width: 5, height: 2, depth: 4, type: 'meat', label: 'Boucherie', color: '#ef4444' },
-    { id: 'fish', x: 13, z: 8, width: 5, height: 2, depth: 4, type: 'meat', label: 'Poissonnerie', color: '#0ea5e9' },
-    { id: 'dairy', x: 20, z: 3, width: 6, height: 2, depth: 6, type: 'dairy', label: 'Produits Laitiers', color: '#3b82f6' },
-    { id: 'frozen', x: 20, z: 10, width: 6, height: 2, depth: 4, type: 'frozen', label: 'Surgelés', color: '#06b6d4' },
-    
-    // Autres rayons
-    { id: 'beverages', x: 3, z: 15, width: 8, height: 2, depth: 3, type: 'beverages', label: 'Boissons', color: '#8b5cf6' },
-    { id: 'health', x: 13, z: 13, width: 5, height: 2, depth: 5, type: 'health', label: 'Santé & Beauté', color: '#ec4899' },
-    { id: 'household', x: 20, z: 15, width: 6, height: 2, depth: 3, type: 'household', label: 'Maison', color: '#6b7280' },
-    
-    // Allées
-    { id: 'aisle1', x: 12, z: 5, width: 0.5, height: 0.1, depth: 12, type: 'aisle', label: 'Allée 1', color: '#f1f5f9' },
-    { id: 'aisle2', x: 19, z: 5, width: 0.5, height: 0.1, depth: 12, type: 'aisle', label: 'Allée 2', color: '#f1f5f9' },
-  ], []);
+    // Layout générique pour les autres magasins
+    return [
+      // ... keep existing code (generic store layout for non-Leclerc stores)
+      { id: 'entrance', x: 2, z: 19, width: 4, height: 1, depth: 2, type: 'entrance', label: 'Entrée', color: '#e5e7eb' },
+      { id: 'exit', x: 20, z: 19, width: 4, height: 1, depth: 2, type: 'entrance', label: 'Sortie', color: '#e5e7eb' },
+      
+      // Caisses
+      { id: 'checkout1', x: 14, z: 18, width: 2, height: 1, depth: 1.5, type: 'checkout', label: 'Caisse 1', color: '#94a3b8' },
+      { id: 'checkout2', x: 16.5, z: 18, width: 2, height: 1, depth: 1.5, type: 'checkout', label: 'Caisse 2', color: '#94a3b8' },
+      { id: 'checkout3', x: 19, z: 18, width: 2, height: 1, depth: 1.5, type: 'checkout', label: 'Caisse 3', color: '#94a3b8' },
+      
+      // Rayons alimentaires
+      { id: 'produce', x: 3, z: 3, width: 8, height: 2, depth: 6, type: 'produce', label: 'Fruits & Légumes', color: '#10b981' },
+      { id: 'bakery', x: 3, z: 10, width: 8, height: 2, depth: 4, type: 'bakery', label: 'Boulangerie', color: '#f59e0b' },
+      { id: 'meat', x: 13, z: 3, width: 5, height: 2, depth: 4, type: 'meat', label: 'Boucherie', color: '#ef4444' },
+      { id: 'fish', x: 13, z: 8, width: 5, height: 2, depth: 4, type: 'meat', label: 'Poissonnerie', color: '#0ea5e9' },
+      { id: 'dairy', x: 20, z: 3, width: 6, height: 2, depth: 6, type: 'dairy', label: 'Produits Laitiers', color: '#3b82f6' },
+      { id: 'frozen', x: 20, z: 10, width: 6, height: 2, depth: 4, type: 'frozen', label: 'Surgelés', color: '#06b6d4' },
+      
+      // Autres rayons
+      { id: 'beverages', x: 3, z: 15, width: 8, height: 2, depth: 3, type: 'beverages', label: 'Boissons', color: '#8b5cf6' },
+      { id: 'health', x: 13, z: 13, width: 5, height: 2, depth: 5, type: 'health', label: 'Santé & Beauté', color: '#ec4899' },
+      { id: 'household', x: 20, z: 15, width: 6, height: 2, depth: 3, type: 'household', label: 'Maison', color: '#6b7280' },
+      
+      // Allées
+      { id: 'aisle1', x: 12, z: 5, width: 0.5, height: 0.1, depth: 12, type: 'aisle', label: 'Allée 1', color: '#f1f5f9' },
+      { id: 'aisle2', x: 19, z: 5, width: 0.5, height: 0.1, depth: 12, type: 'aisle', label: 'Allée 2', color: '#f1f5f9' },
+    ];
+  }, [storeId]);
 
   // Animation temporelle optimisée
   useEffect(() => {
@@ -183,10 +254,15 @@ const StoreMap3DOptimized = ({ storeId, productId, className, userLocation }: St
       scene.background = new THREE.Color(0xf8fafc);
       sceneRef.current = scene;
 
-      // Caméra avec FOV optimisé
+      // Caméra avec FOV optimisé pour le Leclerc (plus grand espace)
       const camera = new THREE.PerspectiveCamera(60, 800 / 600, 0.1, 1000);
-      camera.position.set(15, 20, 30);
-      camera.lookAt(15, 0, 12);
+      if (storeId === 'leclerc-saint-medard') {
+        camera.position.set(18, 25, 35);
+        camera.lookAt(18, 0, 15);
+      } else {
+        camera.position.set(15, 20, 30);
+        camera.lookAt(15, 0, 12);
+      }
       cameraRef.current = camera;
 
       // Renderer avec anti-aliasing optimisé
@@ -202,12 +278,16 @@ const StoreMap3DOptimized = ({ storeId, productId, className, userLocation }: St
       renderer.setClearColor(0xf8fafc, 1);
       rendererRef.current = renderer;
 
-      // Éclairage amélioré
+      // Éclairage amélioré pour le grand espace Leclerc
       const ambientLight = new THREE.AmbientLight(0xffffff, 0.4);
       scene.add(ambientLight);
 
       const directionalLight = new THREE.DirectionalLight(0xffffff, 0.6);
-      directionalLight.position.set(25, 25, 25);
+      if (storeId === 'leclerc-saint-medard') {
+        directionalLight.position.set(35, 30, 35);
+      } else {
+        directionalLight.position.set(25, 25, 25);
+      }
       directionalLight.castShadow = true;
       directionalLight.shadow.mapSize.width = 2048;
       directionalLight.shadow.mapSize.height = 2048;
@@ -217,13 +297,15 @@ const StoreMap3DOptimized = ({ storeId, productId, className, userLocation }: St
 
       // Éclairage d'appoint pour plus de réalisme
       const spotLight = new THREE.SpotLight(0xffffff, 0.3);
-      spotLight.position.set(15, 15, 15);
+      spotLight.position.set(18, 20, 18);
       spotLight.angle = Math.PI / 6;
       spotLight.penumbra = 0.1;
       scene.add(spotLight);
 
-      // Sol avec texture
-      const floorGeometry = new THREE.PlaneGeometry(35, 25);
+      // Sol avec texture adaptée à la taille du Leclerc
+      const floorGeometry = storeId === 'leclerc-saint-medard' 
+        ? new THREE.PlaneGeometry(40, 35) 
+        : new THREE.PlaneGeometry(35, 25);
       const floorMaterial = new THREE.MeshLambertMaterial({ 
         color: 0xffffff,
         transparent: true,
@@ -234,31 +316,50 @@ const StoreMap3DOptimized = ({ storeId, productId, className, userLocation }: St
       floor.receiveShadow = true;
       scene.add(floor);
 
-      // Murs du magasin
-      const wallHeight = 5;
+      // Murs du magasin adaptés au Leclerc
+      const wallHeight = 6; // Plus haut pour un hypermarché
       const wallMaterial = new THREE.MeshLambertMaterial({ color: 0xe2e8f0 });
       
-      // Mur arrière
-      const backWallGeometry = new THREE.PlaneGeometry(35, wallHeight);
-      const backWall = new THREE.Mesh(backWallGeometry, wallMaterial);
-      backWall.position.set(17.5, wallHeight/2, 0);
-      scene.add(backWall);
-      
-      // Murs latéraux
-      const sideWallGeometry = new THREE.PlaneGeometry(25, wallHeight);
-      const leftWall = new THREE.Mesh(sideWallGeometry, wallMaterial);
-      leftWall.position.set(0, wallHeight/2, 12.5);
-      leftWall.rotation.y = Math.PI / 2;
-      scene.add(leftWall);
-      
-      const rightWall = new THREE.Mesh(sideWallGeometry, wallMaterial);
-      rightWall.position.set(35, wallHeight/2, 12.5);
-      rightWall.rotation.y = -Math.PI / 2;
-      scene.add(rightWall);
+      if (storeId === 'leclerc-saint-medard') {
+        // Mur arrière
+        const backWallGeometry = new THREE.PlaneGeometry(40, wallHeight);
+        const backWall = new THREE.Mesh(backWallGeometry, wallMaterial);
+        backWall.position.set(20, wallHeight/2, 0);
+        scene.add(backWall);
+        
+        // Murs latéraux
+        const sideWallGeometry = new THREE.PlaneGeometry(35, wallHeight);
+        const leftWall = new THREE.Mesh(sideWallGeometry, wallMaterial);
+        leftWall.position.set(0, wallHeight/2, 17.5);
+        leftWall.rotation.y = Math.PI / 2;
+        scene.add(leftWall);
+        
+        const rightWall = new THREE.Mesh(sideWallGeometry, wallMaterial);
+        rightWall.position.set(40, wallHeight/2, 17.5);
+        rightWall.rotation.y = -Math.PI / 2;
+        scene.add(rightWall);
+      } else {
+        // ... keep existing code (murs pour magasins génériques)
+        const backWallGeometry = new THREE.PlaneGeometry(35, wallHeight);
+        const backWall = new THREE.Mesh(backWallGeometry, wallMaterial);
+        backWall.position.set(17.5, wallHeight/2, 0);
+        scene.add(backWall);
+        
+        const sideWallGeometry = new THREE.PlaneGeometry(25, wallHeight);
+        const leftWall = new THREE.Mesh(sideWallGeometry, wallMaterial);
+        leftWall.position.set(0, wallHeight/2, 12.5);
+        leftWall.rotation.y = Math.PI / 2;
+        scene.add(leftWall);
+        
+        const rightWall = new THREE.Mesh(sideWallGeometry, wallMaterial);
+        rightWall.position.set(35, wallHeight/2, 12.5);
+        rightWall.rotation.y = -Math.PI / 2;
+        scene.add(rightWall);
+      }
 
       // Création des sections avec effets 4D
       storeSections.forEach(section => {
-        if (!['entrance', 'checkout', 'aisle'].includes(section.type) && !activeCategories.includes(section.type)) {
+        if (!['entrance', 'checkout', 'aisle', 'services'].includes(section.type) && !activeCategories.includes(section.type)) {
           return;
         }
 
@@ -345,7 +446,7 @@ const StoreMap3DOptimized = ({ storeId, productId, className, userLocation }: St
     } catch (error) {
       console.error('Erreur lors de l\'initialisation de Three.js:', error);
     }
-  }, [activeCategories, temporalData, userLocation, threeLoaded]);
+  }, [activeCategories, temporalData, userLocation, threeLoaded, storeId]);
 
   useEffect(() => {
     if (is3DView && threeLoaded) {
@@ -372,26 +473,35 @@ const StoreMap3DOptimized = ({ storeId, productId, className, userLocation }: St
       };
 
       const camera = cameraRef.current;
-      const radius = 35;
-      const newX = 15 + radius * Math.cos(newRotation.y) * Math.cos(newRotation.x);
-      const newY = 20 + radius * Math.sin(newRotation.x);
-      const newZ = 15 + radius * Math.sin(newRotation.y) * Math.cos(newRotation.x);
+      const radius = storeId === 'leclerc-saint-medard' ? 45 : 35;
+      const centerX = storeId === 'leclerc-saint-medard' ? 18 : 15;
+      const centerZ = storeId === 'leclerc-saint-medard' ? 15 : 12;
+      
+      const newX = centerX + radius * Math.cos(newRotation.y) * Math.cos(newRotation.x);
+      const newY = 25 + radius * Math.sin(newRotation.x);
+      const newZ = centerZ + radius * Math.sin(newRotation.y) * Math.cos(newRotation.x);
       
       camera.position.set(newX, newY, newZ);
-      camera.lookAt(15, 0, 12);
+      camera.lookAt(centerX, 0, centerZ);
 
       return newRotation;
     });
-  }, [isMouseDown]);
+  }, [isMouseDown, storeId]);
 
   const resetCamera = useCallback(() => {
     if (!cameraRef.current) return;
     
     setRotation({ x: -0.5, y: 0 });
     const camera = cameraRef.current;
-    camera.position.set(15, 20, 30);
-    camera.lookAt(15, 0, 12);
-  }, []);
+    
+    if (storeId === 'leclerc-saint-medard') {
+      camera.position.set(18, 25, 35);
+      camera.lookAt(18, 0, 15);
+    } else {
+      camera.position.set(15, 20, 30);
+      camera.lookAt(15, 0, 12);
+    }
+  }, [storeId]);
 
   const toggleCategory = useCallback((categoryId: string) => {
     setActiveCategories(prev => 
@@ -406,7 +516,12 @@ const StoreMap3DOptimized = ({ storeId, productId, className, userLocation }: St
       <div className="bg-muted/30 p-3 border-b flex items-center justify-between">
         <div className="flex items-center">
           <Map className="h-5 w-5 mr-2 text-primary" />
-          <h3 className="font-medium">Plan du magasin {is3DView ? '4D Interactif' : '2D'}</h3>
+          <h3 className="font-medium">
+            Plan du magasin {is3DView ? '4D Interactif' : '2D'}
+            {storeId === 'leclerc-saint-medard' && (
+              <span className="ml-2 text-sm text-muted-foreground">- Leclerc Saint-Médard-en-Jalles</span>
+            )}
+          </h3>
         </div>
         <div className="flex items-center space-x-1">
           <TooltipProvider>
@@ -592,6 +707,11 @@ const StoreMap3DOptimized = ({ storeId, productId, className, userLocation }: St
         {is3DView && (
           <div className="text-xs text-muted-foreground pt-2 border-t border-muted/20 mt-2">
             <strong>Navigation :</strong> Cliquez et faites glisser pour faire tourner la vue. 
+            {storeId === 'leclerc-saint-medard' && (
+              <span className="block mt-1">
+                <strong>Leclerc Saint-Médard :</strong> Plan réaliste avec boulangerie, traiteur, et zones spécialisées.
+              </span>
+            )}
             Utilisez les contrôles temporels pour observer l'évolution de l'affluence en temps réel.
           </div>
         )}
