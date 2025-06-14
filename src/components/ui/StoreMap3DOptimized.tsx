@@ -1,3 +1,4 @@
+
 import React, { useRef, useEffect, useState, useCallback, useMemo } from 'react';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
@@ -46,6 +47,7 @@ const StoreMap3DOptimized = ({ storeId, productId, className, userLocation }: St
   const rendererRef = useRef<any>(null);
   const cameraRef = useRef<any>(null);
   const meshesRef = useRef<any[]>([]);
+  const [threeLoaded, setThreeLoaded] = useState(false);
   
   const [showFilters, setShowFilters] = useState(false);
   const [show4DControls, setShow4DControls] = useState(false);
@@ -109,23 +111,73 @@ const StoreMap3DOptimized = ({ storeId, productId, className, userLocation }: St
     setTemporalData(newTemporalData);
   }, [currentTime]);
 
-  const initializeThreeJS = useCallback(() => {
-    if (!canvasRef.current || typeof window === 'undefined') return;
+  // Chargement sécurisé de Three.js
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
 
+    // Vérifier si Three.js est déjà chargé
+    if ((window as any).THREE) {
+      setThreeLoaded(true);
+      return;
+    }
+
+    // Vérifier s'il y a déjà un script en cours de chargement
+    const existingScript = document.querySelector('script[src*="three.min.js"]');
+    if (existingScript) {
+      const handleLoad = () => {
+        if ((window as any).THREE) {
+          setThreeLoaded(true);
+        }
+        existingScript.removeEventListener('load', handleLoad);
+      };
+      existingScript.addEventListener('load', handleLoad);
+      return;
+    }
+
+    // Charger Three.js
     const script = document.createElement('script');
     script.src = 'https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js';
-    script.onload = () => {
-      const THREE = (window as any).THREE;
-      
-      // Nettoyage de la scène précédente
-      if (sceneRef.current) {
-        // Nettoyer tous les objets de la scène
-        while(sceneRef.current.children.length > 0) {
-          sceneRef.current.remove(sceneRef.current.children[0]);
-        }
-        meshesRef.current = [];
+    script.async = true;
+    
+    const handleLoad = () => {
+      if ((window as any).THREE) {
+        setThreeLoaded(true);
       }
-      
+      script.removeEventListener('load', handleLoad);
+      script.removeEventListener('error', handleError);
+    };
+    
+    const handleError = () => {
+      console.error('Erreur lors du chargement de Three.js');
+      script.removeEventListener('load', handleLoad);
+      script.removeEventListener('error', handleError);
+    };
+
+    script.addEventListener('load', handleLoad);
+    script.addEventListener('error', handleError);
+    document.head.appendChild(script);
+
+    return () => {
+      script.removeEventListener('load', handleLoad);
+      script.removeEventListener('error', handleError);
+    };
+  }, []);
+
+  const initializeThreeJS = useCallback(() => {
+    if (!canvasRef.current || !threeLoaded || !(window as any).THREE) return;
+
+    const THREE = (window as any).THREE;
+    
+    // Nettoyage de la scène précédente
+    if (sceneRef.current && rendererRef.current) {
+      // Nettoyer tous les objets de la scène
+      while(sceneRef.current.children.length > 0) {
+        sceneRef.current.remove(sceneRef.current.children[0]);
+      }
+      meshesRef.current = [];
+    }
+    
+    try {
       // Configuration de la scène optimisée
       const scene = new THREE.Scene();
       scene.background = new THREE.Color(0xf8fafc);
@@ -290,17 +342,13 @@ const StoreMap3DOptimized = ({ storeId, productId, className, userLocation }: St
         renderer.render(scene, camera);
       };
       animate();
-    };
-    
-    if (!document.querySelector('script[src*="three.min.js"]')) {
-      document.head.appendChild(script);
-    } else {
-      script.onload(new Event('load'));
+    } catch (error) {
+      console.error('Erreur lors de l\'initialisation de Three.js:', error);
     }
-  }, [activeCategories, temporalData, userLocation]);
+  }, [activeCategories, temporalData, userLocation, threeLoaded]);
 
   useEffect(() => {
-    if (is3DView) {
+    if (is3DView && threeLoaded) {
       initializeThreeJS();
     }
 
@@ -458,17 +506,23 @@ const StoreMap3DOptimized = ({ storeId, productId, className, userLocation }: St
         showFilters ? "h-[320px]" : "h-[400px]"
       )}>
         {is3DView ? (
-          <canvas 
-            ref={canvasRef}
-            width={800}
-            height={600}
-            className="mx-auto cursor-move transition-opacity duration-300"
-            onMouseDown={() => setIsMouseDown(true)}
-            onMouseMove={handleMouseMove}
-            onMouseUp={() => setIsMouseDown(false)}
-            onMouseLeave={() => setIsMouseDown(false)}
-            style={{ filter: 'drop-shadow(0 4px 8px rgba(0,0,0,0.1))' }}
-          />
+          threeLoaded ? (
+            <canvas 
+              ref={canvasRef}
+              width={800}
+              height={600}
+              className="mx-auto cursor-move transition-opacity duration-300"
+              onMouseDown={() => setIsMouseDown(true)}
+              onMouseMove={handleMouseMove}
+              onMouseUp={() => setIsMouseDown(false)}
+              onMouseLeave={() => setIsMouseDown(false)}
+              style={{ filter: 'drop-shadow(0 4px 8px rgba(0,0,0,0.1))' }}
+            />
+          ) : (
+            <div className="flex items-center justify-center h-full">
+              <p className="text-muted-foreground">Chargement de la vue 3D...</p>
+            </div>
+          )
         ) : (
           <div className="flex items-center justify-center h-full">
             <p className="text-muted-foreground">Vue 2D simplifiée (développement en cours)</p>
