@@ -1,4 +1,3 @@
-
 import { useState } from 'react';
 import { MapPin, Map as MapIcon, Info, Globe, Search } from 'lucide-react';
 import { Button } from './button';
@@ -19,6 +18,7 @@ const STORE_LOCATIONS = [
   { id: 'marseille-1', name: 'Marseille - Vieux Port', address: '33 Quai des Belges, 13001 Marseille', coordinates: { lat: 43.2965, lng: 5.3698 } },
   { id: 'bordeaux-1', name: 'Bordeaux - Centre', address: '15 Cours de l\'Intendance, 33000 Bordeaux', coordinates: { lat: 44.8378, lng: -0.5792 } },
   { id: 'lille-1', name: 'Lille - Centre', address: '18 Place du Général de Gaulle, 59800 Lille', coordinates: { lat: 50.6365, lng: 3.0635 } },
+  { id: 'leclerc-saint-medard', name: 'Leclerc Saint-Médard-en-Jalles', address: 'Avenue de la Somme, 33160 Saint-Médard-en-Jalles', coordinates: { lat: 44.8969, lng: -0.7183 } },
 ];
 
 interface StoreLocatorProps {
