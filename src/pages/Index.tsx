@@ -1,4 +1,3 @@
-
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import Header from "@/components/layout/Header";
@@ -24,7 +23,7 @@ const Index = () => {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center space-y-6">
               <h1 className="text-4xl md:text-6xl font-bold text-foreground">
-                AdaptaFood
+                Adaptalife
               </h1>
               <p className="text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto">
                 Votre assistant alimentaire adaptatif pour une alimentation saine et personnalisée
@@ -89,7 +88,7 @@ const Index = () => {
         <section className="py-16 bg-card/30">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-12">
-              <h2 className="text-3xl font-bold text-foreground mb-4">Pourquoi choisir AdaptaFood ?</h2>
+              <h2 className="text-3xl font-bold text-foreground mb-4">Pourquoi choisir Adaptalife ?</h2>
             </div>
             
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
