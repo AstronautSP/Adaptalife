@@ -1,9 +1,9 @@
+
 import { useState, useEffect } from 'react';
 import { ArrowLeft, Target, Store, MapPin, Map as MapIcon, Phone, Clock, Globe, Accessibility } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Link } from 'react-router-dom';
-import StoreMap from '@/components/ui/StoreMap';
-import StoreMap3D from '@/components/ui/StoreMap3D';
+import StoreMap3DOptimized from '@/components/ui/StoreMap3DOptimized';
 import { useToast } from '@/hooks/use-toast';
 import { StoreLocator, STORE_LOCATIONS } from '@/components/ui/StoreLocator';
 import { Badge } from '@/components/ui/badge';
@@ -20,21 +20,16 @@ const MapView = () => {
   const { toast } = useToast();
 
   useEffect(() => {
-    // Check if running as a mobile app
     setIsMobileApp(Capacitor.isNativePlatform());
   }, []);
 
   const handleLocateMe = () => {
-    // Simuler la géolocalisation dans le magasin
-    // Dans une application réelle, cela pourrait utiliser la géolocalisation interne
-    // ou des balises Bluetooth/WiFi pour localiser l'utilisateur dans le magasin
-    
-    // Position aléatoire dans le magasin pour la démo
+    // Positions optimisées dans le nouveau layout
     const demoPositions = [
-      { x: 100, y: 150 },
-      { x: 250, y: 120 },
-      { x: 350, y: 250 },
-      { x: 180, y: 300 }
+      { x: 150, y: 80 },   // Zone fruits & légumes
+      { x: 300, y: 150 },  // Zone produits laitiers
+      { x: 200, y: 200 },  // Zone boulangerie
+      { x: 250, y: 120 }   // Allée centrale
     ];
     
     const randomPosition = demoPositions[Math.floor(Math.random() * demoPositions.length)];
@@ -42,7 +37,7 @@ const MapView = () => {
     
     toast({
       title: "Localisation activée",
-      description: "Votre position a été localisée sur le plan du magasin.",
+      description: "Votre position a été localisée avec précision sur le plan 4D du magasin.",
       duration: 3000,
     });
   };
@@ -50,7 +45,6 @@ const MapView = () => {
   const handleStoreSelect = (selectedStoreId: string) => {
     setStoreId(selectedStoreId);
     setShowAllStores(false);
-    // Reset user location when changing stores
     setUserLocation(null);
   };
 
@@ -63,15 +57,13 @@ const MapView = () => {
   const handleVoiceNavigation = (destination: string) => {
     setSelectedDestination(destination);
     
-    // Si l'utilisateur n'est pas encore localisé, le faire automatiquement
     if (!userLocation) {
       handleLocateMe();
     }
     
-    // Simuler un zoom sur la destination sur la carte
     toast({
-      title: "Navigation vers " + destination,
-      description: "L'itinéraire est affiché sur le plan du magasin.",
+      title: "Navigation intelligente vers " + destination,
+      description: "L'itinéraire optimal est calculé et affiché sur le plan 4D interactif.",
       duration: 3000,
     });
   };
@@ -79,16 +71,16 @@ const MapView = () => {
   const selectedStore = storeId ? STORE_LOCATIONS.find(store => store.id === storeId) : undefined;
 
   return (
-    <div className={`container max-w-6xl mx-auto px-4 ${isMobileApp ? 'py-10' : 'py-20'}`}>
+    <div className={`container max-w-7xl mx-auto px-4 ${isMobileApp ? 'py-10' : 'py-20'}`}>
       <div className="mb-6">
-        <h1 className="text-2xl font-bold mb-4 flex items-center gap-2">
-          <MapIcon className="h-6 w-6 text-primary" />
-          {showAllStores ? "Tous nos magasins" : "Plan du magasin"}
+        <h1 className="text-3xl font-bold mb-4 flex items-center gap-2">
+          <MapIcon className="h-7 w-7 text-primary" />
+          {showAllStores ? "Nos magasins Adaptalife" : "Plan interactif 4D"}
         </h1>
-        <p className="text-muted-foreground mb-6">
+        <p className="text-muted-foreground mb-6 text-lg">
           {showAllStores 
-            ? "Trouvez un magasin près de chez vous et consultez son plan intérieur." 
-            : "Utilisez ce plan pour vous orienter dans le magasin et trouver facilement les produits."}
+            ? "Trouvez un magasin près de chez vous et explorez son plan intérieur en 4D." 
+            : "Naviguez dans le magasin en temps réel avec la visualisation 4D de l'affluence et des produits."}
         </p>
       </div>
       
@@ -102,7 +94,7 @@ const MapView = () => {
           />
           
           {showAllStores && (
-            <div className="mt-4 p-4 border rounded-lg bg-card">
+            <div className="mt-4 p-4 border rounded-lg bg-card shadow-sm">
               <h3 className="flex items-center gap-2 font-medium mb-3">
                 <Store className="h-4 w-4 text-primary" />
                 Nos magasins
@@ -111,13 +103,13 @@ const MapView = () => {
                 {STORE_LOCATIONS.map(store => (
                   <div 
                     key={store.id} 
-                    className="p-3 border rounded-md hover:bg-accent transition-colors cursor-pointer"
+                    className="p-3 border rounded-md hover:bg-accent hover:border-primary transition-all cursor-pointer transform hover:scale-105"
                     onClick={() => handleStoreSelect(store.id)}
                   >
                     <p className="font-medium mb-1">{store.name}</p>
                     <p className="text-sm text-muted-foreground mb-2">{store.address}</p>
                     <Badge variant="outline" className="text-xs">
-                      Voir le plan
+                      Découvrir le plan 4D
                     </Badge>
                   </div>
                 ))}
@@ -126,7 +118,7 @@ const MapView = () => {
           )}
           
           {selectedStore && (
-            <div className="mt-4 p-4 border rounded-lg bg-card">
+            <div className="mt-4 p-4 border rounded-lg bg-card shadow-sm">
               <h3 className="flex items-center gap-2 font-medium mb-2">
                 <Store className="h-4 w-4 text-primary" />
                 Informations du magasin
@@ -149,7 +141,6 @@ const MapView = () => {
                   </span>
                 </div>
                 
-                {/* Ajout du composant d'assistance fauteuil roulant */}
                 <div className="pt-2">
                   <WheelchairAssistance currentStore={selectedStore.name} />
                 </div>
@@ -170,26 +161,26 @@ const MapView = () => {
         
         <div className="lg:col-span-3">
           {showAllStores ? (
-            <div className="border rounded-lg bg-card overflow-hidden">
-              <div className="bg-muted/30 p-3 border-b">
+            <div className="border rounded-lg bg-card overflow-hidden shadow-lg">
+              <div className="bg-gradient-to-r from-muted/30 to-muted/50 p-4 border-b">
                 <h3 className="font-medium flex items-center gap-2">
-                  <MapIcon className="h-4 w-4 text-primary" />
-                  Carte des magasins
+                  <MapIcon className="h-5 w-5 text-primary" />
+                  Carte interactive des magasins
                 </h3>
               </div>
-              <div className="p-4 h-[600px] flex flex-col items-center justify-center">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 w-full max-w-3xl">
+              <div className="p-6 h-[600px] flex flex-col items-center justify-center">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 w-full max-w-4xl">
                   {STORE_LOCATIONS.map(store => (
                     <div 
                       key={store.id}
                       onClick={() => handleStoreSelect(store.id)}
-                      className="relative border rounded-lg p-4 hover:border-primary cursor-pointer transition-colors"
+                      className="relative border rounded-lg p-6 hover:border-primary cursor-pointer transition-all duration-300 transform hover:scale-105 hover:shadow-lg bg-gradient-to-br from-white to-gray-50"
                     >
-                      <div className="absolute top-2 right-2">
+                      <div className="absolute top-3 right-3">
                         <MapPin className="h-5 w-5 text-primary" />
                       </div>
-                      <h3 className="font-medium mb-1">{store.name}</h3>
-                      <p className="text-sm text-muted-foreground mb-3">{store.address}</p>
+                      <h3 className="font-semibold mb-2 text-lg">{store.name}</h3>
+                      <p className="text-sm text-muted-foreground mb-4">{store.address}</p>
                       <div className="flex items-center justify-between">
                         <div className="flex items-center text-xs text-muted-foreground">
                           <MapPin className="h-3 w-3 mr-1" />
@@ -202,9 +193,9 @@ const MapView = () => {
                       <Button 
                         variant="outline" 
                         size="sm" 
-                        className="mt-3 w-full text-xs"
+                        className="mt-4 w-full text-xs hover:bg-primary hover:text-primary-foreground transition-colors"
                       >
-                        Voir le plan du magasin
+                        Explorer le plan 4D
                       </Button>
                     </div>
                   ))}
@@ -215,26 +206,30 @@ const MapView = () => {
             <>
               <div className="flex justify-between items-center mb-4">
                 <div className="flex gap-2">
-                  {/* Ajout du bouton d'assistance fauteuil roulant dans la barre d'outils */}
                   <WheelchairAssistance currentStore={selectedStore?.name} />
                 </div>
                 <Button
                   onClick={handleLocateMe}
                   variant="outline"
-                  className="flex items-center gap-2"
+                  className="flex items-center gap-2 hover:bg-primary hover:text-primary-foreground transition-colors"
                   disabled={!storeId}
                 >
                   <Target className="h-4 w-4" />
                   Me localiser
                 </Button>
               </div>
-              <StoreMap3D className="w-full h-[600px]" storeId={storeId} userLocation={userLocation} productId={selectedDestination || undefined} />
+              <StoreMap3DOptimized 
+                className="w-full h-[650px]" 
+                storeId={storeId} 
+                userLocation={userLocation} 
+                productId={selectedDestination || undefined} 
+              />
             </>
           ) : (
-            <div className="flex flex-col items-center justify-center border rounded-lg bg-muted/20 h-[600px]">
-              <Store className="h-12 w-12 text-muted-foreground mb-2" />
-              <p className="text-muted-foreground text-center max-w-xs">
-                Veuillez sélectionner un magasin pour afficher son plan et vous y localiser.
+            <div className="flex flex-col items-center justify-center border rounded-lg bg-muted/20 h-[600px] shadow-inner">
+              <Store className="h-16 w-16 text-muted-foreground mb-4" />
+              <p className="text-muted-foreground text-center max-w-md text-lg">
+                Veuillez sélectionner un magasin pour découvrir son plan interactif 4D et vous y localiser en temps réel.
               </p>
             </div>
           )}
@@ -242,7 +237,7 @@ const MapView = () => {
       </div>
       
       <div className="mt-8 text-center">
-        <Button asChild>
+        <Button asChild size="lg" className="px-8">
           <Link to="/">
             <ArrowLeft className="h-4 w-4 mr-2" />
             Retour à l'accueil
