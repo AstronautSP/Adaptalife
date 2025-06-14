@@ -1,4 +1,3 @@
-
 import React, { useRef, useEffect, useState, useCallback, useMemo } from 'react';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
@@ -296,7 +295,7 @@ const StoreMap3DOptimized = ({ storeId, productId, className, userLocation }: St
     if (!document.querySelector('script[src*="three.min.js"]')) {
       document.head.appendChild(script);
     } else {
-      script.onload?.();
+      script.onload(new Event('load'));
     }
   }, [activeCategories, temporalData, userLocation]);
 
