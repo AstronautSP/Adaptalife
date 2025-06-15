@@ -1,3 +1,4 @@
+
 import { Book, BarChart3 } from "lucide-react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Badge } from "@/components/ui/badge";
@@ -32,22 +33,28 @@ export const ProductTabs = ({ product, activeTab, setActiveTab }: ProductTabsPro
 
   return (
     <Tabs defaultValue="overview" value={activeTab} onValueChange={setActiveTab} className="mt-6">
-      <TabsList className="w-full grid grid-cols-4">
-        <TabsTrigger value="overview">Vue d'ensemble</TabsTrigger>
-        <TabsTrigger value="nutrition">Nutrition</TabsTrigger>
-        <TabsTrigger value="ingredients">Ingrédients</TabsTrigger>
-        <TabsTrigger value="recipes" className="flex items-center gap-1">
+      <TabsList className="w-full grid grid-cols-4 transition-all duration-300">
+        <TabsTrigger value="overview" className="transition-all duration-200 hover:scale-105">
+          Vue d'ensemble
+        </TabsTrigger>
+        <TabsTrigger value="nutrition" className="transition-all duration-200 hover:scale-105">
+          Nutrition
+        </TabsTrigger>
+        <TabsTrigger value="ingredients" className="transition-all duration-200 hover:scale-105">
+          Ingrédients
+        </TabsTrigger>
+        <TabsTrigger value="recipes" className="flex items-center gap-1 transition-all duration-200 hover:scale-105">
           <Book className="h-4 w-4" />
           <span>Recettes</span>
         </TabsTrigger>
       </TabsList>
       
-      <TabsContent value="overview" className="pt-4">
+      <TabsContent value="overview" className="pt-4 animate-fade-in">
         <div className="space-y-4">
-          <div>
+          <div className="transform transition-all duration-300 hover:scale-[1.02]">
             <h3 className="font-medium mb-2">Nutri-Score {product.nutritionScore}</h3>
             <div className={cn(
-              "p-3 rounded-md text-sm",
+              "p-3 rounded-md text-sm transition-all duration-300",
               `bg-${product.nutritionScore.toLowerCase()}-100`
             )}>
               <p>{getNutritionScoreDescription(product.nutritionScore)}</p>
@@ -55,11 +62,16 @@ export const ProductTabs = ({ product, activeTab, setActiveTab }: ProductTabsPro
           </div>
           
           {product.healthTags && product.healthTags.length > 0 && (
-            <div>
+            <div className="transform transition-all duration-300 hover:scale-[1.02]">
               <h3 className="font-medium mb-2">Propriétés</h3>
               <div className="flex flex-wrap gap-2">
-                {product.healthTags.map(tag => (
-                  <Badge key={tag} variant="secondary">
+                {product.healthTags.map((tag, index) => (
+                  <Badge 
+                    key={tag} 
+                    variant="secondary"
+                    className="transition-all duration-200 hover:scale-110 animate-fade-in"
+                    style={{ animationDelay: `${index * 100}ms` }}
+                  >
                     {tag}
                   </Badge>
                 ))}
@@ -69,14 +81,14 @@ export const ProductTabs = ({ product, activeTab, setActiveTab }: ProductTabsPro
         </div>
       </TabsContent>
       
-      <TabsContent value="nutrition" className="pt-4">
+      <TabsContent value="nutrition" className="pt-4 animate-fade-in">
         <div className="space-y-4">
-          <h3 className="font-medium flex items-center">
+          <h3 className="font-medium flex items-center transition-all duration-300 hover:scale-[1.02]">
             <BarChart3 className="h-4 w-4 mr-1.5" />
             Valeurs nutritionnelles (100g)
           </h3>
           
-          <div className="bg-muted/30 rounded-md overflow-hidden">
+          <div className="bg-muted/30 rounded-md overflow-hidden transform transition-all duration-300 hover:scale-[1.01]">
             {Object.entries(nutritionalValues).map(([key, value], index) => {
               let label = key;
               let unit = 'g';
@@ -104,9 +116,10 @@ export const ProductTabs = ({ product, activeTab, setActiveTab }: ProductTabsPro
                 <div 
                   key={key}
                   className={cn(
-                    "flex justify-between py-2 px-3",
+                    "flex justify-between py-2 px-3 transition-all duration-200 hover:bg-muted/50 animate-fade-in",
                     index % 2 === 0 ? "bg-transparent" : "bg-muted/30"
                   )}
+                  style={{ animationDelay: `${index * 50}ms` }}
                 >
                   <span>{label}</span>
                   <span className="font-medium">{value} {unit}</span>
@@ -117,20 +130,26 @@ export const ProductTabs = ({ product, activeTab, setActiveTab }: ProductTabsPro
         </div>
       </TabsContent>
       
-      <TabsContent value="ingredients" className="pt-4">
+      <TabsContent value="ingredients" className="pt-4 animate-fade-in">
         <div className="space-y-4">
-          <h3 className="font-medium mb-2">Liste des ingrédients</h3>
-          <p className="text-sm leading-relaxed whitespace-pre-wrap">
-            {ingredients}
-          </p>
-          <p className="text-xs text-muted-foreground mt-2">
-            Les allergènes sont indiqués en MAJUSCULES.
-          </p>
+          <h3 className="font-medium mb-2 transition-all duration-300 hover:scale-[1.02]">
+            Liste des ingrédients
+          </h3>
+          <div className="transform transition-all duration-300 hover:scale-[1.01]">
+            <p className="text-sm leading-relaxed whitespace-pre-wrap bg-muted/20 p-4 rounded-md">
+              {ingredients}
+            </p>
+            <p className="text-xs text-muted-foreground mt-2">
+              Les allergènes sont indiqués en MAJUSCULES.
+            </p>
+          </div>
         </div>
       </TabsContent>
       
-      <TabsContent value="recipes" className="pt-4">
-        <HealthyRecipes productName={product.name} />
+      <TabsContent value="recipes" className="pt-4 animate-fade-in">
+        <div className="transform transition-all duration-300 hover:scale-[1.01]">
+          <HealthyRecipes productName={product.name} />
+        </div>
       </TabsContent>
     </Tabs>
   );
