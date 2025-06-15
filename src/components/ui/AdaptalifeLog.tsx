@@ -19,8 +19,15 @@ const AdaptalifeLog: React.FC<LogoProps> = ({
     md: { primary: 24, secondary: 18 },
     lg: { primary: 32, secondary: 24 }
   };
+
+  const textSizes = {
+    sm: 'text-xl',
+    md: 'text-2xl',
+    lg: 'text-3xl'
+  };
   
   const sizeValues = iconSizes[size];
+  const textSizeClass = textSizes[size];
   
   return (
     <div className={cn("flex items-center space-x-2", className)}>
@@ -39,7 +46,10 @@ const AdaptalifeLog: React.FC<LogoProps> = ({
         />
       </div>
       {showText && (
-        <span className="font-bold bg-clip-text text-transparent bg-gradient-to-r from-primary to-accent">
+        <span className={cn(
+          "font-bold bg-clip-text text-transparent bg-gradient-to-r from-primary to-accent font-brand",
+          textSizeClass
+        )}>
           Adaptalife
         </span>
       )}

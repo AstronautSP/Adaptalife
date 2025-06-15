@@ -1,5 +1,5 @@
 
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -102,6 +102,10 @@
 }
 
 @layer components {
+  .font-brand {
+    font-family: 'Dancing Script', cursive;
+  }
+
   .glass-morphism {
     @apply bg-white/20 backdrop-blur-lg border border-white/30 shadow-lg;
   }
