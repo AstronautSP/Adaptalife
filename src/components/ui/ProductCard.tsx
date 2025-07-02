@@ -23,12 +23,12 @@ interface ProductCardProps {
 
 const getNutritionScoreColor = (score: string) => {
   switch (score) {
-    case 'A': return 'bg-green-500';
+    case 'A': return 'bg-success';
     case 'B': return 'bg-lime-500';
-    case 'C': return 'bg-yellow-500';
+    case 'C': return 'bg-warning';
     case 'D': return 'bg-orange-500';
-    case 'E': return 'bg-red-500';
-    default: return 'bg-gray-500';
+    case 'E': return 'bg-destructive';
+    default: return 'bg-muted';
   }
 };
 
@@ -263,8 +263,8 @@ const ProductCard = ({ product, className, layout = 'grid' }: ProductCardProps) 
         {/* Health Indicators */}
         <div className="mt-auto pt-2 border-t text-xs">
           {/* Health recommendations */}
-          {product.isHealthyFor && product.isHealthyFor.length > 0 && (
-            <div className="flex items-center text-green-600 mb-1">
+           {product.isHealthyFor && product.isHealthyFor.length > 0 && (
+             <div className="flex items-center text-success mb-1">
               <Tally1 className="h-3.5 w-3.5 mr-1" />
               {healthInfo.forLabel}:&nbsp;
               {product.isHealthyFor.slice(0, 1).join(', ')}
@@ -274,7 +274,7 @@ const ProductCard = ({ product, className, layout = 'grid' }: ProductCardProps) 
           
           {/* Health warnings */}
           {product.notRecommendedFor && product.notRecommendedFor.length > 0 && (
-            <div className="flex items-center text-amber-600">
+            <div className="flex items-center text-warning">
               <AlertTriangle className="h-3.5 w-3.5 mr-1" />
               {healthInfo.againstLabel}:&nbsp;
               {product.notRecommendedFor.slice(0, 1).join(', ')}
