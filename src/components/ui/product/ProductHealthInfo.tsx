@@ -6,7 +6,7 @@ export const ProductHealthInfo = ({ product }: ProductHealthInfoProps) => {
   return (
     <>
       {product.isHealthyFor && product.isHealthyFor.length > 0 && (
-        <div className="flex items-start text-green-600">
+        <div className="flex items-start text-success">
           <CheckCircle className="h-5 w-5 mr-2 mt-0.5 flex-shrink-0" />
           <div>
             <p className="font-medium">Recommandé pour:</p>
@@ -20,7 +20,7 @@ export const ProductHealthInfo = ({ product }: ProductHealthInfoProps) => {
       )}
       
       {product.notRecommendedFor && product.notRecommendedFor.length > 0 && (
-        <div className="flex items-start text-amber-600">
+        <div className="flex items-start text-warning">
           <AlertTriangle className="h-5 w-5 mr-2 mt-0.5 flex-shrink-0" />
           <div>
             <p className="font-medium">Déconseillé pour:</p>
@@ -36,12 +36,12 @@ export const ProductHealthInfo = ({ product }: ProductHealthInfoProps) => {
       {product.allergens && product.allergens.length > 0 && (
         <div className="mb-6">
           <h3 className="font-medium mb-2 flex items-center">
-            <Info className="h-4 w-4 mr-1.5 text-red-500" />
+            <Info className="h-4 w-4 mr-1.5 text-destructive" />
             Allergènes
           </h3>
           <div className="flex flex-wrap gap-2">
             {product.allergens.map(allergen => (
-              <Badge key={allergen} variant="destructive" className="bg-red-100 text-red-800 hover:bg-red-200">
+              <Badge key={allergen} variant="destructive">
                 {allergen}
               </Badge>
             ))}

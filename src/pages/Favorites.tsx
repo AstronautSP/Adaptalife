@@ -24,7 +24,7 @@ const Favorites = () => {
         <div className="max-w-7xl mx-auto">
           <div className="mb-8">
             <div className="flex items-center space-x-3 mb-4">
-              <Heart className="h-8 w-8 text-red-500 fill-red-500" />
+              <Heart className="h-8 w-8 text-destructive fill-destructive" />
               <h1 className="text-3xl font-bold">Mes favoris</h1>
             </div>
             <p className="text-muted-foreground">

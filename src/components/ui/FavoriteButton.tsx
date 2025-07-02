@@ -83,7 +83,7 @@ const FavoriteButton = ({
         className={cn(
           iconSizes[size],
           'transition-all duration-300',
-          isFavorite ? 'fill-red-500 text-red-500' : 'text-muted-foreground',
+          isFavorite ? 'fill-destructive text-destructive' : 'text-muted-foreground',
           isAnimating && 'scale-125'
         )}
       />
@@ -94,7 +94,7 @@ const FavoriteButton = ({
           <Heart
             className={cn(
               iconSizes[size],
-              'absolute text-red-500 fill-red-500 animate-scale-out opacity-0'
+              'absolute text-destructive fill-destructive animate-scale-out opacity-0'
             )}
           />
         </span>

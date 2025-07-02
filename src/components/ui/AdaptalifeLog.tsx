@@ -41,7 +41,7 @@ const AdaptalifeLog: React.FC<LogoProps> = ({
           size={sizeValues.secondary}
         />
         <LeafyGreen 
-          className="absolute text-green-500 opacity-70 -top-1 -right-1 transform -rotate-15" 
+          className="absolute text-success opacity-70 -top-1 -right-1 transform -rotate-15" 
           size={sizeValues.secondary}
         />
       </div>

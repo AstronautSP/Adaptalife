@@ -62,7 +62,7 @@ const Footer = () => {
           
           <div className="flex items-center mt-4 sm:mt-0">
             <span className="text-sm text-muted-foreground inline-flex items-center">
-              Conçu avec <Heart className="h-4 w-4 mx-1 text-red-500" /> pour l'accessibilité
+              Conçu avec <Heart className="h-4 w-4 mx-1 text-destructive" /> pour l'accessibilité
             </span>
           </div>
         </div>
