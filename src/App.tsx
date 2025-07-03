@@ -16,6 +16,7 @@ import MapView from "./pages/MapView";
 import SensoryShield from "./components/ui/SensoryShield";
 import Products from "./pages/Products";
 import Favorites from "./pages/Favorites";
+import DisabilityCard from "./pages/DisabilityCard";
 
 const queryClient = new QueryClient();
 
@@ -52,6 +53,7 @@ const App = () => {
             <Route path="/product/:productId" element={<ProductView />} />
             <Route path="/settings" element={<Settings />} />
             <Route path="/accessibility" element={<Accessibility />} />
+            <Route path="/disability-card" element={<DisabilityCard />} />
             <Route path="/map" element={<MapView />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />

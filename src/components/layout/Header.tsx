@@ -12,6 +12,7 @@ import {
   Home,
   HelpCircle,
   Map,
+  IdCard,
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
@@ -40,6 +41,7 @@ const Header = () => {
     { name: 'Produits', path: '/products', icon: <ShoppingCart className="h-4 w-4" /> },
     { name: 'Plan', path: '/map', icon: <Map className="h-4 w-4" /> },
     { name: 'Favoris', path: '/favorites', icon: <Heart className="h-4 w-4" /> },
+    { name: 'Carte handicap', path: '/disability-card', icon: <IdCard className="h-4 w-4" /> },
     { name: 'Paramètres', path: '/settings', icon: <Settings className="h-4 w-4" /> },
   ];
 
