@@ -277,17 +277,152 @@ const Settings = () => {
             <CardContent className="space-y-6">
               <div className="space-y-4">
                 <h3 className="text-sm font-medium">Conditions médicales</h3>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-3 max-h-96 overflow-y-auto">
                   {[
+                    // Maladies cardiovasculaires
+                    { id: 'hypertension', label: 'Hypertension artérielle' },
+                    { id: 'heart-disease', label: 'Maladie cardiaque' },
+                    { id: 'stroke', label: 'AVC (antécédent)' },
+                    { id: 'arrhythmia', label: 'Arythmie cardiaque' },
+                    { id: 'heart-failure', label: 'Insuffisance cardiaque' },
+                    { id: 'atherosclerosis', label: 'Athérosclérose' },
+                    
+                    // Diabète et métabolisme
                     { id: 'diabetes-1', label: 'Diabète type 1' },
                     { id: 'diabetes-2', label: 'Diabète type 2' },
-                    { id: 'heart-disease', label: 'Maladie cardiaque' },
-                    { id: 'hypertension', label: 'Hypertension' },
+                    { id: 'gestational-diabetes', label: 'Diabète gestationnel' },
+                    { id: 'prediabetes', label: 'Prédiabète' },
                     { id: 'cholesterol', label: 'Cholestérol élevé' },
-                    { id: 'stroke', label: 'AVC (passé)' },
-                    { id: 'visually-impaired', label: 'Malvoyance' },
+                    { id: 'triglycerides', label: 'Triglycérides élevés' },
+                    { id: 'metabolic-syndrome', label: 'Syndrome métabolique' },
+                    { id: 'obesity', label: 'Obésité' },
+                    { id: 'hypoglycemia', label: 'Hypoglycémie' },
+                    
+                    // Maladies digestives
+                    { id: 'ibs', label: 'Syndrome de l\'intestin irritable' },
+                    { id: 'crohns', label: 'Maladie de Crohn' },
+                    { id: 'ulcerative-colitis', label: 'Rectocolite hémorragique' },
+                    { id: 'celiac', label: 'Maladie cœliaque' },
+                    { id: 'gerd', label: 'Reflux gastro-œsophagien' },
+                    { id: 'peptic-ulcer', label: 'Ulcère peptique' },
+                    { id: 'gallstones', label: 'Calculs biliaires' },
+                    { id: 'liver-disease', label: 'Maladie hépatique' },
+                    { id: 'pancreatitis', label: 'Pancréatite' },
+                    
+                    // Maladies rénales
+                    { id: 'kidney-disease', label: 'Maladie rénale chronique' },
+                    { id: 'kidney-stones', label: 'Calculs rénaux' },
+                    { id: 'dialysis', label: 'Dialyse' },
+                    { id: 'nephritis', label: 'Néphrite' },
+                    
+                    // Maladies respiratoires
+                    { id: 'asthma', label: 'Asthme' },
+                    { id: 'copd', label: 'BPCO' },
+                    { id: 'emphysema', label: 'Emphysème' },
+                    { id: 'bronchitis', label: 'Bronchite chronique' },
+                    { id: 'sleep-apnea', label: 'Apnée du sommeil' },
+                    { id: 'pulmonary-fibrosis', label: 'Fibrose pulmonaire' },
+                    
+                    // Troubles neurologiques
+                    { id: 'epilepsy', label: 'Épilepsie' },
+                    { id: 'parkinsons', label: 'Maladie de Parkinson' },
+                    { id: 'alzheimers', label: 'Maladie d\'Alzheimer' },
+                    { id: 'dementia', label: 'Démence' },
+                    { id: 'multiple-sclerosis', label: 'Sclérose en plaques' },
+                    { id: 'migraine', label: 'Migraine chronique' },
+                    { id: 'neuropathy', label: 'Neuropathie' },
+                    { id: 'als', label: 'Sclérose latérale amyotrophique' },
+                    { id: 'huntingtons', label: 'Maladie de Huntington' },
+                    
+                    // Troubles mentaux
+                    { id: 'depression', label: 'Dépression' },
+                    { id: 'anxiety', label: 'Troubles anxieux' },
+                    { id: 'bipolar', label: 'Trouble bipolaire' },
+                    { id: 'schizophrenia', label: 'Schizophrénie' },
+                    { id: 'ptsd', label: 'Trouble de stress post-traumatique' },
+                    { id: 'ocd', label: 'Troubles obsessionnels compulsifs' },
+                    { id: 'eating-disorders', label: 'Troubles alimentaires' },
+                    { id: 'adhd', label: 'TDAH' },
                     { id: 'autism', label: 'Trouble du spectre autistique' },
+                    
+                    // Maladies auto-immunes
+                    { id: 'rheumatoid-arthritis', label: 'Polyarthrite rhumatoïde' },
+                    { id: 'lupus', label: 'Lupus érythémateux systémique' },
+                    { id: 'hashimoto', label: 'Thyroïdite de Hashimoto' },
+                    { id: 'graves', label: 'Maladie de Basedow' },
+                    { id: 'psoriasis', label: 'Psoriasis' },
+                    { id: 'scleroderma', label: 'Sclérodermie' },
+                    { id: 'sjogren', label: 'Syndrome de Sjögren' },
+                    { id: 'inflammatory-bowel', label: 'Maladie inflammatoire intestinale' },
+                    
+                    // Cancers
+                    { id: 'breast-cancer', label: 'Cancer du sein' },
+                    { id: 'prostate-cancer', label: 'Cancer de la prostate' },
+                    { id: 'lung-cancer', label: 'Cancer du poumon' },
+                    { id: 'colon-cancer', label: 'Cancer colorectal' },
+                    { id: 'skin-cancer', label: 'Cancer de la peau' },
+                    { id: 'blood-cancer', label: 'Cancer du sang' },
+                    { id: 'cancer-survivor', label: 'Survivant du cancer' },
+                    
+                    // Troubles hormonaux
+                    { id: 'hypothyroidism', label: 'Hypothyroïdie' },
+                    { id: 'hyperthyroidism', label: 'Hyperthyroïdie' },
+                    { id: 'pcos', label: 'Syndrome des ovaires polykystiques' },
+                    { id: 'menopause', label: 'Ménopause' },
+                    { id: 'osteoporosis', label: 'Ostéoporose' },
+                    { id: 'addisons', label: 'Maladie d\'Addison' },
+                    { id: 'cushings', label: 'Syndrome de Cushing' },
+                    
+                    // Maladies musculo-squelettiques
+                    { id: 'arthritis', label: 'Arthrite' },
+                    { id: 'osteoarthritis', label: 'Arthrose' },
+                    { id: 'fibromyalgia', label: 'Fibromyalgie' },
+                    { id: 'chronic-pain', label: 'Douleur chronique' },
+                    { id: 'back-pain', label: 'Mal de dos chronique' },
+                    { id: 'spondylitis', label: 'Spondylarthrite ankylosante' },
+                    { id: 'muscular-dystrophy', label: 'Dystrophie musculaire' },
+                    
+                    // Handicaps et déficiences
+                    { id: 'visually-impaired', label: 'Déficience visuelle' },
+                    { id: 'hearing-impaired', label: 'Déficience auditive' },
+                    { id: 'mobility-impaired', label: 'Déficience motrice' },
+                    { id: 'intellectual-disability', label: 'Déficience intellectuelle' },
+                    { id: 'spinal-cord-injury', label: 'Lésion de la moelle épinière' },
+                    { id: 'amputation', label: 'Amputation' },
+                    { id: 'cerebral-palsy', label: 'Paralysie cérébrale' },
+                    
+                    // Maladies infectieuses chroniques
+                    { id: 'hiv', label: 'VIH/SIDA' },
+                    { id: 'hepatitis-b', label: 'Hépatite B chronique' },
+                    { id: 'hepatitis-c', label: 'Hépatite C chronique' },
+                    { id: 'tuberculosis', label: 'Tuberculose' },
+                    { id: 'chronic-fatigue', label: 'Syndrome de fatigue chronique' },
+                    
+                    // Conditions spécifiques
+                    { id: 'pregnancy', label: 'Grossesse' },
+                    { id: 'breastfeeding', label: 'Allaitement' },
                     { id: 'senior', label: 'Personne âgée (65+)' },
+                    { id: 'pediatric', label: 'Pédiatrique (enfant)' },
+                    { id: 'rare-disease', label: 'Maladie rare' },
+                    { id: 'transplant', label: 'Transplantation d\'organe' },
+                    { id: 'immunocompromised', label: 'Immunodépression' },
+                    
+                    // Troubles du sommeil
+                    { id: 'insomnia', label: 'Insomnie chronique' },
+                    { id: 'narcolepsy', label: 'Narcolepsie' },
+                    { id: 'restless-leg', label: 'Syndrome des jambes sans repos' },
+                    
+                    // Maladies de la peau
+                    { id: 'eczema', label: 'Eczéma' },
+                    { id: 'dermatitis', label: 'Dermatite' },
+                    { id: 'rosacea', label: 'Rosacée' },
+                    { id: 'vitiligo', label: 'Vitiligo' },
+                    
+                    // Maladies des yeux
+                    { id: 'glaucoma', label: 'Glaucome' },
+                    { id: 'cataracts', label: 'Cataracte' },
+                    { id: 'macular-degeneration', label: 'Dégénérescence maculaire' },
+                    { id: 'diabetic-retinopathy', label: 'Rétinopathie diabétique' },
                   ].map(condition => (
                     <div 
                       key={condition.id} 
