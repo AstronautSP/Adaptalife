@@ -54,7 +54,7 @@ const SearchBar = ({
     >
       <div
         className={cn(
-          "flex items-center bg-background/80 backdrop-blur border rounded-full overflow-hidden transition-all duration-300",
+          "flex items-center bg-white/95 border rounded-full overflow-hidden transition-all duration-300",
           isFocused ? "ring-2 ring-primary/30" : "hover:bg-muted/80"
         )}
       >

@@ -21,9 +21,9 @@
   transition-duration: 0.5s !important;
 }
 
-/* Effet d'atténuation pour le mode autisme */
+/* Effet d'atténuation légère pour le mode autisme - optionnel */
 .sensory-shield-overlay {
-  backdrop-filter: blur(1px);
+  /* backdrop-filter supprimé pour éviter le flou global */
 }
 
 /* Ajustement du bouton du bouclier */

@@ -21,6 +21,7 @@ import { Separator } from "@/components/ui/separator";
 import { Label } from "@/components/ui/label";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Switch } from "@/components/ui/switch";
+import BlurInfo from "@/components/ui/BlurInfo";
 
 const profileFormSchema = z.object({
   name: z.string().min(2, {
@@ -205,6 +206,8 @@ const Settings = () => {
 
   return (
     <div className="container max-w-4xl mx-auto px-4 py-8">
+      <BlurInfo />
+      
       <div className="space-y-2 text-center">
         <h1 className="text-2xl font-semibold">Paramètres</h1>
         <p className="text-muted-foreground">

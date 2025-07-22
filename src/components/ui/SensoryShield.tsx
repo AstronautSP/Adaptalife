@@ -51,7 +51,8 @@ const SensoryShield = ({ className }: SensoryShieldProps) => {
       }
       
       .sensory-shield-active body {
-        filter: brightness(${100 - lightFilter * 0.7}%) contrast(${90 - lightFilter * 0.2}%);
+        /* Réduction des filtres pour éviter le flou excessif */
+        filter: brightness(${Math.max(80, 100 - lightFilter * 0.3)}%) contrast(${Math.max(85, 90 - lightFilter * 0.1)}%);
       }
       
       /* Réduire les animations */
@@ -73,7 +74,7 @@ const SensoryShield = ({ className }: SensoryShieldProps) => {
         left: 0;
         width: 100vw;
         height: 100vh;
-        background-color: rgba(0, 0, 0, ${lightFilter / 200});
+        background-color: rgba(0, 0, 0, ${Math.min(0.3, lightFilter / 400)});
         pointer-events: none;
         z-index: 100;
         transition: background-color 0.5s ease;
