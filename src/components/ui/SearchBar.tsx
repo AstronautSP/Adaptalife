@@ -8,13 +8,15 @@ interface SearchBarProps {
   placeholder?: string;
   className?: string;
   onChange?: (query: string) => void;
+  onSubmit?: (query: string) => void;
 }
 
 const SearchBar = ({
   onClose,
   placeholder = "Rechercher un produit, une catégorie, ou un magasin...",
   className,
-  onChange
+  onChange,
+  onSubmit
 }: SearchBarProps) => {
   const [query, setQuery] = useState('');
   const [isFocused, setIsFocused] = useState(false);
@@ -30,7 +32,9 @@ const SearchBar = ({
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     // Handle search submit logic here
-    console.log('Search submitted:', query);
+    if (onSubmit) {
+      onSubmit(query);
+    }
   };
 
   // Call onChange prop when query changes

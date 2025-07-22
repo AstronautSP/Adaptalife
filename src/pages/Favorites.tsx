@@ -2,11 +2,12 @@
 import { useState, useEffect } from 'react';
 import Header from '@/components/layout/Header';
 import ProductCard from '@/components/ui/ProductCard';
+import { type Product } from '@/components/ui/product/types';
 import { products } from '@/data/products';
 import { Heart } from 'lucide-react';
 
 const Favorites = () => {
-  const [favoriteProducts, setFavoriteProducts] = useState<any[]>([]);
+  const [favoriteProducts, setFavoriteProducts] = useState<Product[]>([]);
 
   useEffect(() => {
     const storedFavorites = localStorage.getItem('favorites');

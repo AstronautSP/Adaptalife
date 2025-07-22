@@ -181,7 +181,11 @@ const Settings = () => {
     }));
   };
 
-  const handleInputChange = (group: string, name: string, value: any) => {
+  const handleInputChange = (
+    group: string, 
+    name: string, 
+    value: string | boolean | { autoReadLabels?: boolean; simplifiedUI?: boolean; seniorMode?: boolean; }
+  ) => {
     setFormValues(prev => ({
       ...prev,
       [group]: {
@@ -498,8 +502,8 @@ const Settings = () => {
                     { id: 'vegetarian', label: 'Végétarien' },
                     { id: 'vegan', label: 'Végan' },
                     { id: 'pescetarian', label: 'Pescetarien' },
-                    { id: ' Halal', label: 'Halal' },
-                    { id: ' Kosher', label: 'Casher' },
+                    { id: 'halal', label: 'Halal' },
+                    { id: 'kosher', label: 'Casher' },
                   ].map(preference => (
                     <div 
                       key={preference.id} 

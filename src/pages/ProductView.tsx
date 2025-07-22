@@ -6,17 +6,16 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import ProductDetail from '@/components/ui/ProductDetail';
 import StoreMap3D from '@/components/ui/StoreMap3D';
 import { products } from '@/data/products';
+import { type Product } from '@/components/ui/product/types';
 
 const ProductView = () => {
   const { productId } = useParams<{ productId: string }>();
-  const [product, setProduct] = useState(null);
+  const [product, setProduct] = useState<Product | null>(null);
   const [isLoading, setIsLoading] = useState(true);
   const [activeTab, setActiveTab] = useState('product');
 
   // Fetch product details based on productId
   useEffect(() => {
-    console.log('ProductView - productId from URL:', productId);
-    
     if (!productId) {
       setIsLoading(false);
       return;
@@ -27,7 +26,6 @@ const ProductView = () => {
     // Simulate API call delay
     const timer = setTimeout(() => {
       const foundProduct = products.find(p => p.id === productId);
-      console.log('ProductView - found product:', foundProduct);
       
       if (foundProduct) {
         setProduct(foundProduct);
