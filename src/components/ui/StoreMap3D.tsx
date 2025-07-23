@@ -103,7 +103,7 @@ const StoreMap3D = ({ storeId, productId, className, userLocation }: StoreMap3DP
     const script = document.createElement('script');
     script.src = 'https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js';
     script.onload = () => {
-      const THREE = (window as any).THREE;
+      const THREE = (window as Record<string, any>).THREE;
       
       // Scene setup
       const scene = new THREE.Scene();

@@ -291,8 +291,6 @@ const StorePicker = ({ onStoreSelect, className }: StorePickerProps) => {
       // Définir la langue en fonction de la préférence utilisateur
       utterance.lang = 'fr-FR'; // Par défaut français
       window.speechSynthesis.speak(utterance);
-    } else {
-      console.error("La synthèse vocale n'est pas supportée par ce navigateur");
     }
   };
 

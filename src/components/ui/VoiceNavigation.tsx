@@ -89,7 +89,6 @@ const VoiceNavigation = ({
       };
 
       recognitionRef.current.onerror = (event) => {
-        console.error('Erreur de reconnaissance vocale:', event.error);
         toast({
           title: "Erreur de reconnaissance vocale",
           description: "Impossible de reconnaître votre commande. Veuillez réessayer.",
@@ -196,7 +195,6 @@ const VoiceNavigation = ({
             
             speak(welcomeMessage);
           } catch (e) {
-            console.error(e);
             toast({
               title: "Erreur",
               description: "Impossible de démarrer la reconnaissance vocale",

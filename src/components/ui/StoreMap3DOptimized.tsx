@@ -42,10 +42,10 @@ const CATEGORIES = [
 const StoreMap3DOptimized = ({ storeId, productId, className, userLocation }: StoreMap3DProps) => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const animationRef = useRef<number>();
-  const sceneRef = useRef<any>(null);
-  const rendererRef = useRef<any>(null);
-  const cameraRef = useRef<any>(null);
-  const meshesRef = useRef<any[]>([]);
+  const sceneRef = useRef<THREE.Scene | null>(null);
+  const rendererRef = useRef<THREE.WebGLRenderer | null>(null);
+  const cameraRef = useRef<THREE.PerspectiveCamera | null>(null);
+  const meshesRef = useRef<THREE.Mesh[]>([]);
   const [threeLoaded, setThreeLoaded] = useState(false);
   
   const [showFilters, setShowFilters] = useState(false);
@@ -187,7 +187,7 @@ const StoreMap3DOptimized = ({ storeId, productId, className, userLocation }: St
     if (typeof window === 'undefined') return;
 
     // Vérifier si Three.js est déjà chargé
-    if ((window as any).THREE) {
+    if ((window as Record<string, any>).THREE) {
       setThreeLoaded(true);
       return;
     }
@@ -196,7 +196,7 @@ const StoreMap3DOptimized = ({ storeId, productId, className, userLocation }: St
     const existingScript = document.querySelector('script[src*="three.min.js"]');
     if (existingScript) {
       const handleLoad = () => {
-        if ((window as any).THREE) {
+        if ((window as Record<string, any>).THREE) {
           setThreeLoaded(true);
         }
         existingScript.removeEventListener('load', handleLoad);
@@ -211,7 +211,7 @@ const StoreMap3DOptimized = ({ storeId, productId, className, userLocation }: St
     script.async = true;
     
     const handleLoad = () => {
-      if ((window as any).THREE) {
+      if ((window as Record<string, any>).THREE) {
         setThreeLoaded(true);
       }
       script.removeEventListener('load', handleLoad);
@@ -219,7 +219,6 @@ const StoreMap3DOptimized = ({ storeId, productId, className, userLocation }: St
     };
     
     const handleError = () => {
-      console.error('Erreur lors du chargement de Three.js');
       script.removeEventListener('load', handleLoad);
       script.removeEventListener('error', handleError);
     };
@@ -235,9 +234,9 @@ const StoreMap3DOptimized = ({ storeId, productId, className, userLocation }: St
   }, []);
 
   const initializeThreeJS = useCallback(() => {
-    if (!canvasRef.current || !threeLoaded || !(window as any).THREE) return;
+    if (!canvasRef.current || !threeLoaded || !(window as Record<string, any>).THREE) return;
 
-    const THREE = (window as any).THREE;
+    const THREE = (window as Record<string, any>).THREE;
     
     // Nettoyage de la scène précédente
     if (sceneRef.current && rendererRef.current) {
@@ -444,7 +443,7 @@ const StoreMap3DOptimized = ({ storeId, productId, className, userLocation }: St
       };
       animate();
     } catch (error) {
-      console.error('Erreur lors de l\'initialisation de Three.js:', error);
+      // Error silently handled - Three.js initialization failed
     }
   }, [activeCategories, temporalData, userLocation, threeLoaded, storeId]);
 
