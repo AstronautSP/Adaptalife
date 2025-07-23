@@ -645,16 +645,6 @@ const Settings = () => {
         </TabsContent>
       </Tabs>
       
-      {formValues && (
-        <div className="fixed top-0 left-0 w-full h-full pointer-events-none z-[60]">
-          <div className="container h-full flex items-center justify-center">
-            <div className="flex flex-col items-center bg-white/10 rounded-lg backdrop-blur-md p-4 text-white border border-white/20">
-              <p className="text-sm">Form values:</p>
-              <pre className="text-xs">{JSON.stringify(formValues, null, 2)}</pre>
-            </div>
-          </div>
-        </div>
-      )}
     </div>
   );
 };
