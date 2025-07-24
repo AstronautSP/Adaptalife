@@ -143,6 +143,7 @@ const getHealthInfo = (product: Product, isApparel: boolean) => {
 
 const ProductCard = ({ product, className, layout = 'grid' }: ProductCardProps) => {
   const [isImageLoaded, setIsImageLoaded] = useState(false);
+  const [imageError, setImageError] = useState(false);
   const mainCategory = getMainCategory(product.category);
   const isApparel = mainCategory === 'clothing' || mainCategory === 'personal_care';
   const healthInfo = getHealthInfo(product, isApparel);
@@ -171,15 +172,30 @@ const ProductCard = ({ product, className, layout = 'grid' }: ProductCardProps) 
           >
             {!isImageLoaded && <span className="sr-only">Chargement...</span>}
           </div>
-          <img
-            src={product.image}
-            alt={product.name}
-            className={cn(
-              "w-full h-full object-cover transition-transform duration-500 group-hover:scale-105",
-              !isImageLoaded && "opacity-0"
-            )}
-            onLoad={() => setIsImageLoaded(true)}
-          />
+          {!imageError ? (
+            <img
+              src={product.image}
+              alt={product.name}
+              className={cn(
+                "w-full h-full object-cover transition-transform duration-500 group-hover:scale-105",
+                !isImageLoaded && "opacity-0"
+              )}
+              onLoad={() => setIsImageLoaded(true)}
+              onError={() => {
+                setImageError(true);
+                setIsImageLoaded(true);
+              }}
+            />
+          ) : (
+            <div className="w-full h-full bg-gradient-to-br from-primary/10 to-primary/20 flex items-center justify-center">
+              <div className="text-center p-4">
+                <div className="w-16 h-16 mx-auto mb-2 rounded-full bg-primary/20 flex items-center justify-center">
+                  <span className="text-2xl">📦</span>
+                </div>
+                <p className="text-xs text-muted-foreground font-medium">{product.name}</p>
+              </div>
+            </div>
+          )}
         </Link>
         
         {/* Favorite button */}

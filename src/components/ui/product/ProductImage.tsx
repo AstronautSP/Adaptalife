@@ -1,28 +1,44 @@
 
+import { useState } from "react";
 import FavoriteButton from "@/components/ui/FavoriteButton";
 import { cn } from "@/lib/utils";
 import { type ProductImageProps } from "./types";
 
 export const ProductImage = ({ product }: ProductImageProps) => {
+  const [imageError, setImageError] = useState(false);
+  
   const getNutritionScoreColor = (score: string) => {
     switch (score) {
-      case 'A': return 'bg-green-500 text-white';
+      case 'A': return 'bg-emerald-500 text-white';
       case 'B': return 'bg-lime-500 text-white';
-      case 'C': return 'bg-yellow-500 text-white';
+      case 'C': return 'bg-yellow-500 text-black';
       case 'D': return 'bg-orange-500 text-white';
       case 'E': return 'bg-red-500 text-white';
-      default: return 'bg-gray-500 text-white';
+      default: return 'bg-slate-500 text-white';
     }
   };
 
   return (
     <div className="lg:w-1/2 p-6">
       <div className="relative">
-        <img 
-          src={product.image} 
-          alt={product.name} 
-          className="w-full h-auto object-contain rounded-lg shadow-sm"
-        />
+        {!imageError ? (
+          <img 
+            src={product.image} 
+            alt={product.name} 
+            className="w-full h-auto object-contain rounded-lg shadow-sm"
+            onError={() => setImageError(true)}
+          />
+        ) : (
+          <div className="w-full aspect-square bg-gradient-to-br from-primary/10 to-primary/20 rounded-lg shadow-sm flex items-center justify-center">
+            <div className="text-center p-8">
+              <div className="w-24 h-24 mx-auto mb-4 rounded-full bg-primary/20 flex items-center justify-center">
+                <span className="text-4xl">📦</span>
+              </div>
+              <h3 className="text-lg font-semibold text-foreground mb-2">{product.name}</h3>
+              <p className="text-sm text-muted-foreground">{product.brand}</p>
+            </div>
+          </div>
+        )}
         
         <div className="hidden sm:block absolute top-3 right-3">
           <FavoriteButton productId={product.id} size="lg" />
