@@ -19,7 +19,7 @@ const ProductDetail = ({ product, className }: ProductDetailProps) => {
   const [activeTab, setActiveTab] = useState('overview');
   
   return (
-    <div className={cn("bg-white rounded-lg shadow-sm", className)}>
+    <div className={cn("bg-card rounded-lg shadow-sm", className)}>
       <ProductHeader product={product} />
       
       <div className="flex flex-col lg:flex-row">

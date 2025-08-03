@@ -23,12 +23,12 @@ interface ProductCardProps {
 
 const getNutritionScoreColor = (score: string) => {
   switch (score) {
-    case 'A': return 'bg-success';
-    case 'B': return 'bg-lime-500';
-    case 'C': return 'bg-warning';
-    case 'D': return 'bg-orange-500';
-    case 'E': return 'bg-destructive';
-    default: return 'bg-muted';
+    case 'A': return 'bg-success text-success-foreground';
+    case 'B': return 'bg-lime-500 text-foreground';
+    case 'C': return 'bg-warning text-warning-foreground';
+    case 'D': return 'bg-orange-500 text-foreground';
+    case 'E': return 'bg-destructive text-destructive-foreground';
+    default: return 'bg-muted text-muted-foreground';
   }
 };
 
@@ -209,7 +209,7 @@ const ProductCard = ({ product, className, layout = 'grid' }: ProductCardProps) 
             <Tooltip>
               <TooltipTrigger asChild>
                 <div className={cn(
-                  "w-8 h-8 rounded-full flex items-center justify-center text-white font-bold text-sm shadow-md",
+                  "w-8 h-8 rounded-full flex items-center justify-center font-bold text-sm shadow-md",
                   getNutritionScoreColor(product.nutritionScore)
                 )}>
                   {product.nutritionScore}
@@ -228,7 +228,7 @@ const ProductCard = ({ product, className, layout = 'grid' }: ProductCardProps) 
             <Badge 
               variant="secondary" 
               className={cn(
-                "bg-black/60 text-white text-xs flex items-center",
+                "bg-card/80 text-card-foreground text-xs flex items-center backdrop-blur-sm border",
                 isApparel && "bg-primary/80",
                 mainCategory === 'farmers' && "bg-green-700/80"
               )}

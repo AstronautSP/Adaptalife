@@ -9,12 +9,12 @@ export const ProductImage = ({ product }: ProductImageProps) => {
   
   const getNutritionScoreColor = (score: string) => {
     switch (score) {
-      case 'A': return 'bg-emerald-500 text-white';
-      case 'B': return 'bg-lime-500 text-white';
-      case 'C': return 'bg-yellow-500 text-black';
-      case 'D': return 'bg-orange-500 text-white';
-      case 'E': return 'bg-red-500 text-white';
-      default: return 'bg-slate-500 text-white';
+      case 'A': return 'bg-success text-success-foreground';
+      case 'B': return 'bg-lime-500 text-success-foreground';
+      case 'C': return 'bg-warning text-warning-foreground';
+      case 'D': return 'bg-orange-500 text-warning-foreground';
+      case 'E': return 'bg-destructive text-destructive-foreground';
+      default: return 'bg-muted text-muted-foreground';
     }
   };
 

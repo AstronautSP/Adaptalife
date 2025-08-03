@@ -17,7 +17,7 @@ import {
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 import SearchBar from '@/components/ui/SearchBar';
-import { useToast } from '@/components/ui/use-toast';
+import { useToast } from '@/hooks/use-toast';
 import AdaptalifeLog from '@/components/ui/AdaptalifeLog';
 
 const Header = () => {
@@ -61,7 +61,7 @@ const Header = () => {
       className={cn(
         "fixed top-0 left-0 right-0 z-50 transition-all duration-300 ease-in-out px-4 sm:px-6 py-3",
         isScrolled 
-          ? "bg-white/95 shadow-sm" 
+          ? "bg-background/95 shadow-sm" 
           : "bg-transparent"
       )}
     >

@@ -40,7 +40,7 @@ const ProductView = () => {
     return (
       <div className="container max-w-6xl mx-auto px-4 py-8 animate-pulse">
         <div className="h-8 w-32 bg-gray-200 rounded mb-4"></div>
-        <div className="bg-white rounded-lg shadow-sm overflow-hidden">
+        <div className="bg-card rounded-lg shadow-sm overflow-hidden">
           <div className="flex flex-col lg:flex-row">
             <div className="lg:w-1/2 p-6">
               <div className="bg-gray-200 rounded-lg aspect-square"></div>
@@ -113,7 +113,7 @@ const ProductView = () => {
       
       <div className="mt-8 text-center">
         <Button asChild>
-          <Link to="/">
+          <Link to="/products">
             <ArrowLeft className="h-4 w-4 mr-2" />
             Retour aux produits
           </Link>

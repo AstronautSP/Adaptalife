@@ -511,7 +511,7 @@ const StoreMap3DOptimized = ({ storeId, productId, className, userLocation }: St
   }, []);
 
   return (
-    <div className={cn("relative border rounded-lg bg-white overflow-hidden shadow-lg", className)}>
+    <div className={cn("relative border rounded-lg bg-card overflow-hidden shadow-lg", className)}>
       <div className="bg-muted/30 p-3 border-b flex items-center justify-between">
         <div className="flex items-center">
           <Map className="h-5 w-5 mr-2 text-primary" />

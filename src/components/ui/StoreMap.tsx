@@ -176,7 +176,7 @@ const StoreMap = ({ storeId, productId, className, userLocation }: StoreMapProps
   };
 
   return (
-    <div className={cn("relative border rounded-lg bg-white overflow-hidden", className)}>
+    <div className={cn("relative border rounded-lg bg-card overflow-hidden", className)}>
       <div className="bg-muted/30 p-3 border-b flex items-center justify-between">
         <div className="flex items-center">
           <Map className="h-5 w-5 mr-2 text-primary" />
