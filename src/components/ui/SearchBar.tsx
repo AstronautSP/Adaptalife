@@ -1,5 +1,6 @@
 
 import { useState, useEffect, useRef } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Search, X } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
@@ -21,6 +22,7 @@ const SearchBar = ({
   const [query, setQuery] = useState('');
   const [isFocused, setIsFocused] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
+  const navigate = useNavigate();
 
   // Focus the input when component mounts
   useEffect(() => {
@@ -31,9 +33,14 @@ const SearchBar = ({
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle search submit logic here
-    if (onSubmit) {
-      onSubmit(query);
+    if (query.trim()) {
+      navigate(`/products?search=${encodeURIComponent(query.trim())}`);
+      if (onSubmit) {
+        onSubmit(query);
+      }
+      if (onClose) {
+        onClose();
+      }
     }
   };
 
