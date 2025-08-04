@@ -18,6 +18,8 @@ const Products = () => {
       product.brand.toLowerCase().includes(searchQuery.toLowerCase()) ||
       product.category?.toLowerCase().includes(searchQuery.toLowerCase());
     
+    console.log('Filtering product:', product.name, 'category:', product.category, 'selectedCategory:', selectedCategory, 'matches:', matchesCategory);
+    
     return matchesCategory && matchesSearch;
   });
 
