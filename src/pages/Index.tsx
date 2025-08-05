@@ -5,6 +5,7 @@ import SearchBar from "@/components/ui/SearchBar";
 import CategoryPicker from "@/components/ui/CategoryPicker";
 import ProductCard from "@/components/ui/ProductCard";
 import DiscountCoupons from "@/components/ui/DiscountCoupons";
+import HealthConditionFilter from "@/components/ui/HealthConditionFilter";
 import { products } from "@/data/products";
 import { ShoppingCart, Heart, MapPin, Accessibility } from "lucide-react";
 import { Link } from "react-router-dom";
@@ -46,10 +47,14 @@ const Index = () => {
           </div>
         </section>
 
-        {/* Search Section */}
+        {/* Search and Filters Section */}
         <section className="py-12 bg-card/50">
-          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
             <SearchBar />
+            <div className="text-center">
+              <h3 className="text-lg font-medium mb-4">Filtrer selon vos besoins de santé</h3>
+              <HealthConditionFilter />
+            </div>
           </div>
         </section>
 

@@ -4,10 +4,12 @@ import { useSearchParams } from 'react-router-dom';
 import Header from '@/components/layout/Header';
 import CategoryPicker from '@/components/ui/CategoryPicker';
 import ProductCard from '@/components/ui/ProductCard';
+import HealthConditionFilter from '@/components/ui/HealthConditionFilter';
 import { products } from '@/data/products';
 
 const Products = () => {
   const [selectedCategory, setSelectedCategory] = useState('all');
+  const [selectedHealthConditions, setSelectedHealthConditions] = useState<string[]>([]);
   const [searchParams] = useSearchParams();
   const searchQuery = searchParams.get('search') || '';
 
@@ -18,9 +20,18 @@ const Products = () => {
       product.brand.toLowerCase().includes(searchQuery.toLowerCase()) ||
       product.category?.toLowerCase().includes(searchQuery.toLowerCase());
     
-    console.log('Filtering product:', product.name, 'category:', product.category, 'selectedCategory:', selectedCategory, 'matches:', matchesCategory);
+    // Filtrage par conditions de santé
+    const matchesHealthConditions = selectedHealthConditions.length === 0 || 
+      selectedHealthConditions.some(condition => 
+        product.isHealthyFor?.some(healthTag => 
+          healthTag.toLowerCase().includes(condition.replace(/-/g, ' '))
+        ) ||
+        product.healthTags?.some(tag => 
+          tag.toLowerCase().includes(condition.replace(/-/g, ' '))
+        )
+      );
     
-    return matchesCategory && matchesSearch;
+    return matchesCategory && matchesSearch && matchesHealthConditions;
   });
 
   return (
@@ -32,10 +43,15 @@ const Products = () => {
             <h1 className="text-3xl font-bold mb-4">
               {searchQuery ? `Résultats pour "${searchQuery}"` : 'Tous les produits'}
             </h1>
-            <CategoryPicker 
-              activeCategory={selectedCategory}
-              onChange={setSelectedCategory}
-            />
+            <div className="space-y-4">
+              <CategoryPicker 
+                activeCategory={selectedCategory}
+                onChange={setSelectedCategory}
+              />
+              <HealthConditionFilter 
+                onChange={setSelectedHealthConditions}
+              />
+            </div>
           </div>
           
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
