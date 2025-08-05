@@ -1,5 +1,17 @@
 import { Product, MainCategory, ProductCategory } from '@/components/ui/product/types';
 
+// Import product images
+import organicApples from '@/assets/products/organic-apples.jpg';
+import glutenFreeBread from '@/assets/products/gluten-free-bread.jpg';
+import lowFatYogurt from '@/assets/products/low-fat-yogurt.jpg';
+import organicCarrots from '@/assets/products/organic-carrots.jpg';
+import almondMilk from '@/assets/products/almond-milk.jpg';
+import organicChicken from '@/assets/products/organic-chicken.jpg';
+import wholeGrainPasta from '@/assets/products/whole-grain-pasta.jpg';
+import darkChocolate from '@/assets/products/dark-chocolate.jpg';
+import organicSoap from '@/assets/products/organic-soap.jpg';
+import adaptiveTshirt from '@/assets/products/adaptive-tshirt.jpg';
+
 export const mainCategories: MainCategory[] = [
   { id: 'all', name: 'Toutes les catégories' },
   { id: 'food', name: 'Alimentaire' },
@@ -46,7 +58,7 @@ export const products: Product[] = [
     id: 'organic-apples',
     name: 'Pommes biologiques',
     brand: 'Vergers Bio',
-    image: 'https://images.unsplash.com/photo-1560806887-1e4cd0b6cbd6?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3',
+    image: organicApples,
     price: 2.99,
     nutritionScore: 'A',
     allergens: [],
@@ -62,7 +74,7 @@ export const products: Product[] = [
     id: 'gluten-free-bread',
     name: 'Pain sans gluten',
     brand: 'Boulangerie Nature',
-    image: 'https://images.unsplash.com/photo-1585478259715-876acc5be8eb?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3',
+    image: glutenFreeBread,
     price: 4.50,
     nutritionScore: 'B',
     allergens: [],
@@ -78,7 +90,7 @@ export const products: Product[] = [
     id: 'low-fat-yogurt',
     name: 'Yogourt faible en gras',
     brand: 'Laiterie Douceur',
-    image: 'https://images.unsplash.com/photo-1488477181946-6428a0291777?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3',
+    image: lowFatYogurt,
     price: 1.80,
     nutritionScore: 'A',
     allergens: ['lait'],
@@ -94,7 +106,7 @@ export const products: Product[] = [
     id: 'organic-carrots',
     name: 'Carottes biologiques',
     brand: 'Potager Vert',
-    image: 'https://images.unsplash.com/photo-1598170845058-32b9d6a5da37?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3',
+    image: organicCarrots,
     price: 1.99,
     nutritionScore: 'A',
     allergens: [],
@@ -110,7 +122,7 @@ export const products: Product[] = [
     id: 'natural-almond-milk',
     name: 'Lait d\'amande naturel',
     brand: 'Amande Douce',
-    image: 'https://images.unsplash.com/photo-1550583724-b2692b85b150?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3',
+    image: almondMilk,
     price: 3.75,
     nutritionScore: 'B',
     allergens: ['amandes'],
@@ -126,7 +138,7 @@ export const products: Product[] = [
     id: 'organic-chicken-breast',
     name: 'Poitrine de poulet biologique',
     brand: 'Volaille Bio',
-    image: 'https://images.unsplash.com/photo-1588347818403-0ac0ee7996e1?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3',
+    image: organicChicken,
     price: 8.99,
     nutritionScore: 'B',
     allergens: [],
@@ -142,7 +154,7 @@ export const products: Product[] = [
     id: 'whole-grain-pasta',
     name: 'Pâtes complètes',
     brand: 'Céréales Saines',
-    image: 'https://images.unsplash.com/photo-1551892374-ecf8754cf8b0?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3',
+    image: wholeGrainPasta,
     price: 2.50,
     nutritionScore: 'A',
     allergens: ['gluten'],
@@ -158,7 +170,7 @@ export const products: Product[] = [
     id: 'dark-chocolate-bar',
     name: 'Tablette de chocolat noir',
     brand: 'Chocolaterie Intense',
-    image: 'https://images.unsplash.com/photo-1606312619070-d48b4c652a52?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3',
+    image: darkChocolate,
     price: 3.20,
     nutritionScore: 'C',
     allergens: [],
@@ -174,7 +186,7 @@ export const products: Product[] = [
     id: 'organic-soap',
     name: 'Savon bio',
     brand: 'Nature et Senteurs',
-    image: 'https://images.unsplash.com/photo-1544947950-fa07a98d237f?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3',
+    image: organicSoap,
     price: 5.50,
     nutritionScore: 'A',
     allergens: [],
@@ -190,7 +202,7 @@ export const products: Product[] = [
     id: 'adaptive-t-shirt',
     name: 'T-shirt adaptatif',
     brand: 'Mode Facile',
-    image: 'https://images.unsplash.com/photo-1503341504253-dff4815485f1?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3',
+    image: adaptiveTshirt,
     price: 29.99,
     nutritionScore: 'A',
     allergens: [],
