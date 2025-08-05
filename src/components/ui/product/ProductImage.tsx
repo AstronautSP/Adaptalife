@@ -6,6 +6,7 @@ import { type ProductImageProps } from "./types";
 
 export const ProductImage = ({ product }: ProductImageProps) => {
   const [imageError, setImageError] = useState(false);
+  const [imageLoaded, setImageLoaded] = useState(false);
   
   const getNutritionScoreColor = (score: string) => {
     switch (score) {
@@ -22,12 +23,23 @@ export const ProductImage = ({ product }: ProductImageProps) => {
     <div className="lg:w-1/2 p-6">
       <div className="relative">
         {!imageError ? (
-          <img 
-            src={product.image} 
-            alt={product.name} 
-            className="w-full h-auto object-contain rounded-lg shadow-sm"
-            onError={() => setImageError(true)}
-          />
+          <div className="relative">
+            {!imageLoaded && (
+              <div className="w-full aspect-square bg-muted animate-pulse rounded-lg shadow-sm flex items-center justify-center">
+                <span className="text-muted-foreground">Chargement...</span>
+              </div>
+            )}
+            <img 
+              src={product.image} 
+              alt={product.name} 
+              className={cn(
+                "w-full h-auto object-contain rounded-lg shadow-sm transition-opacity duration-300",
+                imageLoaded ? "opacity-100" : "opacity-0 absolute top-0"
+              )}
+              onLoad={() => setImageLoaded(true)}
+              onError={() => setImageError(true)}
+            />
+          </div>
         ) : (
           <div className="w-full aspect-square bg-gradient-to-br from-primary/10 to-primary/20 rounded-lg shadow-sm flex items-center justify-center">
             <div className="text-center p-8">
