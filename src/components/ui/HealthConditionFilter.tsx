@@ -17,6 +17,7 @@ interface HealthCondition {
 }
 
 const HEALTH_CONDITIONS: HealthCondition[] = [
+  // Diabète et métabolisme
   { 
     id: 'diabetes-1', 
     name: 'Diabète type 1',
@@ -28,6 +29,13 @@ const HEALTH_CONDITIONS: HealthCondition[] = [
     description: 'Filtrer les produits adaptés au diabète de type 2'
   },
   { 
+    id: 'hypoglycemia', 
+    name: 'Hypoglycémie',
+    description: 'Produits avec index glycémique adapté'
+  },
+  
+  // Maladies cardiovasculaires
+  { 
     id: 'heart-disease', 
     name: 'Maladie cardiaque',
     description: 'Produits pour régime faible en sodium et graisses saturées'
@@ -38,11 +46,6 @@ const HEALTH_CONDITIONS: HealthCondition[] = [
     description: 'Produits faibles en sodium'
   },
   { 
-    id: 'hypoglycemia', 
-    name: 'Hypoglycémie',
-    description: 'Produits avec index glycémique adapté'
-  },
-  { 
     id: 'stroke', 
     name: 'AVC',
     description: 'Régime recommandé post-AVC'
@@ -51,6 +54,209 @@ const HEALTH_CONDITIONS: HealthCondition[] = [
     id: 'cholesterol', 
     name: 'Cholestérol élevé',
     description: 'Produits faibles en graisses saturées'
+  },
+  
+  // Maladies rares et génétiques
+  { 
+    id: 'cystic-fibrosis', 
+    name: 'Mucoviscidose',
+    description: 'Régime hypercalorique, riche en protéines et suppléments'
+  },
+  { 
+    id: 'huntington-disease', 
+    name: 'Maladie de Huntington',
+    description: 'Nutrition adaptée aux troubles de déglutition'
+  },
+  { 
+    id: 'phenylketonuria', 
+    name: 'Phénylcétonurie',
+    description: 'Régime sans phénylalanine'
+  },
+  { 
+    id: 'wilson-disease', 
+    name: 'Maladie de Wilson',
+    description: 'Régime pauvre en cuivre'
+  },
+  { 
+    id: 'hemochromatosis', 
+    name: 'Hémochromatose',
+    description: 'Limitation du fer alimentaire'
+  },
+  { 
+    id: 'marfan-syndrome', 
+    name: 'Syndrome de Marfan',
+    description: 'Surveillance cardiovasculaire et nutritionnelle'
+  },
+  { 
+    id: 'ehlers-danlos', 
+    name: 'Syndrome d\'Ehlers-Danlos',
+    description: 'Nutrition pour troubles digestifs et articulations'
+  },
+  { 
+    id: 'prader-willi', 
+    name: 'Syndrome de Prader-Willi',
+    description: 'Contrôle strict des portions et calories'
+  },
+  
+  // Maladies auto-immunes
+  { 
+    id: 'celiac-disease', 
+    name: 'Maladie cœliaque',
+    description: 'Régime strictement sans gluten'
+  },
+  { 
+    id: 'crohn-disease', 
+    name: 'Maladie de Crohn',
+    description: 'Régime anti-inflammatoire, pauvre en fibres'
+  },
+  { 
+    id: 'ulcerative-colitis', 
+    name: 'Rectocolite hémorragique',
+    description: 'Régime adapté aux inflammations intestinales'
+  },
+  { 
+    id: 'lupus', 
+    name: 'Lupus érythémateux',
+    description: 'Régime anti-inflammatoire, contrôle du sodium'
+  },
+  { 
+    id: 'rheumatoid-arthritis', 
+    name: 'Polyarthrite rhumatoïde',
+    description: 'Régime anti-inflammatoire, oméga-3'
+  },
+  { 
+    id: 'multiple-sclerosis', 
+    name: 'Sclérose en plaques',
+    description: 'Régime anti-inflammatoire méditerranéen'
+  },
+  
+  // Troubles neurologiques
+  { 
+    id: 'epilepsy', 
+    name: 'Épilepsie',
+    description: 'Régime cétogène ou modifications alimentaires spécifiques'
+  },
+  { 
+    id: 'parkinson', 
+    name: 'Maladie de Parkinson',
+    description: 'Régime riche en antioxydants, facilité de déglutition'
+  },
+  { 
+    id: 'alzheimer', 
+    name: 'Maladie d\'Alzheimer',
+    description: 'Nutrition adaptée aux troubles cognitifs'
+  },
+  { 
+    id: 'als', 
+    name: 'Sclérose latérale amyotrophique',
+    description: 'Adaptation texture et déglutition'
+  },
+  
+  // Handicaps et déficiences
+  { 
+    id: 'visual-impairment', 
+    name: 'Déficience visuelle',
+    description: 'Produits avec étiquetage accessible et braille'
+  },
+  { 
+    id: 'hearing-impairment', 
+    name: 'Déficience auditive',
+    description: 'Information visuelle renforcée sur les produits'
+  },
+  { 
+    id: 'mobility-impairment', 
+    name: 'Mobilité réduite',
+    description: 'Produits faciles à manipuler et ouvrir'
+  },
+  { 
+    id: 'intellectual-disability', 
+    name: 'Déficience intellectuelle',
+    description: 'Produits avec instructions simplifiées'
+  },
+  { 
+    id: 'autism-spectrum', 
+    name: 'Troubles du spectre autistique',
+    description: 'Produits adaptés aux sensibilités sensorielles'
+  },
+  
+  // Troubles alimentaires
+  { 
+    id: 'anorexia', 
+    name: 'Anorexie mentale',
+    description: 'Produits pour reprise nutritionnelle contrôlée'
+  },
+  { 
+    id: 'bulimia', 
+    name: 'Boulimie',
+    description: 'Produits pour stabilisation alimentaire'
+  },
+  { 
+    id: 'binge-eating', 
+    name: 'Hyperphagie boulimique',
+    description: 'Contrôle des portions et satiété'
+  },
+  { 
+    id: 'pica', 
+    name: 'Pica',
+    description: 'Surveillance des ingestions non alimentaires'
+  },
+  
+  // Intolérances et allergies
+  { 
+    id: 'lactose-intolerance', 
+    name: 'Intolérance au lactose',
+    description: 'Produits sans lactose ou à faible teneur'
+  },
+  { 
+    id: 'fructose-intolerance', 
+    name: 'Intolérance au fructose',
+    description: 'Régime pauvre en fructose et sucrose'
+  },
+  { 
+    id: 'histamine-intolerance', 
+    name: 'Intolérance à l\'histamine',
+    description: 'Éviter aliments riches en histamine'
+  },
+  { 
+    id: 'fodmap-sensitivity', 
+    name: 'Sensibilité aux FODMAPs',
+    description: 'Régime pauvre en FODMAPs'
+  },
+  
+  // Maladies rénales
+  { 
+    id: 'chronic-kidney-disease', 
+    name: 'Insuffisance rénale chronique',
+    description: 'Contrôle protéines, phosphore, potassium'
+  },
+  { 
+    id: 'kidney-stones', 
+    name: 'Calculs rénaux',
+    description: 'Régime préventif selon type de calculs'
+  },
+  
+  // Maladies hépatiques
+  { 
+    id: 'liver-cirrhosis', 
+    name: 'Cirrhose hépatique',
+    description: 'Régime pauvre en sodium, contrôle protéines'
+  },
+  { 
+    id: 'hepatic-encephalopathy', 
+    name: 'Encéphalopathie hépatique',
+    description: 'Restriction protéique, suppléments spécifiques'
+  },
+  
+  // Cancers et traitements
+  { 
+    id: 'cancer-treatment', 
+    name: 'Traitement anticancéreux',
+    description: 'Nutrition adaptée aux effets secondaires'
+  },
+  { 
+    id: 'post-surgery', 
+    name: 'Post-chirurgie digestive',
+    description: 'Régime de transition progressive'
   },
 ];
 
