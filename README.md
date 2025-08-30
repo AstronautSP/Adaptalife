@@ -1,4 +1,4 @@
-# Handiview - Application d'Aide Nutritionnelle pour Personnes Handicapées
+#Adaptalife - Application d'Aide Nutritionnelle pour Personnes Handicapées
 
 ## 🎯 Vision
 
@@ -253,4 +253,4 @@ Cette application a été développée dans le cadre de l'amélioration de l'acc
 
 ---
 
-**Handiview** - *Rendre l'alimentation accessible à tous* 🌟
+**Adaptalife** - *Rendre l'alimentation accessible à tous* 🌟
