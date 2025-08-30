@@ -2,7 +2,7 @@
 
 ## 🎯 Vision
 
-Handiview est une application web révolutionnaire conçue pour faciliter l'accès à l'information nutritionnelle et améliorer l'autonomie des personnes en situation de handicap dans leurs achats alimentaires.
+Adaptalife est une application web révolutionnaire conçue pour faciliter l'accès à l'information nutritionnelle et améliorer l'autonomie des personnes en situation de handicap dans leurs achats alimentaires.
 
 ## ✨ Fonctionnalités Principales
 
