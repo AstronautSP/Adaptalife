@@ -128,7 +128,7 @@ const MapView = () => {
                 <p className="text-muted-foreground">{selectedStore.address}</p>
                 <div className="flex items-center gap-2">
                   <Phone className="h-3.5 w-3.5 text-muted-foreground" />
-                  <span className="text-muted-foreground">01 23 45 67 89</span>
+                  <span className="text-muted-foreground">{selectedStore.phone || '01 23 45 67 89'}</span>
                 </div>
                 <div className="flex items-center gap-2">
                   <Clock className="h-3.5 w-3.5 text-muted-foreground" />

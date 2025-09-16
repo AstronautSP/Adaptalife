@@ -24,6 +24,7 @@ interface Store {
   type?: 'supermarket' | 'farm' | 'market' | 'bakery' | 'seafood';
   products?: string[];
   organic?: boolean;
+  phone?: string;
 }
 
 // Liste de magasins et producteurs en France et à l'international
