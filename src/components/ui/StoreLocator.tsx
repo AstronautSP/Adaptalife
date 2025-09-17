@@ -26,7 +26,7 @@ const STORE_LOCATIONS: StoreLocation[] = [
   { id: 'marseille-1', name: 'Marseille - Vieux Port', address: '11 La Canebière, 13001 Marseille', coordinates: { lat: 43.2965, lng: 5.3698 }, phone: '04 91 55 66 77' },
   { id: 'bordeaux-1', name: 'Bordeaux - Centre', address: '57 Cours de l\'Intendance, 33000 Bordeaux', coordinates: { lat: 44.8378, lng: -0.5792 }, phone: '05 56 78 90 12' },
   { id: 'lille-1', name: 'Lille - Centre', address: '28 Place du Général de Gaulle, 59000 Lille', coordinates: { lat: 50.6365, lng: 3.0635 }, phone: '03 20 34 45 56' },
-  { id: 'leclerc-saint-medard', name: 'Leclerc Saint-Médard-en-Jalles', address: 'Avenue de Magudas, 33160 Saint-Médard-en-Jalles', coordinates: { lat: 44.8969, lng: -0.7183 }, phone: '05 56 05 42 10' },
+  { id: 'leclerc-saint-medard', name: 'Leclerc Saint-Médard-en-Jalles', address: '34 Avenue Descartes, 33160 Saint-Médard-en-Jalles', coordinates: { lat: 44.8969, lng: -0.7183 }, phone: '05 56 05 42 10' },
 ];
 
 interface StoreLocatorProps {
