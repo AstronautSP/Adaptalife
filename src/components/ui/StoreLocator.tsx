@@ -20,12 +20,12 @@ interface StoreLocation {
 }
 
 const STORE_LOCATIONS: StoreLocation[] = [
-  { id: 'paris-1', name: 'Paris - La Défense', address: '4 Place de la Défense, 92400 Courbevoie', coordinates: { lat: 48.8738, lng: 2.2950 }, phone: '01 45 67 89 01' },
-  { id: 'paris-2', name: 'Paris - Montparnasse', address: '17 Rue du Départ, 75014 Paris', coordinates: { lat: 48.8417, lng: 2.3226 }, phone: '01 43 22 34 56' },
-  { id: 'lyon-1', name: 'Lyon - Part-Dieu', address: '129 Rue Servient, 69003 Lyon', coordinates: { lat: 45.7597, lng: 4.8589 }, phone: '04 78 89 12 34' },
-  { id: 'marseille-1', name: 'Marseille - Vieux Port', address: '11 La Canebière, 13001 Marseille', coordinates: { lat: 43.2965, lng: 5.3698 }, phone: '04 91 55 66 77' },
-  { id: 'bordeaux-1', name: 'Bordeaux - Centre', address: '57 Cours de l\'Intendance, 33000 Bordeaux', coordinates: { lat: 44.8378, lng: -0.5792 }, phone: '05 56 78 90 12' },
-  { id: 'lille-1', name: 'Lille - Centre', address: '28 Place du Général de Gaulle, 59000 Lille', coordinates: { lat: 50.6365, lng: 3.0635 }, phone: '03 20 34 45 56' },
+  { id: 'leclerc-courbevoie', name: 'Leclerc Courbevoie', address: '186 Boulevard Saint-Denis, 92400 Courbevoie', coordinates: { lat: 48.8738, lng: 2.2950 }, phone: '01 47 88 42 30' },
+  { id: 'intermarche-paris14', name: 'Intermarché Paris 14ème', address: '85 Avenue du Maine, 75014 Paris', coordinates: { lat: 48.8417, lng: 2.3226 }, phone: '01 43 20 15 67' },
+  { id: 'super-u-lyon', name: 'Super U Lyon Part-Dieu', address: '17 Rue Maurice Flandin, 69003 Lyon', coordinates: { lat: 45.7597, lng: 4.8589 }, phone: '04 78 62 34 89' },
+  { id: 'leclerc-marseille', name: 'Leclerc Marseille Saint-Loup', address: 'Avenue de la Pinède, 13010 Marseille', coordinates: { lat: 43.2965, lng: 5.3698 }, phone: '04 91 89 45 23' },
+  { id: 'intermarche-bordeaux', name: 'Intermarché Bordeaux Lac', address: 'Avenue des 40 Journaux, 33300 Bordeaux', coordinates: { lat: 44.8378, lng: -0.5792 }, phone: '05 56 50 78 92' },
+  { id: 'super-u-lille', name: 'Super U Lille Fives', address: '168 Rue Pierre Legrand, 59000 Lille', coordinates: { lat: 50.6365, lng: 3.0635 }, phone: '03 20 55 67 89' },
   { id: 'leclerc-saint-medard', name: 'Leclerc Saint-Médard-en-Jalles', address: '34 Avenue Descartes, 33160 Saint-Médard-en-Jalles', coordinates: { lat: 44.8969, lng: -0.7183 }, phone: '05 56 05 42 10' },
 ];
 
