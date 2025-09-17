@@ -20,6 +20,7 @@ import DisabilityCard from "./pages/DisabilityCard";
 import Presentation from "./pages/Presentation";
 import Demo from "./pages/Demo";
 import PresentationGuide from "./pages/PresentationGuide";
+import Screenshots from "./pages/Screenshots";
 
 const queryClient = new QueryClient();
 
@@ -60,6 +61,7 @@ const App = () => {
             <Route path="/presentation" element={<Presentation />} />
             <Route path="/demo" element={<Demo />} />
             <Route path="/guide" element={<PresentationGuide />} />
+            <Route path="/screenshots" element={<Screenshots />} />
             <Route path="/map" element={<MapView />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
