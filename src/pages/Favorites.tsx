@@ -1,10 +1,12 @@
-
 import { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import Header from '@/components/layout/Header';
+import Footer from '@/components/layout/Footer';
 import ProductCard from '@/components/ui/ProductCard';
 import { type Product } from '@/components/ui/product/types';
 import { products } from '@/data/products';
 import { Heart } from 'lucide-react';
+import { Button } from '@/components/ui/button';
 
 const Favorites = () => {
   const [favoriteProducts, setFavoriteProducts] = useState<Product[]>([]);
@@ -37,12 +39,15 @@ const Favorites = () => {
             <div className="text-center py-12">
               <Heart className="h-16 w-16 text-muted-foreground/50 mx-auto mb-4" />
               <h2 className="text-xl font-semibold mb-2">Aucun favori pour le moment</h2>
-              <p className="text-muted-foreground">
+              <p className="text-muted-foreground mb-6">
                 Ajoutez des produits à vos favoris en cliquant sur le cœur
               </p>
+              <Button asChild>
+                <Link to="/products">Découvrir les produits</Link>
+              </Button>
             </div>
           ) : (
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mb-12">
               {favoriteProducts.map((product) => (
                 <ProductCard key={product.id} product={product} />
               ))}
@@ -50,6 +55,8 @@ const Favorites = () => {
           )}
         </div>
       </main>
+      
+      <Footer />
     </div>
   );
 };

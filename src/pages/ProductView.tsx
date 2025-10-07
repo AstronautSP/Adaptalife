@@ -2,9 +2,10 @@ import { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { ArrowLeft, ChevronRight, Map, Store } from 'lucide-react';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import { Tabs, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import ProductDetail from '@/components/ui/ProductDetail';
 import StoreMap3D from '@/components/ui/StoreMap3D';
+import Footer from '@/components/layout/Footer';
 import { products } from '@/data/products';
 import { type Product } from '@/components/ui/product/types';
 
@@ -111,14 +112,16 @@ const ProductView = () => {
         </div>
       </div>
       
-      <div className="mt-8 text-center">
-        <Button asChild>
+      <div className="mt-8 text-center mb-8">
+        <Button asChild variant="outline">
           <Link to="/products">
             <ArrowLeft className="h-4 w-4 mr-2" />
             Retour aux produits
           </Link>
         </Button>
       </div>
+      
+      <Footer />
     </div>
   );
 };

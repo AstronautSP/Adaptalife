@@ -1,7 +1,8 @@
 
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import Header from '@/components/layout/Header';
+import Footer from '@/components/layout/Footer';
 import CategoryPicker from '@/components/ui/CategoryPicker';
 import ProductCard from '@/components/ui/ProductCard';
 import HealthConditionFilter from '@/components/ui/HealthConditionFilter';
@@ -54,13 +55,21 @@ const Products = () => {
             </div>
           </div>
           
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-            {filteredProducts.map((product) => (
-              <ProductCard key={product.id} product={product} />
-            ))}
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mb-12">
+            {filteredProducts.length > 0 ? (
+              filteredProducts.map((product) => (
+                <ProductCard key={product.id} product={product} />
+              ))
+            ) : (
+              <div className="col-span-full text-center py-12">
+                <p className="text-muted-foreground text-lg">Aucun produit trouvé avec ces critères</p>
+              </div>
+            )}
           </div>
         </div>
       </main>
+      
+      <Footer />
     </div>
   );
 };

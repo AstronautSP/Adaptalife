@@ -1,4 +1,9 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { ArrowLeft, Download } from "lucide-react";
+import { Link } from "react-router-dom";
+import Header from "@/components/layout/Header";
+import Footer from "@/components/layout/Footer";
 import homepageMockup from "@/assets/screenshots/homepage-mockup.jpg";
 import productsMockup from "@/assets/screenshots/products-page-mockup.jpg";
 import mapMockup from "@/assets/screenshots/map-page-mockup.jpg";
@@ -40,32 +45,47 @@ const Screenshots = () => {
   ];
 
   return (
-    <div className="container mx-auto p-6">
-      <div className="mb-8">
-        <h1 className="text-3xl font-bold mb-4">Captures d'écran AdaptaLife</h1>
-        <p className="text-muted-foreground">
-          Voici les captures d'écran de votre application pour votre projet professionnel.
-          Cliquez droit sur les images pour les enregistrer.
-        </p>
-      </div>
+    <div className="min-h-screen bg-background">
+      <Header />
       
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {screenshots.map((screenshot, index) => (
-          <Card key={index} className="overflow-hidden">
-            <CardHeader>
-              <CardTitle className="text-lg">{screenshot.title}</CardTitle>
-              <CardDescription>{screenshot.description}</CardDescription>
-            </CardHeader>
-            <CardContent className="p-0">
-              <img 
-                src={screenshot.image} 
-                alt={screenshot.alt}
-                className="w-full h-auto object-cover hover:scale-105 transition-transform duration-300"
-              />
-            </CardContent>
-          </Card>
-        ))}
-      </div>
+      <main className="pt-20 px-4 sm:px-6 lg:px-8">
+        <div className="container mx-auto max-w-7xl py-8">
+          <Button asChild variant="outline" size="sm" className="mb-6">
+            <Link to="/">
+              <ArrowLeft className="h-4 w-4 mr-2" />
+              Retour à l'accueil
+            </Link>
+          </Button>
+          
+          <div className="mb-8">
+            <h1 className="text-4xl font-bold mb-4">Captures d'écran AdaptaLife</h1>
+            <p className="text-muted-foreground text-lg">
+              Voici les captures d'écran de votre application pour votre projet professionnel.
+              Cliquez droit sur les images pour les enregistrer.
+            </p>
+          </div>
+      
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+            {screenshots.map((screenshot, index) => (
+              <Card key={index} className="overflow-hidden hover:shadow-xl transition-shadow duration-300">
+                <CardHeader>
+                  <CardTitle className="text-lg">{screenshot.title}</CardTitle>
+                  <CardDescription>{screenshot.description}</CardDescription>
+                </CardHeader>
+                <CardContent className="p-0">
+                  <img 
+                    src={screenshot.image} 
+                    alt={screenshot.alt}
+                    className="w-full h-auto object-cover hover:scale-105 transition-transform duration-300 cursor-pointer"
+                  />
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </main>
+      
+      <Footer />
     </div>
   );
 };

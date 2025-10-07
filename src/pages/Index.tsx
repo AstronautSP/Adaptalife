@@ -1,8 +1,8 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import Header from "@/components/layout/Header";
+import Footer from "@/components/layout/Footer";
 import SearchBar from "@/components/ui/SearchBar";
-import CategoryPicker from "@/components/ui/CategoryPicker";
 import ProductCard from "@/components/ui/ProductCard";
 import DiscountCoupons from "@/components/ui/DiscountCoupons";
 import HealthConditionFilter from "@/components/ui/HealthConditionFilter";
@@ -142,6 +142,8 @@ const Index = () => {
           </div>
         </section>
       </main>
+      
+      <Footer />
     </div>
   );
 };
