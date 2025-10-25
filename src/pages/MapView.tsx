@@ -153,7 +153,7 @@ const MapView = () => {
               <VoiceNavigation 
                 onNavigate={handleVoiceNavigation} 
                 userLocation={userLocation} 
-                selectedStore={selectedStore.name}
+                selectedStore={selectedStore.id}
               />
             </div>
           )}
