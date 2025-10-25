@@ -11,22 +11,147 @@ import {
 import { useToast } from '@/hooks/use-toast';
 import { Alert, AlertDescription } from './alert';
 
-interface StoreLocation {
+export interface StoreDestination {
+  name: string;
+  instructions: string;
+}
+
+export interface StoreLocation {
   id: string;
   name: string;
   address: string;
   coordinates: { lat: number; lng: number };
   phone: string;
+  destinations: StoreDestination[];
 }
 
 const STORE_LOCATIONS: StoreLocation[] = [
-  { id: 'leclerc-courbevoie', name: 'Leclerc Courbevoie', address: '186 Boulevard Saint-Denis, 92400 Courbevoie', coordinates: { lat: 48.8738, lng: 2.2950 }, phone: '01 47 88 42 30' },
-  { id: 'intermarche-paris14', name: 'Intermarché Paris 14ème', address: '85 Avenue du Maine, 75014 Paris', coordinates: { lat: 48.8417, lng: 2.3226 }, phone: '01 43 20 15 67' },
-  { id: 'super-u-lyon', name: 'Super U Lyon Part-Dieu', address: '17 Rue Maurice Flandin, 69003 Lyon', coordinates: { lat: 45.7597, lng: 4.8589 }, phone: '04 78 62 34 89' },
-  { id: 'leclerc-marseille', name: 'Leclerc Marseille Saint-Loup', address: 'Avenue de la Pinède, 13010 Marseille', coordinates: { lat: 43.2965, lng: 5.3698 }, phone: '04 91 89 45 23' },
-  { id: 'intermarche-bordeaux', name: 'Intermarché Bordeaux Lac', address: 'Avenue des 40 Journaux, 33300 Bordeaux', coordinates: { lat: 44.8378, lng: -0.5792 }, phone: '05 56 50 78 92' },
-  { id: 'super-u-lille', name: 'Super U Lille Fives', address: '168 Rue Pierre Legrand, 59000 Lille', coordinates: { lat: 50.6365, lng: 3.0635 }, phone: '03 20 55 67 89' },
-  { id: 'leclerc-saint-medard', name: 'Leclerc Saint-Médard-en-Jalles', address: '34 Avenue Descartes, 33160 Saint-Médard-en-Jalles', coordinates: { lat: 44.8969, lng: -0.7183 }, phone: '05 56 05 42 10' },
+  { 
+    id: 'leclerc-courbevoie', 
+    name: 'Leclerc Courbevoie', 
+    address: '186 Boulevard Saint-Denis, 92400 Courbevoie', 
+    coordinates: { lat: 48.8738, lng: 2.2950 }, 
+    phone: '01 47 88 42 30',
+    destinations: [
+      { name: 'fruits et légumes', instructions: "Pour aller aux fruits et légumes, avancez tout droit sur 8 mètres, puis tournez à gauche. Le rayon se trouve sur votre droite." },
+      { name: 'boulangerie', instructions: "Pour aller à la boulangerie, avancez sur 12 mètres, puis tournez à droite. Vous sentirez l'odeur du pain frais." },
+      { name: 'boucherie', instructions: "Pour aller à la boucherie, avancez tout droit sur 18 mètres, puis tournez à droite et continuez 5 mètres." },
+      { name: 'poissonnerie', instructions: "Pour aller à la poissonnerie, avancez tout droit sur 18 mètres, puis tournez à droite et continuez sur 8 mètres." },
+      { name: 'produits laitiers', instructions: "Pour aller aux produits laitiers, avancez tout droit sur 15 mètres. Le rayon est au fond sur votre gauche." },
+      { name: 'surgelés', instructions: "Pour aller aux surgelés, avancez tout droit sur 22 mètres, puis tournez à droite et continuez jusqu'au fond du magasin." },
+      { name: 'boissons', instructions: "Pour aller aux boissons, avancez tout droit sur 10 mètres, puis tournez à gauche et continuez sur 8 mètres." },
+      { name: 'entrée', instructions: "Pour retourner à l'entrée du magasin, faites demi-tour et avancez tout droit sur 25 mètres." },
+      { name: 'caisses', instructions: "Pour aller aux caisses, faites demi-tour et avancez tout droit sur 20 mètres. Vous entendrez les bips des caisses." },
+    ]
+  },
+  { 
+    id: 'intermarche-paris14', 
+    name: 'Intermarché Paris 14ème', 
+    address: '85 Avenue du Maine, 75014 Paris', 
+    coordinates: { lat: 48.8417, lng: 2.3226 }, 
+    phone: '01 43 20 15 67',
+    destinations: [
+      { name: 'fruits et légumes', instructions: "Pour aller aux fruits et légumes, tournez à gauche à l'entrée et avancez sur 6 mètres." },
+      { name: 'boulangerie', instructions: "Pour aller à la boulangerie, avancez tout droit sur 10 mètres depuis l'entrée." },
+      { name: 'boucherie', instructions: "Pour aller à la boucherie, avancez sur 15 mètres, puis tournez à gauche." },
+      { name: 'poissonnerie', instructions: "Pour aller à la poissonnerie, avancez sur 15 mètres, puis tournez à gauche et continuez 4 mètres." },
+      { name: 'produits laitiers', instructions: "Pour aller aux produits laitiers, avancez tout droit sur 20 mètres et tournez à droite." },
+      { name: 'surgelés', instructions: "Pour aller aux surgelés, avancez au fond du magasin sur 25 mètres, c'est sur votre droite." },
+      { name: 'boissons', instructions: "Pour aller aux boissons, avancez sur 12 mètres et tournez à gauche." },
+      { name: 'entrée', instructions: "Pour retourner à l'entrée, faites demi-tour et suivez le chemin principal." },
+      { name: 'caisses', instructions: "Pour aller aux caisses, elles sont situées à l'entrée, faites demi-tour et avancez sur 15 mètres." },
+    ]
+  },
+  { 
+    id: 'super-u-lyon', 
+    name: 'Super U Lyon Part-Dieu', 
+    address: '17 Rue Maurice Flandin, 69003 Lyon', 
+    coordinates: { lat: 45.7597, lng: 4.8589 }, 
+    phone: '04 78 62 34 89',
+    destinations: [
+      { name: 'fruits et légumes', instructions: "Pour aller aux fruits et légumes, tournez immédiatement à droite après l'entrée." },
+      { name: 'boulangerie', instructions: "Pour aller à la boulangerie, avancez sur 8 mètres et tournez à gauche. La boulangerie est juste devant vous." },
+      { name: 'boucherie', instructions: "Pour aller à la boucherie, avancez sur 20 mètres tout droit, puis tournez à droite." },
+      { name: 'poissonnerie', instructions: "Pour aller à la poissonnerie, avancez sur 20 mètres tout droit, puis tournez à droite et continuez 6 mètres." },
+      { name: 'produits laitiers', instructions: "Pour aller aux produits laitiers, avancez sur 18 mètres et regardez sur votre gauche." },
+      { name: 'surgelés', instructions: "Pour aller aux surgelés, dirigez-vous au fond du magasin sur 28 mètres." },
+      { name: 'boissons', instructions: "Pour aller aux boissons, avancez sur 14 mètres et tournez à gauche." },
+      { name: 'entrée', instructions: "Pour retourner à l'entrée, faites demi-tour et suivez le chemin principal." },
+      { name: 'caisses', instructions: "Pour aller aux caisses, revenez vers l'entrée, elles sont sur votre gauche." },
+    ]
+  },
+  { 
+    id: 'leclerc-marseille', 
+    name: 'Leclerc Marseille Saint-Loup', 
+    address: 'Avenue de la Pinède, 13010 Marseille', 
+    coordinates: { lat: 43.2965, lng: 5.3698 }, 
+    phone: '04 91 89 45 23',
+    destinations: [
+      { name: 'fruits et légumes', instructions: "Pour aller aux fruits et légumes, avancez tout droit sur 10 mètres, puis tournez à gauche." },
+      { name: 'boulangerie', instructions: "Pour aller à la boulangerie, avancez sur 14 mètres, puis tournez à droite." },
+      { name: 'boucherie', instructions: "Pour aller à la boucherie, avancez tout droit sur 22 mètres, puis tournez à droite." },
+      { name: 'poissonnerie', instructions: "Pour aller à la poissonnerie, avancez tout droit sur 22 mètres, puis tournez à droite et continuez sur 7 mètres." },
+      { name: 'produits laitiers', instructions: "Pour aller aux produits laitiers, avancez tout droit sur 17 mètres, puis tournez à droite." },
+      { name: 'surgelés', instructions: "Pour aller aux surgelés, avancez au fond du magasin sur 30 mètres." },
+      { name: 'boissons', instructions: "Pour aller aux boissons, avancez sur 12 mètres, puis tournez à gauche et continuez sur 10 mètres." },
+      { name: 'entrée', instructions: "Pour retourner à l'entrée du magasin, faites demi-tour et avancez tout droit sur 30 mètres." },
+      { name: 'caisses', instructions: "Pour aller aux caisses, faites demi-tour et avancez sur 22 mètres." },
+    ]
+  },
+  { 
+    id: 'intermarche-bordeaux', 
+    name: 'Intermarché Bordeaux Lac', 
+    address: 'Avenue des 40 Journaux, 33300 Bordeaux', 
+    coordinates: { lat: 44.8378, lng: -0.5792 }, 
+    phone: '05 56 50 78 92',
+    destinations: [
+      { name: 'fruits et légumes', instructions: "Pour aller aux fruits et légumes, tournez à droite après l'entrée et avancez 5 mètres." },
+      { name: 'boulangerie', instructions: "Pour aller à la boulangerie, avancez tout droit sur 11 mètres depuis l'entrée." },
+      { name: 'boucherie', instructions: "Pour aller à la boucherie, avancez sur 16 mètres, puis tournez à gauche." },
+      { name: 'poissonnerie', instructions: "Pour aller à la poissonnerie, avancez sur 16 mètres, puis tournez à gauche et continuez 5 mètres." },
+      { name: 'produits laitiers', instructions: "Pour aller aux produits laitiers, avancez sur 19 mètres et tournez à droite." },
+      { name: 'surgelés', instructions: "Pour aller aux surgelés, dirigez-vous au fond sur 26 mètres, c'est sur votre droite." },
+      { name: 'boissons', instructions: "Pour aller aux boissons, avancez sur 13 mètres et tournez à gauche." },
+      { name: 'entrée', instructions: "Pour retourner à l'entrée, faites demi-tour et suivez le chemin principal sur 18 mètres." },
+      { name: 'caisses', instructions: "Pour aller aux caisses, revenez vers l'entrée sur 16 mètres." },
+    ]
+  },
+  { 
+    id: 'super-u-lille', 
+    name: 'Super U Lille Fives', 
+    address: '168 Rue Pierre Legrand, 59000 Lille', 
+    coordinates: { lat: 50.6365, lng: 3.0635 }, 
+    phone: '03 20 55 67 89',
+    destinations: [
+      { name: 'fruits et légumes', instructions: "Pour aller aux fruits et légumes, avancez tout droit sur 7 mètres, c'est sur votre droite." },
+      { name: 'boulangerie', instructions: "Pour aller à la boulangerie, tournez à gauche à l'entrée et avancez 9 mètres." },
+      { name: 'boucherie', instructions: "Pour aller à la boucherie, avancez sur 17 mètres tout droit, puis tournez à droite." },
+      { name: 'poissonnerie', instructions: "Pour aller à la poissonnerie, avancez sur 17 mètres tout droit, puis tournez à droite et continuez 6 mètres." },
+      { name: 'produits laitiers', instructions: "Pour aller aux produits laitiers, avancez sur 16 mètres et regardez sur votre gauche." },
+      { name: 'surgelés', instructions: "Pour aller aux surgelés, dirigez-vous au fond du magasin sur 24 mètres." },
+      { name: 'boissons', instructions: "Pour aller aux boissons, avancez sur 11 mètres et tournez à gauche." },
+      { name: 'entrée', instructions: "Pour retourner à l'entrée, faites demi-tour et suivez le chemin principal." },
+      { name: 'caisses', instructions: "Pour aller aux caisses, elles sont près de l'entrée, faites demi-tour et avancez sur 14 mètres." },
+    ]
+  },
+  { 
+    id: 'leclerc-saint-medard', 
+    name: 'Leclerc Saint-Médard-en-Jalles', 
+    address: '34 Avenue Descartes, 33160 Saint-Médard-en-Jalles', 
+    coordinates: { lat: 44.8969, lng: -0.7183 }, 
+    phone: '05 56 05 42 10',
+    destinations: [
+      { name: 'fruits et légumes', instructions: "Pour aller aux fruits et légumes, avancez tout droit sur 9 mètres, puis tournez à gauche." },
+      { name: 'boulangerie', instructions: "Pour aller à la boulangerie, avancez sur 13 mètres, puis tournez à droite." },
+      { name: 'boucherie', instructions: "Pour aller à la boucherie, avancez tout droit sur 21 mètres, puis tournez à droite." },
+      { name: 'poissonnerie', instructions: "Pour aller à la poissonnerie, avancez tout droit sur 21 mètres, puis tournez à droite et continuez sur 8 mètres." },
+      { name: 'produits laitiers', instructions: "Pour aller aux produits laitiers, avancez tout droit sur 18 mètres, puis tournez à droite." },
+      { name: 'surgelés', instructions: "Pour aller aux surgelés, avancez au fond du magasin sur 29 mètres." },
+      { name: 'boissons', instructions: "Pour aller aux boissons, avancez sur 11 mètres, puis tournez à gauche et continuez sur 9 mètres." },
+      { name: 'entrée', instructions: "Pour retourner à l'entrée du magasin, faites demi-tour et avancez tout droit sur 28 mètres." },
+      { name: 'caisses', instructions: "Pour aller aux caisses, faites demi-tour et avancez sur 21 mètres." },
+    ]
+  },
 ];
 
 interface StoreLocatorProps {

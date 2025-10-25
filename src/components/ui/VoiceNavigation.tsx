@@ -5,6 +5,7 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { useToast } from '@/hooks/use-toast';
+import { STORE_LOCATIONS } from './StoreLocator';
 
 interface VoiceNavigationProps {
   onNavigate?: (destination: string) => void;
@@ -26,12 +27,10 @@ const VoiceNavigation = ({
   const recognitionRef = useRef<any>(null);
   const { toast } = useToast();
 
-  // Liste des destinations possibles dans le magasin
-  const storeDestinations = [
-    'fruits et légumes', 'boulangerie', 'boucherie', 'poissonnerie',
-    'produits laitiers', 'surgelés', 'boissons', 'santé et beauté', 'maison',
-    'entrée', 'caisses'
-  ];
+  // Récupérer les destinations du magasin sélectionné
+  const selectedStoreData = STORE_LOCATIONS.find(store => store.id === selectedStore);
+  const storeDestinations = selectedStoreData?.destinations.map(d => d.name) || [];
+  const storeName = selectedStoreData?.name || 'ce magasin';
 
   // Instructions pour guider l'utilisateur malvoyant
   const getNavInstructions = (destination: string): string => {
@@ -39,33 +38,20 @@ const VoiceNavigation = ({
       return "Veuillez d'abord activer votre localisation dans le magasin pour recevoir des instructions de navigation.";
     }
 
-    // Simulation d'instructions de navigation basées sur la destination
-    switch (destination.toLowerCase()) {
-      case 'fruits et légumes':
-        return "Pour aller aux fruits et légumes, avancez tout droit sur 10 mètres, puis tournez à gauche.";
-      case 'boulangerie':
-        return "Pour aller à la boulangerie, avancez sur 15 mètres, puis tournez à droite.";
-      case 'boucherie':
-        return "Pour aller à la boucherie, avancez tout droit sur 20 mètres, puis tournez à droite.";
-      case 'poissonnerie':
-        return "Pour aller à la poissonnerie, avancez tout droit sur 20 mètres, puis tournez à droite et continuez sur 5 mètres.";
-      case 'produits laitiers':
-        return "Pour aller aux produits laitiers, avancez tout droit sur 15 mètres, puis tournez à droite.";
-      case 'surgelés':
-        return "Pour aller aux surgelés, avancez tout droit sur 20 mètres, puis tournez à droite et continuez jusqu'au fond du magasin.";
-      case 'boissons':
-        return "Pour aller aux boissons, avancez tout droit sur 10 mètres, puis tournez à gauche et continuez sur 10 mètres.";
-      case 'santé et beauté':
-        return "Pour aller aux produits de santé et beauté, avancez tout droit sur 15 mètres, puis tournez à droite et continuez sur 5 mètres.";
-      case 'maison':
-        return "Pour aller aux produits pour la maison, avancez tout droit sur 20 mètres, puis tournez à gauche.";
-      case 'entrée':
-        return "Pour retourner à l'entrée du magasin, faites demi-tour et avancez tout droit sur 30 mètres.";
-      case 'caisses':
-        return "Pour aller aux caisses, faites demi-tour et avancez tout droit sur 20 mètres.";
-      default:
-        return `Je n'ai pas trouvé "${destination}" dans le magasin. Vous pouvez demander des directions vers les fruits et légumes, la boulangerie, la boucherie, etc.`;
+    if (!selectedStoreData) {
+      return "Veuillez sélectionner un magasin pour recevoir des instructions de navigation.";
     }
+
+    // Trouver les instructions spécifiques au magasin
+    const destinationData = selectedStoreData.destinations.find(
+      d => d.name.toLowerCase() === destination.toLowerCase()
+    );
+
+    if (destinationData) {
+      return destinationData.instructions;
+    }
+
+    return `Je n'ai pas trouvé "${destination}" dans ${storeName}. Les destinations disponibles sont : ${storeDestinations.join(', ')}.`;
   };
 
   // Configuration de la reconnaissance vocale
@@ -139,11 +125,17 @@ const VoiceNavigation = ({
         title: `Navigation vers: ${destination}`,
       });
     } else if (lowerCommand.includes('aide') || lowerCommand.includes('help')) {
-      const helpMessage = "Je peux vous aider à naviguer dans le magasin. Dites par exemple 'Où sont les fruits et légumes' ou 'Comment aller aux caisses'.";
+      const availableDestinations = storeDestinations.length > 0 
+        ? storeDestinations.slice(0, 3).join(', ') 
+        : 'fruits et légumes, boulangerie, caisses';
+      const helpMessage = `Je peux vous aider à naviguer dans ${storeName}. Dites par exemple 'Où sont les ${availableDestinations}'.`;
       speak(helpMessage);
       setLastInstruction(helpMessage);
     } else {
-      const noUnderstand = "Je n'ai pas compris votre demande. Vous pouvez demander où se trouvent les rayons comme 'fruits et légumes' ou 'boulangerie'.";
+      const availableDestinations = storeDestinations.length > 0 
+        ? storeDestinations.slice(0, 3).join(', ') 
+        : 'fruits et légumes, boulangerie';
+      const noUnderstand = `Je n'ai pas compris votre demande. Dans ${storeName}, vous pouvez demander : ${availableDestinations}.`;
       speak(noUnderstand);
       setLastInstruction(noUnderstand);
     }
@@ -189,9 +181,9 @@ const VoiceNavigation = ({
             });
             
             // Message d'accueil
-            const welcomeMessage = selectedStore 
-              ? `Navigation vocale activée pour ${selectedStore}. Comment puis-je vous aider ?` 
-              : "Navigation vocale activée. Comment puis-je vous aider ?";
+            const welcomeMessage = selectedStoreData 
+              ? `Navigation vocale activée pour ${storeName}. Comment puis-je vous aider ?` 
+              : "Navigation vocale activée. Veuillez d'abord sélectionner un magasin.";
             
             speak(welcomeMessage);
           } catch (e) {
@@ -280,8 +272,10 @@ const VoiceNavigation = ({
           
           <div className="text-xs text-muted-foreground bg-muted/30 p-2 rounded">
             <p>
-              <strong>Commandes disponibles:</strong> "Où sont les fruits et légumes?", 
-              "Comment aller aux caisses?", "Trouver la boulangerie", etc.
+              <strong>Destinations dans {storeName}:</strong>{' '}
+              {storeDestinations.length > 0 
+                ? storeDestinations.join(', ') 
+                : 'Veuillez sélectionner un magasin'}
             </p>
           </div>
         </div>
