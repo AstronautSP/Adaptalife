@@ -62,104 +62,133 @@ const StoreMap3DOptimized = ({ storeId, productId, className, userLocation }: St
     TemporalDataService.generateTemporalData(14)
   );
 
-  // Layout réaliste du Leclerc Saint-Médard-en-Jalles
+  // Layouts spécifiques pour chaque magasin avec superficies réalistes
   const storeSections = useMemo(() => {
-    // Plan spécifique au Leclerc de Saint-Médard-en-Jalles si sélectionné
-    if (storeId === 'leclerc-saint-medard') {
+    // Leclerc Courbevoie - Grand hypermarché de 3500m² avec galerie marchande
+    if (storeId === 'leclerc-courbevoie') {
       return [
-        // Entrée principale - typique des Leclerc, large entrée côté parking
-        { id: 'entrance', x: 2, z: 28, width: 8, height: 1, depth: 3, type: 'entrance', label: 'Entrée Principale', color: '#e5e7eb' },
-        
-        // Zone d'accueil et services - souvent près de l'entrée dans les Leclerc
-        { id: 'services', x: 12, z: 28, width: 6, height: 1, depth: 3, type: 'services', label: 'Accueil & Services', color: '#94a3b8' },
-        
-        // Galerie marchande - sortie vers autres boutiques
-        { id: 'exit-gallery', x: 22, z: 28, width: 6, height: 1, depth: 3, type: 'entrance', label: 'Galerie Marchande', color: '#e5e7eb' },
-        
-        // Ligne de caisses - configuration typique Leclerc avec beaucoup de caisses
+        { id: 'entrance', x: 2, z: 28, width: 8, height: 1, depth: 3, type: 'entrance', label: 'Entrée', color: '#e5e7eb' },
+        { id: 'services', x: 12, z: 28, width: 6, height: 1, depth: 3, type: 'services', label: 'Accueil', color: '#94a3b8' },
         { id: 'checkout1', x: 4, z: 24, width: 2, height: 1, depth: 1.5, type: 'checkout', label: 'Caisses 1-3', color: '#94a3b8' },
         { id: 'checkout2', x: 7, z: 24, width: 2, height: 1, depth: 1.5, type: 'checkout', label: 'Caisses 4-6', color: '#94a3b8' },
         { id: 'checkout3', x: 10, z: 24, width: 2, height: 1, depth: 1.5, type: 'checkout', label: 'Caisses 7-9', color: '#94a3b8' },
-        { id: 'checkout4', x: 13, z: 24, width: 2, height: 1, depth: 1.5, type: 'checkout', label: 'Caisses 10-12', color: '#94a3b8' },
-        { id: 'checkout5', x: 16, z: 24, width: 2, height: 1, depth: 1.5, type: 'checkout', label: 'Caisses Rapides', color: '#94a3b8' },
-        { id: 'self-checkout', x: 19, z: 24, width: 4, height: 1, depth: 1.5, type: 'checkout', label: 'Caisses Automatiques', color: '#94a3b8' },
-        
-        // Fruits & Légumes - toujours près de l'entrée dans les Leclerc, grand espace
-        { id: 'produce', x: 2, z: 18, width: 12, height: 2, depth: 5, type: 'produce', label: 'Fruits & Légumes Bio', color: '#10b981' },
-        
-        // Boulangerie & Pâtisserie - souvent visible dès l'entrée
-        { id: 'bakery', x: 16, z: 18, width: 8, height: 2, depth: 5, type: 'bakery', label: 'Boulangerie Pâtisserie', color: '#f59e0b' },
-        
-        // Traiteur & Plats préparés - zone premium Leclerc
-        { id: 'deli', x: 26, z: 18, width: 6, height: 2, depth: 5, type: 'meat', label: 'Traiteur', color: '#f97316' },
-        
-        // Boucherie traditionnelle - service à la coupe
-        { id: 'butchery', x: 2, z: 12, width: 6, height: 2, depth: 5, type: 'meat', label: 'Boucherie Traditionnelle', color: '#ef4444' },
-        
-        // Poissonnerie - service à la coupe, souvent adjacente à la boucherie
+        { id: 'produce', x: 2, z: 18, width: 10, height: 2, depth: 5, type: 'produce', label: 'Fruits & Légumes', color: '#10b981' },
+        { id: 'bakery', x: 14, z: 18, width: 8, height: 2, depth: 5, type: 'bakery', label: 'Boulangerie', color: '#f59e0b' },
+        { id: 'butchery', x: 2, z: 12, width: 6, height: 2, depth: 5, type: 'meat', label: 'Boucherie', color: '#ef4444' },
         { id: 'fishmonger', x: 9, z: 12, width: 6, height: 2, depth: 5, type: 'meat', label: 'Poissonnerie', color: '#0ea5e9' },
-        
-        // Charcuterie & Fromage à la coupe
-        { id: 'cheese-deli', x: 16, z: 12, width: 6, height: 2, depth: 5, type: 'dairy', label: 'Fromage & Charcuterie', color: '#eab308' },
-        
-        // Produits laitiers libre-service
-        { id: 'dairy', x: 23, z: 12, width: 9, height: 2, depth: 5, type: 'dairy', label: 'Produits Laitiers', color: '#3b82f6' },
-        
-        // Surgelés - mur réfrigéré le long d'un côté
-        { id: 'frozen', x: 29, z: 6, width: 3, height: 2, depth: 12, type: 'frozen', label: 'Surgelés', color: '#06b6d4' },
-        
-        // Épicerie salée - allées centrales
-        { id: 'grocery-salty', x: 2, z: 6, width: 8, height: 2, depth: 5, type: 'household', label: 'Épicerie Salée', color: '#84cc16' },
-        
-        // Épicerie sucrée & Petit-déjeuner
-        { id: 'grocery-sweet', x: 11, z: 6, width: 8, height: 2, depth: 5, type: 'household', label: 'Épicerie Sucrée', color: '#a855f7' },
-        
-        // Boissons - souvent une allée dédiée
-        { id: 'beverages', x: 20, z: 6, width: 8, height: 2, depth: 5, type: 'beverages', label: 'Boissons', color: '#8b5cf6' },
-        
-        // Hygiène & Beauté
-        { id: 'health-beauty', x: 2, z: 1, width: 10, height: 2, depth: 4, type: 'health', label: 'Hygiène & Beauté', color: '#ec4899' },
-        
-        // Entretien & Maison
-        { id: 'household-cleaning', x: 13, z: 1, width: 8, height: 2, depth: 4, type: 'household', label: 'Entretien & Maison', color: '#6b7280' },
-        
-        // Textile & Bazar
-        { id: 'textile', x: 22, z: 1, width: 10, height: 2, depth: 4, type: 'household', label: 'Textile & Bazar', color: '#8d4654' },
-        
-        // Allées principales de circulation
-        { id: 'main-aisle-1', x: 15, z: 14, width: 1, height: 0.1, depth: 20, type: 'aisle', label: 'Allée Principale 1', color: '#f1f5f9' },
-        { id: 'main-aisle-2', x: 25, z: 8, width: 1, height: 0.1, depth: 16, type: 'aisle', label: 'Allée Principale 2', color: '#f1f5f9' },
-        { id: 'cross-aisle', x: 16, z: 8, width: 12, height: 0.1, depth: 1, type: 'aisle', label: 'Allée Transversale', color: '#f1f5f9' },
+        { id: 'dairy', x: 16, z: 12, width: 8, height: 2, depth: 5, type: 'dairy', label: 'Produits Laitiers', color: '#3b82f6' },
+        { id: 'frozen', x: 26, z: 6, width: 3, height: 2, depth: 12, type: 'frozen', label: 'Surgelés', color: '#06b6d4' },
+        { id: 'beverages', x: 2, z: 6, width: 10, height: 2, depth: 5, type: 'beverages', label: 'Boissons', color: '#8b5cf6' },
       ];
     }
     
-    // Layout générique pour les autres magasins
+    // Intermarché Paris 14ème - Supermarché compact de 800m² urbain
+    if (storeId === 'intermarche-paris14') {
+      return [
+        { id: 'entrance', x: 2, z: 20, width: 4, height: 1, depth: 2, type: 'entrance', label: 'Entrée', color: '#e5e7eb' },
+        { id: 'checkout1', x: 14, z: 18, width: 2, height: 1, depth: 1.5, type: 'checkout', label: 'Caisses', color: '#94a3b8' },
+        { id: 'produce', x: 2, z: 3, width: 6, height: 2, depth: 5, type: 'produce', label: 'Fruits & Légumes', color: '#10b981' },
+        { id: 'bakery', x: 2, z: 9, width: 6, height: 2, depth: 4, type: 'bakery', label: 'Boulangerie', color: '#f59e0b' },
+        { id: 'butchery', x: 9, z: 3, width: 5, height: 2, depth: 4, type: 'meat', label: 'Boucherie', color: '#ef4444' },
+        { id: 'fishmonger', x: 9, z: 8, width: 5, height: 2, depth: 3, type: 'meat', label: 'Poissonnerie', color: '#0ea5e9' },
+        { id: 'dairy', x: 15, z: 3, width: 6, height: 2, depth: 5, type: 'dairy', label: 'Produits Laitiers', color: '#3b82f6' },
+        { id: 'frozen', x: 15, z: 9, width: 6, height: 2, depth: 4, type: 'frozen', label: 'Surgelés', color: '#06b6d4' },
+        { id: 'beverages', x: 2, z: 14, width: 7, height: 2, depth: 3, type: 'beverages', label: 'Boissons', color: '#8b5cf6' },
+      ];
+    }
+
+    // Super U Lyon Part-Dieu - Supermarché moyen de 1500m²
+    if (storeId === 'super-u-lyon') {
+      return [
+        { id: 'entrance', x: 2, z: 22, width: 5, height: 1, depth: 2, type: 'entrance', label: 'Entrée', color: '#e5e7eb' },
+        { id: 'checkout1', x: 16, z: 20, width: 2, height: 1, depth: 1.5, type: 'checkout', label: 'Caisses 1-4', color: '#94a3b8' },
+        { id: 'checkout2', x: 19, z: 20, width: 2, height: 1, depth: 1.5, type: 'checkout', label: 'Caisses Auto', color: '#94a3b8' },
+        { id: 'produce', x: 2, z: 4, width: 7, height: 2, depth: 5, type: 'produce', label: 'Fruits & Légumes', color: '#10b981' },
+        { id: 'bakery', x: 2, z: 10, width: 7, height: 2, depth: 4, type: 'bakery', label: 'Boulangerie', color: '#f59e0b' },
+        { id: 'butchery', x: 10, z: 4, width: 5, height: 2, depth: 4, type: 'meat', label: 'Boucherie', color: '#ef4444' },
+        { id: 'fishmonger', x: 10, z: 9, width: 5, height: 2, depth: 4, type: 'meat', label: 'Poissonnerie', color: '#0ea5e9' },
+        { id: 'dairy', x: 16, z: 4, width: 6, height: 2, depth: 5, type: 'dairy', label: 'Produits Laitiers', color: '#3b82f6' },
+        { id: 'frozen', x: 16, z: 10, width: 6, height: 2, depth: 5, type: 'frozen', label: 'Surgelés', color: '#06b6d4' },
+        { id: 'beverages', x: 2, z: 15, width: 8, height: 2, depth: 3, type: 'beverages', label: 'Boissons', color: '#8b5cf6' },
+      ];
+    }
+
+    // Leclerc Marseille Saint-Loup - Grand hypermarché de 4000m²
+    if (storeId === 'leclerc-marseille') {
+      return [
+        { id: 'entrance', x: 2, z: 28, width: 8, height: 1, depth: 3, type: 'entrance', label: 'Entrée', color: '#e5e7eb' },
+        { id: 'checkout1', x: 4, z: 24, width: 2, height: 1, depth: 1.5, type: 'checkout', label: 'Caisses 1-3', color: '#94a3b8' },
+        { id: 'checkout2', x: 7, z: 24, width: 2, height: 1, depth: 1.5, type: 'checkout', label: 'Caisses 4-6', color: '#94a3b8' },
+        { id: 'checkout3', x: 10, z: 24, width: 2, height: 1, depth: 1.5, type: 'checkout', label: 'Caisses 7-10', color: '#94a3b8' },
+        { id: 'produce', x: 2, z: 18, width: 12, height: 2, depth: 5, type: 'produce', label: 'Fruits & Légumes', color: '#10b981' },
+        { id: 'bakery', x: 16, z: 18, width: 8, height: 2, depth: 5, type: 'bakery', label: 'Boulangerie', color: '#f59e0b' },
+        { id: 'butchery', x: 2, z: 12, width: 6, height: 2, depth: 5, type: 'meat', label: 'Boucherie', color: '#ef4444' },
+        { id: 'fishmonger', x: 9, z: 12, width: 6, height: 2, depth: 5, type: 'meat', label: 'Poissonnerie', color: '#0ea5e9' },
+        { id: 'dairy', x: 16, z: 12, width: 9, height: 2, depth: 5, type: 'dairy', label: 'Produits Laitiers', color: '#3b82f6' },
+        { id: 'frozen', x: 27, z: 6, width: 3, height: 2, depth: 12, type: 'frozen', label: 'Surgelés', color: '#06b6d4' },
+        { id: 'beverages', x: 2, z: 6, width: 11, height: 2, depth: 5, type: 'beverages', label: 'Boissons', color: '#8b5cf6' },
+      ];
+    }
+
+    // Intermarché Bordeaux Lac - Supermarché de taille moyenne 1200m²
+    if (storeId === 'intermarche-bordeaux') {
+      return [
+        { id: 'entrance', x: 2, z: 21, width: 4, height: 1, depth: 2, type: 'entrance', label: 'Entrée', color: '#e5e7eb' },
+        { id: 'checkout1', x: 15, z: 19, width: 2, height: 1, depth: 1.5, type: 'checkout', label: 'Caisses', color: '#94a3b8' },
+        { id: 'produce', x: 2, z: 4, width: 6, height: 2, depth: 5, type: 'produce', label: 'Fruits & Légumes', color: '#10b981' },
+        { id: 'bakery', x: 2, z: 10, width: 6, height: 2, depth: 4, type: 'bakery', label: 'Boulangerie', color: '#f59e0b' },
+        { id: 'butchery', x: 9, z: 4, width: 5, height: 2, depth: 4, type: 'meat', label: 'Boucherie', color: '#ef4444' },
+        { id: 'fishmonger', x: 9, z: 9, width: 5, height: 2, depth: 3, type: 'meat', label: 'Poissonnerie', color: '#0ea5e9' },
+        { id: 'dairy', x: 15, z: 4, width: 6, height: 2, depth: 5, type: 'dairy', label: 'Produits Laitiers', color: '#3b82f6' },
+        { id: 'frozen', x: 15, z: 10, width: 6, height: 2, depth: 4, type: 'frozen', label: 'Surgelés', color: '#06b6d4' },
+        { id: 'beverages', x: 2, z: 15, width: 8, height: 2, depth: 3, type: 'beverages', label: 'Boissons', color: '#8b5cf6' },
+      ];
+    }
+
+    // Super U Lille Fives - Supermarché urbain de 1000m²
+    if (storeId === 'super-u-lille') {
+      return [
+        { id: 'entrance', x: 2, z: 20, width: 5, height: 1, depth: 2, type: 'entrance', label: 'Entrée', color: '#e5e7eb' },
+        { id: 'checkout1', x: 14, z: 18, width: 2, height: 1, depth: 1.5, type: 'checkout', label: 'Caisses', color: '#94a3b8' },
+        { id: 'produce', x: 2, z: 3, width: 7, height: 2, depth: 5, type: 'produce', label: 'Fruits & Légumes', color: '#10b981' },
+        { id: 'bakery', x: 2, z: 9, width: 7, height: 2, depth: 4, type: 'bakery', label: 'Boulangerie', color: '#f59e0b' },
+        { id: 'butchery', x: 10, z: 3, width: 5, height: 2, depth: 4, type: 'meat', label: 'Boucherie', color: '#ef4444' },
+        { id: 'fishmonger', x: 10, z: 8, width: 5, height: 2, depth: 4, type: 'meat', label: 'Poissonnerie', color: '#0ea5e9' },
+        { id: 'dairy', x: 16, z: 3, width: 6, height: 2, depth: 5, type: 'dairy', label: 'Produits Laitiers', color: '#3b82f6' },
+        { id: 'frozen', x: 16, z: 9, width: 6, height: 2, depth: 4, type: 'frozen', label: 'Surgelés', color: '#06b6d4' },
+        { id: 'beverages', x: 2, z: 14, width: 8, height: 2, depth: 3, type: 'beverages', label: 'Boissons', color: '#8b5cf6' },
+      ];
+    }
+
+    // Leclerc Saint-Médard-en-Jalles - Grand hypermarché de 3800m²
+    if (storeId === 'leclerc-saint-medard') {
+      return [
+        { id: 'entrance', x: 2, z: 28, width: 8, height: 1, depth: 3, type: 'entrance', label: 'Entrée Principale', color: '#e5e7eb' },
+        { id: 'services', x: 12, z: 28, width: 6, height: 1, depth: 3, type: 'services', label: 'Accueil & Services', color: '#94a3b8' },
+        { id: 'checkout1', x: 4, z: 24, width: 2, height: 1, depth: 1.5, type: 'checkout', label: 'Caisses 1-3', color: '#94a3b8' },
+        { id: 'checkout2', x: 7, z: 24, width: 2, height: 1, depth: 1.5, type: 'checkout', label: 'Caisses 4-6', color: '#94a3b8' },
+        { id: 'checkout3', x: 10, z: 24, width: 2, height: 1, depth: 1.5, type: 'checkout', label: 'Caisses 7-9', color: '#94a3b8' },
+        { id: 'produce', x: 2, z: 18, width: 12, height: 2, depth: 5, type: 'produce', label: 'Fruits & Légumes Bio', color: '#10b981' },
+        { id: 'bakery', x: 16, z: 18, width: 8, height: 2, depth: 5, type: 'bakery', label: 'Boulangerie Pâtisserie', color: '#f59e0b' },
+        { id: 'butchery', x: 2, z: 12, width: 6, height: 2, depth: 5, type: 'meat', label: 'Boucherie Traditionnelle', color: '#ef4444' },
+        { id: 'fishmonger', x: 9, z: 12, width: 6, height: 2, depth: 5, type: 'meat', label: 'Poissonnerie', color: '#0ea5e9' },
+        { id: 'dairy', x: 16, z: 12, width: 9, height: 2, depth: 5, type: 'dairy', label: 'Produits Laitiers', color: '#3b82f6' },
+        { id: 'frozen', x: 27, z: 6, width: 3, height: 2, depth: 12, type: 'frozen', label: 'Surgelés', color: '#06b6d4' },
+        { id: 'beverages', x: 2, z: 6, width: 11, height: 2, depth: 5, type: 'beverages', label: 'Boissons', color: '#8b5cf6' },
+      ];
+    }
+    
+    // Layout par défaut pour magasins non configurés
     return [
-      // ... keep existing code (generic store layout for non-Leclerc stores)
       { id: 'entrance', x: 2, z: 19, width: 4, height: 1, depth: 2, type: 'entrance', label: 'Entrée', color: '#e5e7eb' },
-      { id: 'exit', x: 20, z: 19, width: 4, height: 1, depth: 2, type: 'entrance', label: 'Sortie', color: '#e5e7eb' },
-      
-      // Caisses
-      { id: 'checkout1', x: 14, z: 18, width: 2, height: 1, depth: 1.5, type: 'checkout', label: 'Caisse 1', color: '#94a3b8' },
-      { id: 'checkout2', x: 16.5, z: 18, width: 2, height: 1, depth: 1.5, type: 'checkout', label: 'Caisse 2', color: '#94a3b8' },
-      { id: 'checkout3', x: 19, z: 18, width: 2, height: 1, depth: 1.5, type: 'checkout', label: 'Caisse 3', color: '#94a3b8' },
-      
-      // Rayons alimentaires
+      { id: 'checkout1', x: 14, z: 18, width: 2, height: 1, depth: 1.5, type: 'checkout', label: 'Caisses', color: '#94a3b8' },
       { id: 'produce', x: 3, z: 3, width: 8, height: 2, depth: 6, type: 'produce', label: 'Fruits & Légumes', color: '#10b981' },
       { id: 'bakery', x: 3, z: 10, width: 8, height: 2, depth: 4, type: 'bakery', label: 'Boulangerie', color: '#f59e0b' },
       { id: 'meat', x: 13, z: 3, width: 5, height: 2, depth: 4, type: 'meat', label: 'Boucherie', color: '#ef4444' },
       { id: 'fish', x: 13, z: 8, width: 5, height: 2, depth: 4, type: 'meat', label: 'Poissonnerie', color: '#0ea5e9' },
       { id: 'dairy', x: 20, z: 3, width: 6, height: 2, depth: 6, type: 'dairy', label: 'Produits Laitiers', color: '#3b82f6' },
       { id: 'frozen', x: 20, z: 10, width: 6, height: 2, depth: 4, type: 'frozen', label: 'Surgelés', color: '#06b6d4' },
-      
-      // Autres rayons
       { id: 'beverages', x: 3, z: 15, width: 8, height: 2, depth: 3, type: 'beverages', label: 'Boissons', color: '#8b5cf6' },
-      { id: 'health', x: 13, z: 13, width: 5, height: 2, depth: 5, type: 'health', label: 'Santé & Beauté', color: '#ec4899' },
-      { id: 'household', x: 20, z: 15, width: 6, height: 2, depth: 3, type: 'household', label: 'Maison', color: '#6b7280' },
-      
-      // Allées
-      { id: 'aisle1', x: 12, z: 5, width: 0.5, height: 0.1, depth: 12, type: 'aisle', label: 'Allée 1', color: '#f1f5f9' },
-      { id: 'aisle2', x: 19, z: 5, width: 0.5, height: 0.1, depth: 12, type: 'aisle', label: 'Allée 2', color: '#f1f5f9' },
     ];
   }, [storeId]);
 
@@ -253,12 +282,24 @@ const StoreMap3DOptimized = ({ storeId, productId, className, userLocation }: St
       scene.background = new THREE.Color(0xf8fafc);
       sceneRef.current = scene;
 
-      // Caméra avec FOV optimisé pour le Leclerc (plus grand espace)
+      // Caméra avec FOV optimisé selon la superficie du magasin
       const camera = new THREE.PerspectiveCamera(60, 800 / 600, 0.1, 1000);
-      if (storeId === 'leclerc-saint-medard') {
+      
+      // Configuration caméra selon le magasin
+      if (storeId === 'leclerc-saint-medard' || storeId === 'leclerc-marseille' || storeId === 'leclerc-courbevoie') {
+        // Grands hypermarchés (3500-4000m²) - vue plus large
         camera.position.set(18, 25, 35);
         camera.lookAt(18, 0, 15);
+      } else if (storeId === 'super-u-lyon' || storeId === 'intermarche-bordeaux' || storeId === 'super-u-lille') {
+        // Supermarchés moyens (1000-1500m²) - vue standard
+        camera.position.set(15, 20, 28);
+        camera.lookAt(13, 0, 11);
+      } else if (storeId === 'intermarche-paris14') {
+        // Supermarché compact urbain (800m²) - vue rapprochée
+        camera.position.set(12, 18, 25);
+        camera.lookAt(11, 0, 10);
       } else {
+        // Vue par défaut
         camera.position.set(15, 20, 30);
         camera.lookAt(15, 0, 12);
       }
@@ -277,16 +318,23 @@ const StoreMap3DOptimized = ({ storeId, productId, className, userLocation }: St
       renderer.setClearColor(0xf8fafc, 1);
       rendererRef.current = renderer;
 
-      // Éclairage amélioré pour le grand espace Leclerc
+      // Éclairage amélioré selon la taille du magasin
       const ambientLight = new THREE.AmbientLight(0xffffff, 0.4);
       scene.add(ambientLight);
 
       const directionalLight = new THREE.DirectionalLight(0xffffff, 0.6);
-      if (storeId === 'leclerc-saint-medard') {
+      
+      // Position de l'éclairage selon le magasin
+      if (storeId === 'leclerc-saint-medard' || storeId === 'leclerc-marseille' || storeId === 'leclerc-courbevoie') {
         directionalLight.position.set(35, 30, 35);
+      } else if (storeId === 'super-u-lyon' || storeId === 'intermarche-bordeaux' || storeId === 'super-u-lille') {
+        directionalLight.position.set(28, 25, 28);
+      } else if (storeId === 'intermarche-paris14') {
+        directionalLight.position.set(22, 22, 22);
       } else {
         directionalLight.position.set(25, 25, 25);
       }
+      
       directionalLight.castShadow = true;
       directionalLight.shadow.mapSize.width = 2048;
       directionalLight.shadow.mapSize.height = 2048;
@@ -301,10 +349,21 @@ const StoreMap3DOptimized = ({ storeId, productId, className, userLocation }: St
       spotLight.penumbra = 0.1;
       scene.add(spotLight);
 
-      // Sol avec texture adaptée à la taille du Leclerc
-      const floorGeometry = storeId === 'leclerc-saint-medard' 
-        ? new THREE.PlaneGeometry(40, 35) 
-        : new THREE.PlaneGeometry(35, 25);
+      // Sol avec texture adaptée à la superficie du magasin
+      let floorGeometry;
+      if (storeId === 'leclerc-saint-medard' || storeId === 'leclerc-marseille' || storeId === 'leclerc-courbevoie') {
+        // Grands hypermarchés
+        floorGeometry = new THREE.PlaneGeometry(40, 35);
+      } else if (storeId === 'super-u-lyon' || storeId === 'intermarche-bordeaux' || storeId === 'super-u-lille') {
+        // Supermarchés moyens
+        floorGeometry = new THREE.PlaneGeometry(30, 26);
+      } else if (storeId === 'intermarche-paris14') {
+        // Supermarché compact
+        floorGeometry = new THREE.PlaneGeometry(25, 22);
+      } else {
+        floorGeometry = new THREE.PlaneGeometry(35, 25);
+      }
+      
       const floorMaterial = new THREE.MeshLambertMaterial({ 
         color: 0xffffff,
         transparent: true,
@@ -315,18 +374,17 @@ const StoreMap3DOptimized = ({ storeId, productId, className, userLocation }: St
       floor.receiveShadow = true;
       scene.add(floor);
 
-      // Murs du magasin adaptés au Leclerc
-      const wallHeight = 6; // Plus haut pour un hypermarché
+      // Murs du magasin adaptés à la superficie
+      const wallHeight = 6;
       const wallMaterial = new THREE.MeshLambertMaterial({ color: 0xe2e8f0 });
       
-      if (storeId === 'leclerc-saint-medard') {
-        // Mur arrière
+      if (storeId === 'leclerc-saint-medard' || storeId === 'leclerc-marseille' || storeId === 'leclerc-courbevoie') {
+        // Grands hypermarchés
         const backWallGeometry = new THREE.PlaneGeometry(40, wallHeight);
         const backWall = new THREE.Mesh(backWallGeometry, wallMaterial);
         backWall.position.set(20, wallHeight/2, 0);
         scene.add(backWall);
         
-        // Murs latéraux
         const sideWallGeometry = new THREE.PlaneGeometry(35, wallHeight);
         const leftWall = new THREE.Mesh(sideWallGeometry, wallMaterial);
         leftWall.position.set(0, wallHeight/2, 17.5);
@@ -337,8 +395,42 @@ const StoreMap3DOptimized = ({ storeId, productId, className, userLocation }: St
         rightWall.position.set(40, wallHeight/2, 17.5);
         rightWall.rotation.y = -Math.PI / 2;
         scene.add(rightWall);
+      } else if (storeId === 'super-u-lyon' || storeId === 'intermarche-bordeaux' || storeId === 'super-u-lille') {
+        // Supermarchés moyens
+        const backWallGeometry = new THREE.PlaneGeometry(30, wallHeight);
+        const backWall = new THREE.Mesh(backWallGeometry, wallMaterial);
+        backWall.position.set(15, wallHeight/2, 0);
+        scene.add(backWall);
+        
+        const sideWallGeometry = new THREE.PlaneGeometry(26, wallHeight);
+        const leftWall = new THREE.Mesh(sideWallGeometry, wallMaterial);
+        leftWall.position.set(0, wallHeight/2, 13);
+        leftWall.rotation.y = Math.PI / 2;
+        scene.add(leftWall);
+        
+        const rightWall = new THREE.Mesh(sideWallGeometry, wallMaterial);
+        rightWall.position.set(30, wallHeight/2, 13);
+        rightWall.rotation.y = -Math.PI / 2;
+        scene.add(rightWall);
+      } else if (storeId === 'intermarche-paris14') {
+        // Supermarché compact
+        const backWallGeometry = new THREE.PlaneGeometry(25, wallHeight);
+        const backWall = new THREE.Mesh(backWallGeometry, wallMaterial);
+        backWall.position.set(12.5, wallHeight/2, 0);
+        scene.add(backWall);
+        
+        const sideWallGeometry = new THREE.PlaneGeometry(22, wallHeight);
+        const leftWall = new THREE.Mesh(sideWallGeometry, wallMaterial);
+        leftWall.position.set(0, wallHeight/2, 11);
+        leftWall.rotation.y = Math.PI / 2;
+        scene.add(leftWall);
+        
+        const rightWall = new THREE.Mesh(sideWallGeometry, wallMaterial);
+        rightWall.position.set(25, wallHeight/2, 11);
+        rightWall.rotation.y = -Math.PI / 2;
+        scene.add(rightWall);
       } else {
-        // ... keep existing code (murs pour magasins génériques)
+        // Vue par défaut
         const backWallGeometry = new THREE.PlaneGeometry(35, wallHeight);
         const backWall = new THREE.Mesh(backWallGeometry, wallMaterial);
         backWall.position.set(17.5, wallHeight/2, 0);
