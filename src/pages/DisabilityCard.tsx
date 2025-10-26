@@ -1,6 +1,7 @@
 import { useState } from 'react';
-import { IdCard, Plus, Edit3, QrCode, Download, Camera, Upload } from 'lucide-react';
+import { IdCard, Plus, Edit3, QrCode, Download, Camera, Upload, Home, ArrowLeft } from 'lucide-react';
 import { toast } from 'sonner';
+import { Link, useNavigate } from 'react-router-dom';
 
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -59,8 +60,23 @@ const DisabilityCard = () => {
     }
   };
 
+  const navigate = useNavigate();
+
   return (
     <div className="container max-w-4xl mx-auto px-4 py-8">
+      <div className="mb-4 flex justify-between items-center">
+        <Button variant="ghost" size="sm" onClick={() => navigate(-1)}>
+          <ArrowLeft className="h-4 w-4 mr-2" />
+          Retour
+        </Button>
+        <Button variant="outline" size="sm" asChild>
+          <Link to="/">
+            <Home className="h-4 w-4 mr-2" />
+            Accueil
+          </Link>
+        </Button>
+      </div>
+      
       <div className="space-y-2 text-center mb-8">
         <h1 className="text-2xl font-semibold flex items-center justify-center gap-2">
           <IdCard className="h-6 w-6" />

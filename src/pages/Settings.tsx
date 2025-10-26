@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
-import { Loader2 } from 'lucide-react';
+import { Loader2, Home, ArrowLeft } from 'lucide-react';
 import { toast } from 'sonner';
+import { Link, useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import * as z from 'zod';
@@ -204,9 +205,24 @@ const Settings = () => {
     toast.success("Préférences mises à jour.");
   };
 
+  const navigate = useNavigate();
+
   return (
     <div className="container max-w-4xl mx-auto px-4 py-8">
       <BlurInfo />
+      
+      <div className="mb-4 flex justify-between items-center">
+        <Button variant="ghost" size="sm" onClick={() => navigate(-1)}>
+          <ArrowLeft className="h-4 w-4 mr-2" />
+          Retour
+        </Button>
+        <Button variant="outline" size="sm" asChild>
+          <Link to="/">
+            <Home className="h-4 w-4 mr-2" />
+            Accueil
+          </Link>
+        </Button>
+      </div>
       
       <div className="space-y-2 text-center">
         <h1 className="text-2xl font-semibold">Paramètres</h1>

@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { Play, Pause, RotateCcw, Monitor, Smartphone, Users, Eye, Volume2 } from 'lucide-react';
+import { Play, Pause, RotateCcw, Monitor, Smartphone, Users, Eye, Volume2, Home, ArrowLeft } from 'lucide-react';
+import { Link, useNavigate } from 'react-router-dom';
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
@@ -117,8 +118,23 @@ const Demo = () => {
     }
   };
 
+  const navigate = useNavigate();
+
   return (
     <div className="container max-w-6xl mx-auto px-4 py-8">
+      <div className="mb-4 flex justify-between items-center">
+        <Button variant="ghost" size="sm" onClick={() => navigate(-1)}>
+          <ArrowLeft className="h-4 w-4 mr-2" />
+          Retour
+        </Button>
+        <Button variant="outline" size="sm" asChild>
+          <Link to="/">
+            <Home className="h-4 w-4 mr-2" />
+            Accueil
+          </Link>
+        </Button>
+      </div>
+      
       <div className="space-y-2 text-center mb-8">
         <h1 className="text-3xl font-bold">Démonstration Interactive</h1>
         <p className="text-muted-foreground">
