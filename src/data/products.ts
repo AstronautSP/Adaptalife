@@ -11,6 +11,16 @@ import wholeGrainPasta from '@/assets/products/whole-grain-pasta.jpg';
 import darkChocolate from '@/assets/products/dark-chocolate.jpg';
 import organicSoap from '@/assets/products/organic-soap.jpg';
 import adaptiveTshirt from '@/assets/products/adaptive-tshirt.jpg';
+import muesliBio from '@/assets/products/muesli-bio.jpg';
+import nutella from '@/assets/products/nutella.jpg';
+import confitureFraises from '@/assets/products/confiture-fraises.jpg';
+import jusOrange from '@/assets/products/jus-orange.jpg';
+import eauMinerale from '@/assets/products/eau-minerale.jpg';
+import cocaCola from '@/assets/products/coca-cola.jpg';
+import cafeMoulu from '@/assets/products/cafe-moulu.jpg';
+import theVert from '@/assets/products/the-vert.jpg';
+import rizBlanc from '@/assets/products/riz-blanc.jpg';
+import huileOlive from '@/assets/products/huile-olive.jpg';
 
 export const mainCategories: MainCategory[] = [
   { id: 'all', name: 'Toutes les catégories' },
@@ -812,7 +822,7 @@ export const products: Product[] = [
     id: 'organic-cereals-muesli',
     name: 'Muesli bio aux fruits secs',
     brand: 'Céréales du Matin',
-    image: 'https://images.unsplash.com/photo-1556909071-f3536f199d6e?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3',
+    image: muesliBio,
     price: 3.95,
     nutritionScore: 'A',
     allergens: ['gluten', 'fruits à coque'],
@@ -1056,7 +1066,7 @@ export const products: Product[] = [
     id: 'nutella-original',
     name: 'Nutella Original',
     brand: 'Ferrero',
-    image: 'https://images.unsplash.com/photo-1541807084-7d1f5a6ed8e7?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3',
+    image: nutella,
     price: 4.90,
     nutritionScore: 'D',
     allergens: ['lait', 'noisettes'],
@@ -1088,7 +1098,7 @@ export const products: Product[] = [
     id: 'strawberry-jam-organic',
     name: 'Confiture de fraises bio',
     brand: 'Confitures du Terroir',
-    image: 'https://images.unsplash.com/photo-1486893732792-ab0085cb2d43?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3',
+    image: confitureFraises,
     price: 4.20,
     nutritionScore: 'C',
     allergens: [],
@@ -1163,5 +1173,121 @@ export const products: Product[] = [
     description: 'Marmelade traditionnelle aux oranges amères de Séville. Recettes british : Scones à la marmelade, Glaze pour canard, Cocktails acidulés.',
     ingredients: ['Oranges amères', 'Sucre', 'Pectine naturelle'],
     sustainability: ['Oranges de Séville', 'Recette traditionnelle']
+  },
+
+  // Boissons
+  {
+    id: 'orange-juice-fresh',
+    name: 'Jus d\'orange pur jus',
+    brand: 'Tropicana',
+    image: jusOrange,
+    price: 3.40,
+    nutritionScore: 'B',
+    allergens: [],
+    healthTags: ['vitamin-c', 'no-sugar-added'],
+    isHealthyFor: ['enfants', 'sportifs', 'adultes'],
+    notRecommendedFor: [],
+    category: 'beverages',
+    description: 'Jus d\'orange 100% pur jus, pressé à froid, riche en vitamine C. Parfait pour le petit-déjeuner.',
+    ingredients: ['Jus d\'orange 100%'],
+    sustainability: ['Oranges durables', 'Emballage recyclable']
+  },
+  {
+    id: 'mineral-water-sparkling',
+    name: 'Eau minérale pétillante',
+    brand: 'Perrier',
+    image: eauMinerale,
+    price: 1.20,
+    nutritionScore: 'A',
+    allergens: [],
+    healthTags: ['mineral-rich', 'zero-calories'],
+    isHealthyFor: ['tous'],
+    notRecommendedFor: [],
+    category: 'beverages',
+    description: 'Eau minérale naturellement gazeuse, riche en minéraux. Idéale pour accompagner les repas.',
+    ingredients: ['Eau minérale naturelle', 'Gaz carbonique'],
+    sustainability: ['Source protégée', 'Bouteille recyclable']
+  },
+  {
+    id: 'coca-cola-classic',
+    name: 'Coca-Cola Classic',
+    brand: 'Coca-Cola',
+    image: cocaCola,
+    price: 1.80,
+    nutritionScore: 'E',
+    allergens: [],
+    healthTags: [],
+    isHealthyFor: ['consommation occasionnelle'],
+    notRecommendedFor: ['diabétiques', 'enfants (quotidien)'],
+    category: 'beverages',
+    description: 'La boisson gazeuse emblématique au cola. À consommer avec modération.',
+    ingredients: ['Eau gazéifiée', 'Sucre', 'Colorant caramel', 'Acidifiant', 'Arômes naturels', 'Caféine'],
+    sustainability: ['Canette recyclable']
+  },
+  {
+    id: 'ground-coffee-arabica',
+    name: 'Café moulu arabica',
+    brand: 'Carte Noire',
+    image: cafeMoulu,
+    price: 4.85,
+    nutritionScore: 'A',
+    allergens: [],
+    healthTags: ['arabica', 'fair-trade'],
+    isHealthyFor: ['adultes'],
+    notRecommendedFor: ['enfants', 'femmes enceintes (excès)'],
+    category: 'beverages',
+    description: 'Café moulu 100% arabica, torréfaction française. Arôme intense et équilibré.',
+    ingredients: ['Café arabica 100%'],
+    sustainability: ['Commerce équitable', 'Emballage recyclable']
+  },
+  {
+    id: 'green-tea-organic',
+    name: 'Thé vert bio',
+    brand: 'Kusmi Tea',
+    image: theVert,
+    price: 6.90,
+    nutritionScore: 'A',
+    allergens: [],
+    healthTags: ['organic', 'antioxidant'],
+    isHealthyFor: ['adultes', 'sportifs'],
+    notRecommendedFor: [],
+    category: 'beverages',
+    description: 'Thé vert biologique, riche en antioxydants. Saveur délicate et bienfaisante.',
+    ingredients: ['Feuilles de thé vert bio'],
+    sustainability: ['Agriculture biologique', 'Emballage recyclable']
+  },
+
+  // Épicerie salée
+  {
+    id: 'white-rice-long-grain',
+    name: 'Riz blanc long grain',
+    brand: 'Taureau Ailé',
+    image: rizBlanc,
+    price: 2.45,
+    nutritionScore: 'B',
+    allergens: [],
+    healthTags: ['gluten-free'],
+    isHealthyFor: ['tous', 'cœliaques'],
+    notRecommendedFor: [],
+    category: 'canned',
+    description: 'Riz blanc long grain, cuisson rapide. Accompagnement parfait pour tous vos plats.',
+    ingredients: ['Riz blanc'],
+    sustainability: ['Emballage recyclable']
+  },
+  {
+    id: 'extra-virgin-olive-oil',
+    name: 'Huile d\'olive extra vierge',
+    brand: 'Puget',
+    image: huileOlive,
+    price: 7.50,
+    nutritionScore: 'B',
+    allergens: [],
+    healthTags: ['extra-virgin', 'omega-9'],
+    isHealthyFor: ['tous', 'régime méditerranéen'],
+    notRecommendedFor: [],
+    category: 'canned',
+    description: 'Huile d\'olive extra vierge première pression à froid. Idéale pour assaisonnements et cuissons douces.',
+    ingredients: ['Huile d\'olive extra vierge 100%'],
+    sustainability: ['Olives durables', 'Bouteille en verre recyclable']
   }
 ];
