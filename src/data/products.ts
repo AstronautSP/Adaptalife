@@ -53,6 +53,12 @@ import farmBreadWalnut from '@/assets/products/farm-bread-walnut.jpg';
 import farmBreadSpelt from '@/assets/products/farm-bread-spelt.jpg';
 import farmOystersFineClaire from '@/assets/products/farm-oysters-fine-claire.jpg';
 import farmMusselsBouchot from '@/assets/products/farm-mussels-bouchot.jpg';
+import farmScallopsDiver from '@/assets/products/farm-scallops-diver.jpg';
+import farmSeaBassAquaculture from '@/assets/products/farm-sea-bass-aquaculture.jpg';
+import farmSeaweedWakame from '@/assets/products/farm-seaweed-wakame.jpg';
+import farmSeaSaltArtisanal from '@/assets/products/farm-sea-salt-artisanal.jpg';
+import farmSardinesFresh from '@/assets/products/farm-sardines-fresh.jpg';
+import farmSeaBreamWild from '@/assets/products/farm-sea-bream-wild.jpg';
 
 export const mainCategories: MainCategory[] = [
   { id: 'all', name: 'Toutes les catégories' },
@@ -756,7 +762,7 @@ export const products: Product[] = [
     id: 'farm-scallops-diver',
     name: 'Coquilles Saint-Jacques plongée',
     brand: 'Pêcherie Artisanale Bretonne',
-    image: 'https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3',
+    image: farmScallopsDiver,
     price: 26.50,
     nutritionScore: 'A',
     allergens: ['mollusques'],
@@ -772,7 +778,7 @@ export const products: Product[] = [
     id: 'farm-sea-bass-aquaculture',
     name: 'Bar d\'élevage bio',
     brand: 'Aquaculture Marine Durable',
-    image: 'https://images.unsplash.com/photo-1544943910-4c1dc44aab44?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3',
+    image: farmSeaBassAquaculture,
     price: 18.50,
     nutritionScore: 'B',
     allergens: ['poisson'],
@@ -788,7 +794,7 @@ export const products: Product[] = [
     id: 'farm-seaweed-wakame',
     name: 'Algues wakamé fraîches',
     brand: 'Algoculteur des Côtes',
-    image: 'https://images.unsplash.com/photo-1628450255897-9d0de2c5b6b1?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3',
+    image: farmSeaweedWakame,
     price: 9.50,
     nutritionScore: 'A',
     allergens: [],
@@ -804,7 +810,7 @@ export const products: Product[] = [
     id: 'farm-sea-salt-artisanal',
     name: 'Sel de mer artisanal',
     brand: 'Salines Traditionelles',
-    image: 'https://images.unsplash.com/photo-1594736797933-d0681ba2c5d9?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3',
+    image: farmSeaSaltArtisanal,
     price: 6.50,
     nutritionScore: 'B',
     allergens: [],
@@ -820,7 +826,7 @@ export const products: Product[] = [
     id: 'farm-sardines-fresh',
     name: 'Sardines fraîches de côte',
     brand: 'Pêche Côtière Artisanale',
-    image: 'https://images.unsplash.com/photo-1565299624946-b28f40a0ca4b?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3',
+    image: farmSardinesFresh,
     price: 11.80,
     nutritionScore: 'A',
     allergens: ['poisson'],
@@ -836,7 +842,7 @@ export const products: Product[] = [
     id: 'farm-sea-bream-wild',
     name: 'Dorade sauvage de ligne',
     brand: 'Ligneurs de Méditerranée',
-    image: 'https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3',
+    image: farmSeaBreamWild,
     price: 24.50,
     nutritionScore: 'A',
     allergens: ['poisson'],
