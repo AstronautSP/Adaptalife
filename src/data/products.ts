@@ -22,6 +22,38 @@ import theVert from '@/assets/products/the-vert.jpg';
 import rizBlanc from '@/assets/products/riz-blanc.jpg';
 import huileOlive from '@/assets/products/huile-olive.jpg';
 
+// Farm products images
+import farmCarrotsOrganic from '@/assets/products/farm-carrots-organic.jpg';
+import farmPotatoesLocal from '@/assets/products/farm-potatoes-local.jpg';
+import farmTomatoesHeritage from '@/assets/products/farm-tomatoes-heritage.jpg';
+import farmLeeksWinter from '@/assets/products/farm-leeks-winter.jpg';
+import farmSpinachBaby from '@/assets/products/farm-spinach-baby.jpg';
+import farmApplesLocal from '@/assets/products/farm-apples-local.jpg';
+import farmStrawberriesOrganic from '@/assets/products/farm-strawberries-organic.jpg';
+import farmPearsConference from '@/assets/products/farm-pears-conference.jpg';
+import farmPlumsMirabelle from '@/assets/products/farm-plums-mirabelle.jpg';
+import farmMilkRaw from '@/assets/products/farm-milk-raw.jpg';
+import farmCheeseGoat from '@/assets/products/farm-cheese-goat.jpg';
+import farmButterChurned from '@/assets/products/farm-butter-churned.jpg';
+import farmYogurtSheep from '@/assets/products/farm-yogurt-sheep.jpg';
+import farmBeefGrassFed from '@/assets/products/farm-beef-grass-fed.jpg';
+import farmChickenFreeRange from '@/assets/products/farm-chicken-free-range.jpg';
+import farmPorkHeritage from '@/assets/products/farm-pork-heritage.jpg';
+import farmLambSpring from '@/assets/products/farm-lamb-spring.jpg';
+import farmEggsFreeRange from '@/assets/products/farm-eggs-free-range.jpg';
+import farmEggsDuck from '@/assets/products/farm-eggs-duck.jpg';
+import farmEggsQuail from '@/assets/products/farm-eggs-quail.jpg';
+import farmHoneyWildflower from '@/assets/products/farm-honey-wildflower.jpg';
+import farmHoneyAcacia from '@/assets/products/farm-honey-acacia.jpg';
+import farmHoneyLavender from '@/assets/products/farm-honey-lavender.jpg';
+import farmHoneyChestnut from '@/assets/products/farm-honey-chestnut.jpg';
+import farmBreadSourdough from '@/assets/products/farm-bread-sourdough.jpg';
+import farmBreadRye from '@/assets/products/farm-bread-rye.jpg';
+import farmBreadWalnut from '@/assets/products/farm-bread-walnut.jpg';
+import farmBreadSpelt from '@/assets/products/farm-bread-spelt.jpg';
+import farmOystersFineClaire from '@/assets/products/farm-oysters-fine-claire.jpg';
+import farmMusselsBouchot from '@/assets/products/farm-mussels-bouchot.jpg';
+
 export const mainCategories: MainCategory[] = [
   { id: 'all', name: 'Toutes les catégories' },
   { id: 'food', name: 'Alimentaire' },
@@ -230,7 +262,7 @@ export const products: Product[] = [
     id: 'farm-carrots-organic',
     name: 'Carottes bio de saison',
     brand: 'Ferme Martin',
-    image: 'https://images.unsplash.com/photo-1598170845058-32b9d6a5da37?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3',
+    image: farmCarrotsOrganic,
     price: 1.95,
     nutritionScore: 'A',
     allergens: [],
@@ -246,7 +278,7 @@ export const products: Product[] = [
     id: 'farm-potatoes-local',
     name: 'Pommes de terre nouvelles',
     brand: 'Ferme Dubois',
-    image: 'https://images.unsplash.com/photo-1518977676601-b53f82aba655?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3',
+    image: farmPotatoesLocal,
     price: 1.45,
     nutritionScore: 'A',
     allergens: [],
@@ -262,7 +294,7 @@ export const products: Product[] = [
     id: 'farm-tomatoes-heritage',
     name: 'Tomates anciennes variées',
     brand: 'Jardin de Claire',
-    image: 'https://images.unsplash.com/photo-1546470427-227935052dc9?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3',
+    image: farmTomatoesHeritage,
     price: 4.50,
     nutritionScore: 'A',
     allergens: [],
@@ -278,7 +310,7 @@ export const products: Product[] = [
     id: 'farm-leeks-winter',
     name: 'Poireaux d\'hiver',
     brand: 'Maraîchers des Vallées',
-    image: 'https://images.unsplash.com/photo-1583063087951-da5da2cf9470?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3',
+    image: farmLeeksWinter,
     price: 2.80,
     nutritionScore: 'A',
     allergens: [],
@@ -294,7 +326,7 @@ export const products: Product[] = [
     id: 'farm-spinach-baby',
     name: 'Jeunes pousses d\'épinards',
     brand: 'Ferme Verte Bio',
-    image: 'https://images.unsplash.com/photo-1586754135775-7e8c6b17b931?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3',
+    image: farmSpinachBaby,
     price: 3.20,
     nutritionScore: 'A',
     allergens: [],
@@ -312,7 +344,7 @@ export const products: Product[] = [
     id: 'farm-apples-local',
     name: 'Pommes du verger',
     brand: 'Verger des Collines',
-    image: 'https://images.unsplash.com/photo-1568702846914-96b305d2aaeb?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3',
+    image: farmApplesLocal,
     price: 2.60,
     nutritionScore: 'A',
     allergens: [],
@@ -328,7 +360,7 @@ export const products: Product[] = [
     id: 'farm-strawberries-organic',
     name: 'Fraises bio de saison',
     brand: 'Ferme Rouge',
-    image: 'https://images.unsplash.com/photo-1464965911861-746a04b4bca6?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3',
+    image: farmStrawberriesOrganic,
     price: 5.90,
     nutritionScore: 'A',
     allergens: [],
@@ -344,7 +376,7 @@ export const products: Product[] = [
     id: 'farm-pears-conference',
     name: 'Poires Conférence du verger',
     brand: 'Verger Tradition',
-    image: 'https://images.unsplash.com/photo-1596328546171-77e37b5e8b3d?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3',
+    image: farmPearsConference,
     price: 3.40,
     nutritionScore: 'A',
     allergens: [],
@@ -360,7 +392,7 @@ export const products: Product[] = [
     id: 'farm-plums-mirabelle',
     name: 'Mirabelles de Lorraine',
     brand: 'Vergers de l\'Est',
-    image: 'https://images.unsplash.com/photo-1591206369811-4eeb2f03bc95?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3',
+    image: farmPlumsMirabelle,
     price: 6.80,
     nutritionScore: 'A',
     allergens: [],
@@ -378,7 +410,7 @@ export const products: Product[] = [
     id: 'farm-milk-raw',
     name: 'Lait cru de vache',
     brand: 'Ferme Laitière Bonneau',
-    image: 'https://images.unsplash.com/photo-1550583724-b2692b85b150?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3',
+    image: farmMilkRaw,
     price: 1.05,
     nutritionScore: 'B',
     allergens: ['lait'],
@@ -394,7 +426,7 @@ export const products: Product[] = [
     id: 'farm-cheese-goat',
     name: 'Fromage de chèvre fermier',
     brand: 'Chèvrerie des Prés',
-    image: 'https://images.unsplash.com/photo-1486297678162-eb2a19b0a32d?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3',
+    image: farmCheeseGoat,
     price: 7.50,
     nutritionScore: 'C',
     allergens: ['lait'],
@@ -410,7 +442,7 @@ export const products: Product[] = [
     id: 'farm-butter-churned',
     name: 'Beurre baratte fermier',
     brand: 'Laiterie Artisanale',
-    image: 'https://images.unsplash.com/photo-1589985270826-4b7bb135bc9d?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3',
+    image: farmButterChurned,
     price: 5.20,
     nutritionScore: 'C',
     allergens: ['lait'],
@@ -426,7 +458,7 @@ export const products: Product[] = [
     id: 'farm-yogurt-sheep',
     name: 'Yaourt de brebis fermier',
     brand: 'Bergerie du Mont',
-    image: 'https://images.unsplash.com/photo-1571212515416-fca33457e9eb?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3',
+    image: farmYogurtSheep,
     price: 3.95,
     nutritionScore: 'B',
     allergens: ['lait'],
@@ -444,7 +476,7 @@ export const products: Product[] = [
     id: 'farm-beef-grass-fed',
     name: 'Bœuf nourri à l\'herbe',
     brand: 'Élevage Naturel Leclerc',
-    image: 'https://images.unsplash.com/photo-1588347818403-0ac0ee7996e1?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3',
+    image: farmBeefGrassFed,
     price: 16.50,
     nutritionScore: 'C',
     allergens: [],
@@ -460,7 +492,7 @@ export const products: Product[] = [
     id: 'farm-chicken-free-range',
     name: 'Poulet fermier élevé au sol',
     brand: 'Volailles de la Ferme',
-    image: 'https://images.unsplash.com/photo-1604503468506-a8da13d82791?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3',
+    image: farmChickenFreeRange,
     price: 11.90,
     nutritionScore: 'B',
     allergens: [],
@@ -476,7 +508,7 @@ export const products: Product[] = [
     id: 'farm-pork-heritage',
     name: 'Porc de race locale',
     brand: 'Élevage Tradition',
-    image: 'https://images.unsplash.com/photo-1544025162-d76694265947?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3',
+    image: farmPorkHeritage,
     price: 13.95,
     nutritionScore: 'C',
     allergens: [],
@@ -492,7 +524,7 @@ export const products: Product[] = [
     id: 'farm-lamb-spring',
     name: 'Agneau de printemps',
     brand: 'Bergerie des Monts',
-    image: 'https://images.unsplash.com/photo-1529473814998-82c4500518db?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3',
+    image: farmLambSpring,
     price: 19.90,
     nutritionScore: 'C',
     allergens: [],
@@ -510,7 +542,7 @@ export const products: Product[] = [
     id: 'farm-eggs-free-range',
     name: 'Œufs de poules élevées au sol',
     brand: 'Poulaillers Verts',
-    image: 'https://images.unsplash.com/photo-1582722872445-44dc5f7e3c8f?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3',
+    image: farmEggsFreeRange,
     price: 3.20,
     nutritionScore: 'A',
     allergens: ['œufs'],
@@ -526,7 +558,7 @@ export const products: Product[] = [
     id: 'farm-eggs-duck',
     name: 'Œufs de cane fermiers',
     brand: 'Ferme Aquatique',
-    image: 'https://images.unsplash.com/photo-1582722872445-44dc5f7e3c8f?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3',
+    image: farmEggsDuck,
     price: 4.20,
     nutritionScore: 'A',
     allergens: ['œufs'],
@@ -542,7 +574,7 @@ export const products: Product[] = [
     id: 'farm-eggs-quail',
     name: 'Œufs de caille délicats',
     brand: 'Caillerie Fine',
-    image: 'https://images.unsplash.com/photo-1582722872445-44dc5f7e3c8f?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3',
+    image: farmEggsQuail,
     price: 7.50,
     nutritionScore: 'A',
     allergens: ['œufs'],
@@ -560,7 +592,7 @@ export const products: Product[] = [
     id: 'farm-honey-wildflower',
     name: 'Miel de fleurs sauvages',
     brand: 'Ruchers de la Vallée',
-    image: 'https://images.unsplash.com/photo-1587049016823-a44c8c3d3d52?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3',
+    image: farmHoneyWildflower,
     price: 8.50,
     nutritionScore: 'C',
     allergens: [],
@@ -576,7 +608,7 @@ export const products: Product[] = [
     id: 'farm-honey-acacia',
     name: 'Miel d\'acacia',
     brand: 'Miellerie du Bois',
-    image: 'https://images.unsplash.com/photo-1587049016823-a44c8c3d3d52?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3',
+    image: farmHoneyAcacia,
     price: 9.90,
     nutritionScore: 'C',
     allergens: [],
@@ -592,7 +624,7 @@ export const products: Product[] = [
     id: 'farm-honey-lavender',
     name: 'Miel de lavande',
     brand: 'Ruchers de Provence',
-    image: 'https://images.unsplash.com/photo-1587049016823-a44c8c3d3d52?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3',
+    image: farmHoneyLavender,
     price: 12.40,
     nutritionScore: 'C',
     allergens: [],
@@ -608,7 +640,7 @@ export const products: Product[] = [
     id: 'farm-honey-chestnut',
     name: 'Miel de châtaignier',
     brand: 'Miellerie des Cévennes',
-    image: 'https://images.unsplash.com/photo-1587049016823-a44c8c3d3d52?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3',
+    image: farmHoneyChestnut,
     price: 11.80,
     nutritionScore: 'C',
     allergens: [],
@@ -626,7 +658,7 @@ export const products: Product[] = [
     id: 'farm-bread-sourdough',
     name: 'Pain au levain naturel',
     brand: 'Boulangerie de la Ferme',
-    image: 'https://images.unsplash.com/photo-1509440159596-0249088772ff?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3',
+    image: farmBreadSourdough,
     price: 4.15,
     nutritionScore: 'B',
     allergens: ['gluten'],
@@ -642,7 +674,7 @@ export const products: Product[] = [
     id: 'farm-bread-rye',
     name: 'Pain de seigle fermier',
     brand: 'Moulin et Four',
-    image: 'https://images.unsplash.com/photo-1549931319-a545dcf3bc73?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3',
+    image: farmBreadRye,
     price: 4.80,
     nutritionScore: 'A',
     allergens: ['gluten'],
@@ -658,7 +690,7 @@ export const products: Product[] = [
     id: 'farm-bread-walnut',
     name: 'Pain aux noix fermier',
     brand: 'Four à Bois Traditionnel',
-    image: 'https://images.unsplash.com/photo-1586444248902-2f64eddc13df?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3',
+    image: farmBreadWalnut,
     price: 6.20,
     nutritionScore: 'B',
     allergens: ['gluten', 'noix'],
@@ -674,7 +706,7 @@ export const products: Product[] = [
     id: 'farm-bread-spelt',
     name: 'Pain d\'épeautre ancien',
     brand: 'Moulin d\'Antan',
-    image: 'https://images.unsplash.com/photo-1590736969955-71cc94901144?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3',
+    image: farmBreadSpelt,
     price: 5.40,
     nutritionScore: 'A',
     allergens: ['gluten'],
@@ -692,7 +724,7 @@ export const products: Product[] = [
     id: 'farm-oysters-fine-claire',
     name: 'Huîtres fines de Claire',
     brand: 'Ostréiculture de l\'Atlantique',
-    image: 'https://images.unsplash.com/photo-1565680018434-b513d5573b80?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3',
+    image: farmOystersFineClaire,
     price: 18.90,
     nutritionScore: 'A',
     allergens: ['mollusques'],
@@ -708,7 +740,7 @@ export const products: Product[] = [
     id: 'farm-mussels-bouchot',
     name: 'Moules de bouchot AOP',
     brand: 'Mytiliculture Baie du Mont',
-    image: 'https://images.unsplash.com/photo-1615141982883-c7ad0e69fd62?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3',
+    image: farmMusselsBouchot,
     price: 6.90,
     nutritionScore: 'A',
     allergens: ['mollusques'],
