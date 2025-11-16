@@ -18,6 +18,7 @@ export interface Product {
   sustainability?: string[];
   sizes?: string[];
   certifications?: string[];
+  availableIn?: string[];
 }
 
 export interface ProductHeaderProps {
