@@ -6,11 +6,13 @@ import Footer from '@/components/layout/Footer';
 import CategoryPicker from '@/components/ui/CategoryPicker';
 import ProductCard from '@/components/ui/ProductCard';
 import HealthConditionFilter from '@/components/ui/HealthConditionFilter';
+import CountryFilter from '@/components/ui/CountryFilter';
 import { products } from '@/data/products';
 
 const Products = () => {
   const [selectedCategory, setSelectedCategory] = useState('all');
   const [selectedHealthConditions, setSelectedHealthConditions] = useState<string[]>([]);
+  const [selectedCountries, setSelectedCountries] = useState<string[]>(['france']);
   const [searchParams] = useSearchParams();
   const searchQuery = searchParams.get('search') || '';
 
@@ -32,7 +34,14 @@ const Products = () => {
         )
       );
     
-    return matchesCategory && matchesSearch && matchesHealthConditions;
+    // Filtrage par pays (si availableIn n'est pas défini, le produit est considéré comme disponible partout)
+    const matchesCountry = selectedCountries.length === 0 || 
+      !product.availableIn || 
+      selectedCountries.some(country => 
+        product.availableIn?.includes(country)
+      );
+    
+    return matchesCategory && matchesSearch && matchesHealthConditions && matchesCountry;
   });
 
   return (
@@ -48,6 +57,9 @@ const Products = () => {
               <CategoryPicker 
                 activeCategory={selectedCategory}
                 onChange={setSelectedCategory}
+              />
+              <CountryFilter 
+                onChange={setSelectedCountries}
               />
               <HealthConditionFilter 
                 onChange={setSelectedHealthConditions}
