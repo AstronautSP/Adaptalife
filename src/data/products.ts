@@ -60,6 +60,27 @@ import farmSeaSaltArtisanal from '@/assets/products/farm-sea-salt-artisanal.jpg'
 import farmSardinesFresh from '@/assets/products/farm-sardines-fresh.jpg';
 import farmSeaBreamWild from '@/assets/products/farm-sea-bream-wild.jpg';
 
+// Additional product images
+import wholeWheatBiscuits from '@/assets/products/whole-wheat-biscuits.jpg';
+import instantOatmeal from '@/assets/products/instant-oatmeal.jpg';
+import painAuLait from '@/assets/products/pain-au-lait.jpg';
+import painAuChocolat from '@/assets/products/pain-au-chocolat.jpg';
+import painAuxRaisins from '@/assets/products/pain-aux-raisins.jpg';
+import gummyBears from '@/assets/products/gummy-bears.jpg';
+import sourCandies from '@/assets/products/sour-candies.jpg';
+import saltedCaramels from '@/assets/products/salted-caramels.jpg';
+import licorice from '@/assets/products/licorice.jpg';
+import spiralLollipops from '@/assets/products/spiral-lollipops.jpg';
+import chocolateTruffles from '@/assets/products/chocolate-truffles.jpg';
+import vanillaMarshmallows from '@/assets/products/vanilla-marshmallows.jpg';
+import almondPralines from '@/assets/products/almond-pralines.jpg';
+import fruitJellies from '@/assets/products/fruit-jellies.jpg';
+import hazelnutSpreadOrganic from '@/assets/products/hazelnut-spread-organic.jpg';
+import lightJam from '@/assets/products/light-jam.jpg';
+import almondButter from '@/assets/products/almond-butter.jpg';
+import peanutButter from '@/assets/products/peanut-butter.jpg';
+import apricotJam from '@/assets/products/apricot-jam.jpg';
+
 export const mainCategories: MainCategory[] = [
   { id: 'all', name: 'Toutes les catégories' },
   { id: 'food', name: 'Alimentaire' },
@@ -876,7 +897,7 @@ export const products: Product[] = [
     id: 'wholemeal-biscuits',
     name: 'Biscuits complets au miel',
     brand: 'Biscuiterie Artisanale',
-    image: 'https://images.unsplash.com/photo-1518047601542-79f18c655718?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3',
+    image: wholeWheatBiscuits,
     price: 3.20,
     nutritionScore: 'B',
     allergens: ['gluten', 'lait'],
@@ -892,7 +913,7 @@ export const products: Product[] = [
     id: 'instant-oatmeal',
     name: 'Flocons d\'avoine instantanés',
     brand: 'Avoine Express',
-    image: 'https://images.unsplash.com/photo-1574635594024-b2b95e1a3a3d?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3',
+    image: instantOatmeal,
     price: 2.15,
     nutritionScore: 'A',
     allergens: ['gluten'],
@@ -908,7 +929,7 @@ export const products: Product[] = [
     id: 'pain-au-lait',
     name: 'Pain au lait brioche',
     brand: 'Boulangerie Dorée',
-    image: 'https://images.unsplash.com/photo-1508737804141-4c3b688e2546?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3',
+    image: painAuLait,
     price: 0.90,
     nutritionScore: 'C',
     allergens: ['gluten', 'lait', 'oeufs'],
@@ -924,7 +945,7 @@ export const products: Product[] = [
     id: 'pain-chocolat',
     name: 'Pain au chocolat',
     brand: 'Boulangerie Dorée',
-    image: 'https://images.unsplash.com/photo-1566195992011-5f6b21e539aa?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3',
+    image: painAuChocolat,
     price: 1.35,
     nutritionScore: 'C',
     allergens: ['gluten', 'lait'],
@@ -940,7 +961,7 @@ export const products: Product[] = [
     id: 'viennoiserie-raisin',
     name: 'Pain aux raisins',
     brand: 'Boulangerie Dorée',
-    image: 'https://images.unsplash.com/photo-1525706254102-c3d2f43e9c29?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3',
+    image: painAuxRaisins,
     price: 1.40,
     nutritionScore: 'C',
     allergens: ['gluten', 'lait', 'oeufs'],
@@ -958,7 +979,7 @@ export const products: Product[] = [
     id: 'gummy-bears-natural',
     name: 'Oursons gélifiés aux fruits',
     brand: 'Bonbons Naturels',
-    image: 'https://images.unsplash.com/photo-1582058091505-f87a2e55a40f?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3',
+    image: gummyBears,
     price: 1.95,
     nutritionScore: 'C',
     allergens: [],
@@ -974,7 +995,7 @@ export const products: Product[] = [
     id: 'bonbons-acidules',
     name: 'Bonbons acidulés multicolores',
     brand: 'Bonbons Fun',
-    image: 'https://images.unsplash.com/photo-1575932444877-5106bee2a599?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3',
+    image: sourCandies,
     price: 1.50,
     nutritionScore: 'D',
     allergens: [],
@@ -990,7 +1011,7 @@ export const products: Product[] = [
     id: 'caramels-beurre-sale',
     name: 'Caramels au beurre salé',
     brand: 'Confiserie Bretonne',
-    image: 'https://images.unsplash.com/photo-1571506165871-ee72a35836d4?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3',
+    image: saltedCaramels,
     price: 4.20,
     nutritionScore: 'D',
     allergens: ['lait'],
@@ -1006,7 +1027,7 @@ export const products: Product[] = [
     id: 'reglisse-naturelle',
     name: 'Réglisse naturelle',
     brand: 'Confiserie Tradition',
-    image: 'https://images.unsplash.com/photo-1582058091505-f87a2e55a40f?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3',
+    image: licorice,
     price: 3.40,
     nutritionScore: 'C',
     allergens: [],
@@ -1022,7 +1043,7 @@ export const products: Product[] = [
     id: 'sucettes-fruits',
     name: 'Sucettes aux fruits',
     brand: 'Lollipop Paradise',
-    image: 'https://images.unsplash.com/photo-1587496679742-bad3b3080c9f?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3',
+    image: spiralLollipops,
     price: 0.80,
     nutritionScore: 'D',
     allergens: [],
@@ -1038,7 +1059,7 @@ export const products: Product[] = [
     id: 'chocolats-assortis',
     name: 'Assortiment de chocolats',
     brand: 'Chocolaterie Royale',
-    image: 'https://images.unsplash.com/photo-1511381939415-e44015466834?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3',
+    image: chocolateTruffles,
     price: 12.50,
     nutritionScore: 'D',
     allergens: ['lait', 'fruits à coque'],
@@ -1054,7 +1075,7 @@ export const products: Product[] = [
     id: 'marshmallows',
     name: 'Marshmallows vanille',
     brand: 'Sweet Cloud',
-    image: 'https://images.unsplash.com/photo-1582058091505-f87a2e55a40f?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3',
+    image: vanillaMarshmallows,
     price: 2.60,
     nutritionScore: 'D',
     allergens: [],
@@ -1070,7 +1091,7 @@ export const products: Product[] = [
     id: 'dark-chocolate-pralines',
     name: 'Pralines chocolat noir',
     brand: 'Chocolaterie Fine',
-    image: 'https://images.unsplash.com/photo-1549298916-b41d501d3772?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3',
+    image: almondPralines,
     price: 8.90,
     nutritionScore: 'D',
     allergens: ['lait', 'fruits à coque'],
@@ -1086,7 +1107,7 @@ export const products: Product[] = [
     id: 'fruit-jellies-organic',
     name: 'Pâtes de fruits bio',
     brand: 'Confiserie du Verger',
-    image: 'https://images.unsplash.com/photo-1571167417853-585e0ca81fd1?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3',
+    image: fruitJellies,
     price: 5.60,
     nutritionScore: 'C',
     allergens: [],
@@ -1120,7 +1141,7 @@ export const products: Product[] = [
     id: 'pate-tartiner-bio',
     name: 'Pâte à tartiner bio noisettes',
     brand: 'Natura Bio',
-    image: 'https://images.unsplash.com/photo-1541807084-7d1f5a6ed8e7?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3',
+    image: hazelnutSpreadOrganic,
     price: 6.20,
     nutritionScore: 'C',
     allergens: ['noisettes'],
@@ -1152,7 +1173,7 @@ export const products: Product[] = [
     id: 'apricot-jam-reduced-sugar',
     name: 'Confiture d\'abricots allégée',
     brand: 'Saveurs Légères',
-    image: 'https://images.unsplash.com/photo-1488477181946-6428a0291777?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3',
+    image: lightJam,
     price: 3.80,
     nutritionScore: 'B',
     allergens: [],
@@ -1168,7 +1189,7 @@ export const products: Product[] = [
     id: 'almond-butter-pure',
     name: 'Purée d\'amandes pures',
     brand: 'Oléagineux Naturels',
-    image: 'https://images.unsplash.com/photo-1570197788417-0e82375c9371?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3',
+    image: almondButter,
     price: 7.90,
     nutritionScore: 'B',
     allergens: ['amandes'],
@@ -1184,7 +1205,7 @@ export const products: Product[] = [
     id: 'hazelnut-chocolate-spread',
     name: 'Pâte à tartiner noisettes-chocolat',
     brand: 'Gourmandises Saines',
-    image: 'https://images.unsplash.com/photo-1481391319762-47dff72954d9?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3',
+    image: peanutButter,
     price: 5.40,
     nutritionScore: 'D',
     allergens: ['lait', 'noisettes'],
@@ -1200,7 +1221,7 @@ export const products: Product[] = [
     id: 'orange-marmalade-bitter',
     name: 'Marmelade d\'oranges amères',
     brand: 'Confitures Tradition',
-    image: 'https://images.unsplash.com/photo-1588347818403-0ac0ee7996e1?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3',
+    image: apricotJam,
     price: 4.60,
     nutritionScore: 'C',
     allergens: [],
