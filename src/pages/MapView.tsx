@@ -132,7 +132,9 @@ const MapView = () => {
                 </div>
                 <div className="flex items-center gap-2">
                   <Clock className="h-3.5 w-3.5 text-muted-foreground" />
-                  <span className="text-muted-foreground">9h-19h du lundi au samedi</span>
+                  <span className="text-muted-foreground">
+                    {selectedStore.openingHours.weekdays} | {selectedStore.openingHours.sunday}
+                  </span>
                 </div>
                 <div className="flex items-center gap-1.5">
                   <MapPin className="h-3.5 w-3.5 text-muted-foreground" />
