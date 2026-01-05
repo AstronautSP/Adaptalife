@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { MapPin, Map as MapIcon, Info, Globe, Search } from 'lucide-react';
+import { MapPin, Map as MapIcon, Info, Globe, Search, Clock } from 'lucide-react';
 import { Button } from './button';
 import {
   Select,
@@ -16,12 +16,18 @@ export interface StoreDestination {
   instructions: string;
 }
 
+export interface StoreOpeningHours {
+  weekdays: string;
+  sunday: string;
+}
+
 export interface StoreLocation {
   id: string;
   name: string;
   address: string;
   coordinates: { lat: number; lng: number };
   phone: string;
+  openingHours: StoreOpeningHours;
   destinations: StoreDestination[];
 }
 
@@ -32,6 +38,7 @@ const STORE_LOCATIONS: StoreLocation[] = [
     address: '186 Boulevard Saint-Denis, 92400 Courbevoie', 
     coordinates: { lat: 48.8738, lng: 2.2950 }, 
     phone: '01 47 88 42 30',
+    openingHours: { weekdays: 'Lun-Sam 8h30-21h00', sunday: 'Dim 9h00-12h30' },
     destinations: [
       { name: 'fruits et légumes', instructions: "Pour aller aux fruits et légumes, avancez tout droit sur 8 mètres, puis tournez à gauche. Le rayon se trouve sur votre droite." },
       { name: 'boulangerie', instructions: "Pour aller à la boulangerie, avancez sur 12 mètres, puis tournez à droite. Vous sentirez l'odeur du pain frais." },
@@ -50,6 +57,7 @@ const STORE_LOCATIONS: StoreLocation[] = [
     address: '85 Avenue du Maine, 75014 Paris', 
     coordinates: { lat: 48.8417, lng: 2.3226 }, 
     phone: '01 43 20 15 67',
+    openingHours: { weekdays: 'Lun-Sam 8h00-21h00', sunday: 'Dim 9h00-13h00' },
     destinations: [
       { name: 'fruits et légumes', instructions: "Pour aller aux fruits et légumes, tournez à gauche à l'entrée et avancez sur 6 mètres." },
       { name: 'boulangerie', instructions: "Pour aller à la boulangerie, avancez tout droit sur 10 mètres depuis l'entrée." },
@@ -68,6 +76,7 @@ const STORE_LOCATIONS: StoreLocation[] = [
     address: '17 Rue Maurice Flandin, 69003 Lyon', 
     coordinates: { lat: 45.7597, lng: 4.8589 }, 
     phone: '04 78 62 34 89',
+    openingHours: { weekdays: 'Lun-Sam 8h30-20h30', sunday: 'Dim 9h00-12h30' },
     destinations: [
       { name: 'fruits et légumes', instructions: "Pour aller aux fruits et légumes, tournez immédiatement à droite après l'entrée." },
       { name: 'boulangerie', instructions: "Pour aller à la boulangerie, avancez sur 8 mètres et tournez à gauche. La boulangerie est juste devant vous." },
@@ -86,6 +95,7 @@ const STORE_LOCATIONS: StoreLocation[] = [
     address: 'Avenue de la Pinède, 13010 Marseille', 
     coordinates: { lat: 43.2965, lng: 5.3698 }, 
     phone: '04 91 89 45 23',
+    openingHours: { weekdays: 'Lun-Sam 8h30-21h00', sunday: 'Dim 9h00-12h30' },
     destinations: [
       { name: 'fruits et légumes', instructions: "Pour aller aux fruits et légumes, avancez tout droit sur 10 mètres, puis tournez à gauche." },
       { name: 'boulangerie', instructions: "Pour aller à la boulangerie, avancez sur 14 mètres, puis tournez à droite." },
@@ -104,6 +114,7 @@ const STORE_LOCATIONS: StoreLocation[] = [
     address: 'Avenue des 40 Journaux, 33300 Bordeaux', 
     coordinates: { lat: 44.8378, lng: -0.5792 }, 
     phone: '05 56 50 78 92',
+    openingHours: { weekdays: 'Lun-Sam 8h30-20h30', sunday: 'Dim 9h00-12h30' },
     destinations: [
       { name: 'fruits et légumes', instructions: "Pour aller aux fruits et légumes, tournez à droite après l'entrée et avancez 5 mètres." },
       { name: 'boulangerie', instructions: "Pour aller à la boulangerie, avancez tout droit sur 11 mètres depuis l'entrée." },
@@ -122,6 +133,7 @@ const STORE_LOCATIONS: StoreLocation[] = [
     address: '168 Rue Pierre Legrand, 59000 Lille', 
     coordinates: { lat: 50.6365, lng: 3.0635 }, 
     phone: '03 20 55 67 89',
+    openingHours: { weekdays: 'Lun-Sam 8h30-20h00', sunday: 'Dim 9h00-12h30' },
     destinations: [
       { name: 'fruits et légumes', instructions: "Pour aller aux fruits et légumes, avancez tout droit sur 7 mètres, c'est sur votre droite." },
       { name: 'boulangerie', instructions: "Pour aller à la boulangerie, tournez à gauche à l'entrée et avancez 9 mètres." },
@@ -140,6 +152,7 @@ const STORE_LOCATIONS: StoreLocation[] = [
     address: '34 Avenue Descartes, 33160 Saint-Médard-en-Jalles', 
     coordinates: { lat: 44.8969, lng: -0.7183 }, 
     phone: '05 56 05 42 10',
+    openingHours: { weekdays: 'Lun-Sam 8h30-21h00', sunday: 'Dim 9h00-12h30' },
     destinations: [
       { name: 'fruits et légumes', instructions: "Pour aller aux fruits et légumes, avancez tout droit sur 9 mètres, puis tournez à gauche." },
       { name: 'boulangerie', instructions: "Pour aller à la boulangerie, avancez sur 13 mètres, puis tournez à droite." },
@@ -248,8 +261,17 @@ const StoreLocator = ({
       </Select>
       
       {storeId && (
-        <div className="text-sm text-muted-foreground">
-          {STORE_LOCATIONS.find(store => store.id === storeId)?.address}
+        <div className="space-y-2">
+          <div className="text-sm text-muted-foreground">
+            {STORE_LOCATIONS.find(store => store.id === storeId)?.address}
+          </div>
+          <div className="flex items-center gap-2 text-sm">
+            <Clock className="h-4 w-4 text-primary" />
+            <span className="font-medium">Horaires:</span>
+            <span className="text-muted-foreground">
+              {STORE_LOCATIONS.find(store => store.id === storeId)?.openingHours.weekdays} | {STORE_LOCATIONS.find(store => store.id === storeId)?.openingHours.sunday}
+            </span>
+          </div>
         </div>
       )}
 
