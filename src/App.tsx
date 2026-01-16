@@ -21,6 +21,7 @@ import Presentation from "./pages/Presentation";
 import Demo from "./pages/Demo";
 import PresentationGuide from "./pages/PresentationGuide";
 import Screenshots from "./pages/Screenshots";
+import Install from "./pages/Install";
 
 const queryClient = new QueryClient();
 
@@ -63,6 +64,7 @@ const App = () => {
             <Route path="/guide" element={<PresentationGuide />} />
             <Route path="/screenshots" element={<Screenshots />} />
             <Route path="/map" element={<MapView />} />
+            <Route path="/install" element={<Install />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>
